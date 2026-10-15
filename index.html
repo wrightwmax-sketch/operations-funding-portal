@@ -629,10 +629,10 @@
       currentFilter = category;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderGrants();
+     loadLiveGrants();
     }
 
-    function renderGrants() {
+    function loadLiveGrants() {
       const search = document.getElementById('searchInput').value.toLowerCase();
       const container = document.getElementById('grantsContainer');
       

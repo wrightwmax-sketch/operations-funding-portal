@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Facilities & CapEx Strategic Intelligence Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 23, 38, 0.85);
+      --card-border: #1e293b;
+      --card-hover: rgba(30, 41, 59, 0.7);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-scarlet: #ba0c2f;
+      --accent-gold: #f59e0b;
+      --accent-blue: #38bdf8;
+      --accent-emerald: #10b981;
+      --badge-bg: #1e293b;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    .light-theme {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --card-hover: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.5;
+      transition: background-color 0.25s, color 0.25s;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(186, 12, 47, 0.12) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TOP HEADER & CONTROLS */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .header-branding {
+      max-width: 780px;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(186, 12, 47, 0.15);
+      border: 1px solid rgba(186, 12, 47, 0.4);
+      color: #ff6b81;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .header-branding h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-branding p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--card-hover);
+      border-color: #3b82f6;
+    }
+
+    .btn-scarlet {
+      background: var(--accent-scarlet);
+      border-color: #e11d48;
+      color: #ffffff;
+    }
+
+    .btn-scarlet:hover {
+      background: #a00a28;
+    }
+
+    /* METRIC BANNER */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* CONTROLS & FILTER BAR */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-box {
+      flex: 1 1 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 0.9rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      border-radius: 6px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: rgba(186, 12, 47, 0.15);
+      border-color: rgba(186, 12, 47, 0.4);
+      color: #ff6b81;
+    }
+
+    /* GRANT CARDS GRID */
+    .grants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grant-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .grant-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 0.75rem;
+    }
+
+    .agency-tag {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .grant-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+      color: var(--text-main);
+    }
+
+    .grant-synopsis {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .strategic-box {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid var(--accent-gold);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.25rem;
+      font-size: 0.825rem;
+    }
+
+    .strategic-box strong {
+      display: block;
+      color: var(--accent-gold);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    .grant-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.825rem;
+    }
+
+    .meta-item span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .meta-item strong {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+
+    .modal-card {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .email-preview-box {
+      background: #020617;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* BOARDROOM PRESENTATION MODE */
+    body.presentation-mode {
+      background: #020617;
+      padding: 1rem;
+    }
+    body.presentation-mode header,
+    body.presentation-mode .controls-bar {
+      display: none;
+    }
+    body.presentation-mode .grants-grid {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .ambient-glow, .controls-bar, .card-actions, .header-actions, .pill-badge {
+        display: none !important;
+      }
+      .grant-card {
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <header>
+      <div class="header-branding">
+        <div class="pill-badge">Operations & Facilities Infrastructure</div>
+        <h1>Advanced Manufacturing & Student Lab: Strategic CapEx Portal</h1>
+        <p>Targeted Non-Tuition Funding, Machinery Tooling Grants, and Risk-Mitigation Capital Programs</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn" onclick="togglePresentationMode()">📺 Boardroom Mode</button>
+        <button class="btn btn-scarlet" onclick="openExecutiveDraft()">✉️ Director Briefing</button>
+        <button class="btn" onclick="window.print()">🖨️ PDF Summary</button>
+      </div>
+    </header>
+
+    <!-- KPI STRIP -->
+    <section class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-title">Addressable External Funding</div>
+        <div class="metric-value" id="kpi-total-val">$2,410,000</div>
+        <div class="metric-sub">Active open solicitation pool</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Target Opportunities</div>
+        <div class="metric-value" id="kpi-count">6 Active</div>
+        <div class="metric-sub">High institutional feasibility</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">CapEx Tooling Offset</div>
+        <div class="metric-value">$685,000</div>
+        <div class="metric-sub">Machine acquisitions & upgrades</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Risk & Audit Mitigation</div>
+        <div class="metric-value">100% Direct</div>
+        <div class="metric-sub">EH&S ventilation & safety tie-in</div>
+      </div>
+    </section>
+
+    <!-- SEARCH & FILTER BAR -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search keywords (e.g. CNC, tooling, safety, Baja, Haas)..." oninput="renderGrants()">
+      </div>
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setFilter('ALL', this)">All Opportunities</button>
+        <button class="tab-btn" onclick="setFilter('MACHINING', this)">Machine Tooling</button>
+        <button class="tab-btn" onclick="setFilter('STUDENT', this)">Collegiate Teams</button>
+        <button class="tab-btn" onclick="setFilter('SAFETY', this)">Lab Infrastructure & Safety</button>
+        <button class="tab-btn" onclick="setFilter('CAPEX', this)">Major CapEx</button>
+      </div>
+    </div>
+
+    <!-- GRANTS CONTAINER -->
+    <div class="grants-grid" id="grantsContainer"></div>
+  </div>
+
+  <!-- DIRECTOR EMAIL DRAFT MODAL -->
+  <div class="modal-overlay" id="directorModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Director Briefing: Non-Tuition CapEx Strategy</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Pre-drafted executive memo to leadership</p>
+        </div>
+        <button class="close-btn" onclick="closeExecutiveDraft()">&times;</button>
+      </div>
+      <div class="email-preview-box" id="emailPreviewText"></div>
+      <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+        <button class="btn" onclick="closeExecutiveDraft()">Close</button>
+        <button class="btn btn-scarlet" onclick="copyEmailDraft()">📋 Copy Memo to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GRANT_DATA = [
+      {
+        id: "haas-2026",
+        agency: "GENE HAAS FOUNDATION",
+        category: "MACHINING",
+        title: "Post-Secondary CNC Machining & Tooling Grant",
+        ceiling: "$25,000",
+        deadline: "Rolling (Q3 Cycle)",
+        score: "98% Fit",
+        synopsis: "Direct grant funding dedicated to collegiate machine shop consumables, high-performance tooling, machine accessories, and Haas CNC mill/lathe maintenance.",
+        pitch: "Provides immediate non-tuition budget offset for shop consumables and CNC endmill replenishment, directly insulating the center's annual operating index.",
+        status: "Actionable Immediately"
+      },
+      {
+        id: "sme-prime-2026",
+        agency: "SME EDUCATION FOUNDATION",
+        category: "MACHINING",
+        title: "Advanced Manufacturing Lab Infrastructure Program",
+        ceiling: "$85,000",
+        deadline: "November 14",
+        score: "94% Fit",
+        synopsis: "Co-sponsorship of modern manufacturing facilities providing hands-on CAM/CNC, multi-axis machining, and metrology training for student engineers.",
+        pitch: "Positions our lab as an SME-accredited training hub, attracting corporate manufacturing partnerships and modernizing metrology gear.",
+        status: "Drafting Ready"
+      },
+      {
+        id: "odhe-rapids-6",
+        agency: "OHIO DEPT OF HIGHER EDUCATION",
+        category: "CAPEX",
+        title: "RAPIDS 6: Regionally Aligned Priority Equipment Initiative",
+        ceiling: "$350,000",
+        deadline: "December 01",
+        score: "96% Fit",
+        synopsis: "State capital equipment acquisition for advanced manufacturing, robotics, and hands-on laboratory infrastructure aligned with regional industrial workforce demands.",
+        pitch: "Allows the center to acquire major machine capital (e.g. 5-axis CNC or waterjet) with 100% state equipment backing, saving six-figure departmental CapEx.",
+        status: "Director Priority"
+      },
+      {
+        id: "aws-fume-safety",
+        agency: "AMERICAN WELDING SOCIETY / LINCOLN ELECTRIC",
+        category: "SAFETY",
+        title: "Welding Lab Safety & Source Extraction Equipment Grant",
+        ceiling: "$50,000",
+        deadline: "October 30",
+        score: "91% Fit",
+        synopsis: "Funds dedicated ventilation retrofits, source fume extraction systems, personal protective equipment, and modernized multiprocess TIG/MIG stations.",
+        pitch: "Eliminates university EH&S compliance liabilities regarding student particulate inhalation during chassis fabrication, offering an ironclad risk shield.",
+        status: "High Liability Offset"
+      },
+      {
+        id: "doe-clean-mobility",
+        agency: "U.S. DEPT OF ENERGY (EERE)",
+        category: "STUDENT",
+        title: "Collegiate Clean Mobility & EV Engineering Prototype Fund",
+        ceiling: "$1,200,000",
+        deadline: "January 15",
+        score: "89% Fit",
+        synopsis: "Interdisciplinary collegiate student engineering project support for hybrid/electric powertrain testing, telemetry rigs, and track prototype development.",
+        pitch: "Provides multi-year sponsorship covering Formula SAE Electric and EcoCAR dyno/testing infrastructure with zero internal department subsidization.",
+        status: "Consortium Opportunity"
+      },
+      {
+        id: "boeing-aero-capstone",
+        agency: "INDUSTRY STEM PARTNERSHIP",
+        category: "STUDENT",
+        title: "Autonomous & Unmanned Aerospace Capstone Tooling Award",
+        ceiling: "$70,000",
+        deadline: "Rolling Cycle",
+        score: "92% Fit",
+        synopsis: "Equipment and materials funding for hands-on student composite fabrication, wind-tunnel model rapid machining, and avionics testing rigs.",
+        pitch: "Directly funds aerostructures prototyping tooling and telemetry data suites, linking student aero capstone projects into an industry recruitment track.",
+        status: "Actionable Immediately"
+      }
+    ];
+
+    let currentFilter = 'ALL';
+
+    function setFilter(category, btn) {
+      currentFilter = category;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrants();
+    }
+
+    function renderGrants() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const container = document.getElementById('grantsContainer');
+      
+      const filtered = GRANT_DATA.filter(g => {
+        const matchesCategory = currentFilter === 'ALL' || g.category === currentFilter;
+        const matchesSearch = g.title.toLowerCase().includes(search) || 
+                              g.agency.toLowerCase().includes(search) || 
+                              g.synopsis.toLowerCase().includes(search) ||
+                              g.pitch.toLowerCase().includes(search);
+        return matchesCategory && matchesSearch;
+      });
+
+      container.innerHTML = filtered.map(g => `
+        <div class="grant-card">
+          <div>
+            <div class="card-top">
+              <span class="agency-tag">${g.agency}</span>
+              <span class="score-badge">★ ${g.score}</span>
+            </div>
+            <h2 class="grant-title">${g.title}</h2>
+            <p class="grant-synopsis">${g.synopsis}</p>
+            <div class="strategic-box">
+              <strong>Leadership Value Proposition</strong>
+              ${g.pitch}
+            </div>
+          </div>
+          <div>
+            <div class="grant-meta-grid">
+              <div class="meta-item">
+                <span>Award Ceiling</span>
+                <strong>${g.ceiling}</strong>
+              </div>
+              <div class="meta-item">
+                <span>Deadline Window</span>
+                <strong>${g.deadline}</strong>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-scarlet" onclick="openSingleGrantBrief('${g.id}')">Quick Brief</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function togglePresentationMode() {
+      document.body.classList.toggle('presentation-mode');
+    }
+
+    function openExecutiveDraft() {
+      const memo = `SUBJECT: Strategic Infrastructure Initiative: External Non-Tuition CapEx & Tooling Portfolio
+
+Center Leadership & Operations Directors,
+
+I have cataloged and vetted high-probability external funding opportunities targeting our student design laboratory, advanced machining capabilities, and student safety compliance. 
+
+Key Strategic Highlights:
+1. Capital Cost Avoidance: Target awards total over $600K in capital equipment offsets (including Ohio ODHE RAPIDS and SME Foundation grants) which directly alleviate center CapEx requirements.
+2. Safety & Audit Elimination: AWS/Lincoln funding specifically targets welding and composite particulate ventilation, closing potential institutional EH&S liabilities before annual reviews.
+3. Multi-Team Tooling: Gene Haas Foundation rolling grants ($25K) can directly underwrite our annual consumable tooling expenditure across Formula, Baja, and aerospace projects.
+
+I have summarized the initial proposal alignments and can provide a 10-minute briefing at your convenience to outline the submission pathway.
+
+Respectfully submitted,
+Project Operations & Technical Supervision`;
+
+      document.getElementById('emailPreviewText').innerText = memo;
+      document.getElementById('directorModal').style.display = 'flex';
+    }
+
+    function openSingleGrantBrief(id) {
+      const grant = GRANT_DATA.find(g => g.id === id);
+      if (!grant) return;
+
+      const brief = `SUBJECT: Program Pitch: ${grant.agency} (${grant.ceiling})
+
+Director,
+
+I recommend evaluating the following program for our lab operations:
+
+Opportunity: ${grant.title}
+Funding Ceiling: ${grant.ceiling}
+Strategic Alignment: ${grant.pitch}
+
+Next Step: Staff operational review and submission package preparation.`;
+
+      document.getElementById('emailPreviewText').innerText = brief;
+      document.getElementById('directorModal').style.display = 'flex';
+    }
+
+    function closeExecutiveDraft() {
+      document.getElementById('directorModal').style.display = 'none';
+    }
+
+    function copyEmailDraft() {
+      const text = document.getElementById('emailPreviewText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Executive memo copied to clipboard.");
+      });
+    }
+
+    // Keyboard escape closes modal
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeExecutiveDraft();
+        if (document.body.classList.contains('presentation-mode')) {
+          togglePresentationMode();
+        }
+      }
+    });
+
+    renderGrants();
+  </script>
+</body>
+</html>

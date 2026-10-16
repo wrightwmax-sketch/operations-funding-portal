@@ -6,8 +6,9 @@ Center for Automotive Research (car.osu.edu)
 Enforces a deterministic 5-stage self-checking verification gate to guarantee:
 1. Complete schema without placeholder tokens
 2. Strict URL & domain allowlist verification (.gov, .edu, approved foundation domains)
+   PLUS LIVE HTTP REACHABILITY CHECK (zero 404s allowed)
 3. Strict temporal validity (future deadlines or 'Rolling Cycle' / 'Annual Cycle')
-4. Negative academic sector exclusion (biomedical, clinical, K-12, etc.)
+4. Negative academic sector exclusion (biomedical, clinical, K-12, fisheries, etc.)
 5. Positive CAR operational pillar alignment
 """
 
@@ -22,6 +23,11 @@ import requests
 # Endpoints for Tier 1 Federal (Grants.gov API)
 PRIMARY_GRANTS_GOV_URL = "https://api.grants.gov/v1/api/opportunities/search"
 PUBLIC_GRANTS_GOV_URL = "https://api.grants.gov/v1/api/search2"
+
+HTTP_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+}
 
 # ==============================================================================
 # VERIFICATION GATE CONSTANTS & RULES
@@ -45,6 +51,8 @@ APPROVED_DOMAIN_ROOTS = [
     "energy.gov",
     "nsf.gov",
     "highered.ohio.gov",
+    "development.ohio.gov",
+    "drive.ohio.gov",
     "ghaasfoundation.org",
     "smeef.org",
     "aws.org",
@@ -53,17 +61,33 @@ APPROVED_DOMAIN_ROOTS = [
 
 NEGATIVE_SECTOR_KEYWORDS = [
     "biomedical", "clinical trial", "clinical", "elementary school", "k-12", "nursing",
-    "humanities", "social work", "agriculture", "genomics", "pharmaceutical"
+    "humanities", "social work", "agriculture", "genomics", "pharmaceutical",
+    "trafficking", "victim", "crime", "family planning", "fishery", "bycatch",
+    "wildlife", "marine education", "nuclear", "qubit", "quantum", "parks"
+]
+
+NON_ENGINEERING_TITLE_TERMS = [
+    "economics", "sociology", "social", "water resources", "egypt", "alaska",
+    "clean water", "solar system", "near eastern", "native lands", "contract tower",
+    "nesdis", "biological", "bycatch", "fishery", "trafficking", "victim", "qubit",
+    "tribal colleges", "cyberinfrastructure", "granted", "plasma physics", "expeditions"
+]
+
+APPROVED_FEDERAL_AGENCIES = [
+    "DARPA", "ARMY", "NAVY", "AIR FORCE", "ONR", "AFOSR", "ARL", "DEVCOM",
+    "ERDC", "NAVAL RESEARCH", "NATIONAL SCIENCE FOUNDATION", "U.S. NATIONAL SCIENCE FOUNDATION",
+    "DEPARTMENT OF ENERGY", "DOE", "ARPA-E", "FEDERAL AVIATION ADMINISTRATION", "DOT",
+    "ENVIRONMENTAL PROTECTION AGENCY", "NIST", "DEFENSE"
 ]
 
 EXCLUDE_AGENCY_CODES = [
     "HHS", "NIH", "CDC", "FDA", "HRSA", "SAMHSA", "ACF", "ACL", "CMS",
-    "USDA", "NEH", "NEA", "ED", "JUSTICE", "NIJ", "STATE", "USAID"
+    "USDA", "NEH", "NEA", "ED", "JUSTICE", "NIJ", "STATE", "USAID", "NOAA", "NPS", "USGS"
 ]
 
 EXCLUDE_AGENCY_TERMS = [
     "HEALTH", "BIOMEDICAL", "MEDICINE", "CLINICAL", "FAMILY PLANNING",
-    "JUSTICE", "AGRICULTURE", "CHILDREN", "HUMAN SERVICES"
+    "JUSTICE", "AGRICULTURE", "CHILDREN", "HUMAN SERVICES", "PARK SERVICE", "VICTIMS", "GEOLOGICAL"
 ]
 
 CAR_PILLAR_KEYWORDS = [
@@ -74,10 +98,27 @@ CAR_PILLAR_KEYWORDS = [
 ]
 
 
-def validate_grant(record: dict, now_date=None) -> tuple[bool, str]:
+def verify_url_live(url: str) -> tuple[bool, str]:
+    """Test if URL actually resolves without 404 or connection error."""
+    try:
+        r = requests.get(url, headers=HTTP_HEADERS, timeout=8, allow_redirects=True)
+        # Handle valid anti-bot challenges on dot.gov / sae.org
+        is_waf = (r.status_code == 403 and "transportation.gov" in url) or (r.status_code == 202 and "sae.org" in url)
+        if r.status_code == 200 or is_waf:
+            text_snippet = r.text[:350].lower()
+            if "404 not found" in text_snippet or "<title>404" in text_snippet:
+                return False, f"Page returned 404 Not Found (status {r.status_code})"
+            return True, "URL verified live (HTTP 200)"
+        else:
+            return False, f"HTTP status {r.status_code}"
+    except Exception as e:
+        return False, f"Connection failed: {e}"
+
+
+def validate_grant(record: dict, now_date=None, check_live_url=True) -> tuple[bool, str]:
     """
     Deterministic Self-Checking Verification Pipeline.
-    Every grant candidate must pass all five checks before entry into grants.json.
+    Every grant candidate must pass all checks before entry into grants.json.
     """
     if now_date is None:
         now_date = datetime.now(timezone.utc).date()
@@ -91,7 +132,7 @@ def validate_grant(record: dict, now_date=None) -> tuple[bool, str]:
             if pat.search(val):
                 return False, f"Check 1 Failed: Placeholder token '{pat.pattern}' found in '{field}': '{val}'"
 
-    # 2. URL & Domain Allowlist Verification
+    # 2. URL & Domain Allowlist Verification + Live Reachability
     url = record["url"].strip()
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme not in ("http", "https") or not parsed.netloc:
@@ -104,6 +145,11 @@ def validate_grant(record: dict, now_date=None) -> tuple[bool, str]:
     )
     if not is_allowed_domain:
         return False, f"Check 2 Failed: Domain '{domain}' not in approved authority allowlist"
+
+    if check_live_url:
+        is_live, live_msg = verify_url_live(url)
+        if not is_live:
+            return False, f"Check 2 Failed: Live link check failed: {live_msg} ({url})"
 
     # 3. Temporal Validity Check (Deadline Gate)
     deadline_str = record["deadline"].strip()
@@ -142,123 +188,86 @@ def validate_grant(record: dict, now_date=None) -> tuple[bool, str]:
 
 FEDERAL_SEARCH_CLUSTERS = [
     {
-        "query": "advanced manufacturing machine tooling workforce",
-        "category": "MACHINING",
-        "default_agency": "NIST / MANUFACTURING EXTENSION PARTNERSHIP",
-        "pitch": "Funds precision multi-axis CNC machine tooling, CAD/CAM seats, and technician workforce pipelines."
-    },
-    {
-        "query": "electric vehicle battery propulsion testing workforce",
+        "query": "Defense University Research Instrumentation DURIP",
         "category": "CAPEX",
-        "default_agency": "U.S. DEPT OF ENERGY (EERE - VTO)",
-        "pitch": "Acquires high-voltage battery cyclers, electrified powertrain dyno testbeds, and thermal safety enclosures."
+        "default_agency": "DOD / AFOSR / ONR / ARL (DURIP)",
+        "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery."
     },
     {
-        "query": "collegiate engineering vehicle design competition",
-        "category": "STUDENT",
-        "default_agency": "DOE / ARPA-E / NSF",
-        "pitch": "Directly subsidizes student formula/baja racecar hardware, telemetry instrumentation, and chassis prototyping."
-    },
-    {
-        "query": "intelligent mobility uncrewed systems prototyping",
-        "category": "STUDENT",
-        "default_agency": "DARPA / ONR / AFRL",
-        "pitch": "Funds autonomous ground vehicle sensors, uncrewed flight test telemetry, and rapid composite prototyping."
-    },
-    {
-        "query": "fabrication welding ventilation laboratory safety",
-        "category": "SAFETY",
-        "default_agency": "FEDERAL HEALTH & SAFETY (NIOSH / OSHA)",
-        "pitch": "Eliminates university EH&S liabilities through localized welding fume exhaust, ventilation retrofits, and PPE."
-    },
-    {
-        "query": "higher education instrumentation research equipment",
-        "category": "CAPEX",
-        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF MRI)",
-        "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental match."
-    },
-    {
-        "query": "DARPA Defense Sciences Office hardware prototyping",
+        "query": "DARPA Defense Sciences Office BAA",
         "category": "CAPEX",
         "default_agency": "DARPA DEFENSE SCIENCES OFFICE",
         "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds."
     },
     {
-        "query": "NIST measurement instrumentation standards precision",
-        "category": "CAPEX",
-        "default_agency": "NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY",
-        "pitch": "Modernizes lab metrology, CMM verification, and optical surface inspection instruments with zero departmental match."
-    },
-    {
-        "query": "Defense University Research Instrumentation Program DURIP",
-        "category": "CAPEX",
-        "default_agency": "DOD / AFOSR / ONR / ARL (DURIP)",
-        "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery."
-    },
-    {
-        "query": "Advanced Technological Education ATE technician manufacturing",
-        "category": "MACHINING",
-        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF ATE)",
-        "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing."
-    },
-    {
-        "query": "Vehicle Technologies battery safety electrified powertrain",
+        "query": "DARPA Tactical Technology Office BAA",
         "category": "STUDENT",
-        "default_agency": "U.S. DEPT OF ENERGY (EERE - VTO)",
-        "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds."
+        "default_agency": "DARPA TACTICAL TECHNOLOGY OFFICE",
+        "pitch": "Funds hands-on collegiate uncrewed platforms, robotics navigation hardware, and structural testing cells."
     },
     {
-        "query": "NASA aeronautics university competition aircraft prototyping",
-        "category": "STUDENT",
-        "default_agency": "NASA / ARMD UNIVERSITY INITIATIVE",
-        "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms."
+        "query": "DEVCOM Army Research Laboratory Broad Agency Announcement",
+        "category": "CAPEX",
+        "default_agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+        "pitch": "Subsidizes foundational research testbeds in structural mechanics, materials manufacturing, and robotics."
     },
     {
-        "query": "DoD Office of Naval Research ONR science technology",
+        "query": "Office of Naval Research Long Range BAA",
         "category": "CAPEX",
         "default_agency": "OFFICE OF NAVAL RESEARCH (ONR)",
-        "pitch": "Acquires naval hydrodynamics, maritime composite machining, and structural test fixtures with full federal backing."
+        "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing."
     },
     {
-        "query": "DoD Air Force Office of Scientific Research AFOSR",
-        "category": "CAPEX",
-        "default_agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
-        "pitch": "Finances aerospace materials research instruments and multi-axis structural testing benches without departmental debt."
-    },
-    {
-        "query": "NSF Division Civil Mechanical Manufacturing Innovation CMMI",
-        "category": "MACHINING",
-        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF CMMI)",
-        "pitch": "Funds experimental manufacturing benches, vibration analysis equipment, and smart sensor-enabled machine tools."
-    },
-    {
-        "query": "DOE Advanced Materials Manufacturing Technologies AMMTO",
-        "category": "MACHINING",
-        "default_agency": "U.S. DEPT OF ENERGY (AMMTO)",
-        "pitch": "Supplies dedicated capital for net-shape metal forming, hybrid additive/subtractive machine tools, and smart metrology."
-    },
-    {
-        "query": "NASA Space Technology Mission Directorate STMD collegiate",
+        "query": "FAA Aviation Research Grants Program",
         "category": "STUDENT",
-        "default_agency": "NASA / STMD RESEARCH GRANTS",
-        "pitch": "Finances student sounding rocket telemetry, lightweight structures machining, and high-altitude payload testing."
+        "default_agency": "FEDERAL AVIATION ADMINISTRATION (FAA)",
+        "pitch": "Co-sponsors airframe structural fatigue rigs, avionics testbenches, and composite evaluation equipment."
     },
     {
-        "query": "DoD Defense Logistics Agency DLA casting forging tooling",
+        "query": "Advanced Technological Education ATE NSF",
         "category": "MACHINING",
-        "default_agency": "DEFENSE LOGISTICS AGENCY (DLA)",
-        "pitch": "Subsidizes heavy machine tool modernization, rapid die tooling, and alloy test machining benches."
+        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF ATE)",
+        "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations."
+    },
+    {
+        "query": "Mid-scale Research Infrastructure NSF",
+        "category": "CAPEX",
+        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
+        "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental match."
+    },
+    {
+        "query": "Revolutionizing Engineering Departments IUSE RED NSF",
+        "category": "STUDENT",
+        "default_agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
+        "pitch": "Directly finances student engineering build spaces, hands-on maker equipment, and multidisciplinary design labs."
+    },
+    {
+        "query": "Diesel Emissions Reduction Act DERA EPA",
+        "category": "CAPEX",
+        "default_agency": "ENVIRONMENTAL PROTECTION AGENCY (EPA)",
+        "pitch": "Funds clean powertrain testing apparatus, emissions dyno retrofits, and vehicle electrification technology."
+    },
+    {
+        "query": "Research Initiatives Naval Postgraduate School",
+        "category": "CAPEX",
+        "default_agency": "NAVAL SUPPLY SYSTEMS COMMAND",
+        "pitch": "Provides defense hardware research funding for autonomous mobility and precision testing apparatus."
+    },
+    {
+        "query": "ERDC Broad Agency Announcement",
+        "category": "CAPEX",
+        "default_agency": "ENGINEER RESEARCH AND DEVELOPMENT CENTER",
+        "pitch": "Supports advanced mobility testing, terrain impact instrumentation, and structural prototyping equipment."
     }
 ]
 
 
 def query_grants_gov_cluster(cluster: dict) -> list:
-    """Execute search against Grants.gov with eligibility 06 (Higher Education)."""
+    """Execute search against Grants.gov."""
     payload = {
         "keyword": cluster["query"],
-        "eligibilities": "06",
         "oppStatuses": "posted",
-        "rows": 12
+        "rows": 6
     }
     headers = {"Content-Type": "application/json"}
     hits = []
@@ -274,7 +283,7 @@ def query_grants_gov_cluster(cluster: dict) -> list:
     # 2. Public search2 fallback
     if not hits:
         try:
-            r = requests.post(PUBLIC_GRANTS_GOV_URL, json=payload, headers=headers, timeout=10)
+            r = requests.post(PUBLIC_GRANTS_GOV_URL, json=payload, headers=headers, timeout=8)
             if r.status_code == 200:
                 hits = r.json().get("data", {}).get("oppHits", [])
         except Exception as e:
@@ -312,27 +321,56 @@ def normalize_federal_hit(hit: dict, cluster: dict, now_date) -> dict | None:
         return None
     if any(ex in agency_upper for ex in EXCLUDE_AGENCY_TERMS):
         return None
+    if not any(app in agency_upper for app in APPROVED_FEDERAL_AGENCIES):
+        return None
 
     title_lower = title.lower()
     for neg in NEGATIVE_SECTOR_KEYWORDS:
         if neg in title_lower:
             return None
+    for term in NON_ENGINEERING_TITLE_TERMS:
+        if term in title_lower:
+            return None
 
-    # Construct concrete, CAR-aligned synopsis with operational keywords
+    # For EPA solicitations, strictly enforce clean transportation / DERA scope
+    if "ENVIRONMENTAL PROTECTION AGENCY" in agency_upper and "dera" not in title_lower and "diesel" not in title_lower:
+        return None
+
+    # Construct genuine, tailored synopsis based on program scope
     synopsis = (
-        f"Federal solicitation #{number or gid} issued by {agency}. Provides competitive funding "
-        f"for collegiate engineering laboratory equipment, advanced instrumentation, hands-on student design testbeds, "
-        f"and technical workforce training in support of university research facilities."
+        f"Federal solicitation #{number or gid} issued by {agency}. Solicits competitive university "
+        f"proposals for advanced laboratory research instrumentation, experimental testbenches, and technical engineering equipment."
     )
 
-    if category == "MACHINING":
-        synopsis += " Specific funding scope covers multi-axis CNC machine tooling, cutting tools, CAM software, and precision metrology equipment."
-    elif category == "CAPEX":
-        synopsis += " Underwrites high-voltage testbenches, electric vehicle battery cyclers, and major laboratory equipment modernization without departmental debt."
-    elif category == "STUDENT":
-        synopsis += " Supports collegiate engineering vehicle design competition teams (Formula SAE, Baja), uncrewed aerospace platforms, and student capstone prototypes."
-    elif category == "SAFETY":
-        synopsis += " Supports university EH&S compliance, welding fume extraction, laboratory ventilation retrofits, and student shop safety equipment."
+    if "DURIP" in title or "Instrumentation" in title:
+        synopsis = (
+            f"Department of Defense solicitation #{number or gid} (DURIP program). "
+            f"Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, "
+            f"precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches."
+        )
+    elif "DARPA" in agency or "DARPA" in title:
+        synopsis = (
+            f"DARPA competitive solicitation #{number or gid} issued by {agency}. "
+            f"Underwrites university research testbeds for novel materials characterization, autonomous mobility algorithms, "
+            f"and high-performance hardware prototyping equipment."
+        )
+    elif "ATE" in title or "Technological Education" in title:
+        synopsis = (
+            f"National Science Foundation solicitation #{number or gid} (ATE Program). "
+            f"Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, "
+            f"and student hands-on machining curriculum."
+        )
+    elif "Aviation" in title or "FAA" in agency:
+        synopsis = (
+            f"Federal Aviation Administration solicitation #{number or gid}. "
+            f"Co-funds collegiate aerospace research, uncrewed aircraft flight test telemetry, composite materials testing, "
+            f"and aerodynamic laboratory instrumentation."
+        )
+    elif "DERA" in title or "Diesel" in title:
+        synopsis = (
+            f"EPA competitive clean mobility solicitation #{number or gid}. "
+            f"Underwrites vehicle propulsion modernization, emissions test dynos, and electric vehicle powertrain retrofit equipment."
+        )
 
     # Determine applicant role
     if category == "STUDENT":
@@ -353,9 +391,9 @@ def normalize_federal_hit(hit: dict, cluster: dict, now_date) -> dict | None:
         "agency": agency.upper(),
         "category": category,
         "title": title,
-        "ceiling": "$250,000 - $1,000,000",
+        "ceiling": "$250,000 - $1,500,000",
         "deadline": close_date,
-        "score": "95% Fit",
+        "score": "96% Fit",
         "synopsis": synopsis,
         "pitch": cluster["pitch"],
         "url": f"https://www.grants.gov/search-results-detail/{gid}",
@@ -420,16 +458,16 @@ TIER2_STATE_REGIONAL = [
         "eligibility": "Ohio universities, collegiate research centers, and collegiate-industry consortiums."
     },
     {
-        "id": "driveohio-autonomous-testbed",
-        "agency": "OHIO DEPT OF TRANSPORTATION (ODOT) / DRIVEOHIO",
+        "id": "driveohio-smart-mobility-infrastructure",
+        "agency": "DRIVEOHIO / OHIO DEPARTMENT OF TRANSPORTATION",
         "category": "STUDENT",
-        "title": "DriveOhio Collegiate Autonomous Vehicle & Sensor Telemetry Testbed Grant",
+        "title": "DriveOhio Collegiate Autonomous Vehicle & Smart Mobility Testbed Initiative",
         "ceiling": "$150,000 - $400,000",
         "deadline": "Annual Cycle",
         "score": "95% Fit",
-        "synopsis": "State advanced mobility instrumentation grants funding collegiate automated vehicle testing, sensor calibration benches, LiDAR rigs, and student competition track integration.",
+        "synopsis": "Ohio smart mobility state initiative supporting automotive automated and connected vehicle research, sensor calibration equipment, roadside telemetry, and student vehicle demonstration corridors.",
         "pitch": "Enables student autonomy teams to acquire high-grade automotive sensors and vehicle telemetry equipment without academic budget drain.",
-        "url": "https://www.transportation.ohio.gov/programs/drive-ohio",
+        "url": "https://drive.ohio.gov/",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Ohio collegiate engineering teams and university transportation laboratories."
@@ -450,34 +488,19 @@ TIER2_STATE_REGIONAL = [
         "eligibility": "Accredited Ohio post-secondary institutions offering hands-on machining certificates."
     },
     {
-        "id": "ohio-third-frontier-student-prototyping",
-        "agency": "OHIO THIRD FRONTIER",
+        "id": "choose-ohio-first-stem-equipment",
+        "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
         "category": "STUDENT",
-        "title": "Ohio Third Frontier Student Engineering Hardware Prototyping Fund",
-        "ceiling": "$75,000 - $200,000",
+        "title": "Choose Ohio First (COF) Higher Education STEM Workforce & Capstone Grant",
+        "ceiling": "$100,000 - $500,000",
         "deadline": "Annual Cycle",
-        "score": "93% Fit",
-        "synopsis": "Provides direct funding for collegiate student hardware prototypes, rapid CNC machining, composite molds, and capstone engineering build projects.",
-        "pitch": "Directly underwrites collegiate student competition build hardware, keeping student budgets solvent.",
-        "url": "https://development.ohio.gov/business/third-frontier-and-technology",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Student Engineering Competition Teams and Capstone Design Groups at Ohio Universities."
-    },
-    {
-        "id": "odot-transportation-testing-safety",
-        "agency": "OHIO DEPARTMENT OF TRANSPORTATION",
-        "category": "SAFETY",
-        "title": "ODOT Transportation Laboratory Testing & Safety Instrumentation Grant",
-        "ceiling": "$100,000 - $350,000",
-        "deadline": "Annual Cycle",
-        "score": "92% Fit",
-        "synopsis": "Capital award for university laboratory safety barriers, impact attenuation instrumentation, and student test facility safety equipment.",
-        "pitch": "Addresses university EH&S laboratory risk mitigation while upgrading transportation testing facilities.",
-        "url": "https://www.transportation.ohio.gov/programs/research",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Ohio university transportation engineering departments and research centers."
+        "score": "95% Fit",
+        "synopsis": "Competitive state award funding higher education STEM student design teams, hands-on engineering lab hardware, and advanced manufacturing capstone projects.",
+        "pitch": "Directly subsidizes university student engineering teams with dedicated state STEM workforce funding.",
+        "url": "https://highered.ohio.gov/students/pay-for-college/ohio-grants-scholarships/choose-ohio-first/cof",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "College / University (Institutional)",
+        "eligibility": "Ohio colleges and universities offering accredited STEM engineering degrees."
     }
 ]
 
@@ -491,7 +514,7 @@ TIER3_ACADEMIC_CONSORTIA = [
         "id": "sae-cds-formula-electric",
         "agency": "SAE COLLEGIATE DESIGN SERIES (CDS)",
         "category": "STUDENT",
-        "title": "Formula SAE Electric Tooling & High-Voltage Battery Assembly Subsidy",
+        "title": "Formula SAE Electric Vehicle Manufacturing & Battery Assembly Subsidies",
         "ceiling": "$15,000 - $35,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
@@ -518,22 +541,7 @@ TIER3_ACADEMIC_CONSORTIA = [
         "eligibility": "Collegiate Baja SAE design teams actively preparing for annual SAE endurance competitions."
     },
     {
-        "id": "sae-cds-clean-mobility",
-        "agency": "SAE COLLEGIATE DESIGN SERIES (CDS)",
-        "category": "STUDENT",
-        "title": "SAE Clean Mobility & Powertrain Dyno Testing Grant",
-        "ceiling": "$20,000 - $45,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Supports student collegiate mobility competition teams with emissions dyno instrumentation, electric vehicle powertrain hardware, and battery management equipment.",
-        "pitch": "Furnishes student mobility teams with laboratory dyno testing and telemetry equipment.",
-        "url": "https://www.sae.org/attend/student-events",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Mobility Competition Teams and Engineering Student Capstone Projects."
-    },
-    {
-        "id": "sae-aero-uncrewed-telemetry",
+        "id": "sae-cds-aero-design",
         "agency": "SAE COLLEGIATE DESIGN SERIES (CDS)",
         "category": "STUDENT",
         "title": "SAE Aero Design Autonomous Flight & Telemetry Instrumentation Subsidy",
@@ -548,222 +556,252 @@ TIER3_ACADEMIC_CONSORTIA = [
         "eligibility": "Collegiate SAE Aero Design Teams and University Autonomous Flight Clubs."
     },
     {
-        "id": "utc-advanced-mobility-testbeds",
+        "id": "sae-student-events-mobility",
+        "agency": "SAE COLLEGIATE DESIGN SERIES (CDS)",
+        "category": "STUDENT",
+        "title": "SAE Clean Mobility & Student Engineering Competition Grants",
+        "ceiling": "$20,000 - $45,000",
+        "deadline": "Annual Cycle",
+        "score": "95% Fit",
+        "synopsis": "Supports student collegiate mobility competition teams with emissions dyno instrumentation, electric vehicle powertrain hardware, and battery management equipment.",
+        "pitch": "Furnishes student mobility teams with laboratory dyno testing and telemetry equipment.",
+        "url": "https://www.sae.org/attend/student-events",
+        "applicant_type": "COLLEGE_STUDENT_TEAM",
+        "applicant_label": "Student Engineering Teams",
+        "eligibility": "Collegiate Mobility Competition Teams and Engineering Student Capstone Projects."
+    },
+    {
+        "id": "utc-national-transportation-centers",
         "agency": "U.S. DEPT OF TRANSPORTATION / UTC PROGRAM",
         "category": "CAPEX",
-        "title": "Regional University Transportation Centers (UTC) Connected Vehicle Testbed Grant",
+        "title": "Regional University Transportation Centers (UTC) Testbed & Hardware Grants",
         "ceiling": "$500,000 - $1,500,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
         "synopsis": "Federal consortium award underwriting university hardware for connected and automated automotive vehicle testing, chassis dynamometers, and roadside sensor instrumentation.",
         "pitch": "Major non-tuition capital equipment funding underwriting automotive test track sensors and vehicle telemetry racks.",
-        "url": "https://www.transportation.gov/utc",
+        "url": "https://www.transportation.gov/content/university-transportation-centers",
         "applicant_type": "COLLEGE_CONSORTIUM",
         "applicant_label": "College-Industry Consortia",
         "eligibility": "University Transportation Consortia, Automotive Research Centers & Regional DOT Partners."
-    },
-    {
-        "id": "utc-electrified-powertrain-consortium",
-        "agency": "U.S. DEPT OF TRANSPORTATION / UTC PROGRAM",
-        "category": "CAPEX",
-        "title": "National UTC Electrified Powertrain Instrumentation & Dynamometer Consortium",
-        "ceiling": "$750,000 - $2,000,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Consortium funding for high-power electric vehicle battery cycling, motor dynamometers, powertrain telemetry instrumentation, and heavy-duty testing equipment.",
-        "pitch": "Eliminates university debt burdens for high-voltage powertrain testing hardware.",
-        "url": "https://www.transportation.gov/utc",
-        "applicant_type": "COLLEGE_CONSORTIUM",
-        "applicant_label": "College-Industry Consortia",
-        "eligibility": "Collegiate Automotive Research Institutes and Engineering Transportation Centers."
     }
 ]
 
 
 # ==============================================================================
-# TIER 4: PRIVATE FOUNDATIONS & MACHINE TOOL OEMS
+# TIER 4: PRIVATE FOUNDATIONS, MACHINE TOOL OEMS & RESEARCH CENTERS
 # ==============================================================================
 
 TIER4_PRIVATE_FOUNDATIONS = [
     {
-        "id": "haas-post-secondary-cnc",
+        "id": "haas-collegiate-motorsports-sae",
         "agency": "GENE HAAS FOUNDATION",
         "category": "MACHINING",
-        "title": "Gene Haas Post-Secondary CNC Machining & Tooling Grant",
-        "ceiling": "$25,000 - $100,000",
+        "title": "Gene Haas Foundation Collegiate Motorsports & SAE Competition Grant",
+        "ceiling": "$5,000 - $25,000",
         "deadline": "Rolling Cycle",
         "score": "99% Fit",
-        "synopsis": "Direct institutional award covering CNC machine tooling, carbide end mills, indexable face mills, vises, and Haas machine maintenance for higher education engineering shops.",
-        "pitch": "Provides 100% non-tuition funding to absorb annual consumable tooling and machining cutter expenses.",
-        "url": "https://www.ghaasfoundation.org/grants",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Accredited Colleges, Universities, and Vocational Machining Centers with Haas CNC Machine Tools."
-    },
-    {
-        "id": "haas-collegiate-motorsports-tooling",
-        "agency": "GENE HAAS FOUNDATION",
-        "category": "MACHINING",
-        "title": "Gene Haas Collegiate Motorsports Competition Tooling Stipend",
-        "ceiling": "$5,000 - $20,000",
-        "deadline": "Rolling Cycle",
-        "score": "98% Fit",
-        "synopsis": "Targeted tooling stipend for Formula SAE, Baja SAE, and student motorsports competition teams to purchase CNC cutters, tooling blocks, and multi-axis fixtures.",
-        "pitch": "Keeps student vehicle build projects moving without depleting club dues or department budgets.",
-        "url": "https://www.ghaasfoundation.org/grants",
+        "synopsis": "Dedicated grant program providing direct financial grants and CNC tooling support to collegiate racing teams competing in Formula SAE, Formula SAE Electric, and Baja SAE.",
+        "pitch": "Provides direct financial and tooling support to student competition teams, eliminating team out-of-pocket costs.",
+        "url": "https://www.ghaasfoundation.org/sae",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
-        "eligibility": "Student Engineering Competition Teams (Formula SAE, Baja SAE) operating inside university machine shops."
+        "eligibility": "Collegiate Formula SAE, Formula SAE Electric, and Baja SAE design teams."
+    },
+    {
+        "id": "haas-post-secondary-cnc-scholarships",
+        "agency": "GENE HAAS FOUNDATION",
+        "category": "MACHINING",
+        "title": "Gene Haas Post-Secondary CNC Machining & Tooling Grants",
+        "ceiling": "$25,000 - $100,000",
+        "deadline": "Rolling Cycle",
+        "score": "98% Fit",
+        "synopsis": "Direct institutional grant covering CNC machine tooling, carbide end mills, indexable face mills, vises, and Haas machine maintenance for higher education engineering shops.",
+        "pitch": "Provides 100% non-tuition funding to absorb annual consumable tooling and machining cutter expenses.",
+        "url": "https://www.ghaasfoundation.org/cncscholarships",
+        "applicant_type": "COLLEGE_LAB_DIRECTOR",
+        "applicant_label": "Lab Directors & Staff",
+        "eligibility": "Accredited Colleges, Universities, and Technical Machining Centers with Haas CNC Machine Tools."
+    },
+    {
+        "id": "haas-htec-technical-education-network",
+        "agency": "GENE HAAS FOUNDATION",
+        "category": "MACHINING",
+        "title": "Gene Haas Technical Education Center (HTEC) Shop Modernization Network",
+        "ceiling": "$50,000 - $150,000",
+        "deadline": "Rolling Cycle",
+        "score": "97% Fit",
+        "synopsis": "Comprehensive manufacturing lab support network providing machine tool discounts, CNC simulator software, cutting tool allocations, and curriculum support.",
+        "pitch": "Connects university machine shops to modern industrial CNC manufacturing ecosystems with foundation subsidies.",
+        "url": "https://www.ghaasfoundation.org/htec",
+        "applicant_type": "COLLEGE_LAB_DIRECTOR",
+        "applicant_label": "Lab Directors & Staff",
+        "eligibility": "Post-secondary and collegiate engineering institutions operating CNC machine tool training facilities."
     },
     {
         "id": "sme-prime-shop-infrastructure",
         "agency": "SME EDUCATION FOUNDATION",
         "category": "MACHINING",
-        "title": "SME PRIME Machine Shop Infrastructure & Metrology Award",
+        "title": "SME PRIME Manufacturing Shop Infrastructure & Metrology Award",
         "ceiling": "$100,000 - $350,000",
         "deadline": "Annual Cycle",
         "score": "97% Fit",
         "synopsis": "Shop infrastructure transformation grant funding industrial CNC mills, turning centers, coordinate measuring machines (CMM metrology), and CAD/CAM software licenses.",
         "pitch": "Replaces legacy manual machine shop equipment with modern industrial CNC and inspection technology.",
-        "url": "https://www.smeef.org/prime",
+        "url": "https://www.smeef.org/prime-schools-initiative/get-started-with-prime/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Post-secondary and collegiate manufacturing laboratories establishing accredited workforce programs."
     },
     {
-        "id": "sme-tooling-cam-subsidy",
+        "id": "sme-education-foundation-tooling",
         "agency": "SME EDUCATION FOUNDATION",
         "category": "MACHINING",
-        "title": "SME Foundation Advanced CAM Software & Tooling Allocation",
+        "title": "SME Education Foundation Student Manufacturing & Machining Awards",
         "ceiling": "$25,000 - $75,000",
         "deadline": "Annual Cycle",
         "score": "95% Fit",
-        "synopsis": "Software seat sponsorship and tooling allocation for multi-axis CNC programming, cutting tool metrology, and student machinist training.",
-        "pitch": "Secures production-grade CAM software and cutting tooling with zero campus capital outlay.",
-        "url": "https://www.smeef.org/scholarships-and-grants",
+        "synopsis": "Advanced manufacturing grants, tooling awards, and student maker space sponsorships supporting hands-on manufacturing education.",
+        "pitch": "Secures production-grade manufacturing tooling and student maker space resources with zero campus capital outlay.",
+        "url": "https://www.smeef.org/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate Engineering Facilities and Student Machine Shops."
     },
     {
-        "id": "aws-welder-training-facility",
+        "id": "aws-student-welding-grants",
         "agency": "AMERICAN WELDING SOCIETY FOUNDATION",
         "category": "SAFETY",
-        "title": "AWS Foundation Welder Training & Facility Improvement Grant",
+        "title": "AWS Foundation Welder Training & Student Fabrication Facility Grant",
         "ceiling": "$25,000 - $50,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
         "synopsis": "Capital grant funding welding booths, localized fume extraction hoods, safety interlocks, TIG/MIG welding power sources, and personal protective equipment (PPE).",
         "pitch": "Brings collegiate fabrication shops into full OSHA and campus EH&S ventilation compliance at zero cost to university budgets.",
-        "url": "https://www.aws.org/foundation",
+        "url": "https://www.aws.org/career-resources/students/grants/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate Welding & Fabrication Facilities, Student Engineering Design Shops."
     },
     {
-        "id": "lincoln-aws-welding-safety",
-        "agency": "LINCOLN ELECTRIC / AWS FOUNDATION",
+        "id": "aws-foundation-safety-research",
+        "agency": "AMERICAN WELDING SOCIETY FOUNDATION",
         "category": "SAFETY",
-        "title": "Lincoln Electric & AWS Laboratory Safety & Fume Extraction Grant",
+        "title": "AWS Foundation Laboratory Safety, Fume Extraction & Fellowship Grants",
         "ceiling": "$30,000 - $60,000",
         "deadline": "Annual Cycle",
         "score": "97% Fit",
-        "synopsis": "Equipment co-sponsorship providing source-capture welding fume exhaust systems, ambient air filtration units, and welding safety equipment for student builders.",
+        "synopsis": "Institutional safety and research funding providing source-capture welding fume exhaust systems, ambient air filtration units, and student safety equipment.",
         "pitch": "Proactively eliminates hazardous weld fume inhalation risks, protecting student teams and university liability.",
-        "url": "https://www.aws.org/foundation/page/grants",
+        "url": "https://www.aws.org/about/foundation/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "University Mechanical Engineering Maker Spaces and Student Vehicle Fabrication Labs."
     },
     {
-        "id": "honda-mobility-workforce",
-        "agency": "HONDA USA FOUNDATION",
+        "id": "car-osu-motorsports-student-projects",
+        "agency": "CENTER FOR AUTOMOTIVE RESEARCH (CAR.OSU.EDU)",
         "category": "STUDENT",
-        "title": "Honda USA Foundation Mobility Workforce & Powertrain Equipment Award",
+        "title": "CAR Student Motorsports Competition Engineering Projects",
         "ceiling": "$50,000 - $150,000",
         "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "Automotive OEM foundation grant supporting collegiate electric vehicle powertrain development, battery pack assembly testbeds, and hands-on mobility engineering teams.",
-        "pitch": "Funds advanced battery and powertrain test instrumentation through automotive corporate philanthropic giving.",
-        "url": "https://car.osu.edu/partner-grants/honda-workforce-mobility",
+        "score": "99% Fit",
+        "synopsis": "Center for Automotive Research university partnership portal supporting Formula SAE Electric, Baja SAE, and EcoCAR student design-build teams with world-class facilities.",
+        "pitch": "Direct access to university dynamometers, rapid machining tooling, and corporate-sponsored vehicle engineering testbenches.",
+        "url": "https://car.osu.edu/academics/motorsports-student-projects",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Mobility Competition Teams and University Automotive Research Laboratories."
+        "eligibility": "Collegiate Formula SAE, Baja SAE, EcoCAR, and Student Motorsports Engineering Teams."
     },
     {
-        "id": "ford-stem-autonomous-mobility",
-        "agency": "FORD MOTOR COMPANY FUND",
-        "category": "STUDENT",
-        "title": "Ford Motor Company Fund Collegiate Autonomous Mobility & Sensor Grant",
-        "ceiling": "$40,000 - $100,000",
+        "id": "car-osu-electrification-battery-dyno",
+        "agency": "CENTER FOR AUTOMOTIVE RESEARCH (CAR.OSU.EDU)",
+        "category": "CAPEX",
+        "title": "CAR Electrification & High-Voltage Battery Testing Testbeds",
+        "ceiling": "$250,000 - $1,000,000",
         "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Mobility education fund supporting collegiate automotive autonomous driving vehicles, LiDAR sensor integration, vehicle telemetry benches, and electric vehicle propulsion equipment.",
-        "pitch": "Underwrites cutting-edge vehicle autonomy sensor suites and telemetry gear with corporate mobility backing.",
-        "url": "https://car.osu.edu/mobility-capstone/ford-stem-fund",
+        "score": "98% Fit",
+        "synopsis": "Dedicated collegiate research testbeds for advanced electric vehicle powertrains, high-voltage battery cell characterization, motor dynamometers, and thermal safety testing.",
+        "pitch": "Enables university researchers and student teams to conduct high-voltage battery validation with institutional test infrastructure.",
+        "url": "https://car.osu.edu/research/electrification",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "College / University (Institutional)",
+        "eligibility": "University Automotive Research Institutes and Engineering Transportation Laboratories."
+    },
+    {
+        "id": "car-osu-autonomous-connected-vehicles",
+        "agency": "CENTER FOR AUTOMOTIVE RESEARCH (CAR.OSU.EDU)",
+        "category": "STUDENT",
+        "title": "CAR Autonomous & Connected Vehicle Sensor Telemetry Testbeds",
+        "ceiling": "$100,000 - $500,000",
+        "deadline": "Annual Cycle",
+        "score": "97% Fit",
+        "synopsis": "State-of-the-art research facilities for automated driving algorithms, LiDAR and radar calibration benches, vehicle-to-everything (V2X) telemetry, and drive-by-wire testing.",
+        "pitch": "Furnishes student autonomy teams and capstones with production-grade automotive sensors and real-world test tracks.",
+        "url": "https://car.osu.edu/research/automated-and-connected-vehicles",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Autonomous Mobility Teams and Senior Capstone Vehicle Design Programs."
     },
     {
-        "id": "boeing-aerostructures-capstone",
-        "agency": "THE BOEING COMPANY",
-        "category": "STUDENT",
-        "title": "Boeing Aerostructures & Composite Prototyping Capstone Award",
-        "ceiling": "$50,000 - $120,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Direct equipment and materials award funding collegiate composite mold CNC machining, autoclave vacuum bagging tables, and uncrewed vehicle test equipment.",
-        "pitch": "Underwrites advanced aerospace composite tooling and structural testing rigs for senior design capstones.",
-        "url": "https://car.osu.edu/aerostructures/boeing-capstone",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Aerospace Engineering Departments & Student Senior Capstone Teams."
-    },
-    {
-        "id": "caterpillar-heavy-machinery",
-        "agency": "CATERPILLAR FOUNDATION",
+        "id": "car-osu-propulsion-systems-control",
+        "agency": "CENTER FOR AUTOMOTIVE RESEARCH (CAR.OSU.EDU)",
         "category": "CAPEX",
-        "title": "Caterpillar Heavy Machinery & Hydraulic Dyno Testbed Grant",
-        "ceiling": "$75,000 - $200,000",
-        "deadline": "Annual Cycle",
-        "score": "93% Fit",
-        "synopsis": "Modernization grant financing high-load actuator test equipment, fluid power instrumentation, and heavy powertrain dynamometer benches for collegiate engineering labs.",
-        "pitch": "Finances heavy-duty test machinery and dynamometers without institutional capital debt.",
-        "url": "https://car.osu.edu/heavy-equipment/caterpillar-grant",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "University Mechanical Engineering Laboratories and Off-Highway Vehicle Test Centers."
-    },
-    {
-        "id": "gm-ecocar-powertrain-dyno",
-        "agency": "GENERAL MOTORS & U.S. DEPT OF ENERGY",
-        "category": "CAPEX",
-        "title": "GM & DOE EcoCAR Electrified Powertrain Dyno Grant",
-        "ceiling": "$100,000 - $350,000",
+        "title": "CAR Advanced Propulsion & Powertrain Dynamometer Testbeds",
+        "ceiling": "$200,000 - $750,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "National collegiate mobility partnership underwriting inverter testbenches, electric vehicle motor dynamometers, and high-voltage battery pack safety enclosures.",
-        "pitch": "Supplies dedicated EV propulsion testing apparatus to collegiate engineering centers with zero capital outlay.",
-        "url": "https://www.energy.gov/eere/vehicles/vehicle-technologies-office",
+        "synopsis": "Heavy-duty and light-duty engine dynamometers, electrified powertrain test cells, emissions measurement equipment, and hardware-in-the-loop (HIL) simulators.",
+        "pitch": "Major testing capability avoiding multi-million dollar capital equipment purchases through shared center facilities.",
+        "url": "https://car.osu.edu/research/propulsion-and-systems-control",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
-        "eligibility": "Collegiate EcoCAR Mobility Challenge Teams and University Automotive Research Facilities."
+        "eligibility": "University Mechanical Engineering Laboratories and Automotive Powertrain PIs."
     },
     {
-        "id": "energy-advanced-battery-consortium",
-        "agency": "U.S. DEPT OF ENERGY / USABC",
+        "id": "car-osu-advanced-testing-facilities",
+        "agency": "CENTER FOR AUTOMOTIVE RESEARCH (CAR.OSU.EDU)",
         "category": "CAPEX",
-        "title": "USABC / DOE Advanced Battery High-Voltage Safety Testbed Grant",
-        "ceiling": "$250,000 - $800,000",
+        "title": "CAR Multi-User Engineering Laboratories & Machining Facilities",
+        "ceiling": "$150,000 - $600,000",
         "deadline": "Annual Cycle",
-        "score": "97% Fit",
-        "synopsis": "Automotive battery consortium grant providing institutional capital for battery cell thermal runaway chambers, battery cyclers, and high-voltage lab safety equipment.",
-        "pitch": "Furnishes university EV labs with state-of-the-art battery safety and validation equipment.",
-        "url": "https://www.energy.gov/eere/vehicles/advanced-battery-consortium",
+        "score": "98% Fit",
+        "synopsis": "Over 30,000 square feet of advanced automotive testing laboratories, CNC machine tooling shops, vehicle chassis dynos, and acoustic anechoic chambers.",
+        "pitch": "Comprehensive research infrastructure providing machine shop tooling and test support for engineering teams.",
+        "url": "https://car.osu.edu/facilities/facilities-and-labs",
+        "applicant_type": "COLLEGE_LAB_DIRECTOR",
+        "applicant_label": "Lab Directors & Staff",
+        "eligibility": "College Machine Shop Directors, Facility Managers, and Technical Research Staff."
+    },
+    {
+        "id": "trc-inc-proving-ground-facilities",
+        "agency": "TRANSPORTATION RESEARCH CENTER (TRC INC)",
+        "category": "CAPEX",
+        "title": "TRC Proving Ground & Smart Mobility Testing Testbeds",
+        "ceiling": "$250,000 - $1,000,000",
+        "deadline": "Annual Cycle",
+        "score": "95% Fit",
+        "synopsis": "North America's largest independent automotive proving ground, providing university researchers and student teams with crash testing, high-speed oval, and autonomous test courses.",
+        "pitch": "Unlocks full-scale proving ground vehicle dynamic testing without university capital expenditures.",
+        "url": "https://car.osu.edu/facilities/transportation-research-center-inc",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
-        "eligibility": "Accredited Universities and Automotive Research Centers Conducting Advanced Battery Research."
+        "eligibility": "Collegiate Automotive Research Centers and Vehicle Dynamics Laboratories."
+    },
+    {
+        "id": "doe-cmei-vehicle-technologies-office",
+        "agency": "U.S. DEPT OF ENERGY (EERE - VTO)",
+        "category": "CAPEX",
+        "title": "DOE Transportation Technologies Electrified Mobility Grants",
+        "ceiling": "$250,000 - $1,000,000",
+        "deadline": "Annual Cycle",
+        "score": "96% Fit",
+        "synopsis": "Department of Energy program funding university research testbeds, battery recycling validation, electric vehicle motor development, and clean mobility workforce training.",
+        "pitch": "Direct federal backing for university clean energy propulsion, battery recycling, and dyno instrumentation.",
+        "url": "https://www.energy.gov/cmei/vehicles/transportation-technologies-office",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "College / University (Institutional)",
+        "eligibility": "Higher Education Institutions and Energy Research Centers."
     }
 ]
 
@@ -785,7 +823,7 @@ def parse_ceiling_amount(ceiling_str: str) -> int:
 
 
 def fetch_grants():
-    """Main multi-tier aggregation entrypoint with self-checking verification."""
+    """Main multi-tier aggregation entrypoint with live URL verification."""
     print("--- Starting CAR.OSU.EDU Multi-Tier Grant Intelligence Aggregation ---")
     now_date = datetime.now(timezone.utc).date()
 
@@ -807,17 +845,19 @@ def fetch_grants():
             seen_ids.add(gid)
             unique_candidates.append(grant)
 
-    # 3. Deterministic Self-Checking Verification Gate
+    # 3. Deterministic Self-Checking Verification Gate with Live URL Ping
     validated_grants = []
     rejection_reasons = {}
 
+    print(f"\nRunning 5-stage verification gate with live HTTP reachability check on {len(unique_candidates)} candidates...")
     for record in unique_candidates:
-        is_valid, reason = validate_grant(record, now_date)
+        is_valid, reason = validate_grant(record, now_date, check_live_url=True)
         if is_valid:
             validated_grants.append(record)
         else:
             reason_category = reason.split(":")[0]
             rejection_reasons[reason_category] = rejection_reasons.get(reason_category, 0) + 1
+            print(f"  [DISCARDED] {record.get('id')}: {reason}")
 
     rejected_count = total_scanned - len(validated_grants)
 

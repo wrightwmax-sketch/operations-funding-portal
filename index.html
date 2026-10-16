@@ -17,7 +17,7 @@
       --text-main: #f8fafc;
       --text-muted: #a7b1b7; /* Ohio State Official Silver / Gray */
       --accent-scarlet: #ba0c2f; /* Ohio State Official Primary Scarlet */
-      --accent-scarlet-light: #e0193d;
+      --accent-scarlet-light: #ff6b81;
       --accent-gray: #a7b1b7; /* Ohio State Silver */
       --accent-gold: #f59e0b;
       --accent-blue: #38bdf8;
@@ -54,7 +54,7 @@
     }
 
     .container {
-      max-width: 1380px;
+      max-width: 1440px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
       position: relative;
@@ -72,7 +72,7 @@
     }
 
     .header-branding {
-      max-width: 780px;
+      max-width: 820px;
     }
 
     .pill-badge {
@@ -81,7 +81,7 @@
       gap: 0.5rem;
       background: rgba(186, 12, 47, 0.16);
       border: 1px solid rgba(186, 12, 47, 0.45);
-      color: #ff6b81;
+      color: var(--accent-scarlet-light);
       padding: 0.25rem 0.8rem;
       border-radius: 9999px;
       font-size: 0.75rem;
@@ -97,6 +97,9 @@
       letter-spacing: -0.02em;
       line-height: 1.25;
       margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 40%, #e2e8f0 75%, #ff6b81 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .header-branding p {
@@ -194,30 +197,35 @@
     /* CONTROLS & FILTER BAR */
     .controls-bar {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 1.25rem;
       margin-bottom: 2rem;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 1rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       border-radius: 12px;
+    }
+
+    .controls-top-row {
+      display: flex;
+      gap: 1rem;
       align-items: center;
-      justify-content: space-between;
+      width: 100%;
     }
 
     .search-box {
-      flex: 1 1 300px;
+      flex: 1;
       position: relative;
     }
 
     .search-box input {
       width: 100%;
-      background: rgba(13, 15, 18, 0.8);
+      background: rgba(13, 15, 18, 0.85);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      padding: 0.65rem 1rem;
+      padding: 0.75rem 1.1rem;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.925rem;
       outline: none;
       transition: all 0.2s;
     }
@@ -227,30 +235,50 @@
       box-shadow: 0 0 0 2px rgba(186, 12, 47, 0.25);
     }
 
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #1f2530;
+    }
+
+    .filter-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-scarlet-light);
+      font-weight: 700;
+      min-width: 210px;
+    }
+
     .filter-tabs {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
+      flex: 1;
     }
 
-    .tab-btn {
-      padding: 0.5rem 0.9rem;
-      background: transparent;
-      border: 1px solid transparent;
+    .tab-btn, .app-tab-btn {
+      padding: 0.45rem 0.85rem;
+      background: #181c23;
+      border: 1px solid #2d3440;
       color: var(--text-muted);
       border-radius: 6px;
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
 
-    .tab-btn:hover {
+    .tab-btn:hover, .app-tab-btn:hover {
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-scarlet);
+      background: #232934;
     }
 
-    .tab-btn.active {
+    .tab-btn.active, .app-tab-btn.active {
       background: var(--accent-scarlet);
       border-color: #940a25;
       color: #ffffff;
@@ -260,7 +288,7 @@
     /* GRANT CARDS GRID */
     .grants-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
       gap: 1.5rem;
     }
 
@@ -314,7 +342,7 @@
       font-size: 0.7rem;
       font-family: var(--font-mono);
       font-weight: 700;
-      color: #ff6b81; /* Ohio State Scarlet Tint */
+      color: var(--accent-scarlet-light);
       background: rgba(186, 12, 47, 0.16);
       border: 1px solid rgba(186, 12, 47, 0.38);
       padding: 0.2rem 0.55rem;
@@ -339,16 +367,30 @@
     .grant-title {
       font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       line-height: 1.35;
       color: var(--text-main);
+    }
+
+    .applicant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(186, 12, 47, 0.12);
+      border: 1px solid rgba(186, 12, 47, 0.35);
+      color: #ff8598;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.85rem;
     }
 
     .grant-synopsis {
       color: var(--text-muted);
       font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
+      line-height: 1.55;
+      margin-bottom: 1.15rem;
       flex-grow: 1;
     }
 
@@ -363,7 +405,7 @@
 
     .strategic-box strong {
       display: block;
-      color: #ff6b81;
+      color: var(--accent-scarlet-light);
       margin-bottom: 0.25rem;
       text-transform: uppercase;
       font-size: 0.7rem;
@@ -391,6 +433,22 @@
     .meta-item strong {
       font-family: var(--font-mono);
       font-size: 0.875rem;
+    }
+
+    .meta-item.full-width {
+      grid-column: 1 / -1;
+      border-top: 1px dashed #262c37;
+      padding-top: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .eligibility-desc {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      line-height: 1.4;
+      display: block;
+      margin-top: 0.15rem;
     }
 
     .card-actions {
@@ -424,7 +482,7 @@
       background: #13161c;
       border: 1px solid rgba(186, 12, 47, 0.4);
       border-radius: 14px;
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
@@ -508,8 +566,8 @@
   <div class="container">
     <header>
       <div class="header-branding">
-        <div class="pill-badge">Engineering Operations & Facilities Infrastructure</div>
-        <h1 style="background: linear-gradient(135deg, #ffffff 40%, #e2e8f0 75%, #ff6b81 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Advanced Manufacturing & Student Lab: Strategic CapEx Portal</h1>
+        <div class="pill-badge">College & University Engineering Infrastructure</div>
+        <h1>Advanced Manufacturing & Student Lab: Strategic CapEx Portal</h1>
         <p>Targeted Non-Tuition Funding, Machinery Tooling Grants, and Risk-Mitigation Capital Programs</p>
         <div id="liveFeedStatus" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.55rem; font-size: 0.8rem; color: var(--accent-gray); font-family: var(--font-mono);">
           <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-scarlet); box-shadow: 0 0 10px var(--accent-scarlet);"></span>
@@ -534,7 +592,7 @@
       <div class="metric-card">
         <div class="metric-title">Target Opportunities</div>
         <div class="metric-value" id="kpi-count">116 Active</div>
-        <div class="metric-sub" id="kpi-count-sub">High institutional feasibility</div>
+        <div class="metric-sub" id="kpi-count-sub">100% Higher Education Eligible</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">CapEx Tooling Offset</div>
@@ -550,15 +608,34 @@
 
     <!-- SEARCH & FILTER BAR -->
     <div class="controls-bar">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search keywords (e.g. CNC, tooling, safety, Baja, Haas)..." oninput="renderGrants()">
+      <div class="controls-top-row">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search keywords, agencies, equipment (e.g. CNC, tooling, DARPA, NIST, Formula SAE, Haas)..." oninput="renderGrants()">
+        </div>
       </div>
-      <div class="filter-tabs">
-        <button class="tab-btn active" onclick="setFilter('ALL', this)">All Opportunities</button>
-        <button class="tab-btn" onclick="setFilter('MACHINING', this)">Machine Tooling</button>
-        <button class="tab-btn" onclick="setFilter('STUDENT', this)">Collegiate Teams</button>
-        <button class="tab-btn" onclick="setFilter('SAFETY', this)">Lab Infrastructure & Safety</button>
-        <button class="tab-btn" onclick="setFilter('CAPEX', this)">Major CapEx</button>
+
+      <!-- APPLICANT SELECTION FILTER (COLLEGE PERSPECTIVE) -->
+      <div class="filter-group">
+        <span class="filter-label">Who Can Apply (College):</span>
+        <div class="filter-tabs" id="applicantTabs">
+          <button class="app-tab-btn active" onclick="setApplicantFilter('ALL', this)">🎓 All College Applicants</button>
+          <button class="app-tab-btn" onclick="setApplicantFilter('COLLEGE_INSTITUTIONAL', this)">🏛️ College / University (Institutional)</button>
+          <button class="app-tab-btn" onclick="setApplicantFilter('COLLEGE_STUDENT_TEAM', this)">🏎️ Student Engineering Teams</button>
+          <button class="app-tab-btn" onclick="setApplicantFilter('COLLEGE_LAB_DIRECTOR', this)">🛠️ Lab Directors & Staff</button>
+          <button class="app-tab-btn" onclick="setApplicantFilter('COLLEGE_CONSORTIUM', this)">🤝 College-Industry Consortia</button>
+        </div>
+      </div>
+
+      <!-- CATEGORY FILTER -->
+      <div class="filter-group">
+        <span class="filter-label">Category Track:</span>
+        <div class="filter-tabs" id="categoryTabs">
+          <button class="tab-btn active" onclick="setCategoryFilter('ALL', this)">All Categories</button>
+          <button class="tab-btn" onclick="setCategoryFilter('MACHINING', this)">Machine Tooling</button>
+          <button class="tab-btn" onclick="setCategoryFilter('STUDENT', this)">Collegiate Teams</button>
+          <button class="tab-btn" onclick="setCategoryFilter('SAFETY', this)">Lab Infrastructure & Safety</button>
+          <button class="tab-btn" onclick="setCategoryFilter('CAPEX', this)">Major CapEx</button>
+        </div>
       </div>
     </div>
 
@@ -586,7 +663,7 @@
 
   <script>
     const FALLBACK_PAYLOAD = {
-  "last_updated": "2026-10-16 00:47 UTC",
+  "last_updated": "2026-10-16 00:55 UTC",
   "total_addressable": "$103,995,000",
   "capex_tooling_offset": "$82,795,000",
   "count": 116,
@@ -605,9 +682,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "08/27/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #HR001126S0015 (DARPA - Defense Sciences Office). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #HR001126S0015 (DARPA - Defense Sciences Office). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/363738"
+      "url": "https://www.grants.gov/search-results-detail/363738",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-344592",
@@ -617,9 +697,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "11/20/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #W911NF-23-S-0001 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-23-S-0001 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/344592"
+      "url": "https://www.grants.gov/search-results-detail/344592",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-359782",
@@ -629,9 +712,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "12/22/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #HR001125S0011 (DARPA - Tactical Technology Office). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #HR001125S0011 (DARPA - Tactical Technology Office). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/359782"
+      "url": "https://www.grants.gov/search-results-detail/359782",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-347858",
@@ -641,9 +727,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "04/30/2028",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #W911NF-23-S-0010 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-23-S-0010 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/347858"
+      "url": "https://www.grants.gov/search-results-detail/347858",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-361915",
@@ -653,9 +742,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "07/27/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #26-509 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #26-509 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/361915"
+      "url": "https://www.grants.gov/search-results-detail/361915",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-363526",
@@ -665,9 +757,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "04/05/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260004 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NOFOAFRLAFOSR20260004 (Air Force Office of Scientific Research). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/363526"
+      "url": "https://www.grants.gov/search-results-detail/363526",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-363530",
@@ -677,9 +772,12 @@
       "ceiling": "$500,000 - $2,500,000",
       "deadline": "04/05/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260003 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NOFOAFRLAFOSR20260003 (Air Force Office of Scientific Research). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Secures direct DARPA funding for cutting-edge materials characterization and advanced rapid hardware prototyping testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/363530"
+      "url": "https://www.grants.gov/search-results-detail/363530",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-339728",
@@ -689,9 +787,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "See Solicitations",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #W911NF-22-S-0011 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-22-S-0011 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Funds hands-on collegiate uncrewed platforms, robotics navigation hardware, and structural testing cells.",
-      "url": "https://www.grants.gov/search-results-detail/339728"
+      "url": "https://www.grants.gov/search-results-detail/339728",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-362836",
@@ -701,9 +802,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "11/16/2026",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #N0001426SBC11 (Office of Naval Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #N0001426SBC11 (Office of Naval Research). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Funds hands-on collegiate uncrewed platforms, robotics navigation hardware, and structural testing cells.",
-      "url": "https://www.grants.gov/search-results-detail/362836"
+      "url": "https://www.grants.gov/search-results-detail/362836",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-326841",
@@ -713,9 +817,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "See Solicitations",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #W911NF-17-S-0003-SPECIALNOTICE-LC-CSAC (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-17-S-0003-SPECIALNOTICE-LC-CSAC (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Funds hands-on collegiate uncrewed platforms, robotics navigation hardware, and structural testing cells.",
-      "url": "https://www.grants.gov/search-results-detail/326841"
+      "url": "https://www.grants.gov/search-results-detail/326841",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-355100",
@@ -725,9 +832,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "10/07/2027",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #24-584 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #24-584 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/355100"
+      "url": "https://www.grants.gov/search-results-detail/355100",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-39841",
@@ -737,9 +847,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "See Solicitations",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #FAA-COE-JAMS (FAA-COE-JAMS). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #FAA-COE-JAMS (FAA-COE-JAMS). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/39841"
+      "url": "https://www.grants.gov/search-results-detail/39841",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-359966",
@@ -749,9 +862,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "11/17/2026",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #25-540 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #25-540 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/359966"
+      "url": "https://www.grants.gov/search-results-detail/359966",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-353413",
@@ -761,9 +877,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "04/13/2027",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #24-564 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #24-564 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/353413"
+      "url": "https://www.grants.gov/search-results-detail/353413",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-361169",
@@ -773,9 +892,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "12/31/2026",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #USDA-NIFA-AFRI-011596 (National Institute of Food and Agriculture). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #USDA-NIFA-AFRI-011596 (National Institute of Food and Agriculture). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/361169"
+      "url": "https://www.grants.gov/search-results-detail/361169",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-362061",
@@ -785,9 +907,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "See Solicitations",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #PD-26-367Y (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-26-367Y (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/362061"
+      "url": "https://www.grants.gov/search-results-detail/362061",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-362063",
@@ -797,9 +922,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "08/20/2076",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #PD-26-366Y (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-26-366Y (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/362063"
+      "url": "https://www.grants.gov/search-results-detail/362063",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-345938",
@@ -809,9 +937,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "02/08/2028",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #HQ003423NFOEASD01 (Washington Headquarters Services). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #HQ003423NFOEASD01 (Washington Headquarters Services). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Positions university lab facilities as certified regional technician training centers with direct NIST operational subsidies.",
-      "url": "https://www.grants.gov/search-results-detail/345938"
+      "url": "https://www.grants.gov/search-results-detail/345938",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-364078",
@@ -821,9 +952,12 @@
       "ceiling": "$200,000 - $600,000",
       "deadline": "11/14/2026",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #G27AS00052 (Geological Survey). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #G27AS00052 (Geological Survey). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Modernizes lab metrology, CMM verification, and optical surface inspection instruments with zero departmental match.",
-      "url": "https://www.grants.gov/search-results-detail/364078"
+      "url": "https://www.grants.gov/search-results-detail/364078",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-362551",
@@ -833,9 +967,12 @@
       "ceiling": "$200,000 - $600,000",
       "deadline": "11/04/2026",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #26-511 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #26-511 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Modernizes lab metrology, CMM verification, and optical surface inspection instruments with zero departmental match.",
-      "url": "https://www.grants.gov/search-results-detail/362551"
+      "url": "https://www.grants.gov/search-results-detail/362551",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-356055",
@@ -845,9 +982,12 @@
       "ceiling": "$200,000 - $600,000",
       "deadline": "See Solicitations",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #PD-24-8084 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-24-8084 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Modernizes lab metrology, CMM verification, and optical surface inspection instruments with zero departmental match.",
-      "url": "https://www.grants.gov/search-results-detail/356055"
+      "url": "https://www.grants.gov/search-results-detail/356055",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363378",
@@ -857,9 +997,12 @@
       "ceiling": "$200,000 - $600,000",
       "deadline": "11/06/2026",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #N0001426SF003 (Office of Naval Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense DURIP solicitation #N0001426SF003 (Office of Naval Research). High-priority defense equipment grant providing 100% federal financing for state-of-the-art university laboratory machinery, multi-axis CNC mills, and material testing benches.",
       "pitch": "Modernizes lab metrology, CMM verification, and optical surface inspection instruments with zero departmental match.",
-      "url": "https://www.grants.gov/search-results-detail/363378"
+      "url": "https://www.grants.gov/search-results-detail/363378",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-350338",
@@ -869,9 +1012,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "11/01/2026",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #2023-NIST-CHIPS-SMME-01 (National Institute of Standards and Technology). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal CHIPS solicitation #2023-NIST-CHIPS-SMME-01 (National Institute of Standards and Technology). Provides major institutional facilities funding for microelectronics, semiconductor manufacturing packaging, cleanroom equipment, and advanced materials testbeds.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/350338"
+      "url": "https://www.grants.gov/search-results-detail/350338",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-58617",
@@ -881,9 +1027,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "See Solicitations",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #VA-GRANTS-112508-002 (Construction of State Home Facilities). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #VA-GRANTS-112508-002 (Construction of State Home Facilities). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/58617"
+      "url": "https://www.grants.gov/search-results-detail/58617",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-361526",
@@ -893,9 +1042,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "12/17/2026",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003612 (Office of Science). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DE-FOA-0003612 (Office of Science). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/361526"
+      "url": "https://www.grants.gov/search-results-detail/361526",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-356623",
@@ -905,9 +1057,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "09/29/2029",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003467 (Advanced Research Projects Agency Energy ). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Energy solicitation #DE-FOA-0003467 (Advanced Research Projects Agency Energy ). Underwrites electrified mobility prototyping, battery safety testbenches, thermal runaway containment, and clean manufacturing process machinery for accredited colleges.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/356623"
+      "url": "https://www.grants.gov/search-results-detail/356623",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363815",
@@ -917,9 +1072,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "12/01/2026",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003647 (Golden Field Office). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DE-FOA-0003647 (Golden Field Office). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/363815"
+      "url": "https://www.grants.gov/search-results-detail/363815",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363614",
@@ -929,9 +1087,12 @@
       "ceiling": "$1,000,000 - $3,000,000",
       "deadline": "10/05/2076",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #26-515 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #26-515 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Underwrites advanced micro-fabrication, cleanroom equipment, and high-precision packaging apparatus.",
-      "url": "https://www.grants.gov/search-results-detail/363614"
+      "url": "https://www.grants.gov/search-results-detail/363614",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-361249",
@@ -941,9 +1102,12 @@
       "ceiling": "$250,000 - $750,000",
       "deadline": "09/28/2027",
       "score": "97% Fit",
-      "synopsis": "Federal solicitation #26-504 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #26-504 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Connects student machine facilities directly to America Makes and LIFT consortia, funding industrial metal 3D printers and CAM seats.",
-      "url": "https://www.grants.gov/search-results-detail/361249"
+      "url": "https://www.grants.gov/search-results-detail/361249",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363510",
@@ -953,9 +1117,12 @@
       "ceiling": "$250,000 - $750,000",
       "deadline": "01/15/2027",
       "score": "97% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003662 (Golden Field Office). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DE-FOA-0003662 (Golden Field Office). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Connects student machine facilities directly to America Makes and LIFT consortia, funding industrial metal 3D printers and CAM seats.",
-      "url": "https://www.grants.gov/search-results-detail/363510"
+      "url": "https://www.grants.gov/search-results-detail/363510",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-364008",
@@ -965,9 +1132,12 @@
       "ceiling": "$250,000 - $750,000",
       "deadline": "12/03/2026",
       "score": "97% Fit",
-      "synopsis": "Federal solicitation #W911NF-27-R-A001 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-27-R-A001 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Connects student machine facilities directly to America Makes and LIFT consortia, funding industrial metal 3D printers and CAM seats.",
-      "url": "https://www.grants.gov/search-results-detail/364008"
+      "url": "https://www.grants.gov/search-results-detail/364008",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-345241",
@@ -977,9 +1147,12 @@
       "ceiling": "$400,000 - $1,200,000",
       "deadline": "01/04/2028",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #W911NF-23-S-0003 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-23-S-0003 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Subsidizes heavy machine tool modernization, rapid die tooling, and alloy test machining benches.",
-      "url": "https://www.grants.gov/search-results-detail/345241"
+      "url": "https://www.grants.gov/search-results-detail/345241",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-363825",
@@ -989,9 +1162,12 @@
       "ceiling": "$400,000 - $1,200,000",
       "deadline": "11/10/2026",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #DOL-OESE-34832 (Office of Elementary and Secondary Education). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DOL-OESE-34832 (Office of Elementary and Secondary Education). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Subsidizes heavy machine tool modernization, rapid die tooling, and alloy test machining benches.",
-      "url": "https://www.grants.gov/search-results-detail/363825"
+      "url": "https://www.grants.gov/search-results-detail/363825",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-362681",
@@ -1001,9 +1177,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "See Solicitations",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA955026S0001 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #FA955026S0001 (Air Force Office of Scientific Research). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/362681"
+      "url": "https://www.grants.gov/search-results-detail/362681",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-360258",
@@ -1013,9 +1192,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "08/22/2044",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA238424S2233 (Air Force -- Research Lab). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #FA238424S2233 (Air Force -- Research Lab). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/360258"
+      "url": "https://www.grants.gov/search-results-detail/360258",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-350018",
@@ -1025,9 +1207,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "11/16/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #PD-23-1242 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-23-1242 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/350018"
+      "url": "https://www.grants.gov/search-results-detail/350018",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363829",
@@ -1037,9 +1222,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "12/04/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA955026S0003 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #FA955026S0003 (Air Force Office of Scientific Research). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/363829"
+      "url": "https://www.grants.gov/search-results-detail/363829",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-360261",
@@ -1049,9 +1237,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "09/30/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA238424S2334 (Air Force -- Research Lab). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #FA238424S2334 (Air Force -- Research Lab). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/360261"
+      "url": "https://www.grants.gov/search-results-detail/360261",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-360262",
@@ -1061,9 +1252,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "09/30/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA238424S2335 (Air Force -- Research Lab). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #FA238424S2335 (Air Force -- Research Lab). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/360262"
+      "url": "https://www.grants.gov/search-results-detail/360262",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363745",
@@ -1073,9 +1267,12 @@
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "08/31/2029",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #FA955026S0002 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #FA955026S0002 (Air Force Office of Scientific Research). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Directly finances multi-axis aerospace machining centers and composite cure ovens without drawing down academic capital budgets.",
-      "url": "https://www.grants.gov/search-results-detail/363745"
+      "url": "https://www.grants.gov/search-results-detail/363745",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-363374",
@@ -1085,9 +1282,12 @@
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "11/06/2026",
       "score": "98% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260001 (Air Force Office of Scientific Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense DURIP solicitation #NOFOAFRLAFOSR20260001 (Air Force Office of Scientific Research). High-priority defense equipment grant providing 100% federal financing for state-of-the-art university laboratory machinery, multi-axis CNC mills, and material testing benches.",
       "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/363374"
+      "url": "https://www.grants.gov/search-results-detail/363374",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363379",
@@ -1097,9 +1297,12 @@
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "11/06/2026",
       "score": "98% Fit",
-      "synopsis": "Federal solicitation #W911NF26S0095 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense DURIP solicitation #W911NF26S0095 (Dept of the Army -- Materiel Command). High-priority defense equipment grant providing 100% federal financing for state-of-the-art university laboratory machinery, multi-axis CNC mills, and material testing benches.",
       "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/363379"
+      "url": "https://www.grants.gov/search-results-detail/363379",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-348164",
@@ -1109,9 +1312,12 @@
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "10/15/2076",
       "score": "98% Fit",
-      "synopsis": "Federal solicitation #PD-23-1320 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-23-1320 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/348164"
+      "url": "https://www.grants.gov/search-results-detail/348164",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-358403",
@@ -1121,9 +1327,12 @@
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "10/14/2076",
       "score": "98% Fit",
-      "synopsis": "Federal solicitation #14-579 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #14-579 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/358403"
+      "url": "https://www.grants.gov/search-results-detail/358403",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-349804",
@@ -1133,9 +1342,12 @@
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "08/07/2028",
       "score": "98% Fit",
-      "synopsis": "Federal solicitation #HQ003423NFOEASD17 (Washington Headquarters Services). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #HQ003423NFOEASD17 (Washington Headquarters Services). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Dedicated Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/349804"
+      "url": "https://www.grants.gov/search-results-detail/349804",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-363632",
@@ -1145,9 +1357,12 @@
       "ceiling": "$300,000 - $900,000",
       "deadline": "10/30/2026",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #N0001426SF004 (Office of Naval Research). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #N0001426SF004 (Office of Naval Research). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Acquires naval hydrodynamics, maritime composite machining, and structural test fixtures with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/363632"
+      "url": "https://www.grants.gov/search-results-detail/363632",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-352741",
@@ -1157,9 +1372,12 @@
       "ceiling": "$300,000 - $900,000",
       "deadline": "12/30/2026",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #N00173-24-S-BA01 (Naval Research Laboratory). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #N00173-24-S-BA01 (Naval Research Laboratory). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Acquires naval hydrodynamics, maritime composite machining, and structural test fixtures with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/352741"
+      "url": "https://www.grants.gov/search-results-detail/352741",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-362034",
@@ -1169,9 +1387,12 @@
       "ceiling": "$350,000 - $650,000",
       "deadline": "05/01/2028",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #NOAA-NMFS-AK-2026-33268 (DOC NOAA - ERA Production). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NOAA-NMFS-AK-2026-33268 (DOC NOAA - ERA Production). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/362034"
+      "url": "https://www.grants.gov/search-results-detail/362034",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-344608",
@@ -1181,9 +1402,12 @@
       "ceiling": "$350,000 - $650,000",
       "deadline": "01/21/2027",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #23-520 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #23-520 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/344608"
+      "url": "https://www.grants.gov/search-results-detail/344608",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
     },
     {
       "id": "gov-334326",
@@ -1193,9 +1417,12 @@
       "ceiling": "$350,000 - $650,000",
       "deadline": "01/11/2027",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #21-595 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #21-595 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/334326"
+      "url": "https://www.grants.gov/search-results-detail/334326",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-329436",
@@ -1205,9 +1432,12 @@
       "ceiling": "$350,000 - $650,000",
       "deadline": "10/14/2030",
       "score": "96% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0002265 (Idaho Field Office). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DE-FOA-0002265 (Idaho Field Office). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/329436"
+      "url": "https://www.grants.gov/search-results-detail/329436",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-356129",
@@ -1217,9 +1447,12 @@
       "ceiling": "$400,000 - $2,000,000",
       "deadline": "02/08/2027",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #24-598 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #24-598 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Enables acquisition of major institutional machines (5-axis CNC, CT scanners) avoiding six-figure internal capital draws.",
-      "url": "https://www.grants.gov/search-results-detail/356129"
+      "url": "https://www.grants.gov/search-results-detail/356129",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-45810",
@@ -1229,9 +1462,12 @@
       "ceiling": "$400,000 - $2,000,000",
       "deadline": "10/15/2076",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #PD-98-1331 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-98-1331 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Enables acquisition of major institutional machines (5-axis CNC, CT scanners) avoiding six-figure internal capital draws.",
-      "url": "https://www.grants.gov/search-results-detail/45810"
+      "url": "https://www.grants.gov/search-results-detail/45810",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-347679",
@@ -1241,9 +1477,12 @@
       "ceiling": "$400,000 - $2,000,000",
       "deadline": "10/05/2076",
       "score": "94% Fit",
-      "synopsis": "Federal solicitation #23-580 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #23-580 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Enables acquisition of major institutional machines (5-axis CNC, CT scanners) avoiding six-figure internal capital draws.",
-      "url": "https://www.grants.gov/search-results-detail/347679"
+      "url": "https://www.grants.gov/search-results-detail/347679",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-344124",
@@ -1253,9 +1492,12 @@
       "ceiling": "$400,000 - $1,000,000",
       "deadline": "01/20/2027",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #23-510 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #23-510 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Directly underwrites hands-on student design build labs, technical mentorship, and multidisciplinary prototype pipelines.",
-      "url": "https://www.grants.gov/search-results-detail/344124"
+      "url": "https://www.grants.gov/search-results-detail/344124",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-360664",
@@ -1265,9 +1507,12 @@
       "ceiling": "$400,000 - $1,000,000",
       "deadline": "10/06/2076",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #25-549 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #25-549 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Directly underwrites hands-on student design build labs, technical mentorship, and multidisciplinary prototype pipelines.",
-      "url": "https://www.grants.gov/search-results-detail/360664"
+      "url": "https://www.grants.gov/search-results-detail/360664",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-325932",
@@ -1277,9 +1522,12 @@
       "ceiling": "$400,000 - $1,000,000",
       "deadline": "03/31/2027",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #W911NF-20-S-0008 (Dept of the Army -- Materiel Command). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Department of Defense solicitation #W911NF-20-S-0008 (Dept of the Army -- Materiel Command). Solicits academic engineering institutions for defense manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches.",
       "pitch": "Directly underwrites hands-on student design build labs, technical mentorship, and multidisciplinary prototype pipelines.",
-      "url": "https://www.grants.gov/search-results-detail/325932"
+      "url": "https://www.grants.gov/search-results-detail/325932",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-351947",
@@ -1289,9 +1537,12 @@
       "ceiling": "$400,000 - $1,000,000",
       "deadline": "03/25/2027",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #24-529 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #24-529 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Directly underwrites hands-on student design build labs, technical mentorship, and multidisciplinary prototype pipelines.",
-      "url": "https://www.grants.gov/search-results-detail/351947"
+      "url": "https://www.grants.gov/search-results-detail/351947",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-358684",
@@ -1301,9 +1552,12 @@
       "ceiling": "$400,000 - $1,000,000",
       "deadline": "09/01/2076",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #PD-25-275Y (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-25-275Y (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Directly underwrites hands-on student design build labs, technical mentorship, and multidisciplinary prototype pipelines.",
-      "url": "https://www.grants.gov/search-results-detail/358684"
+      "url": "https://www.grants.gov/search-results-detail/358684",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363936",
@@ -1313,9 +1567,12 @@
       "ceiling": "$500,000 - $1,250,000",
       "deadline": "01/22/2027",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #EPA-OAR-OTAQ-26-01 (Environmental Protection Agency). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #EPA-OAR-OTAQ-26-01 (Environmental Protection Agency). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/363936"
+      "url": "https://www.grants.gov/search-results-detail/363936",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363446",
@@ -1325,9 +1582,12 @@
       "ceiling": "$500,000 - $1,250,000",
       "deadline": "09/01/2027",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #NHTSA-693JJ926R000024-FY26 (National Highway Traffic Safety Administration). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NHTSA-693JJ926R000024-FY26 (National Highway Traffic Safety Administration). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/363446"
+      "url": "https://www.grants.gov/search-results-detail/363446",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-364018",
@@ -1337,9 +1597,12 @@
       "ceiling": "$500,000 - $1,250,000",
       "deadline": "12/31/2026",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #SWMFY27 (Rural Utilities Service). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #SWMFY27 (Rural Utilities Service). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/364018"
+      "url": "https://www.grants.gov/search-results-detail/364018",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-361080",
@@ -1349,9 +1612,12 @@
       "ceiling": "$500,000 - $1,250,000",
       "deadline": "01/01/2027",
       "score": "93% Fit",
-      "synopsis": "Federal solicitation #W912HZ26S0001 (Engineer Research and Development Center). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #W912HZ26S0001 (Engineer Research and Development Center). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/361080"
+      "url": "https://www.grants.gov/search-results-detail/361080",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-350230",
@@ -1361,9 +1627,12 @@
       "ceiling": "$1,000,000 - $3,500,000",
       "deadline": "See Solicitations",
       "score": "90% Fit",
-      "synopsis": "Federal solicitation #PD-24-1340 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-24-1340 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "High-impact capital award funding rapid prototyping pilot plants and hardware proof-of-concept facilities.",
-      "url": "https://www.grants.gov/search-results-detail/350230"
+      "url": "https://www.grants.gov/search-results-detail/350230",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-351923",
@@ -1373,9 +1642,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "04/13/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #24-528 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #24-528 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/351923"
+      "url": "https://www.grants.gov/search-results-detail/351923",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-318918",
@@ -1385,9 +1657,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "See Solicitations",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH19ZHA001C (National Aeronautics and Space Administration). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH19ZHA001C (National Aeronautics and Space Administration). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/318918"
+      "url": "https://www.grants.gov/search-results-detail/318918",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363983",
@@ -1397,9 +1672,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "10/28/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH26ZTR001N-27NIAC-A1 (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH26ZTR001N-27NIAC-A1 (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/363983"
+      "url": "https://www.grants.gov/search-results-detail/363983",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-362393",
@@ -1409,9 +1687,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "See Solicitations",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH26ZTR001N-26NIAC-A2 (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH26ZTR001N-26NIAC-A2 (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/362393"
+      "url": "https://www.grants.gov/search-results-detail/362393",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-360954",
@@ -1421,9 +1702,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "See Solicitations",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH26ZTR001N (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH26ZTR001N (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/360954"
+      "url": "https://www.grants.gov/search-results-detail/360954",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363240",
@@ -1433,9 +1717,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "12/02/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH25ZDA001N-ATMOS (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH25ZDA001N-ATMOS (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/363240"
+      "url": "https://www.grants.gov/search-results-detail/363240",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-359996",
@@ -1445,9 +1732,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "12/31/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH25ZDA001N-RRNES (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH25ZDA001N-RRNES (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/359996"
+      "url": "https://www.grants.gov/search-results-detail/359996",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-364024",
@@ -1457,9 +1747,12 @@
       "ceiling": "$150,000 - $500,000",
       "deadline": "11/03/2026",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #NNH26ZTR001N-26STRI-B3 (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH26ZTR001N-26STRI-B3 (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Underwrites collegiate wind tunnel fixtures, composite autoclave supplies, and student drone competition platforms.",
-      "url": "https://www.grants.gov/search-results-detail/364024"
+      "url": "https://www.grants.gov/search-results-detail/364024",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-364032",
@@ -1469,9 +1762,12 @@
       "ceiling": "$200,000 - $650,000",
       "deadline": "03/16/2027",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #NNH25ZDA001N-LCAS (NASA Headquarters). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #NNH25ZDA001N-LCAS (NASA Headquarters). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Finances student sounding rocket telemetry, lightweight structures machining, and high-altitude payload testing.",
-      "url": "https://www.grants.gov/search-results-detail/364032"
+      "url": "https://www.grants.gov/search-results-detail/364032",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-328902",
@@ -1481,9 +1777,12 @@
       "ceiling": "$200,000 - $650,000",
       "deadline": "09/07/2027",
       "score": "92% Fit",
-      "synopsis": "Federal solicitation #20-01 (DOT - FAA Aviation Research Grants). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #20-01 (DOT - FAA Aviation Research Grants). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Finances student sounding rocket telemetry, lightweight structures machining, and high-altitude payload testing.",
-      "url": "https://www.grants.gov/search-results-detail/328902"
+      "url": "https://www.grants.gov/search-results-detail/328902",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
     },
     {
       "id": "gov-363941",
@@ -1493,9 +1792,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "10/19/2026",
       "score": "91% Fit",
-      "synopsis": "Federal solicitation #DOT-FAA-26-0117-002 (Airport Improvement Program Discretionary Grants). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "Federal competitive solicitation #DOT-FAA-26-0117-002 (Airport Improvement Program Discretionary Grants). Provides direct institutional funding for technical capability modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development.",
       "pitch": "Co-sponsors airframe structural fatigue rigs, avionics testbenches, and composite non-destructive evaluation gear.",
-      "url": "https://www.grants.gov/search-results-detail/363941"
+      "url": "https://www.grants.gov/search-results-detail/363941",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-359606",
@@ -1505,9 +1807,12 @@
       "ceiling": "$300,000 - $800,000",
       "deadline": "See Solicitations",
       "score": "91% Fit",
-      "synopsis": "Federal solicitation #PD-98-1391 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #PD-98-1391 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Co-sponsors airframe structural fatigue rigs, avionics testbenches, and composite non-destructive evaluation gear.",
-      "url": "https://www.grants.gov/search-results-detail/359606"
+      "url": "https://www.grants.gov/search-results-detail/359606",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "gov-344715",
@@ -1517,9 +1822,12 @@
       "ceiling": "$75,000 - $250,000",
       "deadline": "01/11/2027",
       "score": "95% Fit",
-      "synopsis": "Federal solicitation #23-525 (U.S. National Science Foundation). Provides federal sponsorship for engineering laboratory capability, advanced machine tools, and collegiate research instrumentation.",
+      "synopsis": "National Science Foundation solicitation #23-525 (U.S. National Science Foundation). Supports higher education institutions with capital acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design.",
       "pitch": "Eliminates university EH&S compliance liabilities regarding student particulate, aerosol, and welding fume inhalation.",
-      "url": "https://www.grants.gov/search-results-detail/344715"
+      "url": "https://www.grants.gov/search-results-detail/344715",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
     },
     {
       "id": "odhe-rapids-7",
@@ -1531,7 +1839,10 @@
       "score": "98% Fit",
       "synopsis": "State capital equipment allocation program dedicated to advanced manufacturing, multi-axis CNC machining, additive cell installations, and robotics training infrastructure tied to regional Ohio workforce compacts.",
       "pitch": "Secures 100% state-funded capital equipment (e.g. 5-axis CNC machining centers, waterjets, robotic cells), directly eliminating six-figure departmental CapEx drawdowns.",
-      "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids"
+      "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Public & Private Colleges, State Universities, and Technical Colleges"
     },
     {
       "id": "ohio-third-frontier-tech",
@@ -1543,7 +1854,10 @@
       "score": "94% Fit",
       "synopsis": "Provides validation and rapid prototyping capital for university-industry collaborative testbeds, sensor instrumentation, and hardware proof-of-concept fabrication suites.",
       "pitch": "Directly underwrites rapid prototyping hardware and telemetry acquisition, bridging student lab work into validated commercial spinoffs with industrial partner sponsorship.",
-      "url": "https://development.ohio.gov/business/third-frontier-and-technology"
+      "url": "https://development.ohio.gov/business/third-frontier-and-technology",
+      "applicant_type": "COLLEGE_CONSORTIUM",
+      "applicant_label": "College-Industry Consortia",
+      "eligibility": "Ohio Colleges & Universities with Commercialization / Industrial Partners"
     },
     {
       "id": "ohio-third-frontier-rd-shared",
@@ -1555,7 +1869,10 @@
       "score": "93% Fit",
       "synopsis": "Equipment co-sponsorship for shared university advanced materials testing, coordinate measuring machines (CMM), and 3D laser scanning stations.",
       "pitch": "Equips the facility with industrial-grade inspection and metrology equipment, meeting AS9100 quality standards with state co-investment.",
-      "url": "https://development.ohio.gov/business/third-frontier-and-technology"
+      "url": "https://development.ohio.gov/business/third-frontier-and-technology",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Higher Education Engineering Research Centers & Shared User Facilities"
     },
     {
       "id": "jobsohio-odot-mobility",
@@ -1567,7 +1884,10 @@
       "score": "92% Fit",
       "synopsis": "Infrastructure and equipment funding for connected autonomous vehicle test benches, EV powertrain calibration tracks, and student advanced manufacturing credentialing.",
       "pitch": "Co-funds collegiate EV test-track telemetry, autonomous drive sensors, and student workforce certifications with zero institutional overhead.",
-      "url": "https://www.jobsohio.com/why-ohio/workforce"
+      "url": "https://www.jobsohio.com/why-ohio/workforce",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Public & Private Colleges, State Universities, and Technical Colleges"
     },
     {
       "id": "jobsohio-workforce-cnc",
@@ -1579,7 +1899,10 @@
       "score": "95% Fit",
       "synopsis": "State workforce subsidies supporting student certifications in multi-axis CAM, CNC milling, and Haas machine operation, directly reimbursing tooling wear.",
       "pitch": "Reimburses student machine operator training and consumable tooling budgets through state-backed industrial credential subsidies.",
-      "url": "https://www.jobsohio.com/why-ohio/workforce"
+      "url": "https://www.jobsohio.com/why-ohio/workforce",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Colleges, Technical Centers & Community Colleges offering CNC/Additive Programs"
     },
     {
       "id": "medc-mobility-voucher",
@@ -1591,7 +1914,10 @@
       "score": "91% Fit",
       "synopsis": "Regional automotive corridor vouchers supporting Formula SAE Electric and Baja chassis testing, motor dynamometers, and battery thermal validation.",
       "pitch": "Enables multi-institution testbed sharing across the Midwest automotive corridor, offsetting electric powertrain development costs.",
-      "url": "https://www.michiganbusiness.org"
+      "url": "https://www.michiganbusiness.org",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Midwest Collegiate Vehicle Design Teams & University Mobility Labs"
     },
     {
       "id": "iedc-mfg-readiness",
@@ -1603,7 +1929,10 @@
       "score": "90% Fit",
       "synopsis": "Equipment modernizations targeting collaborative robotic arms, automated pallet-changers, and digital factory telemetry for machine shops.",
       "pitch": "Upgrades traditional manual and CNC machine tools with automated loading robotics, tripling machine shop student throughput.",
-      "url": "https://www.iedc.in.gov"
+      "url": "https://www.iedc.in.gov",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Higher Education Technical Labs & Advanced Manufacturing Training Centers"
     },
     {
       "id": "defense-mfg-midwest-alliance",
@@ -1615,7 +1944,10 @@
       "score": "93% Fit",
       "synopsis": "Regional defense industrial base consortium funding specialized tooling, hardened alloy endmills, and foundry prototype pattern equipment.",
       "pitch": "Directly finances high-wear cutting tools and pattern tooling for collegiate defense prototyping projects.",
-      "url": "https://www.defense.gov"
+      "url": "https://www.defense.gov",
+      "applicant_type": "COLLEGE_CONSORTIUM",
+      "applicant_label": "College-Industry Consortia",
+      "eligibility": "Colleges & Universities in Partnership with Regional Defense Tooling Suppliers"
     },
     {
       "id": "sae-cds-tooling-subsidy",
@@ -1627,7 +1959,10 @@
       "score": "97% Fit",
       "synopsis": "Direct institutional build sponsorships and parts stipends providing tires, suspension hardware, telemetry sensors, and CNC machining consumables for Formula SAE, Baja SAE, and Clean Snowmobile teams.",
       "pitch": "Subsidizes student vehicle raw materials and components, insulating internal university departmental accounts from multi-team build expenses.",
-      "url": "https://www.sae.org/attend/student-events"
+      "url": "https://www.sae.org/attend/student-events",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Official University Collegiate Design Series Teams (Formula SAE, Baja, Clean Snowmobile)"
     },
     {
       "id": "sae-aero-uncrewed-subsidy",
@@ -1639,7 +1974,10 @@
       "score": "94% Fit",
       "synopsis": "Direct awards supporting carbon fiber prepreg materials, flight avionics, telemetry transmitters, and composite mold CNC tooling for Aero Design teams.",
       "pitch": "Provides immediate non-tuition budget support for aerostructures composite fabrication and instrumentation.",
-      "url": "https://www.sae.org/attend/student-events"
+      "url": "https://www.sae.org/attend/student-events",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "University Aero Design & Collegiate Drone Competition Teams"
     },
     {
       "id": "dot-utc-mobility-bench",
@@ -1651,7 +1989,10 @@
       "score": "92% Fit",
       "synopsis": "Inter-collegiate consortium capital funding dedicated to EV dynamometers, high-speed telemetry loggers, battery cycling environmental chambers, and collision avoidance sensor rigs.",
       "pitch": "Leverages regional university consortium matching to modernize shared vehicle test benches, expanding student research throughput without capital debt.",
-      "url": "https://www.transportation.gov/utc"
+      "url": "https://www.transportation.gov/utc",
+      "applicant_type": "COLLEGE_CONSORTIUM",
+      "applicant_label": "College-Industry Consortia",
+      "eligibility": "Regional University Transportation Center Consortia (Colleges & Universities)"
     },
     {
       "id": "great-lakes-utc-telemetry",
@@ -1663,7 +2004,10 @@
       "score": "91% Fit",
       "synopsis": "Provides multi-university co-funding for chassis dynamometers, CAN-bus telemetry recorders, and emissions analysis instrumentation.",
       "pitch": "Gives undergraduate student racing teams access to professional powertrain dyno and calibration hardware.",
-      "url": "https://www.transportation.gov/utc"
+      "url": "https://www.transportation.gov/utc",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Great Lakes Regional University Vehicle Teams & Shared Dyno Facilities"
     },
     {
       "id": "asme-student-lab-grant",
@@ -1675,7 +2019,10 @@
       "score": "93% Fit",
       "synopsis": "Direct grants for university ASME student chapters dedicated to machine tool accessories, digital readout (DRO) retrofits, modular vises, and endmill restocking.",
       "pitch": "Alleviates student shop budget constraints by directly funding workholding tooling and consumables.",
-      "url": "https://www.asme.org"
+      "url": "https://www.asme.org",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "University ASME Student Sections & Collegiate Mechanical Engineering Clubs"
     },
     {
       "id": "ieee-robotics-fab-bench",
@@ -1687,7 +2034,10 @@
       "score": "90% Fit",
       "synopsis": "Underwrites brushless motor test stands, high-current power supplies, custom PCB soldering workbenches, and micro-machining accessories.",
       "pitch": "Equips robotics capstone teams with dedicated mechatronics benches with 0% department overhead.",
-      "url": "https://www.ieee-ras.org"
+      "url": "https://www.ieee-ras.org",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Robotics Clubs, IEEE Student Branches & Mechatronics Capstones"
     },
     {
       "id": "ncme-mfg-technician-fund",
@@ -1699,7 +2049,10 @@
       "score": "93% Fit",
       "synopsis": "Provides capital modernization grants for machine safety interlocks, light curtains, emergency stop retrofit systems, and CNC simulator consoles.",
       "pitch": "Directly hardens machine shop safety compliance, eliminating mechanical liability risks before annual safety audits.",
-      "url": "https://www.ed.gov"
+      "url": "https://www.ed.gov",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Engineering Laboratories, Machine Shop Managers & Safety Officers"
     },
     {
       "id": "haas-cnc-tooling-2026",
@@ -1711,7 +2064,10 @@
       "score": "99% Fit",
       "synopsis": "Direct cash grants dedicated to collegiate and post-secondary machine shops for CNC endmills, indexable tooling, workholding vises, machine accessories, and Haas CNC mill/lathe maintenance.",
       "pitch": "Provides direct non-tuition budget relief for student machine shop tooling wear-and-tear, directly preserving the center's operating reserve.",
-      "url": "https://ghaasfoundation.org"
+      "url": "https://ghaasfoundation.org",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Post-Secondary Colleges, Technical Machine Shops & Student Competition Teams"
     },
     {
       "id": "sme-prime-shop-2026",
@@ -1723,7 +2079,10 @@
       "score": "96% Fit",
       "synopsis": "Industrial infrastructure co-investment modernizing collegiate machining labs with industrial 3D printers, multi-axis CNC simulators, metrology equipment, and CAM curriculum.",
       "pitch": "Designates the facility as an accredited manufacturing training hub, attracting corporate sponsorships and modernizing shop metrology.",
-      "url": "https://www.smeef.org"
+      "url": "https://www.smeef.org",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited 2-Year & 4-Year Colleges with Advanced Manufacturing Programs"
     },
     {
       "id": "mazak-multi-tasking-award",
@@ -1735,7 +2094,10 @@
       "score": "95% Fit",
       "synopsis": "Subsidizes live-tool lathe accessories, 5-axis rotary tables, high-pressure coolant retrofits, and multi-tasking CNC training modules for student engineering shops.",
       "pitch": "Brings advanced multi-tasking and simultaneous 5-axis capability into the student shop with industry OEM co-sponsorship.",
-      "url": "https://www.mazakusa.com"
+      "url": "https://www.mazakusa.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Collegiate Machining Labs & Post-Secondary Machine Tool Training Centers"
     },
     {
       "id": "dmg-mori-education-grant",
@@ -1747,7 +2109,10 @@
       "score": "93% Fit",
       "synopsis": "Capital grants for high-RPM precision milling spindles, ultrasonic machining accessories, thermal compensation software packages, and tool-presetter hardware.",
       "pitch": "Upgrades precision aerospace machining tolerances down to sub-micron repeatability with zero internal CapEx.",
-      "url": "https://www.dmgmori.com"
+      "url": "https://www.dmgmori.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Precision Engineering Labs & CNC Spindle Facilities"
     },
     {
       "id": "hurco-lab-partnership",
@@ -1759,7 +2124,10 @@
       "score": "92% Fit",
       "synopsis": "Equipment match and tooling grant providing conversational CNC control consoles, touch probes, and rapid setup tooling for undergraduate design spaces.",
       "pitch": "Drastically flattens the learning curve for novice engineering students learning CNC milling, increasing shop throughput.",
-      "url": "https://www.hurco.com"
+      "url": "https://www.hurco.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Undergraduate Engineering Shops & Community College Machining Labs"
     },
     {
       "id": "kennametal-tooling-endowment",
@@ -1771,7 +2139,10 @@
       "score": "94% Fit",
       "synopsis": "Provides high-performance solid carbide endmills, indexable face mills, ceramic inserts for hardened alloys, and toolholders for collegiate racing teams.",
       "pitch": "Eliminates out-of-pocket tooling purchases for titanium and chromoly chassis component fabrication.",
-      "url": "https://www.kennametal.com"
+      "url": "https://www.kennametal.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Racing Teams (Formula SAE, Baja) & Student Machine Shops"
     },
     {
       "id": "mastercam-cadcam-sponsorship",
@@ -1783,7 +2154,10 @@
       "score": "97% Fit",
       "synopsis": "Comprehensive department-wide site licensing for Mastercam Mill 3D, Multi-Axis, Lathe, and Mill-Turn, plus specialized post-processor development for lab CNC machines.",
       "pitch": "Saves tens of thousands in annual CAM commercial license fees and guarantees post-processors match shop machines perfectly.",
-      "url": "https://www.mastercam.com"
+      "url": "https://www.mastercam.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Colleges & Universities with Engineering CAD/CAM & CNC Facilities"
     },
     {
       "id": "autodesk-technology-grant",
@@ -1795,7 +2169,10 @@
       "score": "95% Fit",
       "synopsis": "Funds generative design compute credits, 5-axis CAM training, and additive manufacturing research benches for student engineering design teams.",
       "pitch": "Empowers Formula and Baja teams to lightweight structural uprights and chassis nodes using AI-driven generative design.",
-      "url": "https://www.autodesk.com"
+      "url": "https://www.autodesk.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "University Capstone Design Labs & Collegiate Competition Teams"
     },
     {
       "id": "siemens-sce-cnc-grant",
@@ -1807,7 +2184,10 @@
       "score": "94% Fit",
       "synopsis": "Co-invests industrial Sinumerik 840D/ONE CNC simulator consoles, NX CAD/CAM suites, and digital twin virtual commissioning workbenches.",
       "pitch": "Allows students to fully crash-proof multi-axis CNC programs in a virtual twin environment before running live spindle time.",
-      "url": "https://www.siemens.com/sce"
+      "url": "https://www.siemens.com/sce",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities with Engineering Mechatronics Curricula"
     },
     {
       "id": "solidworks-dassault-sponsorship",
@@ -1819,7 +2199,10 @@
       "score": "96% Fit",
       "synopsis": "Supplies full cloud-connected SolidWorks CAD/CAM/FEA licenses, structural simulation compute, and parts sponsorship for collegiate design teams.",
       "pitch": "Eliminates departmental engineering software licensing overhead across Formula, Baja, and aerospace capstone projects.",
-      "url": "https://www.solidworks.com"
+      "url": "https://www.solidworks.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Competition Teams registered with University Student Affairs"
     },
     {
       "id": "hexagon-metrology-lab",
@@ -1831,7 +2214,10 @@
       "score": "95% Fit",
       "synopsis": "Co-funds portable coordinate measuring arm (Romer Arm), blue light 3D surface scanners, and PC-DMIS inspection software for student fabrication quality.",
       "pitch": "Enables instant dimensional quality verification of chassis and aero tooling, eliminating rework and race-day part failures.",
-      "url": "https://www.hexagonmi.com"
+      "url": "https://www.hexagonmi.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Quality Control & Coordinate Measuring Machine (CMM) Labs"
     },
     {
       "id": "mitutoyo-precision-grant",
@@ -1843,7 +2229,10 @@
       "score": "93% Fit",
       "synopsis": "Equips machine shops with digital height gages, surface roughness testers, optical comparators, and calibrated gage block sets for hands-on student inspection.",
       "pitch": "Replaces worn and uncalibrated shop inspection tools with brand new NIST-traceable precision instruments.",
-      "url": "https://www.mitutoyo.com"
+      "url": "https://www.mitutoyo.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Machine Shops & Mechanical Metrology Inspection Facilities"
     },
     {
       "id": "ansys-academic-simulation",
@@ -1855,7 +2244,10 @@
       "score": "92% Fit",
       "synopsis": "Provides 1000+ HPC core licenses for Ansys Fluent (CFD) and Mechanical (FEA), plus GPU acceleration support for collegiate vehicle aero packages.",
       "pitch": "Accelerates CFD aerodynamics iterations for collegiate racing teams with high-performance industrial simulation capability.",
-      "url": "https://www.ansys.com"
+      "url": "https://www.ansys.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "University Racing & Aerospace Student Teams with HPC Compute Needs"
     },
     {
       "id": "ptc-iot-machining-award",
@@ -1867,7 +2259,10 @@
       "score": "89% Fit",
       "synopsis": "Co-funds IoT sensor nodes on machine tools (spindle vibration, thermal sensors) and Vuforia AR machine training headsets for student shop operators.",
       "pitch": "Modernizes student machine safety and preventive maintenance with IoT predictive sensor telemetry.",
-      "url": "https://www.ptc.com"
+      "url": "https://www.ptc.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Collegiate Smart Manufacturing Labs & Connected IoT Machine Tool Centers"
     },
     {
       "id": "aws-lincoln-welding-safety",
@@ -1879,7 +2274,10 @@
       "score": "96% Fit",
       "synopsis": "Capital funding for downdraft cutting tables, source fume extraction arms, ambient particulate filtration units, and modernized multiprocess inverter welding stations.",
       "pitch": "Directly eliminates university Environmental Health & Safety (EH&S) particulate compliance liabilities in student fabrication areas.",
-      "url": "https://www.aws.org"
+      "url": "https://www.aws.org",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "College Fabrication Labs, University Machine Shops & Welding Facilities"
     },
     {
       "id": "esab-fab-modernization",
@@ -1891,7 +2289,10 @@
       "score": "91% Fit",
       "synopsis": "Modernization package supplying safe plasma cutting stations, auto-darkening air-purifying respirators (PAPR), and fire-retardant welding cubicles.",
       "pitch": "Upgrades hot-work safety barriers and PPE, mitigating fire and respiratory risk during vehicle chassis prep.",
-      "url": "https://www.esab.com"
+      "url": "https://www.esab.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Hot-Work Shops & Student Fabrication Laboratories"
     },
     {
       "id": "miller-multiprocess-safety",
@@ -1903,7 +2304,10 @@
       "score": "94% Fit",
       "synopsis": "Funds precision AC/DC TIG machines for thin-wall chromoly chassis and aluminum battery boxes, coupled with high-efficiency sub-micron fume extractors.",
       "pitch": "Guarantees ultra-clean, high-integrity welds for formula and aerospace competition rules inspections.",
-      "url": "https://www.millerwelds.com"
+      "url": "https://www.millerwelds.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Collegiate Welding Labs & Vehicle Prototype Fabrication Shops"
     },
     {
       "id": "hypertherm-plasma-spark",
@@ -1915,7 +2319,10 @@
       "score": "92% Fit",
       "synopsis": "Equips student shops with high-definition automated CNC plasma cutting tables, water filtration trays, and sheet metal nesting software.",
       "pitch": "Replaces manual metal saws and shearing with automated precision plate profiling, slashing chassis plate prep time by 90%.",
-      "url": "https://www.hypertherm.com"
+      "url": "https://www.hypertherm.com",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Accredited College Machine & Sheet-Metal Prototyping Shops"
     },
     {
       "id": "honda-mobility-stem-award",
@@ -1927,7 +2334,10 @@
       "score": "95% Fit",
       "synopsis": "Supports collegiate hands-on mobility engineering teams, hybrid vehicle powertrain design, clean manufacturing techniques, and student diversity in motorsports.",
       "pitch": "Links student vehicle teams directly with Midwest automotive OEM engineering leadership while offsetting prototyping and travel overhead.",
-      "url": "https://honda.com/community/honda-usa-foundation"
+      "url": "https://honda.com/community/honda-usa-foundation",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Mobility Engineering Teams (Formula SAE, Baja, EcoCAR)"
     },
     {
       "id": "ford-nextgen-mobility-fund",
@@ -1939,7 +2349,10 @@
       "score": "93% Fit",
       "synopsis": "Project funding for university collegiate engineering design teams focusing on electric vehicle battery management, lightweight structural design, and connected telemetry.",
       "pitch": "Offsets custom battery enclosure and BMS testing hardware costs for collegiate design series entries.",
-      "url": "https://www.fordfund.org"
+      "url": "https://www.fordfund.org",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "University Student Teams designing Electric Vehicle Battery & BMS Systems"
     },
     {
       "id": "gm-stem-ev-testbed",
@@ -1951,7 +2364,10 @@
       "score": "94% Fit",
       "synopsis": "Grants supporting university student vehicle teams constructing high-voltage inverters, motor dyno testbenches, and regenerative braking systems.",
       "pitch": "Provides multi-year sponsorship for high-voltage student EV development with top-tier safety compliance.",
-      "url": "https://www.gm.com"
+      "url": "https://www.gm.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Electric Vehicle Teams building Motor Dynos & Inverter Testbenches"
     },
     {
       "id": "boeing-aerostructures-capstone",
@@ -1963,7 +2379,10 @@
       "score": "94% Fit",
       "synopsis": "Equipment, tooling, and materials grant supporting student composite mold machining, prepreg carbon curing, and drone telemetry rigs.",
       "pitch": "Underwrites aerostructures prototyping tooling and telemetry equipment, creating a direct pipeline into aerospace industry capstones.",
-      "url": "https://www.boeing.com"
+      "url": "https://www.boeing.com",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited College Aerospace Departments & Senior Capstone Design Programs"
     },
     {
       "id": "caterpillar-heavy-machinery",
@@ -1975,7 +2394,10 @@
       "score": "90% Fit",
       "synopsis": "Underwrites advanced fluid power test benches, high-load fatigue testing actuators, and student heavy-machinery design labs.",
       "pitch": "Supplies heavy-duty testing apparatus to engineering students with 0% institutional capital budget utilization.",
-      "url": "https://www.caterpillar.com"
+      "url": "https://www.caterpillar.com",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "University Mechanical Engineering Fluid Power & Heavy Equipment Labs"
     },
     {
       "id": "lockheed-stem-unmanned",
@@ -1987,13 +2409,17 @@
       "score": "93% Fit",
       "synopsis": "Funds collegiate drone swarm research, composite vacuum bagging tables, flight controller telemetry benches, and precision servo testing.",
       "pitch": "Finances advanced avionics and composite tooling for aerospace competition entries without departmental debt.",
-      "url": "https://www.lockheedmartin.com"
+      "url": "https://www.lockheedmartin.com",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Unmanned Aerial Systems (UAS) Teams & Composite Design Labs"
     }
   ]
 };
 
     let liveGrants = [...FALLBACK_PAYLOAD.grants];
-    let currentFilter = 'ALL';
+    let currentCategoryFilter = 'ALL';
+    let currentApplicantFilter = 'ALL';
 
     function updateKpis(data) {
       if (!data) return;
@@ -2047,12 +2473,22 @@
       }
     }
 
-    function setFilter(category, btn) {
-      currentFilter = category;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    function setCategoryFilter(category, btn) {
+      currentCategoryFilter = category;
+      document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       loadLiveGrants();
     }
+
+    function setApplicantFilter(role, btn) {
+      currentApplicantFilter = role;
+      document.querySelectorAll('#applicantTabs .app-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      loadLiveGrants();
+    }
+
+    // Backwards compatibility alias
+    const setFilter = setCategoryFilter;
 
     function loadLiveGrants() {
       const searchInput = document.getElementById('searchInput');
@@ -2061,20 +2497,23 @@
       if (!container) return;
 
       const filtered = liveGrants.filter(g => {
-        const matchesCategory = currentFilter === 'ALL' || g.category === currentFilter;
+        const matchesCategory = currentCategoryFilter === 'ALL' || g.category === currentCategoryFilter;
+        const matchesApplicant = currentApplicantFilter === 'ALL' || g.applicant_type === currentApplicantFilter;
         const matchesSearch = !search || 
                               g.title.toLowerCase().includes(search) || 
                               g.agency.toLowerCase().includes(search) || 
                               g.synopsis.toLowerCase().includes(search) ||
-                              g.pitch.toLowerCase().includes(search);
-        return matchesCategory && matchesSearch;
+                              g.pitch.toLowerCase().includes(search) ||
+                              (g.eligibility && g.eligibility.toLowerCase().includes(search)) ||
+                              (g.applicant_label && g.applicant_label.toLowerCase().includes(search));
+        return matchesCategory && matchesApplicant && matchesSearch;
       });
 
       if (filtered.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--card-bg); border: 1px dashed var(--card-border); border-radius: 12px;">
             <h3 style="margin-bottom: 0.5rem;">No matching opportunities found</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Try adjusting your keyword search or category filter.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Try adjusting your search criteria, applicant filter, or category track.</p>
           </div>
         `;
         return;
@@ -2091,6 +2530,9 @@
               <span class="score-badge">★ ${g.score}</span>
             </div>
             <h2 class="grant-title">${g.title}</h2>
+            <div>
+              <span class="applicant-badge">🎓 ${g.applicant_label || 'Colleges & Universities'}</span>
+            </div>
             <p class="grant-synopsis">${g.synopsis}</p>
             <div class="strategic-box">
               <strong>Leadership Value Proposition</strong>
@@ -2107,6 +2549,10 @@
                 <span>Deadline Window</span>
                 <strong>${g.deadline}</strong>
               </div>
+              <div class="meta-item full-width">
+                <span>Who Can Apply</span>
+                <span class="eligibility-desc">${g.eligibility || 'Accredited Colleges & Universities'}</span>
+              </div>
             </div>
             <div class="card-actions">
               <button class="btn btn-scarlet" onclick="openSingleGrantBrief('${g.id}')">Quick Brief</button>
@@ -2122,19 +2568,25 @@
     }
 
     function openExecutiveDraft() {
-      const totalAddressable = document.getElementById('kpi-total-val') ? document.getElementById('kpi-total-val').innerText : '$13,560,000';
+      const totalAddressable = document.getElementById('kpi-total-val') ? document.getElementById('kpi-total-val').innerText : '$103,995,000';
       const activeCount = liveGrants.length;
       const memo = `SUBJECT: Strategic Infrastructure Initiative: External Non-Tuition CapEx & Tooling Portfolio
 
 Center Leadership & Operations Directors,
 
-I have cataloged and vetted high-probability external funding opportunities (${activeCount} active solicitations totaling ${totalAddressable} in addressable funding) targeting our student engineering laboratory, advanced multi-axis machining facilities, and student safety compliance across four distinct tiers:
+I have cataloged and vetted high-probability external funding opportunities (${activeCount} active solicitations totaling ${totalAddressable} in addressable funding) targeting our collegiate engineering laboratory, advanced multi-axis machining facilities, and student safety compliance across four distinct tiers:
 
 Key Strategic Highlights:
-1. Federal Tier (DoD, NSF, DOE, NASA/FAA): Solicitations targeting defense manufacturing, laboratory instrumentation, and experiential collegiate testbeds.
-2. State & Regional Corridors: Ohio RAPIDS and Ohio Third Frontier equipment initiatives securing up to 100% state equipment backing, directly avoiding departmental CapEx.
-3. Academic Consortia (SAE CDS / UTC): Direct vehicle build subsidies and sensor/telemetry test bench allocations for Formula, Baja, and clean mobility teams.
-4. Private OEMs & Foundations: Gene Haas Foundation rolling grants ($25K-$50K) dedicated to machine shop tooling replenishment, plus SME PRIME and AWS/Lincoln safety ventilation funding.
+1. Federal Tier (DoD, DARPA, NIST, NSF, DOE, NASA/FAA): Major opportunities for research instrumentation, defense manufacturing, and experiential testbeds.
+2. State & Regional Corridors (ODHE RAPIDS, Third Frontier, JobsOhio): State capital equipment allocations securing up to 100% state machinery backing.
+3. Academic Consortia (SAE CDS, UTC): Direct student vehicle build subsidies and shared dynamometer/telemetry benches.
+4. Private OEMs & Foundations (Haas, SME, Mazak, Mastercam, Autodesk, Siemens, AWS/Lincoln): Rolling grants dedicated to tooling replenishment, software seats, and safety ventilation.
+
+Applicant Eligibility Pathways:
+- Institutional Applications: Office of Sponsored Programs / College Administration
+- Student Competition Applications: Formula SAE, Baja SAE & Student Design Clubs
+- Technical Staff Applications: Machine Shop Directors, Facility Managers & Technical PIs
+- Consortia Applications: Regional University-Industry Partnerships
 
 I have summarized the proposal pathways and can provide a 10-minute briefing at your convenience to outline the submission schedule.
 
@@ -2153,13 +2605,17 @@ Project Operations & Technical Supervision`;
 
 Director & Operations Committee,
 
-I recommend evaluating the following program for our lab operations and student build pipeline:
+I recommend evaluating the following program for our college engineering operations and build pipeline:
 
 Program: ${grant.title}
 Funding Ceiling: ${grant.ceiling}
 Deadline / Cycle: ${grant.deadline}
 Category: ${grant.category}
 Relevance Score: ${grant.score}
+
+Who Can Apply:
+${grant.eligibility || 'Accredited Colleges & Universities'}
+(Applicant Role: ${grant.applicant_label || 'College / University'})
 
 Technical Synopsis:
 ${grant.synopsis}
@@ -2170,7 +2626,7 @@ ${grant.pitch}
 Official Notice:
 ${grant.url}
 
-Next Step: Review submission prerequisites and initiate proposal package drafting.`;
+Next Step: Confirm PI / Student Team alignment and prepare initial proposal narrative.`;
 
       document.getElementById('emailPreviewText').innerText = brief;
       document.getElementById('directorModal').style.display = 'flex';

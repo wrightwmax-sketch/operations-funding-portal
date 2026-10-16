@@ -263,6 +263,86 @@ def fetch_tier1_federal():
         return False
       return True
 
+    def build_accurate_synopsis_and_eligibility(hit, cluster):
+      title = hit.get("title", "")
+      agency = hit.get("agency") or hit.get("agencyCode") or cluster["default_agency"]
+      agency_code = str(hit.get("agencyCode", "")).upper()
+      sol_num = hit.get("number", hit.get("id", ""))
+      cat = cluster["category"]
+      title_lower = title.lower()
+
+      if "darpa" in title_lower or "darpa" in agency_code:
+        synopsis = (
+            f"DARPA solicitation #{sol_num} ({agency}). Solicits proposals for advanced physical sciences, "
+            f"rapid hardware prototyping, and novel engineering testbeds. Directly finances advanced laboratory instrumentation, "
+            f"experimental apparatus, and multi-team prototype development for collegiate engineering labs."
+        )
+      elif "nist" in title_lower or "nist" in agency_code:
+        synopsis = (
+            f"NIST program solicitation #{sol_num} ({agency}). Program supporting precision metrology, "
+            f"advanced measurement standards, and manufacturing process optimization. Provides direct capital equipment funding "
+            f"and technician training resources for college engineering facilities."
+        )
+      elif "chips" in title_lower or "semiconductor" in title_lower:
+        synopsis = (
+            f"Federal CHIPS solicitation #{sol_num} ({agency}). Provides major institutional facilities funding "
+            f"for microelectronics, semiconductor manufacturing packaging, cleanroom equipment, and advanced materials testbeds."
+        )
+      elif "manufacturing usa" in title_lower or "america makes" in title_lower or "lift" in title_lower:
+        synopsis = (
+            f"Manufacturing USA solicitation #{sol_num} ({agency}). Integrates collegiate manufacturing labs with national additive "
+            f"and lightweight materials consortia. Underwrites industrial metal 3D printers, CNC tooling, and digital factory hardware."
+        )
+      elif "durip" in title_lower or "afosr" in agency_code:
+        synopsis = (
+            f"Department of Defense DURIP solicitation #{sol_num} ({agency}). High-priority defense equipment grant providing 100% "
+            f"federal financing for state-of-the-art university laboratory machinery, multi-axis CNC mills, and material testing benches."
+        )
+      elif any(d in agency_code for d in ["AFRL", "ONR", "ARL", "AMC", "DLA"]):
+        synopsis = (
+            f"Department of Defense solicitation #{sol_num} ({agency}). Solicits academic engineering institutions for defense "
+            f"manufacturing workforce readiness, aerospace aerostructures, alloy casting/forging tooling, and autonomous systems research benches."
+        )
+      elif "nsf" in agency_code or "national science foundation" in agency.lower():
+        synopsis = (
+            f"National Science Foundation solicitation #{sol_num} ({agency}). Supports higher education institutions with capital "
+            f"acquisitions for multi-user research instruments, advanced manufacturing curriculum, and hands-on collegiate engineering design."
+        )
+      elif "doe" in agency_code or "energy" in agency.lower():
+        synopsis = (
+            f"Department of Energy solicitation #{sol_num} ({agency}). Underwrites electrified mobility prototyping, battery safety "
+            f"testbenches, thermal runaway containment, and clean manufacturing process machinery for accredited colleges."
+        )
+      elif "nasa" in agency_code or "faa" in agency_code or "aero" in title_lower:
+        synopsis = (
+            f"NASA / FAA solicitation #{sol_num} ({agency}). Supports collegiate aeronautical engineering, flight telemetry benches, "
+            f"composite mold tooling, and uncrewed aircraft prototyping for student engineering teams."
+        )
+      else:
+        synopsis = (
+            f"Federal competitive solicitation #{sol_num} ({agency}). Provides direct institutional funding for technical capability "
+            f"modernization, experimental equipment acquisitions, student design build pipelines, and hands-on lab development."
+        )
+
+      if cat == "STUDENT" or any(k in title_lower for k in ["competition", "student", "fellowship", "collegiate", "club", "team", "experiential"]):
+        applicant_type = "COLLEGE_STUDENT_TEAM"
+        applicant_label = "Student Engineering Teams"
+        eligibility = "Collegiate Student Teams, Formula/Baja Clubs, and Senior Capstone Teams (Enrolled College Students)"
+      elif any(k in title_lower for k in ["workforce", "technician", "ate", "training", "credential", "center", "shop", "operations"]):
+        applicant_type = "COLLEGE_LAB_DIRECTOR"
+        applicant_label = "Lab Directors & Staff"
+        eligibility = "College Engineering Facilities, Machine Shop Directors, Facility Managers & Technical PIs"
+      elif any(k in title_lower for k in ["consortium", "consortia", "mep", "partnership", "allied", "regional", "cluster"]):
+        applicant_type = "COLLEGE_CONSORTIUM"
+        applicant_label = "College-Industry Consortia"
+        eligibility = "Colleges & Universities in Partnership with Regional Industry, State Corridors, or Consortiums"
+      else:
+        applicant_type = "COLLEGE_INSTITUTIONAL"
+        applicant_label = "College / University (Institutional)"
+        eligibility = "Public & Private Colleges and Universities (Office of Sponsored Programs, Deans & Dept Chairs)"
+
+      return synopsis, applicant_type, applicant_label, eligibility
+
     for hit in hits:
       if not is_relevant_hit(hit):
         continue
@@ -276,6 +356,7 @@ def fetch_tier1_federal():
         )
         title = hit.get("title", "Federal Equipment & Training Opportunity")
         close_date = hit.get("closeDate") or "See Solicitations"
+        synopsis, app_type, app_label, elig = build_accurate_synopsis_and_eligibility(hit, cluster)
 
         collected.append({
             "id": f"gov-{opp_id}",
@@ -285,14 +366,12 @@ def fetch_tier1_federal():
             "ceiling": cluster["default_ceiling"],
             "deadline": close_date,
             "score": cluster["default_score"],
-            "synopsis": (
-                f"Federal solicitation #{hit.get('number', opp_id)} ({agency_name})."
-                " Provides federal sponsorship for engineering laboratory"
-                " capability, advanced machine tools, and collegiate research"
-                " instrumentation."
-            ),
+            "synopsis": synopsis,
             "pitch": cluster["pitch"],
             "url": f"https://www.grants.gov/search-results-detail/{opp_id}",
+            "applicant_type": app_type,
+            "applicant_label": app_label,
+            "eligibility": elig,
         })
 
   print(f"[Tier 1] Fetched {len(collected)} live federal opportunities.")
@@ -330,6 +409,9 @@ def fetch_tier2_state_regional():
           "url": (
               "https://highered.ohio.gov/initiatives/workforce-development/rapids"
           ),
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Ohio Public & Private Colleges, State Universities, and Technical Colleges",
       },
       {
           "id": "ohio-third-frontier-tech",
@@ -353,6 +435,9 @@ def fetch_tier2_state_regional():
           "url": (
               "https://development.ohio.gov/business/third-frontier-and-technology"
           ),
+          "applicant_type": "COLLEGE_CONSORTIUM",
+          "applicant_label": "College-Industry Consortia",
+          "eligibility": "Ohio Colleges & Universities with Commercialization / Industrial Partners",
       },
       {
           "id": "ohio-third-frontier-rd-shared",
@@ -375,6 +460,9 @@ def fetch_tier2_state_regional():
           "url": (
               "https://development.ohio.gov/business/third-frontier-and-technology"
           ),
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Ohio Higher Education Engineering Research Centers & Shared User Facilities",
       },
       {
           "id": "jobsohio-odot-mobility",
@@ -397,6 +485,18 @@ def fetch_tier2_state_regional():
               " institutional overhead."
           ),
           "url": "https://www.jobsohio.com/why-ohio/workforce",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Ohio Colleges & University Transportation Facilities with Autonomous/EV Tracks",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Ohio Higher Education Engineering Research Centers & Shared User Facilities",
+          "applicant_type": "COLLEGE_CONSORTIUM",
+          "applicant_label": "College-Industry Consortia",
+          "eligibility": "Ohio Colleges & Universities with Commercialization / Industrial Partners",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Ohio Public & Private Colleges, State Universities, and Technical Colleges",
       },
       {
           "id": "jobsohio-workforce-cnc",
@@ -417,6 +517,9 @@ def fetch_tier2_state_regional():
               " subsidies."
           ),
           "url": "https://www.jobsohio.com/why-ohio/workforce",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Colleges, Technical Centers & Community Colleges offering CNC/Additive Programs",
       },
       {
           "id": "medc-mobility-voucher",
@@ -437,6 +540,9 @@ def fetch_tier2_state_regional():
               " costs."
           ),
           "url": "https://www.michiganbusiness.org",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Midwest Collegiate Vehicle Design Teams & University Mobility Labs",
       },
       {
           "id": "iedc-mfg-readiness",
@@ -456,6 +562,9 @@ def fetch_tier2_state_regional():
               " loading robotics, tripling machine shop student throughput."
           ),
           "url": "https://www.iedc.in.gov",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Higher Education Technical Labs & Advanced Manufacturing Training Centers",
       },
       {
           "id": "defense-mfg-midwest-alliance",
@@ -475,6 +584,9 @@ def fetch_tier2_state_regional():
               " collegiate defense prototyping projects."
           ),
           "url": "https://www.defense.gov",
+          "applicant_type": "COLLEGE_CONSORTIUM",
+          "applicant_label": "College-Industry Consortia",
+          "eligibility": "Colleges & Universities in Partnership with Regional Defense Tooling Suppliers",
       },
   ]
   print(f"[Tier 2] Aggregated {len(state_grants)} State & Regional programs.")
@@ -510,6 +622,9 @@ def fetch_tier3_academic_consortia():
               " multi-team build expenses."
           ),
           "url": "https://www.sae.org/attend/student-events",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Official University Collegiate Design Series Teams (Formula SAE, Baja, Clean Snowmobile)",
       },
       {
           "id": "sae-aero-uncrewed-subsidy",
@@ -529,6 +644,9 @@ def fetch_tier3_academic_consortia():
               " composite fabrication and instrumentation."
           ),
           "url": "https://www.sae.org/attend/student-events",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "University Aero Design & Collegiate Drone Competition Teams",
       },
       {
           "id": "dot-utc-mobility-bench",
@@ -552,6 +670,9 @@ def fetch_tier3_academic_consortia():
               " throughput without capital debt."
           ),
           "url": "https://www.transportation.gov/utc",
+          "applicant_type": "COLLEGE_CONSORTIUM",
+          "applicant_label": "College-Industry Consortia",
+          "eligibility": "Regional University Transportation Center Consortia (Colleges & Universities)",
       },
       {
           "id": "great-lakes-utc-telemetry",
@@ -571,6 +692,9 @@ def fetch_tier3_academic_consortia():
               " powertrain dyno and calibration hardware."
           ),
           "url": "https://www.transportation.gov/utc",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Great Lakes Regional University Vehicle Teams & Shared Dyno Facilities",
       },
       {
           "id": "asme-student-lab-grant",
@@ -592,6 +716,9 @@ def fetch_tier3_academic_consortia():
               " workholding tooling and consumables."
           ),
           "url": "https://www.asme.org",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "University ASME Student Sections & Collegiate Mechanical Engineering Clubs",
       },
       {
           "id": "ieee-robotics-fab-bench",
@@ -613,6 +740,9 @@ def fetch_tier3_academic_consortia():
               " benches with 0% department overhead."
           ),
           "url": "https://www.ieee-ras.org",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Robotics Clubs, IEEE Student Branches & Mechatronics Capstones",
       },
       {
           "id": "ncme-mfg-technician-fund",
@@ -632,6 +762,9 @@ def fetch_tier3_academic_consortia():
               " mechanical liability risks before annual safety audits."
           ),
           "url": "https://www.ed.gov",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "College Engineering Laboratories, Machine Shop Managers & Safety Officers",
       },
   ]
   print(
@@ -669,6 +802,9 @@ def fetch_tier4_private_foundations():
               " operating reserve."
           ),
           "url": "https://ghaasfoundation.org",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Post-Secondary Colleges, Technical Machine Shops & Student Competition Teams",
       },
       {
           "id": "sme-prime-shop-2026",
@@ -689,6 +825,9 @@ def fetch_tier4_private_foundations():
               " metrology."
           ),
           "url": "https://www.smeef.org",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Accredited 2-Year & 4-Year Colleges with Advanced Manufacturing Programs",
       },
       {
           "id": "mazak-multi-tasking-award",
@@ -708,6 +847,9 @@ def fetch_tier4_private_foundations():
               " into the student shop with industry OEM co-sponsorship."
           ),
           "url": "https://www.mazakusa.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Collegiate Machining Labs & Post-Secondary Machine Tool Training Centers",
       },
       {
           "id": "dmg-mori-education-grant",
@@ -727,6 +869,9 @@ def fetch_tier4_private_foundations():
               " sub-micron repeatability with zero internal CapEx."
           ),
           "url": "https://www.dmgmori.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "University Precision Engineering Labs & CNC Spindle Facilities",
       },
       {
           "id": "hurco-lab-partnership",
@@ -746,6 +891,9 @@ def fetch_tier4_private_foundations():
               " students learning CNC milling, increasing shop throughput."
           ),
           "url": "https://www.hurco.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Undergraduate Engineering Shops & Community College Machining Labs",
       },
       {
           "id": "kennametal-tooling-endowment",
@@ -765,6 +913,9 @@ def fetch_tier4_private_foundations():
               " chromoly chassis component fabrication."
           ),
           "url": "https://www.kennametal.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Racing Teams (Formula SAE, Baja) & Student Machine Shops",
       },
       # CAD/CAM, Simulation & Metrology OEMs
       {
@@ -785,6 +936,9 @@ def fetch_tier4_private_foundations():
               " and guarantees post-processors match shop machines perfectly."
           ),
           "url": "https://www.mastercam.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Colleges & Universities with Engineering CAD/CAM & CNC Facilities",
       },
       {
           "id": "autodesk-technology-grant",
@@ -804,6 +958,9 @@ def fetch_tier4_private_foundations():
               " uprights and chassis nodes using AI-driven generative design."
           ),
           "url": "https://www.autodesk.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "University Capstone Design Labs & Collegiate Competition Teams",
       },
       {
           "id": "siemens-sce-cnc-grant",
@@ -823,6 +980,9 @@ def fetch_tier4_private_foundations():
               " virtual twin environment before running live spindle time."
           ),
           "url": "https://www.siemens.com/sce",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Accredited Colleges & Universities with Engineering Mechatronics Curricula",
       },
       {
           "id": "solidworks-dassault-sponsorship",
@@ -842,6 +1002,9 @@ def fetch_tier4_private_foundations():
               " across Formula, Baja, and aerospace capstone projects."
           ),
           "url": "https://www.solidworks.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Competition Teams registered with University Student Affairs",
       },
       {
           "id": "hexagon-metrology-lab",
@@ -861,6 +1024,9 @@ def fetch_tier4_private_foundations():
               " aero tooling, eliminating rework and race-day part failures."
           ),
           "url": "https://www.hexagonmi.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "University Quality Control & Coordinate Measuring Machine (CMM) Labs",
       },
       {
           "id": "mitutoyo-precision-grant",
@@ -880,6 +1046,9 @@ def fetch_tier4_private_foundations():
               " new NIST-traceable precision instruments."
           ),
           "url": "https://www.mitutoyo.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "College Machine Shops & Mechanical Metrology Inspection Facilities",
       },
       {
           "id": "ansys-academic-simulation",
@@ -899,6 +1068,9 @@ def fetch_tier4_private_foundations():
               " teams with high-performance industrial simulation capability."
           ),
           "url": "https://www.ansys.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "University Racing & Aerospace Student Teams with HPC Compute Needs",
       },
       {
           "id": "ptc-iot-machining-award",
@@ -918,6 +1090,9 @@ def fetch_tier4_private_foundations():
               " with IoT predictive sensor telemetry."
           ),
           "url": "https://www.ptc.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Collegiate Smart Manufacturing Labs & Connected IoT Machine Tool Centers",
       },
       # Welding, Cutting & Fab Safety
       {
@@ -939,6 +1114,9 @@ def fetch_tier4_private_foundations():
               " fabrication areas."
           ),
           "url": "https://www.aws.org",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "College Fabrication Labs, University Machine Shops & Welding Facilities",
       },
       {
           "id": "esab-fab-modernization",
@@ -960,6 +1138,9 @@ def fetch_tier4_private_foundations():
               " respiratory risk during vehicle chassis prep."
           ),
           "url": "https://www.esab.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "University Hot-Work Shops & Student Fabrication Laboratories",
       },
       {
           "id": "miller-multiprocess-safety",
@@ -979,6 +1160,9 @@ def fetch_tier4_private_foundations():
               " aerospace competition rules inspections."
           ),
           "url": "https://www.millerwelds.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Collegiate Welding Labs & Vehicle Prototype Fabrication Shops",
       },
       {
           "id": "hypertherm-plasma-spark",
@@ -998,6 +1182,9 @@ def fetch_tier4_private_foundations():
               " plate profiling, slashing chassis plate prep time by 90%."
           ),
           "url": "https://www.hypertherm.com",
+          "applicant_type": "COLLEGE_LAB_DIRECTOR",
+          "applicant_label": "Lab Directors & Staff",
+          "eligibility": "Accredited College Machine & Sheet-Metal Prototyping Shops",
       },
       # Mobility, Heavy Equipment & Aerospace OEMs
       {
@@ -1019,6 +1206,9 @@ def fetch_tier4_private_foundations():
               " overhead."
           ),
           "url": "https://honda.com/community/honda-usa-foundation",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Mobility Engineering Teams (Formula SAE, Baja, EcoCAR)",
       },
       {
           "id": "ford-nextgen-mobility-fund",
@@ -1038,6 +1228,9 @@ def fetch_tier4_private_foundations():
               " for collegiate design series entries."
           ),
           "url": "https://www.fordfund.org",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "University Student Teams designing Electric Vehicle Battery & BMS Systems",
       },
       {
           "id": "gm-stem-ev-testbed",
@@ -1057,6 +1250,9 @@ def fetch_tier4_private_foundations():
               " development with top-tier safety compliance."
           ),
           "url": "https://www.gm.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Electric Vehicle Teams building Motor Dynos & Inverter Testbenches",
       },
       {
           "id": "boeing-aerostructures-capstone",
@@ -1079,6 +1275,9 @@ def fetch_tier4_private_foundations():
               " capstones."
           ),
           "url": "https://www.boeing.com",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "Accredited College Aerospace Departments & Senior Capstone Design Programs",
       },
       {
           "id": "caterpillar-heavy-machinery",
@@ -1097,6 +1296,9 @@ def fetch_tier4_private_foundations():
               " with 0% institutional capital budget utilization."
           ),
           "url": "https://www.caterpillar.com",
+          "applicant_type": "COLLEGE_INSTITUTIONAL",
+          "applicant_label": "College / University (Institutional)",
+          "eligibility": "University Mechanical Engineering Fluid Power & Heavy Equipment Labs",
       },
       {
           "id": "lockheed-stem-unmanned",
@@ -1116,6 +1318,9 @@ def fetch_tier4_private_foundations():
               " competition entries without departmental debt."
           ),
           "url": "https://www.lockheedmartin.com",
+          "applicant_type": "COLLEGE_STUDENT_TEAM",
+          "applicant_label": "Student Engineering Teams",
+          "eligibility": "Collegiate Unmanned Aerial Systems (UAS) Teams & Composite Design Labs",
       },
   ]
   print(

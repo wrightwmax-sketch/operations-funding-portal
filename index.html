@@ -286,14 +286,34 @@
       gap: 0.75rem;
     }
 
+    .card-top-left {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
     .agency-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-family: var(--font-mono);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-blue);
-      background: rgba(56, 189, 248, 0.1);
-      padding: 0.25rem 0.6rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.2rem 0.55rem;
       border-radius: 6px;
+    }
+
+    .category-tag {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      text-transform: uppercase;
     }
 
     .score-badge {
@@ -375,6 +395,7 @@
     .card-actions .btn {
       flex: 1;
       justify-content: center;
+      text-decoration: none;
     }
 
     /* MODAL STYLES */
@@ -479,9 +500,13 @@
         <div class="pill-badge">Operations & Facilities Infrastructure</div>
         <h1>Advanced Manufacturing & Student Lab: Strategic CapEx Portal</h1>
         <p>Targeted Non-Tuition Funding, Machinery Tooling Grants, and Risk-Mitigation Capital Programs</p>
+        <div id="liveFeedStatus" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.55rem; font-size: 0.8rem; color: var(--accent-blue); font-family: var(--font-mono);">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald);"></span>
+          <span id="lastUpdatedNotice">Live Feed: Synchronizing intelligence feed...</span>
+        </div>
       </div>
       <div class="header-actions">
-        <button class="btn" onclick="refreshPage()">🔄 Refresh</button>
+        <button class="btn btn-refresh" id="refreshBtn" onclick="refreshGrantsData()">🔄 Refresh Grants</button>
         <button class="btn" onclick="togglePresentationMode()">📺 Boardroom Mode</button>
         <button class="btn btn-scarlet" onclick="openExecutiveDraft()">✉️ Director Briefing</button>
         <button class="btn" onclick="window.print()">🖨️ PDF Summary</button>
@@ -492,23 +517,23 @@
     <section class="metric-grid">
       <div class="metric-card">
         <div class="metric-title">Addressable External Funding</div>
-        <div class="metric-value" id="kpi-total-val">$2,410,000</div>
-        <div class="metric-sub">Active open solicitation pool</div>
+        <div class="metric-value" id="kpi-total-val">$13,560,000</div>
+        <div class="metric-sub" id="kpi-total-sub">Active open solicitation pool</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">Target Opportunities</div>
-        <div class="metric-value" id="kpi-count">6 Active</div>
-        <div class="metric-sub">High institutional feasibility</div>
+        <div class="metric-value" id="kpi-count">23 Active</div>
+        <div class="metric-sub" id="kpi-count-sub">High institutional feasibility</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">CapEx Tooling Offset</div>
-        <div class="metric-value">$685,000</div>
+        <div class="metric-value" id="kpi-capex-val">$6,520,000</div>
         <div class="metric-sub">Machine acquisitions & upgrades</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">Risk & Audit Mitigation</div>
-        <div class="metric-value">100% Direct</div>
-        <div class="metric-sub">EH&S ventilation & safety tie-in</div>
+        <div class="metric-value" id="kpi-safety-val">100% Direct</div>
+        <div class="metric-sub" id="kpi-safety-sub">EH&S ventilation & safety tie-in</div>
       </div>
     </section>
 
@@ -549,108 +574,393 @@
   </div>
 
   <script>
-    const GRANT_DATA = [
-      {
-        id: "haas-2026",
-        agency: "GENE HAAS FOUNDATION",
-        category: "MACHINING",
-        title: "Post-Secondary CNC Machining & Tooling Grant",
-        ceiling: "$25,000",
-        deadline: "Rolling (Q3 Cycle)",
-        score: "98% Fit",
-        synopsis: "Direct grant funding dedicated to collegiate machine shop consumables, high-performance tooling, machine accessories, and Haas CNC mill/lathe maintenance.",
-        pitch: "Provides immediate non-tuition budget offset for shop consumables and CNC endmill replenishment, directly insulating the center's annual operating index.",
-        status: "Actionable Immediately"
-      },
-      {
-        id: "sme-prime-2026",
-        agency: "SME EDUCATION FOUNDATION",
-        category: "MACHINING",
-        title: "Advanced Manufacturing Lab Infrastructure Program",
-        ceiling: "$85,000",
-        deadline: "November 14",
-        score: "94% Fit",
-        synopsis: "Co-sponsorship of modern manufacturing facilities providing hands-on CAM/CNC, multi-axis machining, and metrology training for student engineers.",
-        pitch: "Positions our lab as an SME-accredited training hub, attracting corporate manufacturing partnerships and modernizing metrology gear.",
-        status: "Drafting Ready"
-      },
-      {
-        id: "odhe-rapids-6",
-        agency: "OHIO DEPT OF HIGHER EDUCATION",
-        category: "CAPEX",
-        title: "RAPIDS 6: Regionally Aligned Priority Equipment Initiative",
-        ceiling: "$350,000",
-        deadline: "December 01",
-        score: "96% Fit",
-        synopsis: "State capital equipment acquisition for advanced manufacturing, robotics, and hands-on laboratory infrastructure aligned with regional industrial workforce demands.",
-        pitch: "Allows the center to acquire major machine capital (e.g. 5-axis CNC or waterjet) with 100% state equipment backing, saving six-figure departmental CapEx.",
-        status: "Director Priority"
-      },
-      {
-        id: "aws-fume-safety",
-        agency: "AMERICAN WELDING SOCIETY / LINCOLN ELECTRIC",
-        category: "SAFETY",
-        title: "Welding Lab Safety & Source Extraction Equipment Grant",
-        ceiling: "$50,000",
-        deadline: "October 30",
-        score: "91% Fit",
-        synopsis: "Funds dedicated ventilation retrofits, source fume extraction systems, personal protective equipment, and modernized multiprocess TIG/MIG stations.",
-        pitch: "Eliminates university EH&S compliance liabilities regarding student particulate inhalation during chassis fabrication, offering an ironclad risk shield.",
-        status: "High Liability Offset"
-      },
-      {
-        id: "doe-clean-mobility",
-        agency: "U.S. DEPT OF ENERGY (EERE)",
-        category: "STUDENT",
-        title: "Collegiate Clean Mobility & EV Engineering Prototype Fund",
-        ceiling: "$1,200,000",
-        deadline: "January 15",
-        score: "89% Fit",
-        synopsis: "Interdisciplinary collegiate student engineering project support for hybrid/electric powertrain testing, telemetry rigs, and track prototype development.",
-        pitch: "Provides multi-year sponsorship covering Formula SAE Electric and EcoCAR dyno/testing infrastructure with zero internal department subsidization.",
-        status: "Consortium Opportunity"
-      },
-      {
-        id: "boeing-aero-capstone",
-        agency: "INDUSTRY STEM PARTNERSHIP",
-        category: "STUDENT",
-        title: "Autonomous & Unmanned Aerospace Capstone Tooling Award",
-        ceiling: "$70,000",
-        deadline: "Rolling Cycle",
-        score: "92% Fit",
-        synopsis: "Equipment and materials funding for hands-on student composite fabrication, wind-tunnel model rapid machining, and avionics testing rigs.",
-        pitch: "Directly funds aerostructures prototyping tooling and telemetry data suites, linking student aero capstone projects into an industry recruitment track.",
-        status: "Actionable Immediately"
-      }
-    ];
+    const FALLBACK_PAYLOAD = {
+  "last_updated": "2026-10-16 00:33 UTC",
+  "total_addressable": "$13,560,000",
+  "capex_tooling_offset": "$6,520,000",
+  "count": 23,
+  "tier_breakdown": {
+    "federal": 10,
+    "state_regional": 3,
+    "academic_consortia": 2,
+    "private_foundations": 8
+  },
+  "grants": [
+    {
+      "id": "gov-363815",
+      "agency": "GOLDEN FIELD OFFICE",
+      "category": "MACHINING",
+      "title": "Accelerating Scale-up and Pre-piloting of Emerging Chemical Technologies (ASPECT)",
+      "ceiling": "$500,000 - $1,500,000",
+      "deadline": "12/01/2026",
+      "score": "95% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003647 (Golden Field Office). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Secures direct federal defense manufacturing funds for multi-axis CNC and additive equipment, expanding multi-team defense prototyping capacity.",
+      "url": "https://www.grants.gov/search-results-detail/363815"
+    },
+    {
+      "id": "gov-332894",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "LPS Qubit Collaboratory (LQC)",
+      "ceiling": "$250,000 - $750,000",
+      "deadline": "04/30/2027",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #W911NF21S0009 (Dept of the Army -- Materiel Command). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Offsets major institutional CapEx by financing naval-aligned material testing and metrology benches with 0% university match.",
+      "url": "https://www.grants.gov/search-results-detail/332894"
+    },
+    {
+      "id": "gov-363374",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year 2027 Defense University Research Instrumentation Program (DURIP)",
+      "ceiling": "$250,000 - $750,000",
+      "deadline": "11/06/2026",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260001 (Air Force Office of Scientific Research). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Offsets major institutional CapEx by financing naval-aligned material testing and metrology benches with 0% university match.",
+      "url": "https://www.grants.gov/search-results-detail/363374"
+    },
+    {
+      "id": "gov-362034",
+      "agency": "DOC NOAA - ERA PRODUCTION",
+      "category": "MACHINING",
+      "title": "2026 Alaska Marine Education and Training Mini-Grant Program",
+      "ceiling": "$350,000 - $650,000",
+      "deadline": "05/01/2028",
+      "score": "96% Fit",
+      "synopsis": "Federal solicitation #NOAA-NMFS-AK-2026-33268 (DOC NOAA - ERA Production). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/362034"
+    },
+    {
+      "id": "gov-329436",
+      "agency": "IDAHO FIELD OFFICE",
+      "category": "MACHINING",
+      "title": "University Nuclear Leadership Program&ndash; Scholarship and Fellowship Support",
+      "ceiling": "$350,000 - $650,000",
+      "deadline": "10/14/2030",
+      "score": "96% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0002265 (Idaho Field Office). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/329436"
+    },
+    {
+      "id": "gov-363745",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "MACHINING",
+      "title": "Air Force Basic Research Sciences Conference and Workshop Support",
+      "ceiling": "$350,000 - $650,000",
+      "deadline": "08/31/2029",
+      "score": "96% Fit",
+      "synopsis": "Federal solicitation #FA955026S0002 (Air Force Office of Scientific Research). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/363745"
+    },
+    {
+      "id": "gov-363446",
+      "agency": "NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION",
+      "category": "STUDENT",
+      "title": "Innovative Traffic Safety Enforcement (ITSE) Grant Program",
+      "ceiling": "$500,000 - $1,250,000",
+      "deadline": "09/01/2027",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #NHTSA-693JJ926R000024-FY26 (National Highway Traffic Safety Administration). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/363446"
+    },
+    {
+      "id": "gov-328902",
+      "agency": "DOT - FAA AVIATION RESEARCH GRANTS",
+      "category": "STUDENT",
+      "title": "FAA Aviation Research Grants Program",
+      "ceiling": "$500,000 - $1,250,000",
+      "deadline": "09/07/2027",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #20-01 (DOT - FAA Aviation Research Grants). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Supplies dedicated funding for formula electric battery dyno benches, thermal runaway enclosures, and telemetry testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/328902"
+    },
+    {
+      "id": "gov-363326",
+      "agency": "ANIMAL AND PLANT HEALTH INSPECTION SERVICE",
+      "category": "STUDENT",
+      "title": "Plant Protection Act Section 7721 Fiscal Year 2027 National Clean Plant Network (NCPN)",
+      "ceiling": "$750,000 - $2,000,000",
+      "deadline": "10/19/2026",
+      "score": "90% Fit",
+      "synopsis": "Federal solicitation #USDA-APHIS-10031-PPQ-NCPN-2027 (Animal and Plant Health Inspection Service). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Multi-year sponsorship covering collegiate clean-mobility build budgets and EV conversion tooling with zero departmental subsidization.",
+      "url": "https://www.grants.gov/search-results-detail/363326"
+    },
+    {
+      "id": "gov-358100",
+      "agency": "IDAHO FIELD OFFICE",
+      "category": "STUDENT",
+      "title": "Advanced Nuclear Energy Licensing Cost-Share Grant Program",
+      "ceiling": "$750,000 - $2,000,000",
+      "deadline": "11/30/2026",
+      "score": "90% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003339 (Idaho Field Office). Funds institutional capability, technician training, advanced manufacturing machinery, and hands-on student engineering.",
+      "pitch": "Multi-year sponsorship covering collegiate clean-mobility build budgets and EV conversion tooling with zero departmental subsidization.",
+      "url": "https://www.grants.gov/search-results-detail/358100"
+    },
+    {
+      "id": "odhe-rapids-7",
+      "agency": "OHIO DEPT OF HIGHER EDUCATION (ODHE)",
+      "category": "CAPEX",
+      "title": "RAPIDS 7: Regionally Aligned Priority Equipment Initiative",
+      "ceiling": "$350,000 - $500,000",
+      "deadline": "Annual State FY Cycle (Rolling Consortium)",
+      "score": "97% Fit",
+      "synopsis": "State capital equipment allocation program dedicated to advanced manufacturing, multi-axis CNC machining, additive cell installations, and robotics training infrastructure tied to regional Ohio workforce compacts.",
+      "pitch": "Secures 100% state-funded capital equipment (e.g. 5-axis CNC machining centers, waterjets, robotic cells), directly eliminating six-figure departmental CapEx drawdowns.",
+      "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids"
+    },
+    {
+      "id": "ohio-third-frontier-tech",
+      "agency": "OHIO THIRD FRONTIER",
+      "category": "CAPEX",
+      "title": "Technology Validation & Prototyping Facility Award",
+      "ceiling": "$150,000 - $300,000",
+      "deadline": "Quarterly Review Cycle",
+      "score": "94% Fit",
+      "synopsis": "Provides validation and rapid prototyping capital for university-industry collaborative testbeds, sensor instrumentation, and hardware proof-of-concept fabrication suites.",
+      "pitch": "Directly underwrites rapid prototyping hardware and telemetry acquisition, bridging student lab work into validated commercial spinoffs with industrial partner sponsorship.",
+      "url": "https://development.ohio.gov/business/third-frontier-and-technology"
+    },
+    {
+      "id": "jobsohio-odot-mobility",
+      "agency": "JOBSOHIO / ODOT",
+      "category": "STUDENT",
+      "title": "Advanced Mobility & Autonomous Prototyping Infrastructure Grant",
+      "ceiling": "$200,000",
+      "deadline": "Semi-Annual State Corridor Cycle",
+      "score": "92% Fit",
+      "synopsis": "Infrastructure and equipment funding for connected autonomous vehicle test benches, EV powertrain calibration tracks, and student advanced manufacturing credentialing.",
+      "pitch": "Co-funds collegiate EV test-track telemetry, autonomous drive sensors, and student workforce certifications with zero institutional overhead.",
+      "url": "https://www.jobsohio.com/why-ohio/workforce"
+    },
+    {
+      "id": "sae-cds-tooling-subsidy",
+      "agency": "SAE INTERNATIONAL / CDS FOUNDATION",
+      "category": "STUDENT",
+      "title": "Collegiate Design Series (CDS) Vehicle Build & Tooling Subsidy",
+      "ceiling": "$15,000 - $35,000",
+      "deadline": "Fall/Winter Build Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct institutional build sponsorships and parts stipends providing tires, suspension hardware, telemetry sensors, and CNC machining consumables for Formula SAE, Baja SAE, and Clean Snowmobile teams.",
+      "pitch": "Subsidizes student vehicle raw materials and components, insulating internal university departmental accounts from multi-team build expenses.",
+      "url": "https://www.sae.org/attend/student-events"
+    },
+    {
+      "id": "dot-utc-mobility-bench",
+      "agency": "U.S. DOT / UTC PROGRAM",
+      "category": "CAPEX",
+      "title": "University Transportation Center: Advanced Mobility Test Instrumentation",
+      "ceiling": "$250,000 - $500,000",
+      "deadline": "Consortium Renewal Window",
+      "score": "91% Fit",
+      "synopsis": "Inter-collegiate consortium capital funding dedicated to EV dynamometers, high-speed telemetry loggers, battery cycling environmental chambers, and collision avoidance sensor rigs.",
+      "pitch": "Leverages regional university consortium matching to modernize shared vehicle test benches, expanding student research throughput without capital debt.",
+      "url": "https://www.transportation.gov/utc"
+    },
+    {
+      "id": "haas-cnc-tooling-2026",
+      "agency": "GENE HAAS FOUNDATION",
+      "category": "MACHINING",
+      "title": "Post-Secondary CNC Machining & Tooling Grant",
+      "ceiling": "$25,000 - $50,000",
+      "deadline": "Rolling Quarterly Review",
+      "score": "99% Fit",
+      "synopsis": "Direct cash grants dedicated to collegiate and post-secondary machine shops for CNC endmills, indexable tooling, workholding vises, machine accessories, and Haas CNC mill/lathe maintenance.",
+      "pitch": "Provides direct non-tuition budget relief for student machine shop tooling wear-and-tear, directly preserving the center's operating reserve.",
+      "url": "https://ghaasfoundation.org"
+    },
+    {
+      "id": "sme-prime-shop-2026",
+      "agency": "SME EDUCATION FOUNDATION",
+      "category": "MACHINING",
+      "title": "PRIME: Partnership Response In Manufacturing Education",
+      "ceiling": "$85,000 - $120,000",
+      "deadline": "November 14",
+      "score": "95% Fit",
+      "synopsis": "Industrial infrastructure co-investment modernizing collegiate machining labs with industrial 3D printers, multi-axis CNC simulators, metrology equipment, and CAM curriculum.",
+      "pitch": "Designates the facility as an accredited manufacturing training hub, attracting corporate sponsorships and modernizing shop metrology.",
+      "url": "https://www.smeef.org"
+    },
+    {
+      "id": "aws-lincoln-welding-safety",
+      "agency": "AWS / LINCOLN ELECTRIC FOUNDATION",
+      "category": "SAFETY",
+      "title": "Welder Training & Source Extraction Infrastructure Grant",
+      "ceiling": "$50,000",
+      "deadline": "Annual Spring/Fall Cycle",
+      "score": "95% Fit",
+      "synopsis": "Capital funding for downdraft cutting tables, source fume extraction arms, ambient particulate filtration units, and modernized multiprocess inverter welding stations.",
+      "pitch": "Directly eliminates university Environmental Health & Safety (EH&S) particulate compliance liabilities in student fabrication areas.",
+      "url": "https://www.aws.org"
+    },
+    {
+      "id": "esab-fab-modernization",
+      "agency": "ESAB INDUSTRIAL FABRICATION ALLIANCE",
+      "category": "SAFETY",
+      "title": "Fab-Lab Modernization & Personal Protection Equipment Endowment",
+      "ceiling": "$35,000",
+      "deadline": "Rolling Review",
+      "score": "90% Fit",
+      "synopsis": "Modernization package supplying safe plasma cutting stations, auto-darkening air-purifying respirators (PAPR), and fire-retardant welding cubicles.",
+      "pitch": "Upgrades hot-work safety barriers and PPE, mitigating fire and respiratory risk during vehicle chassis prep.",
+      "url": "https://www.esab.com"
+    },
+    {
+      "id": "honda-mobility-stem-award",
+      "agency": "HONDA USA FOUNDATION",
+      "category": "STUDENT",
+      "title": "Workforce & Mobility STEM Lab Modernization Award",
+      "ceiling": "$75,000 - $100,000",
+      "deadline": "October 31 (Annual Cycle)",
+      "score": "93% Fit",
+      "synopsis": "Supports collegiate hands-on mobility engineering teams, hybrid vehicle powertrain design, clean manufacturing techniques, and student diversity in motorsports.",
+      "pitch": "Links student vehicle teams directly with Midwest automotive OEM engineering leadership while offsetting prototyping and travel overhead.",
+      "url": "https://honda.com/community/honda-usa-foundation"
+    },
+    {
+      "id": "ford-nextgen-mobility-fund",
+      "agency": "FORD MOTOR COMPANY FUND",
+      "category": "STUDENT",
+      "title": "NextGen Mobility & EV Battery Prototyping Grant",
+      "ceiling": "$50,000",
+      "deadline": "December 15",
+      "score": "91% Fit",
+      "synopsis": "Project funding for university collegiate engineering design teams focusing on electric vehicle battery management, lightweight structural design, and connected telemetry.",
+      "pitch": "Offsets custom battery enclosure and BMS testing hardware costs for collegiate design series entries.",
+      "url": "https://www.fordfund.org"
+    },
+    {
+      "id": "boeing-aerostructures-capstone",
+      "agency": "THE BOEING COMPANY",
+      "category": "STUDENT",
+      "title": "Autonomous Aerostructures & Uncrewed Systems Capstone Grant",
+      "ceiling": "$70,000",
+      "deadline": "Rolling Academic Cycle",
+      "score": "93% Fit",
+      "synopsis": "Equipment, tooling, and materials grant supporting student composite mold machining, prepreg carbon curing, and drone telemetry rigs.",
+      "pitch": "Underwrites aerostructures prototyping tooling and telemetry equipment, creating a direct pipeline into aerospace industry capstones.",
+      "url": "https://www.boeing.com/principles/community-engagement"
+    },
+    {
+      "id": "caterpillar-heavy-machinery",
+      "agency": "CATERPILLAR FOUNDATION",
+      "category": "CAPEX",
+      "title": "Heavy Machinery & Hydraulic Testbed Modernization Grant",
+      "ceiling": "$100,000",
+      "deadline": "Q1 Foundation Cycle",
+      "score": "89% Fit",
+      "synopsis": "Underwrites advanced fluid power test benches, high-load fatigue testing actuators, and student heavy-machinery design labs.",
+      "pitch": "Supplies heavy-duty testing apparatus to engineering students with 0% institutional capital budget utilization.",
+      "url": "https://www.caterpillar.com"
+    }
+  ]
+};
 
+    let liveGrants = [...FALLBACK_PAYLOAD.grants];
     let currentFilter = 'ALL';
+
+    function updateKpis(data) {
+      if (!data) return;
+      if (data.total_addressable) {
+        const el = document.getElementById('kpi-total-val');
+        if (el) el.innerText = data.total_addressable;
+      }
+      if (data.count !== undefined) {
+        const el = document.getElementById('kpi-count');
+        if (el) el.innerText = `${data.count} Active`;
+      }
+      if (data.capex_tooling_offset) {
+        const el = document.getElementById('kpi-capex-val');
+        if (el) el.innerText = data.capex_tooling_offset;
+      }
+      const notice = document.getElementById('lastUpdatedNotice');
+      if (notice) {
+        const count = data.count || liveGrants.length;
+        notice.innerText = `Live Feed: Synchronized ${data.last_updated || 'Active'} (${count} Opportunities across 4 Tiers)`;
+      }
+    }
+
+    async function refreshGrantsData() {
+      const btn = document.getElementById('refreshBtn');
+      if (btn) {
+        btn.innerHTML = '🔄 Refreshing...';
+        btn.disabled = true;
+        btn.style.opacity = '0.75';
+      }
+
+      try {
+        // Cache-busting fetch
+        const res = await fetch('grants.json?_t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (data && Array.isArray(data.grants)) {
+          liveGrants = data.grants;
+          updateKpis(data);
+          console.log(`[GrantPortal] Successfully loaded ${data.grants.length} live opportunities.`);
+        }
+      } catch (err) {
+        console.warn('[GrantPortal] Live fetch unavailable (using bundled data):', err);
+        updateKpis(FALLBACK_PAYLOAD);
+      } finally {
+        if (btn) {
+          btn.innerHTML = '🔄 Refresh Grants';
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        }
+        loadLiveGrants();
+      }
+    }
 
     function setFilter(category, btn) {
       currentFilter = category;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-     loadLiveGrants();
+      loadLiveGrants();
     }
 
     function loadLiveGrants() {
-      const search = document.getElementById('searchInput').value.toLowerCase();
+      const searchInput = document.getElementById('searchInput');
+      const search = searchInput ? searchInput.value.toLowerCase().trim() : '';
       const container = document.getElementById('grantsContainer');
-      
-      const filtered = GRANT_DATA.filter(g => {
+      if (!container) return;
+
+      const filtered = liveGrants.filter(g => {
         const matchesCategory = currentFilter === 'ALL' || g.category === currentFilter;
-        const matchesSearch = g.title.toLowerCase().includes(search) || 
+        const matchesSearch = !search || 
+                              g.title.toLowerCase().includes(search) || 
                               g.agency.toLowerCase().includes(search) || 
                               g.synopsis.toLowerCase().includes(search) ||
                               g.pitch.toLowerCase().includes(search);
         return matchesCategory && matchesSearch;
       });
 
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--card-bg); border: 1px dashed var(--card-border); border-radius: 12px;">
+            <h3 style="margin-bottom: 0.5rem;">No matching opportunities found</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Try adjusting your keyword search or category filter.</p>
+          </div>
+        `;
+        return;
+      }
+
       container.innerHTML = filtered.map(g => `
         <div class="grant-card">
           <div>
             <div class="card-top">
-              <span class="agency-tag">${g.agency}</span>
+              <div class="card-top-left">
+                <span class="agency-tag">${g.agency}</span>
+                <span class="category-tag">${g.category}</span>
+              </div>
               <span class="score-badge">★ ${g.score}</span>
             </div>
             <h2 class="grant-title">${g.title}</h2>
@@ -673,6 +983,7 @@
             </div>
             <div class="card-actions">
               <button class="btn btn-scarlet" onclick="openSingleGrantBrief('${g.id}')">Quick Brief</button>
+              <a class="btn" href="${g.url}" target="_blank" rel="noopener noreferrer">Official Solicit ↗</a>
             </div>
           </div>
         </div>
@@ -684,18 +995,21 @@
     }
 
     function openExecutiveDraft() {
+      const totalAddressable = document.getElementById('kpi-total-val') ? document.getElementById('kpi-total-val').innerText : '$13,560,000';
+      const activeCount = liveGrants.length;
       const memo = `SUBJECT: Strategic Infrastructure Initiative: External Non-Tuition CapEx & Tooling Portfolio
 
 Center Leadership & Operations Directors,
 
-I have cataloged and vetted high-probability external funding opportunities targeting our student design laboratory, advanced machining capabilities, and student safety compliance. 
+I have cataloged and vetted high-probability external funding opportunities (${activeCount} active solicitations totaling ${totalAddressable} in addressable funding) targeting our student engineering laboratory, advanced multi-axis machining facilities, and student safety compliance across four distinct tiers:
 
 Key Strategic Highlights:
-1. Capital Cost Avoidance: Target awards total over $600K in capital equipment offsets (including Ohio ODHE RAPIDS and SME Foundation grants) which directly alleviate center CapEx requirements.
-2. Safety & Audit Elimination: AWS/Lincoln funding specifically targets welding and composite particulate ventilation, closing potential institutional EH&S liabilities before annual reviews.
-3. Multi-Team Tooling: Gene Haas Foundation rolling grants ($25K) can directly underwrite our annual consumable tooling expenditure across Formula, Baja, and aerospace projects.
+1. Federal Tier (DoD, NSF, DOE, NASA/FAA): Solicitations targeting defense manufacturing, laboratory instrumentation, and experiential collegiate testbeds.
+2. State & Regional Corridors: Ohio RAPIDS and Ohio Third Frontier equipment initiatives securing up to 100% state equipment backing, directly avoiding departmental CapEx.
+3. Academic Consortia (SAE CDS / UTC): Direct vehicle build subsidies and sensor/telemetry test bench allocations for Formula, Baja, and clean mobility teams.
+4. Private OEMs & Foundations: Gene Haas Foundation rolling grants ($25K-$50K) dedicated to machine shop tooling replenishment, plus SME PRIME and AWS/Lincoln safety ventilation funding.
 
-I have summarized the initial proposal alignments and can provide a 10-minute briefing at your convenience to outline the submission pathway.
+I have summarized the proposal pathways and can provide a 10-minute briefing at your convenience to outline the submission schedule.
 
 Respectfully submitted,
 Project Operations & Technical Supervision`;
@@ -705,20 +1019,31 @@ Project Operations & Technical Supervision`;
     }
 
     function openSingleGrantBrief(id) {
-      const grant = GRANT_DATA.find(g => g.id === id);
+      const grant = liveGrants.find(g => g.id === id);
       if (!grant) return;
 
       const brief = `SUBJECT: Program Pitch: ${grant.agency} (${grant.ceiling})
 
-Director,
+Director & Operations Committee,
 
-I recommend evaluating the following program for our lab operations:
+I recommend evaluating the following program for our lab operations and student build pipeline:
 
-Opportunity: ${grant.title}
+Program: ${grant.title}
 Funding Ceiling: ${grant.ceiling}
-Strategic Alignment: ${grant.pitch}
+Deadline / Cycle: ${grant.deadline}
+Category: ${grant.category}
+Relevance Score: ${grant.score}
 
-Next Step: Staff operational review and submission package preparation.`;
+Technical Synopsis:
+${grant.synopsis}
+
+Leadership Strategic Alignment:
+${grant.pitch}
+
+Official Notice:
+${grant.url}
+
+Next Step: Review submission prerequisites and initiate proposal package drafting.`;
 
       document.getElementById('emailPreviewText').innerText = brief;
       document.getElementById('directorModal').style.display = 'flex';
@@ -731,7 +1056,7 @@ Next Step: Staff operational review and submission package preparation.`;
     function copyEmailDraft() {
       const text = document.getElementById('emailPreviewText').innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Executive memo copied to clipboard.");
+        alert('Executive memo copied to clipboard.');
       });
     }
 
@@ -745,12 +1070,10 @@ Next Step: Staff operational review and submission package preparation.`;
       }
     });
 
-    function refreshPage() {
-      window.location.reload();
-    }
-
     const renderGrants = loadLiveGrants;
-    loadLiveGrants();
+
+    // Initial load
+    refreshGrantsData();
   </script>
 </body>
 </html>

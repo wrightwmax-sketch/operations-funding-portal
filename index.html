@@ -558,6 +558,38 @@
         margin-bottom: 1.5rem;
       }
     }
+  
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .spinning {
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+    .toast-notification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #181c23;
+      color: #ffffff;
+      border: 1px solid var(--accent-scarlet);
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(186, 12, 47, 0.3);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
@@ -575,7 +607,8 @@
         </div>
       </div>
       <div class="header-actions">
-        <button class="btn btn-refresh" id="refreshBtn" onclick="refreshGrantsData()">🔄 Refresh Grants</button>
+        <button id="refreshBtn" class="btn btn-scarlet" onclick="triggerGrantRefresh()">🔄 Refresh Grants</button>
+        <span id="lastUpdatedTag" style="font-size:0.8rem; color:var(--text-muted); margin-left:0.5rem;">Last verified: Checking...</span>
         <button class="btn" onclick="togglePresentationMode()">📺 Boardroom Mode</button>
         <button class="btn btn-scarlet" onclick="openExecutiveDraft()">✉️ Director Briefing</button>
         <button class="btn" onclick="window.print()">🖨️ PDF Summary</button>
@@ -586,17 +619,17 @@
     <section class="metric-grid">
       <div class="metric-card">
         <div class="metric-title">Addressable External Funding</div>
-        <div class="metric-value" id="kpi-total-val">$103,995,000</div>
+        <div class="metric-value" id="kpi-total-val">$27,020,000</div>
         <div class="metric-sub" id="kpi-total-sub">Active open solicitation pool</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">Target Opportunities</div>
-        <div class="metric-value" id="kpi-count">116 Active</div>
+        <div class="metric-value" id="kpi-count">41 Active</div>
         <div class="metric-sub" id="kpi-count-sub">100% Higher Education Eligible</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">CapEx Tooling Offset</div>
-        <div class="metric-value" id="kpi-capex-val">$82,795,000</div>
+        <div class="metric-value" id="kpi-capex-val">$19,445,000</div>
         <div class="metric-sub">Machine acquisitions & upgrades</div>
       </div>
       <div class="metric-card">
@@ -2442,36 +2475,65 @@
       }
     }
 
-    async function refreshGrantsData() {
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toastNotification');
+      if (!toast) return;
+      toast.innerText = message;
+      toast.style.borderColor = isError ? '#ef4444' : 'var(--accent-scarlet)';
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    async function triggerGrantRefresh() {
       const btn = document.getElementById('refreshBtn');
+      const tag = document.getElementById('lastUpdatedTag');
+      const notice = document.getElementById('lastUpdatedNotice');
+      
       if (btn) {
-        btn.innerHTML = '🔄 Refreshing...';
         btn.disabled = true;
-        btn.style.opacity = '0.75';
+        btn.innerHTML = '<span class="spinning">🔄</span> Validating live sources...';
       }
 
       try {
-        // Cache-busting fetch
-        const res = await fetch('grants.json?_t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch('./grants.json?nocache=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
+        
         if (data && Array.isArray(data.grants)) {
           liveGrants = data.grants;
           updateKpis(data);
-          console.log(`[GrantPortal] Successfully loaded ${data.grants.length} live opportunities.`);
+          
+          if (tag) {
+            tag.innerText = `Last verified: ${data.last_updated || 'Just now'}`;
+          }
+          if (notice) {
+            notice.innerText = `Live Feed: Synchronized ${data.last_updated} (${data.count} Opportunities across 4 Tiers)`;
+          }
+
+          renderGrants();
+          showToast('Database synchronized & verified.');
+          console.log(`[GrantPortal] Successfully loaded and verified ${data.grants.length} opportunities.`);
         }
       } catch (err) {
-        console.warn('[GrantPortal] Live fetch unavailable (using bundled data):', err);
+        console.warn('[GrantPortal] Live verification fetch failed, falling back to cache:', err);
+        showToast('Using verified local cache.', true);
+        if (tag) {
+          tag.innerText = `Using verified local cache (${FALLBACK_PAYLOAD.last_updated})`;
+        }
+        liveGrants = FALLBACK_PAYLOAD.grants || [];
         updateKpis(FALLBACK_PAYLOAD);
+        renderGrants();
       } finally {
         if (btn) {
-          btn.innerHTML = '🔄 Refresh Grants';
           btn.disabled = false;
-          btn.style.opacity = '1';
+          btn.innerHTML = '🔄 Refresh Grants';
         }
-        loadLiveGrants();
       }
     }
+
+    const refreshGrantsData = triggerGrantRefresh;
 
     function setCategoryFilter(category, btn) {
       currentCategoryFilter = category;
@@ -2658,5 +2720,6 @@ Next Step: Confirm PI / Student Team alignment and prepare initial proposal narr
     // Initial load
     refreshGrantsData();
   </script>
+  <div id="toastNotification" class="toast-notification"></div>
 </body>
 </html>

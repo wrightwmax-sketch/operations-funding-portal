@@ -481,6 +481,7 @@
         <p>Targeted Non-Tuition Funding, Machinery Tooling Grants, and Risk-Mitigation Capital Programs</p>
       </div>
       <div class="header-actions">
+        <button class="btn" onclick="refreshPage()">🔄 Refresh</button>
         <button class="btn" onclick="togglePresentationMode()">📺 Boardroom Mode</button>
         <button class="btn btn-scarlet" onclick="openExecutiveDraft()">✉️ Director Briefing</button>
         <button class="btn" onclick="window.print()">🖨️ PDF Summary</button>
@@ -744,7 +745,12 @@ Next Step: Staff operational review and submission package preparation.`;
       }
     });
 
-    renderGrants();
+    function refreshPage() {
+      window.location.reload();
+    }
+
+    const renderGrants = loadLiveGrants;
+    loadLiveGrants();
   </script>
 </body>
 </html>

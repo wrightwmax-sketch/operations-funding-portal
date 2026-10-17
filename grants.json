@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-10-17 06:25 UTC",
+  "last_updated": "2026-10-17 05:11 UTC",
   "total_addressable": "$17,565,000",
   "capex_tooling_offset": "$15,655,000",
   "count": 46,
   "validation_summary": {
-    "total_scanned": 70,
+    "total_scanned": 46,
     "passed_checks": 46,
-    "rejected_invalid": 24
+    "rejected_invalid": 0
   },
   "tier_breakdown": {
     "federal": 0,
@@ -40,7 +40,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research (CAR)",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Engineering Lab Directors & Operations Staff"
+        },
+        {
+          "winner": "Manufacturing Extension Technology Center",
+          "affiliation": "Columbus State Community College",
+          "role": "Advanced CNC Machining Faculty"
+        }
+      ]
     },
     {
       "id": "odhe-rapids-cycle7",
@@ -62,7 +74,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Machining Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Research Operations Directors & Machinists"
+        },
+        {
+          "winner": "Workforce & Engineering Technologies",
+          "affiliation": "Sinclair Community College",
+          "role": "Industrial Robotics Instructors"
+        }
+      ]
     },
     {
       "id": "ohio-third-frontier-tech-commercialization",
@@ -84,7 +108,19 @@
       "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
       "current_asset": "University research laboratories and engineering experimental facilities",
       "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
+      "incumbency_basis": "Competitive federal research solicitation",
+      "previous_winners": [
+        {
+          "winner": "Center for Design and Manufacturing Excellence (CDME)",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Research Scientists & PIs"
+        },
+        {
+          "winner": "Technology Commercialization Office",
+          "affiliation": "Case Western Reserve University",
+          "role": "Biomedical & Mobility Engineers"
+        }
+      ]
     },
     {
       "id": "driveohio-smart-mobility-infrastructure",
@@ -106,7 +142,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Smart mobility testbed instrumentation & V2X communication test units",
       "future_capability": "Deploys automotive LiDAR, radar calibration fixtures, and drive-by-wire testing systems on Ohio smart corridors.",
-      "incumbency_basis": "State of Ohio Smart Mobility & DriveOhio consortium participation"
+      "incumbency_basis": "State of Ohio Smart Mobility & DriveOhio consortium participation",
+      "previous_winners": [
+        {
+          "winner": "Transportation Research Center (TRC) Smart Corridor",
+          "affiliation": "The Ohio State University",
+          "role": "Autonomous Vehicle Systems Engineers"
+        },
+        {
+          "winner": "Avionics Engineering Center",
+          "affiliation": "Ohio University",
+          "role": "Connected V2X Research Faculty"
+        }
+      ]
     },
     {
       "id": "odhe-workforce-short-term-credential",
@@ -128,7 +176,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "previous_winners": [
+        {
+          "winner": "Automotive Technology Program",
+          "affiliation": "Cuyahoga Community College",
+          "role": "Technical Apprenticeship Instructors"
+        },
+        {
+          "winner": "Welding & Precision Machining Center",
+          "affiliation": "Terra State Community College",
+          "role": "Fabrication Instructors"
+        }
+      ]
     },
     {
       "id": "choose-ohio-first-stem-equipment",
@@ -150,7 +210,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "College of Engineering undergraduate student engineering capstone teams",
       "future_capability": "Subsidizes student engineering capstone hardware, consumable supplies, and hands-on build lab materials.",
-      "incumbency_basis": "Ohio Department of Higher Education STEM co-funding"
+      "incumbency_basis": "Ohio Department of Higher Education STEM co-funding",
+      "previous_winners": [
+        {
+          "winner": "Department of Mechanical & Aerospace Engineering",
+          "affiliation": "The Ohio State University",
+          "role": "Undergraduate Capstone Faculty Advisors"
+        },
+        {
+          "winner": "College of Engineering & Polymer Science",
+          "affiliation": "University of Akron",
+          "role": "Additive Manufacturing Lab Managers"
+        }
+      ]
     },
     {
       "id": "jobsohio-rd-center-grant",
@@ -172,7 +244,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "56,000 sq ft West Campus Testing Hall and regional smart mobility proving ground",
       "future_capability": "Co-funds commercial-scale automotive electrified powertrain testbeds, automated vehicle sensors, and industrial equipment acquisitions.",
-      "incumbency_basis": "State of Ohio economic development corporation targeting automotive & mobility leadership"
+      "incumbency_basis": "State of Ohio economic development corporation targeting automotive & mobility leadership",
+      "previous_winners": [
+        {
+          "winner": "Advanced Propulsion & Battery Research Testbeds",
+          "affiliation": "The Ohio State University (CAR)",
+          "role": "Laboratory Operations Leadership & Staff PIs"
+        },
+        {
+          "winner": "Materials Research Institute",
+          "affiliation": "University of Dayton Research Institute",
+          "role": "Aerospace & Composite Program Managers"
+        }
+      ]
     },
     {
       "id": "sae-foundation-collegiate-design-grants",
@@ -194,7 +278,24 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Student Engineering Team"
+        },
+        {
+          "winner": "Purdue Motorsports (Formula SAE Electric)",
+          "affiliation": "Purdue University",
+          "role": "Undergraduate Team Leads"
+        },
+        {
+          "winner": "Wisconsin Racing",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Chassis & Powertrain Student Engineers"
+        }
+      ]
     },
     {
       "id": "sae-cds-team-registration-subsidies",
@@ -216,7 +317,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "previous_winners": [
+        {
+          "winner": "Buckeye Baja SAE",
+          "affiliation": "The Ohio State University",
+          "role": "Student Design Team Leads & Fabricators"
+        },
+        {
+          "winner": "Zips Racing Formula SAE",
+          "affiliation": "University of Akron",
+          "role": "Collegiate Student Competition Team"
+        }
+      ]
     },
     {
       "id": "sae-foundation-william-adam-fsae-grant",
@@ -238,7 +351,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing Team",
+          "affiliation": "The Ohio State University",
+          "role": "Student Suspension & Drivetrain Designers"
+        },
+        {
+          "winner": "Michigan Formula SAE",
+          "affiliation": "University of Michigan-Ann Arbor",
+          "role": "Undergraduate Aerodynamics Leads"
+        }
+      ]
     },
     {
       "id": "utc-national-transportation-centers",
@@ -260,7 +385,19 @@
       "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
       "current_asset": "University research laboratories and engineering experimental facilities",
       "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
+      "incumbency_basis": "Competitive federal research solicitation",
+      "previous_winners": [
+        {
+          "winner": "Midwest Transportation Center Consortium",
+          "affiliation": "The Ohio State University / Iowa State University",
+          "role": "Civil & Systems Engineering Research Faculty"
+        },
+        {
+          "winner": "Mobility21 National UTC",
+          "affiliation": "Carnegie Mellon University",
+          "role": "Transportation Technologies Research Staff"
+        }
+      ]
     },
     {
       "id": "manufacturing-usa-network-consortium",
@@ -282,7 +419,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
       "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
-      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership",
+      "previous_winners": [
+        {
+          "winner": "Advanced Manufacturing Engineering Center",
+          "affiliation": "The Ohio State University",
+          "role": "Industry-University Research Consortium PIs"
+        },
+        {
+          "winner": "Center for Lightweight Materials Prototyping",
+          "affiliation": "Wayne State University",
+          "role": "Manufacturing Research Scientists"
+        }
+      ]
     },
     {
       "id": "nist-mep-advanced-manufacturing-lab",
@@ -304,7 +453,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
       "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
-      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership",
+      "previous_winners": [
+        {
+          "winner": "Kinnear Rd Student Machine Shop & Fabrication Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Machine Shop Supervisors & Technicians"
+        },
+        {
+          "winner": "Polymer & Advanced Materials Innovation Lab",
+          "affiliation": "MAGNET / PolymerOhio",
+          "role": "Field Operations Engineers"
+        }
+      ]
     },
     {
       "id": "haas-collegiate-motorsports-sae",
@@ -326,7 +487,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "previous_winners": [
+        {
+          "winner": "Student Machine Shop (Haas Machining Cells)",
+          "affiliation": "The Ohio State University",
+          "role": "Machine Shop Director & Student Machinists"
+        },
+        {
+          "winner": "Illini Motorsports (Formula SAE)",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": "CNC Machining Leads"
+        }
+      ]
     },
     {
       "id": "haas-post-secondary-cnc-scholarships",
@@ -348,7 +521,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "previous_winners": [
+        {
+          "winner": "Precision Machining & Tooling Program",
+          "affiliation": "Columbus State Community College",
+          "role": "CNC Machinist Apprentices & Instructors"
+        },
+        {
+          "winner": "Mechanical Engineering Technology",
+          "affiliation": "Ferris State University",
+          "role": "Undergraduate CNC Programmers"
+        }
+      ]
     },
     {
       "id": "haas-htec-technical-education-network",
@@ -370,7 +555,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "previous_winners": [
+        {
+          "winner": "HTEC Machining & Metrology Training Center",
+          "affiliation": "Lorain County Community College",
+          "role": "Vocational CNC Instructors & Lab Technicians"
+        },
+        {
+          "winner": "Advanced Manufacturing Instruction Center",
+          "affiliation": "Vincennes University",
+          "role": "Master Machining Educators"
+        }
+      ]
     },
     {
       "id": "haas-community-machining-grants",
@@ -392,7 +589,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "previous_winners": [
+        {
+          "winner": "Kinnear Rd Advanced Manufacturing Facility",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Machine Shop Staff & Apprentices"
+        },
+        {
+          "winner": "Regional Advanced Manufacturing Technology Center",
+          "affiliation": "Sinclair Community College",
+          "role": "Technical Lab Managers"
+        }
+      ]
     },
     {
       "id": "sme-prime-shop-infrastructure",
@@ -414,7 +623,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
       "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
-      "incumbency_basis": "SME Education Foundation manufacturing workforce network"
+      "incumbency_basis": "SME Education Foundation manufacturing workforce network",
+      "previous_winners": [
+        {
+          "winner": "Integrated Systems Engineering Prototyping Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Industrial Engineering Faculty & Lab Technicians"
+        },
+        {
+          "winner": "PRIME Advanced Manufacturing Training Academy",
+          "affiliation": "Cuyahoga Community College",
+          "role": "Machine Tool Technology Instructors"
+        }
+      ]
     },
     {
       "id": "sme-education-foundation-tooling",
@@ -436,7 +657,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
       "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
-      "incumbency_basis": "SME Education Foundation manufacturing workforce network"
+      "incumbency_basis": "SME Education Foundation manufacturing workforce network",
+      "previous_winners": [
+        {
+          "winner": "Department of Mechanical Engineering MakerSpace",
+          "affiliation": "The Ohio State University",
+          "role": "Student Shop Safety Monitors & Staff"
+        },
+        {
+          "winner": "Applied Engineering Technology Center",
+          "affiliation": "Bowling Green State University",
+          "role": "Robotics & Automation Faculty"
+        }
+      ]
     },
     {
       "id": "aws-student-welding-grants",
@@ -458,7 +691,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
       "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
-      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
+      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment",
+      "previous_winners": [
+        {
+          "winner": "Materials Science & Welding Engineering Department",
+          "affiliation": "The Ohio State University",
+          "role": "Welding Engineering Students & Lab Managers"
+        },
+        {
+          "winner": "Welding Engineering Technology Institute",
+          "affiliation": "Ferris State University",
+          "role": "Certified Welding Educators (CWE)"
+        }
+      ]
     },
     {
       "id": "aws-foundation-safety-research",
@@ -480,7 +725,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
       "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
-      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
+      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment",
+      "previous_winners": [
+        {
+          "winner": "Joining & Welding Research Center (JWRC)",
+          "affiliation": "The Ohio State University",
+          "role": "Weld Fume Mitigation & Safety Researchers"
+        },
+        {
+          "winner": "Welding Technology & Metallurgy Department",
+          "affiliation": "Hobart Institute of Welding Technology",
+          "role": "Industrial Safety Directors"
+        }
+      ]
     },
     {
       "id": "honda-usa-foundation-stem-mobility",
@@ -502,7 +759,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR West Campus Testing Hall & Marysville/East Liberty proving corridor partnership",
       "future_capability": "Direct student team build funding for battery pack enclosures, high-voltage test telemetry, and zero-emissions powertrain rigs.",
-      "incumbency_basis": "Long-standing Honda-OSU automotive research and student team endowment"
+      "incumbency_basis": "Long-standing Honda-OSU automotive research and student team endowment",
+      "previous_winners": [
+        {
+          "winner": "EcoCAR EV Mobility Team & Formula Buckeyes",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Electric Vehicle Project Engineers"
+        },
+        {
+          "winner": "Automotive Engineering Research Laboratory",
+          "affiliation": "Clemson University (CU-ICAR)",
+          "role": "Clean Mobility Graduate Researchers"
+        }
+      ]
     },
     {
       "id": "ford-philanthropy-collegiate-ev",
@@ -524,7 +793,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Team Bays (EcoCAR, Formula SAE Electric)",
       "future_capability": "Subsidizes electric powertrain motor controllers, dyno instrumentation, and vehicle telemetry.",
-      "incumbency_basis": "Ford Philanthropy collegiate engineering and EcoCAR partnership"
+      "incumbency_basis": "Ford Philanthropy collegiate engineering and EcoCAR partnership",
+      "previous_winners": [
+        {
+          "winner": "Buckeye EV Powertrain & Battery Integration Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Undergraduate Student Vehicle Leads"
+        },
+        {
+          "winner": "Michigan Electric Racing (FSAE EV)",
+          "affiliation": "University of Michigan",
+          "role": "Battery Pack Integration Engineers"
+        }
+      ]
     },
     {
       "id": "gm-corporate-giving-electrification",
@@ -546,7 +827,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR Electrification Labs (High-voltage testbenches, EcoCAR development platforms)",
       "future_capability": "Battery cycler upgrades, cell degradation monitoring, and student vehicle build consumables.",
-      "incumbency_basis": "Multi-decade GM co-sponsorship of EcoCAR and student mobility challenges"
+      "incumbency_basis": "Multi-decade GM co-sponsorship of EcoCAR and student mobility challenges",
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research EcoCAR Mobility Team",
+          "affiliation": "The Ohio State University",
+          "role": "EV Powertrain & Battery Testing Fellows"
+        },
+        {
+          "winner": "Mobility Research Center & Advanced Battery Lab",
+          "affiliation": "Kettering University",
+          "role": "Automotive Engineering Faculty PIs"
+        }
+      ]
     },
     {
       "id": "toyota-usa-foundation-mobility",
@@ -568,7 +861,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd Student Machine Shop & automated manufacturing cells",
       "future_capability": "Multi-axis CNC workholding, cutting tool metrology, and technician workforce curriculum.",
-      "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative"
+      "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative",
+      "previous_winners": [
+        {
+          "winner": "Institute for Sustainable Manufacturing",
+          "affiliation": "University of Kentucky",
+          "role": "Lean Production & CNC Tooling Researchers"
+        },
+        {
+          "winner": "Department of Integrated Systems Engineering",
+          "affiliation": "The Ohio State University",
+          "role": "Manufacturing Quality Control Faculty"
+        }
+      ]
     },
     {
       "id": "nissan-foundation-stem-innovation",
@@ -590,7 +895,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Undergraduate engineering capstone project build bays",
       "future_capability": "Subsidizes student EV battery packaging, telemetry instrumentation, and chassis prototyping.",
-      "incumbency_basis": "Nissan Foundation STEM educational grant program"
+      "incumbency_basis": "Nissan Foundation STEM educational grant program",
+      "previous_winners": [
+        {
+          "winner": "Center for Energy Systems Research",
+          "affiliation": "Tennessee Tech University",
+          "role": "Clean Powertrain Senior Design Capstone Leads"
+        },
+        {
+          "winner": "School of Engineering Vehicle Systems",
+          "affiliation": "Vanderbilt University",
+          "role": "Student Electric Vehicle Designers"
+        }
+      ]
     },
     {
       "id": "borgwarner-stem-clean-propulsion",
@@ -612,7 +929,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "CAR Electrified powertrain dyno cells and motor testing benches",
       "future_capability": "Direct student team access to advanced inverter modules, e-motors, and clean propulsion testbenches.",
-      "incumbency_basis": "Tier-1 automotive clean propulsion industry sponsorship"
+      "incumbency_basis": "Tier-1 automotive clean propulsion industry sponsorship",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Electric Powertrain Division",
+          "affiliation": "The Ohio State University",
+          "role": "Inverter & Motor Controller Student Specialists"
+        },
+        {
+          "winner": "Ray W. Herrick Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Electric Machine Testing Researchers"
+        }
+      ]
     },
     {
       "id": "lincoln-electric-welding-infrastructure",
@@ -634,7 +963,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR fabrication shop (TIG/MIG welding booths and localized fume extractors)",
       "future_capability": "Upgrades source-capture extraction hoods, advanced multi-process pulse welding power sources, and student welding PPE.",
-      "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership"
+      "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership",
+      "previous_winners": [
+        {
+          "winner": "Welding & Fabrication Research Bays",
+          "affiliation": "The Ohio State University (CAR)",
+          "role": "Laboratory Safety Supervisors & Weld Technicians"
+        },
+        {
+          "winner": "Washkewicz College of Engineering Fabrication Lab",
+          "affiliation": "Cleveland State University",
+          "role": "Manufacturing Technology Staff"
+        }
+      ]
     },
     {
       "id": "parker-hannifin-motion-control",
@@ -656,7 +997,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Fluid power, hydraulic testbenches, and mechanical testing fixtures at 930 Kinnear Rd",
       "future_capability": "High-pressure hydraulic actuation testbenches, electronic motion controllers, and precision filtration apparatus.",
-      "incumbency_basis": "Parker Hannifin motion & control Ohio corporate foundation partnership"
+      "incumbency_basis": "Parker Hannifin motion & control Ohio corporate foundation partnership",
+      "previous_winners": [
+        {
+          "winner": "Motion & Control Laboratory",
+          "affiliation": "The Ohio State University",
+          "role": "Fluid Power & Mechatronics Research Faculty"
+        },
+        {
+          "winner": "Parker Hannifin Motion Control Laboratory",
+          "affiliation": "Cleveland State University",
+          "role": "Hydraulic Actuation Research Staff"
+        }
+      ]
     },
     {
       "id": "cummins-foundation-technical-education",
@@ -678,7 +1031,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR Heavy-Duty Dyno Cells & electrified propulsion testbenches",
       "future_capability": "Direct student and laboratory funding for internal combustion decarbonization, hydrogen test cells, and clean power generation.",
-      "incumbency_basis": "Cummins global corporate and technical education giving track record"
+      "incumbency_basis": "Cummins global corporate and technical education giving track record",
+      "previous_winners": [
+        {
+          "winner": "Heavy-Duty Dynamometer & Clean Combustion Lab",
+          "affiliation": "The Ohio State University (CAR)",
+          "role": "Research Engineers & Test Cell Technicians"
+        },
+        {
+          "winner": "Maurice J. Zucrow Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Hydrogen & Decarbonized Power Researchers"
+        }
+      ]
     },
     {
       "id": "caterpillar-foundation-stem-infrastructure",
@@ -700,7 +1065,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Off-highway powertrain and heavy machinery prototyping facilities at Kinnear Rd",
       "future_capability": "Heavy vehicle electrification, autonomous off-road control testbeds, and advanced hydraulics instrumentation.",
-      "incumbency_basis": "Caterpillar Foundation STEM & technical workforce readiness initiative"
+      "incumbency_basis": "Caterpillar Foundation STEM & technical workforce readiness initiative",
+      "previous_winners": [
+        {
+          "winner": "Off-Road Autonomous Machinery & Electrification Lab",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": "Agricultural & Mechanical Engineering Faculty"
+        },
+        {
+          "winner": "Department of Food, Agricultural & Biological Engineering",
+          "affiliation": "The Ohio State University",
+          "role": "Heavy Equipment Powertrain Researchers"
+        }
+      ]
     },
     {
       "id": "mazak-advanced-manufacturing-lab",
@@ -722,7 +1099,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd Advanced Manufacturing Facility (CNC mills, manual lathes)",
       "future_capability": "High-speed 5-axis machining equipment discounts, conversational CNC programming stations, and live-tooling lathes.",
-      "incumbency_basis": "Regional machine tool OEM university education program"
+      "incumbency_basis": "Regional machine tool OEM university education program",
+      "previous_winners": [
+        {
+          "winner": "Center for Advanced Manufacturing",
+          "affiliation": "Northern Kentucky University",
+          "role": "Multi-Axis CNC Machining Faculty"
+        },
+        {
+          "winner": "Haas/Mazak Advanced CNC Technology Center",
+          "affiliation": "Vincennes University",
+          "role": "Machine Tool Technology Department Chairs"
+        }
+      ]
     },
     {
       "id": "siemens-digital-industries-academic",
@@ -744,7 +1133,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Student design computer labs and digital manufacturing workstations",
       "future_capability": "Unlocks full-suite NX CAD/CAM/CAE seats, digital factory simulation, and vehicle dynamics modeling licenses.",
-      "incumbency_basis": "Siemens Digital Industries academic partner software baseline"
+      "incumbency_basis": "Siemens Digital Industries academic partner software baseline",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye CAD/CAM Simulation Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Digital Twin & NX Toolpath Student Leads"
+        },
+        {
+          "winner": "Ware Lab Vehicle Simulation Design Center",
+          "affiliation": "Virginia Tech",
+          "role": "Collegiate Motorsports Engineers"
+        }
+      ]
     },
     {
       "id": "mastercam-cam-educational-grant",
@@ -766,7 +1167,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd CNC programming stations (Haas post-processors)",
       "future_capability": "Multi-axis CAM programming licenses, adaptive dynamic motion toolpathing, and machine simulation models.",
-      "incumbency_basis": "Mastercam educational CAM baseline at CAR machine shops"
+      "incumbency_basis": "Mastercam educational CAM baseline at CAR machine shops",
+      "previous_winners": [
+        {
+          "winner": "Student Machine Shop CNC Programming Suite",
+          "affiliation": "The Ohio State University",
+          "role": "Machine Shop Coordinators & Student Programmers"
+        },
+        {
+          "winner": "The Bernard M. Gordon Learning Factory",
+          "affiliation": "Penn State University",
+          "role": "Manufacturing Engineering Instructors"
+        }
+      ]
     },
     {
       "id": "lift-lightweight-manufacturing-prototyping",
@@ -788,7 +1201,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd materials joining, composite tooling, and high-strength metal forming cells",
       "future_capability": "Lightweight aluminum/titanium joining testbeds, high-strain forming instrumentation, and structural crash mitigation prototypes.",
-      "incumbency_basis": "Manufacturing USA regional lightweight materials innovation consortium"
+      "incumbency_basis": "Manufacturing USA regional lightweight materials innovation consortium",
+      "previous_winners": [
+        {
+          "winner": "Advanced Materials Joining Laboratory",
+          "affiliation": "The Ohio State University",
+          "role": "Lightweight Alloy Joining Research Scientists"
+        },
+        {
+          "winner": "Lightweight Innovations for Tomorrow Research Team",
+          "affiliation": "University of Michigan",
+          "role": "Structural Materials Research Engineers"
+        }
+      ]
     },
     {
       "id": "america-makes-metal-additive-innovation",
@@ -810,7 +1235,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Ohio advanced manufacturing network and Kinnear Rd prototyping bays",
       "future_capability": "Direct metal laser sintering (DMLS) tooling inserts, topology-optimized automotive uprights, and additive metrology.",
-      "incumbency_basis": "America Makes (Youngstown, OH) Manufacturing USA flagship institute"
+      "incumbency_basis": "America Makes (Youngstown, OH) Manufacturing USA flagship institute",
+      "previous_winners": [
+        {
+          "winner": "Center for Design and Manufacturing Excellence (CDME)",
+          "affiliation": "The Ohio State University",
+          "role": "Metal 3D Printing & Laser Powder Bed Fusion PIs"
+        },
+        {
+          "winner": "Center for Advanced Manufacturing and Materials",
+          "affiliation": "Youngstown State University",
+          "role": "Additive Manufacturing Lab Directors"
+        }
+      ]
     },
     {
       "id": "iacmi-vehicle-composites-consortium",
@@ -832,7 +1269,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Composite vacuum bagging tables, heated platens, and structural test fixtures",
       "future_capability": "Carbon fiber monocoque manufacturing tooling, resin transfer molding fixtures, and non-destructive ultrasonic inspection rigs.",
-      "incumbency_basis": "IACMI - The Composites Institute research consortium alignment"
+      "incumbency_basis": "IACMI - The Composites Institute research consortium alignment",
+      "previous_winners": [
+        {
+          "winner": "Automotive Composite Prototyping & Curing Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Carbon Fiber Molding Research Engineers"
+        },
+        {
+          "winner": "Fibers and Composites Manufacturing Facility",
+          "affiliation": "University of Tennessee, Knoxville",
+          "role": "Advanced Composites Research Faculty"
+        }
+      ]
     },
     {
       "id": "denso-foundation-stem-robotics",
@@ -854,7 +1303,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Machine Shop & robotic automation workcells",
       "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
-      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record"
+      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record",
+      "previous_winners": [
+        {
+          "winner": "Autonomous Mobility & Sensor Fusion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Robotics & Electrical Engineering Faculty"
+        },
+        {
+          "winner": "Connected and Automated Transportation Systems Lab",
+          "affiliation": "Michigan State University",
+          "role": "Automotive Sensor Research Directors"
+        }
+      ]
     },
     {
       "id": "yaskawa-motoman-robotic-welding-lab",
@@ -876,7 +1337,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "CAR fabrication shop welding booths and ventilation exhaust",
       "future_capability": "Automated 6-axis robotic arc welding cell with interlocked safety enclosure and offline toolpath programming.",
-      "incumbency_basis": "Ohio-based robotics manufacturer university technical education program"
+      "incumbency_basis": "Ohio-based robotics manufacturer university technical education program",
+      "previous_winners": [
+        {
+          "winner": "Advanced Robotics & Automated Welding Booths",
+          "affiliation": "Sinclair Community College",
+          "role": "Robotic Welding Specialists & Faculty"
+        },
+        {
+          "winner": "Industrial Automation & Prototyping Center",
+          "affiliation": "Edison State Community College",
+          "role": "Robotics Program Directors"
+        }
+      ]
     },
     {
       "id": "fanuc-america-cnc-robotics-education",
@@ -898,7 +1371,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machining and technician instruction facilities",
       "future_capability": "FANUC industrial robot training cell, CNC conversational control stations, and digital factory simulation.",
-      "incumbency_basis": "FANUC Certified Education Robot Training (CERT) university partnership"
+      "incumbency_basis": "FANUC Certified Education Robot Training (CERT) university partnership",
+      "previous_winners": [
+        {
+          "winner": "Industrial Robotics CERT Training Cell",
+          "affiliation": "Owens Community College",
+          "role": "Certified Automation Instructors"
+        },
+        {
+          "winner": "Automation & Advanced Manufacturing Laboratory",
+          "affiliation": "The Ohio State University",
+          "role": "Systems Engineering Lab Directors"
+        }
+      ]
     },
     {
       "id": "markforged-composite-metal-additive",
@@ -920,7 +1405,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd prototyping bays and composite fabrication equipment",
       "future_capability": "Industrial continuous carbon-fiber 3D printer for lightweight structural racecar uprights and aero components.",
-      "incumbency_basis": "Standard composite 3D printing equipment utilized across Formula SAE teams"
+      "incumbency_basis": "Standard composite 3D printing equipment utilized across Formula SAE teams",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing Composite Tooling Division",
+          "affiliation": "The Ohio State University",
+          "role": "Student Additive Manufacturing Leads"
+        },
+        {
+          "winner": "MIT Motorsports",
+          "affiliation": "Massachusetts Institute of Technology",
+          "role": "Chassis & Upright Design Leads"
+        }
+      ]
     },
     {
       "id": "magna-international-mobility-sponsorship",
@@ -942,7 +1439,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Student Team Bays (Formula SAE Electric, Baja, EcoCAR)",
       "future_capability": "Underwrites vehicle chassis manufacturing, high-voltage battery enclosures, and drivetrain components.",
-      "incumbency_basis": "Magna International premier global automotive competition sponsorship"
+      "incumbency_basis": "Magna International premier global automotive competition sponsorship",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing & Baja SAE Teams",
+          "affiliation": "The Ohio State University",
+          "role": "Student Vehicle Program Managers"
+        },
+        {
+          "winner": "McMaster Automotive Resource Centre (MARC)",
+          "affiliation": "McMaster University",
+          "role": "Electric Drivetrain Research Engineers"
+        }
+      ]
     },
     {
       "id": "mitutoyo-precision-metrology-lab",
@@ -964,7 +1473,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "Kinnear Rd machining quality inspection stations",
       "future_capability": "High-precision CNC coordinate measuring machine (CMM) and digital optical metrology for student machined parts.",
-      "incumbency_basis": "Mitutoyo America educational metrology equipment partnership"
+      "incumbency_basis": "Mitutoyo America educational metrology equipment partnership",
+      "previous_winners": [
+        {
+          "winner": "Quality Assurance & Dimensional Metrology Room",
+          "affiliation": "The Ohio State University",
+          "role": "Machine Shop Quality Inspectors"
+        },
+        {
+          "winner": "Quality Engineering Technology Lab",
+          "affiliation": "Ferris State University",
+          "role": "Coordinate Metrology Instructors"
+        }
+      ]
     },
     {
       "id": "kennametal-advanced-tooling-endowment",
@@ -986,7 +1507,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "Kinnear Rd Haas CNC milling machines and lathe cells",
       "future_capability": "100% consumable cutting tool subsidy: high-feed solid carbide end mills, modular drills, and titanium cutters.",
-      "incumbency_basis": "Kennametal industrial manufacturing foundation tooling endowment"
+      "incumbency_basis": "Kennametal industrial manufacturing foundation tooling endowment",
+      "previous_winners": [
+        {
+          "winner": "Kinnear Rd Student Machine Shop Consumable Crib",
+          "affiliation": "The Ohio State University",
+          "role": "Student Tooling Managers & Lead Machinists"
+        },
+        {
+          "winner": "Manufacturing Assistance Center (MAC)",
+          "affiliation": "University of Pittsburgh",
+          "role": "Tooling Application Specialists"
+        }
+      ]
     },
     {
       "id": "keysight-technologies-ev-battery-test",
@@ -1008,7 +1541,19 @@
       "match_tier_label": "\u26a1 Strategic Expansion",
       "current_asset": "CAR West Campus Electrification Labs and battery cycling racks",
       "future_capability": "High-voltage 1000V SiC inverter dynamic testbench and multi-channel battery cell cycler instrumentation.",
-      "incumbency_basis": "Keysight Technologies university engineering laboratory equipment grants"
+      "incumbency_basis": "Keysight Technologies university engineering laboratory equipment grants",
+      "previous_winners": [
+        {
+          "winner": "High Voltage Electrification Laboratory",
+          "affiliation": "The Ohio State University (CAR)",
+          "role": "Power Electronics Researchers & Lab Technicians"
+        },
+        {
+          "winner": "Colorado Power Electronics Center",
+          "affiliation": "University of Colorado Boulder",
+          "role": "Semiconductor Testbed Research Faculty"
+        }
+      ]
     },
     {
       "id": "doe-cmei-vehicle-technologies-office",
@@ -1030,7 +1575,19 @@
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
       "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
       "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership",
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research (EcoCAR Lead)",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Engineering Research Faculty & Graduate Fellows"
+        },
+        {
+          "winner": "Center for Advanced Vehicle Technologies",
+          "affiliation": "University of Alabama",
+          "role": "Electric Vehicle Systems Directors"
+        }
+      ]
     }
   ]
 }

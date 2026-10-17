@@ -1757,6 +1757,246 @@ def compute_car_match(grant: dict) -> dict:
         }
 
 
+# ==============================================================================
+# PREVIOUS WINNERS & OCCUPATIONS KNOWLEDGE REPOSITORY
+# ==============================================================================
+
+PREVIOUS_WINNERS_MAP = {
+    "odhe-super-rapids-capital": [
+        {"winner": "Center for Automotive Research (CAR)", "affiliation": "The Ohio State University", "role": "Automotive Engineering Lab Directors & Operations Staff"},
+        {"winner": "Manufacturing Extension Technology Center", "affiliation": "Columbus State Community College", "role": "Advanced CNC Machining Faculty"}
+    ],
+    "odhe-rapids-cycle7": [
+        {"winner": "College of Engineering Machining Labs", "affiliation": "The Ohio State University", "role": "Research Operations Directors & Machinists"},
+        {"winner": "Workforce & Engineering Technologies", "affiliation": "Sinclair Community College", "role": "Industrial Robotics Instructors"}
+    ],
+    "ohio-third-frontier-tech-commercialization": [
+        {"winner": "Center for Design and Manufacturing Excellence (CDME)", "affiliation": "The Ohio State University", "role": "Senior Research Scientists & PIs"},
+        {"winner": "Technology Commercialization Office", "affiliation": "Case Western Reserve University", "role": "Biomedical & Mobility Engineers"}
+    ],
+    "driveohio-smart-mobility-infrastructure": [
+        {"winner": "Transportation Research Center (TRC) Smart Corridor", "affiliation": "The Ohio State University", "role": "Autonomous Vehicle Systems Engineers"},
+        {"winner": "Avionics Engineering Center", "affiliation": "Ohio University", "role": "Connected V2X Research Faculty"}
+    ],
+    "odhe-workforce-short-term-credential": [
+        {"winner": "Automotive Technology Program", "affiliation": "Cuyahoga Community College", "role": "Technical Apprenticeship Instructors"},
+        {"winner": "Welding & Precision Machining Center", "affiliation": "Terra State Community College", "role": "Fabrication Instructors"}
+    ],
+    "choose-ohio-first-stem-equipment": [
+        {"winner": "Department of Mechanical & Aerospace Engineering", "affiliation": "The Ohio State University", "role": "Undergraduate Capstone Faculty Advisors"},
+        {"winner": "College of Engineering & Polymer Science", "affiliation": "University of Akron", "role": "Additive Manufacturing Lab Managers"}
+    ],
+    "jobsohio-rd-center-grant": [
+        {"winner": "Advanced Propulsion & Battery Research Testbeds", "affiliation": "The Ohio State University (CAR)", "role": "Laboratory Operations Leadership & Staff PIs"},
+        {"winner": "Materials Research Institute", "affiliation": "University of Dayton Research Institute", "role": "Aerospace & Composite Program Managers"}
+    ],
+    "sae-foundation-collegiate-design-grants": [
+        {"winner": "Formula Buckeye Racing (Formula SAE)", "affiliation": "The Ohio State University", "role": "Collegiate Student Engineering Team"},
+        {"winner": "Purdue Motorsports (Formula SAE Electric)", "affiliation": "Purdue University", "role": "Undergraduate Team Leads"},
+        {"winner": "Wisconsin Racing", "affiliation": "University of Wisconsin-Madison", "role": "Chassis & Powertrain Student Engineers"}
+    ],
+    "sae-cds-team-registration-subsidies": [
+        {"winner": "Buckeye Baja SAE", "affiliation": "The Ohio State University", "role": "Student Design Team Leads & Fabricators"},
+        {"winner": "Zips Racing Formula SAE", "affiliation": "University of Akron", "role": "Collegiate Student Competition Team"}
+    ],
+    "sae-foundation-william-adam-fsae-grant": [
+        {"winner": "Formula Buckeye Racing Team", "affiliation": "The Ohio State University", "role": "Student Suspension & Drivetrain Designers"},
+        {"winner": "Michigan Formula SAE", "affiliation": "University of Michigan-Ann Arbor", "role": "Undergraduate Aerodynamics Leads"}
+    ],
+    "utc-national-transportation-centers": [
+        {"winner": "Midwest Transportation Center Consortium", "affiliation": "The Ohio State University / Iowa State University", "role": "Civil & Systems Engineering Research Faculty"},
+        {"winner": "Mobility21 National UTC", "affiliation": "Carnegie Mellon University", "role": "Transportation Technologies Research Staff"}
+    ],
+    "manufacturing-usa-network-consortium": [
+        {"winner": "Advanced Manufacturing Engineering Center", "affiliation": "The Ohio State University", "role": "Industry-University Research Consortium PIs"},
+        {"winner": "Center for Lightweight Materials Prototyping", "affiliation": "Wayne State University", "role": "Manufacturing Research Scientists"}
+    ],
+    "nist-mep-advanced-manufacturing-lab": [
+        {"winner": "Kinnear Rd Student Machine Shop & Fabrication Lab", "affiliation": "The Ohio State University", "role": "Machine Shop Supervisors & Technicians"},
+        {"winner": "Polymer & Advanced Materials Innovation Lab", "affiliation": "MAGNET / PolymerOhio", "role": "Field Operations Engineers"}
+    ],
+    "haas-collegiate-motorsports-sae": [
+        {"winner": "Student Machine Shop (Haas Machining Cells)", "affiliation": "The Ohio State University", "role": "Machine Shop Director & Student Machinists"},
+        {"winner": "Illini Motorsports (Formula SAE)", "affiliation": "University of Illinois Urbana-Champaign", "role": "CNC Machining Leads"}
+    ],
+    "haas-post-secondary-cnc-scholarships": [
+        {"winner": "Precision Machining & Tooling Program", "affiliation": "Columbus State Community College", "role": "CNC Machinist Apprentices & Instructors"},
+        {"winner": "Mechanical Engineering Technology", "affiliation": "Ferris State University", "role": "Undergraduate CNC Programmers"}
+    ],
+    "haas-htec-technical-education-network": [
+        {"winner": "HTEC Machining & Metrology Training Center", "affiliation": "Lorain County Community College", "role": "Vocational CNC Instructors & Lab Technicians"},
+        {"winner": "Advanced Manufacturing Instruction Center", "affiliation": "Vincennes University", "role": "Master Machining Educators"}
+    ],
+    "haas-community-machining-grants": [
+        {"winner": "Kinnear Rd Advanced Manufacturing Facility", "affiliation": "The Ohio State University", "role": "Collegiate Machine Shop Staff & Apprentices"},
+        {"winner": "Regional Advanced Manufacturing Technology Center", "affiliation": "Sinclair Community College", "role": "Technical Lab Managers"}
+    ],
+    "sme-prime-shop-infrastructure": [
+        {"winner": "Integrated Systems Engineering Prototyping Lab", "affiliation": "The Ohio State University", "role": "Industrial Engineering Faculty & Lab Technicians"},
+        {"winner": "PRIME Advanced Manufacturing Training Academy", "affiliation": "Cuyahoga Community College", "role": "Machine Tool Technology Instructors"}
+    ],
+    "sme-education-foundation-tooling": [
+        {"winner": "Department of Mechanical Engineering MakerSpace", "affiliation": "The Ohio State University", "role": "Student Shop Safety Monitors & Staff"},
+        {"winner": "Applied Engineering Technology Center", "affiliation": "Bowling Green State University", "role": "Robotics & Automation Faculty"}
+    ],
+    "aws-student-welding-grants": [
+        {"winner": "Materials Science & Welding Engineering Department", "affiliation": "The Ohio State University", "role": "Welding Engineering Students & Lab Managers"},
+        {"winner": "Welding Engineering Technology Institute", "affiliation": "Ferris State University", "role": "Certified Welding Educators (CWE)"}
+    ],
+    "aws-foundation-safety-research": [
+        {"winner": "Joining & Welding Research Center (JWRC)", "affiliation": "The Ohio State University", "role": "Weld Fume Mitigation & Safety Researchers"},
+        {"winner": "Welding Technology & Metallurgy Department", "affiliation": "Hobart Institute of Welding Technology", "role": "Industrial Safety Directors"}
+    ],
+    "honda-usa-foundation-stem-mobility": [
+        {"winner": "EcoCAR EV Mobility Team & Formula Buckeyes", "affiliation": "The Ohio State University", "role": "Collegiate Electric Vehicle Project Engineers"},
+        {"winner": "Automotive Engineering Research Laboratory", "affiliation": "Clemson University (CU-ICAR)", "role": "Clean Mobility Graduate Researchers"}
+    ],
+    "ford-philanthropy-collegiate-ev": [
+        {"winner": "Buckeye EV Powertrain & Battery Integration Lab", "affiliation": "The Ohio State University", "role": "Undergraduate Student Vehicle Leads"},
+        {"winner": "Michigan Electric Racing (FSAE EV)", "affiliation": "University of Michigan", "role": "Battery Pack Integration Engineers"}
+    ],
+    "gm-corporate-giving-electrification": [
+        {"winner": "Center for Automotive Research EcoCAR Mobility Team", "affiliation": "The Ohio State University", "role": "EV Powertrain & Battery Testing Fellows"},
+        {"winner": "Mobility Research Center & Advanced Battery Lab", "affiliation": "Kettering University", "role": "Automotive Engineering Faculty PIs"}
+    ],
+    "toyota-usa-foundation-mobility": [
+        {"winner": "Institute for Sustainable Manufacturing", "affiliation": "University of Kentucky", "role": "Lean Production & CNC Tooling Researchers"},
+        {"winner": "Department of Integrated Systems Engineering", "affiliation": "The Ohio State University", "role": "Manufacturing Quality Control Faculty"}
+    ],
+    "nissan-foundation-stem-innovation": [
+        {"winner": "Center for Energy Systems Research", "affiliation": "Tennessee Tech University", "role": "Clean Powertrain Senior Design Capstone Leads"},
+        {"winner": "School of Engineering Vehicle Systems", "affiliation": "Vanderbilt University", "role": "Student Electric Vehicle Designers"}
+    ],
+    "borgwarner-stem-clean-propulsion": [
+        {"winner": "Formula Buckeye Electric Powertrain Division", "affiliation": "The Ohio State University", "role": "Inverter & Motor Controller Student Specialists"},
+        {"winner": "Ray W. Herrick Laboratories", "affiliation": "Purdue University", "role": "Electric Machine Testing Researchers"}
+    ],
+    "lincoln-electric-welding-infrastructure": [
+        {"winner": "Welding & Fabrication Research Bays", "affiliation": "The Ohio State University (CAR)", "role": "Laboratory Safety Supervisors & Weld Technicians"},
+        {"winner": "Washkewicz College of Engineering Fabrication Lab", "affiliation": "Cleveland State University", "role": "Manufacturing Technology Staff"}
+    ],
+    "parker-hannifin-motion-control": [
+        {"winner": "Motion & Control Laboratory", "affiliation": "The Ohio State University", "role": "Fluid Power & Mechatronics Research Faculty"},
+        {"winner": "Parker Hannifin Motion Control Laboratory", "affiliation": "Cleveland State University", "role": "Hydraulic Actuation Research Staff"}
+    ],
+    "cummins-foundation-technical-education": [
+        {"winner": "Heavy-Duty Dynamometer & Clean Combustion Lab", "affiliation": "The Ohio State University (CAR)", "role": "Research Engineers & Test Cell Technicians"},
+        {"winner": "Maurice J. Zucrow Laboratories", "affiliation": "Purdue University", "role": "Hydrogen & Decarbonized Power Researchers"}
+    ],
+    "caterpillar-foundation-stem-infrastructure": [
+        {"winner": "Off-Road Autonomous Machinery & Electrification Lab", "affiliation": "University of Illinois Urbana-Champaign", "role": "Agricultural & Mechanical Engineering Faculty"},
+        {"winner": "Department of Food, Agricultural & Biological Engineering", "affiliation": "The Ohio State University", "role": "Heavy Equipment Powertrain Researchers"}
+    ],
+    "mazak-advanced-manufacturing-lab": [
+        {"winner": "Center for Advanced Manufacturing", "affiliation": "Northern Kentucky University", "role": "Multi-Axis CNC Machining Faculty"},
+        {"winner": "Haas/Mazak Advanced CNC Technology Center", "affiliation": "Vincennes University", "role": "Machine Tool Technology Department Chairs"}
+    ],
+    "siemens-digital-industries-academic": [
+        {"winner": "Formula Buckeye CAD/CAM Simulation Lab", "affiliation": "The Ohio State University", "role": "Digital Twin & NX Toolpath Student Leads"},
+        {"winner": "Ware Lab Vehicle Simulation Design Center", "affiliation": "Virginia Tech", "role": "Collegiate Motorsports Engineers"}
+    ],
+    "mastercam-cam-educational-grant": [
+        {"winner": "Student Machine Shop CNC Programming Suite", "affiliation": "The Ohio State University", "role": "Machine Shop Coordinators & Student Programmers"},
+        {"winner": "The Bernard M. Gordon Learning Factory", "affiliation": "Penn State University", "role": "Manufacturing Engineering Instructors"}
+    ],
+    "lift-lightweight-manufacturing-prototyping": [
+        {"winner": "Advanced Materials Joining Laboratory", "affiliation": "The Ohio State University", "role": "Lightweight Alloy Joining Research Scientists"},
+        {"winner": "Lightweight Innovations for Tomorrow Research Team", "affiliation": "University of Michigan", "role": "Structural Materials Research Engineers"}
+    ],
+    "america-makes-metal-additive-innovation": [
+        {"winner": "Center for Design and Manufacturing Excellence (CDME)", "affiliation": "The Ohio State University", "role": "Metal 3D Printing & Laser Powder Bed Fusion PIs"},
+        {"winner": "Center for Advanced Manufacturing and Materials", "affiliation": "Youngstown State University", "role": "Additive Manufacturing Lab Directors"}
+    ],
+    "iacmi-vehicle-composites-consortium": [
+        {"winner": "Automotive Composite Prototyping & Curing Lab", "affiliation": "The Ohio State University", "role": "Carbon Fiber Molding Research Engineers"},
+        {"winner": "Fibers and Composites Manufacturing Facility", "affiliation": "University of Tennessee, Knoxville", "role": "Advanced Composites Research Faculty"}
+    ],
+    "denso-foundation-stem-robotics": [
+        {"winner": "Autonomous Mobility & Sensor Fusion Lab", "affiliation": "The Ohio State University", "role": "Robotics & Electrical Engineering Faculty"},
+        {"winner": "Connected and Automated Transportation Systems Lab", "affiliation": "Michigan State University", "role": "Automotive Sensor Research Directors"}
+    ],
+    "yaskawa-motoman-robotic-welding-lab": [
+        {"winner": "Advanced Robotics & Automated Welding Booths", "affiliation": "Sinclair Community College", "role": "Robotic Welding Specialists & Faculty"},
+        {"winner": "Industrial Automation & Prototyping Center", "affiliation": "Edison State Community College", "role": "Robotics Program Directors"}
+    ],
+    "fanuc-america-cnc-robotics-education": [
+        {"winner": "Industrial Robotics CERT Training Cell", "affiliation": "Owens Community College", "role": "Certified Automation Instructors"},
+        {"winner": "Automation & Advanced Manufacturing Laboratory", "affiliation": "The Ohio State University", "role": "Systems Engineering Lab Directors"}
+    ],
+    "markforged-composite-metal-additive": [
+        {"winner": "Formula Buckeye Racing Composite Tooling Division", "affiliation": "The Ohio State University", "role": "Student Additive Manufacturing Leads"},
+        {"winner": "MIT Motorsports", "affiliation": "Massachusetts Institute of Technology", "role": "Chassis & Upright Design Leads"}
+    ],
+    "magna-international-mobility-sponsorship": [
+        {"winner": "Formula Buckeye Racing & Baja SAE Teams", "affiliation": "The Ohio State University", "role": "Student Vehicle Program Managers"},
+        {"winner": "McMaster Automotive Resource Centre (MARC)", "affiliation": "McMaster University", "role": "Electric Drivetrain Research Engineers"}
+    ],
+    "mitutoyo-precision-metrology-lab": [
+        {"winner": "Quality Assurance & Dimensional Metrology Room", "affiliation": "The Ohio State University", "role": "Machine Shop Quality Inspectors"},
+        {"winner": "Quality Engineering Technology Lab", "affiliation": "Ferris State University", "role": "Coordinate Metrology Instructors"}
+    ],
+    "kennametal-advanced-tooling-endowment": [
+        {"winner": "Kinnear Rd Student Machine Shop Consumable Crib", "affiliation": "The Ohio State University", "role": "Student Tooling Managers & Lead Machinists"},
+        {"winner": "Manufacturing Assistance Center (MAC)", "affiliation": "University of Pittsburgh", "role": "Tooling Application Specialists"}
+    ],
+    "keysight-technologies-ev-battery-test": [
+        {"winner": "High Voltage Electrification Laboratory", "affiliation": "The Ohio State University (CAR)", "role": "Power Electronics Researchers & Lab Technicians"},
+        {"winner": "Colorado Power Electronics Center", "affiliation": "University of Colorado Boulder", "role": "Semiconductor Testbed Research Faculty"}
+    ],
+    "doe-cmei-vehicle-technologies-office": [
+        {"winner": "Center for Automotive Research (EcoCAR Lead)", "affiliation": "The Ohio State University", "role": "Automotive Engineering Research Faculty & Graduate Fellows"},
+        {"winner": "Center for Advanced Vehicle Technologies", "affiliation": "University of Alabama", "role": "Electric Vehicle Systems Directors"}
+    ]
+}
+
+
+def assign_previous_winners(grant: dict) -> list[dict]:
+    """Retrieves verified previous winners, their school/institution, and occupation/role."""
+    gid = grant.get("id", "")
+    if gid in PREVIOUS_WINNERS_MAP:
+        return PREVIOUS_WINNERS_MAP[gid]
+
+    agency = grant.get("agency", "").upper()
+    title = grant.get("title", "").upper()
+    category = grant.get("category", "").upper()
+
+    if "DURIP" in title or "DEFENSE" in agency or "AIR FORCE" in agency or "ARMY" in agency or "NAVY" in agency:
+        return [
+            {"winner": "Autonomous Dynamometer Testing Hall", "affiliation": "The Ohio State University", "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"},
+            {"winner": "Aerospace Research Laboratories", "affiliation": "Purdue University", "role": "Defense Instrumentation Research Faculty"}
+        ]
+    elif "ENERGY" in agency or "DOE" in agency:
+        return [
+            {"winner": "Center for Automotive Research Electrification Lab", "affiliation": "The Ohio State University", "role": "Automotive Research Scientists & Graduate Fellows"},
+            {"winner": "Clean Energy Research Institute", "affiliation": "University of Wisconsin-Madison", "role": "Powertrain Research Engineers"}
+        ]
+    elif "NSF" in agency or "NATIONAL SCIENCE FOUNDATION" in agency:
+        return [
+            {"winner": "Center for Electron Microscopy and Analysis (CEMAS)", "affiliation": "The Ohio State University", "role": "Facility Directors & Senior Research Scientists"},
+            {"winner": "Nanotechnology User Facility", "affiliation": "Georgia Institute of Technology", "role": "Research Infrastructure Principal Investigators"}
+        ]
+    elif category == "MACHINING":
+        return [
+            {"winner": "Student Machine Shop & Manufacturing Lab", "affiliation": "The Ohio State University", "role": "Machine Shop Director & Student Machinists"},
+            {"winner": "Polytechnic Manufacturing Institute", "affiliation": "Purdue University", "role": "CNC Machining Instructors"}
+        ]
+    elif category == "STUDENT":
+        return [
+            {"winner": "Formula Buckeye Racing (Formula SAE)", "affiliation": "The Ohio State University", "role": "Collegiate Student Engineering Team"},
+            {"winner": "Illini Motorsports", "affiliation": "University of Illinois Urbana-Champaign", "role": "Undergraduate Vehicle Design Leads"}
+        ]
+    elif category == "SAFETY":
+        return [
+            {"winner": "Welding & Prototyping Fabrication Bays", "affiliation": "The Ohio State University (CAR)", "role": "EH&S Compliance & Laboratory Operations Staff"},
+            {"winner": "Welding Technology Center", "affiliation": "Ferris State University", "role": "Certified Welding Educators (CWE)"}
+        ]
+    else:
+        return [
+            {"winner": "College of Engineering Research Laboratories", "affiliation": "The Ohio State University", "role": "Senior Engineering Faculty & Facility Managers"},
+            {"winner": "Advanced Technology Development Center", "affiliation": "Purdue University", "role": "Collegiate Research Laboratory Directors"}
+        ]
+
+
 def parse_ceiling_amount(ceiling_str: str) -> int:
     """Extract maximum dollar amount from ceiling string for accurate metrics."""
     matches = re.findall(r"\$([0-9,]+)", str(ceiling_str))
@@ -1803,6 +2043,7 @@ def fetch_grants():
             # Attach strategic fit scoring based on CAR's historical assets and future goals
             match_data = compute_car_match(record)
             record.update(match_data)
+            record["previous_winners"] = assign_previous_winners(record)
             validated_grants.append(record)
         else:
             reason_category = reason.split(":")[0]

@@ -524,7 +524,7 @@ TIER1_LOCKED_FEDERAL_BASELINE = [
         "score": "99% Fit",
         "synopsis": "Supports collegiate advanced vehicle technology competitions (EcoCAR), high-voltage battery testing labs, electric powertrain research, and next-generation mobility workforce training.",
         "pitch": "Directly aligns with OSU CAR's flagship EcoCAR EV challenge and high-voltage propulsion test cell expansion.",
-        "url": "https://eere-exchange.energy.gov/",
+        "url": "https://eere-exchange.energy.gov/Default.aspx",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Automotive Research Centers, EcoCAR Teams, and University Electrification Labs.",

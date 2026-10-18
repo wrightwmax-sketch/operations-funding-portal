@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.grants.gov;">
-  <title>CAR // Strategic Funding &amp; CapEx Intelligence — 930 Kinnear Rd</title>
+  <title>Strategic Funding &amp; CapEx Intelligence Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1058,8 +1058,8 @@
     <div class="ribbon-brand" onclick="navigateToView('overview')" role="button" tabindex="0" aria-label="Return to Overview">
       <div class="scarlet-bar"></div>
       <div class="brand-text-wrap">
-        <span class="brand-title">CAR // Strategic Funding &amp; CapEx Intelligence</span>
-        <span class="brand-sub"><span class="live-dot"></span> 930 Kinnear Rd &bull; <span id="lastUpdatedTag">Verified Feed</span></span>
+        <span class="brand-title">Strategic Funding &amp; CapEx Intelligence</span>
+        <span class="brand-sub"><span class="live-dot"></span> Operations &amp; Facilities &bull; <span id="lastUpdatedTag">Verified Feed</span></span>
       </div>
     </div>
 
@@ -1089,7 +1089,7 @@
     <!-- RIGHT UTILITY CLUSTER -->
     <div class="ribbon-utilities">
       <div class="ribbon-search">
-        <input type="text" id="searchInput" placeholder="Search grants, Haas, DURIP, EcoCAR (⌘K)..." oninput="handleSearchInput(this.value)" aria-label="Search opportunities">
+        <input type="text" id="searchInput" placeholder="Search grants, Haas, DURIP, RAPIDS (⌘K)..." oninput="handleSearchInput(this.value)" aria-label="Search opportunities">
         <button type="button" class="ribbon-search-clear" id="searchClearBtn" onclick="clearSearchInput()" title="Clear search">&times;</button>
       </div>
       <button type="button" id="refreshBtn" class="btn btn-scarlet" onclick="triggerGrantRefresh()">🔄 Sync Feeds</button>
@@ -1102,7 +1102,7 @@
     <!-- HERO CONTEXT BANNER -->
     <section class="hero-banner">
       <div>
-        <div class="hero-eyebrow" id="activeViewBadge">OSU Center for Automotive Research &bull; Operations &amp; Facilities</div>
+        <div class="hero-eyebrow" id="activeViewBadge">Engineering Operations &amp; Facilities Intelligence</div>
         <h1 class="hero-title" id="activeViewTitle">Executive Funding &amp; CapEx Telemetry</h1>
         <p class="hero-subtitle" id="activeViewSubtitle">Verified Federal (Grants.gov / NSF / DoD / DOE), State of Ohio (ODHE RAPIDS), and Fortune 500 OEM Hardware Solicitations</p>
       </div>
@@ -1129,8 +1129,8 @@
         <div class="metric-value" id="kpi-capex-val">$53,705,000</div>
         <div class="metric-sub">Machine acquisitions, dynos &amp; shop upgrades</div>
       </div>
-      <div class="metric-card" onclick="navigateToView('capex')" title="Inspect CAR Incumbent Wins &amp; Peer Precedents">
-        <div class="metric-title">CAR Strategic Alignment</div>
+      <div class="metric-card" onclick="navigateToView('capex')" title="Inspect Incumbent Wins &amp; Peer Precedents">
+        <div class="metric-title">Strategic Alignment</div>
         <div class="metric-value" id="kpi-safety-val">32 Incumbent</div>
         <div class="metric-sub" id="kpi-match-sub">29 Expansion &bull; 20 Frontier</div>
       </div>
@@ -1163,7 +1163,7 @@
         </div>
 
         <div class="bento-panel">
-          <h3><span>🛠️ Operational Pillar Partitions</span> <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--emerald-text);">930 Kinnear Rd</span></h3>
+          <h3><span>🛠️ Operational Pillar Partitions</span> <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--emerald-text);">4 Core Tracks</span></h3>
           <p>Partitioned views tailored for Lab Directors, Machine Shop Supervisors, and Student Teams:</p>
           <div class="tier-bar-list">
             <div class="tier-bar-item" onclick="navigateToView('machining')">
@@ -1268,7 +1268,7 @@
       <div class="modal-header">
         <div>
           <h3 id="modalHeading">Director Briefing: Non-Tuition CapEx Strategy</h3>
-          <p style="font-size: 0.82rem; color: var(--osu-gray); margin-top: 0.2rem;">Pre-drafted executive memo for CAR Leadership &amp; Operations</p>
+          <p style="font-size: 0.82rem; color: var(--osu-gray); margin-top: 0.2rem;">Pre-drafted executive memo for Engineering Leadership &amp; Operations</p>
         </div>
         <button type="button" class="close-btn" onclick="closeExecutiveDraft()" aria-label="Close modal">&times;</button>
       </div>
@@ -1313,7 +1313,7 @@
       "deadline": "Rolling / Semiannual Cycle",
       "score": "98% Fit",
       "synopsis": "Directly funds university undergraduate engineering design studios, student vehicle team fabrication bays, CNC/rapid prototyping equipment, and hands-on experiential learning curricula.",
-      "pitch": "High-priority NSF grant to modernize CAR student project build spaces, acquire shared telemetry/DAQ benches, and fund hands-on vehicle competition tooling.",
+      "pitch": "High-priority NSF grant to modernize University student project build spaces, acquire shared telemetry/DAQ benches, and fund hands-on vehicle competition tooling.",
       "url": "https://www.grants.gov/search-results-detail/344124",
       "applicant_type": "COLLEGE_STUDENT_TEAM",
       "applicant_label": "Student Engineering Teams",
@@ -1340,7 +1340,7 @@
       ],
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Team Build Bays & Machine Shop (Formula SAE, Baja SAE, EcoCAR)",
+      "current_asset": "Campus Engineering Student Team Build Bays & Machine Shop (Formula SAE, Baja SAE, EcoCAR)",
       "future_capability": "Modernizes student project build spaces, shared telemetry/DAQ benches, and hands-on vehicle competition tooling.",
       "incumbency_basis": "NSF IUSE experiential engineering education and student design studio track record"
     },
@@ -1353,7 +1353,7 @@
       "deadline": "Annual Fall Window",
       "score": "99% Fit",
       "synopsis": "Premier federal capital equipment grant supporting the acquisition or development of multi-user research instrumentation for engineering, materials testing, propulsion diagnostics, and autonomous vehicle research.",
-      "pitch": "Primary federal vehicle for acquiring high-cost shared CapEx at CAR: 5-axis CNC machining centers, high-voltage battery test cyclers, or chassis dynamometer upgrades.",
+      "pitch": "Primary federal vehicle for acquiring high-cost shared CapEx for university engineering labs: 5-axis CNC machining centers, high-voltage battery test cyclers, or chassis dynamometer upgrades.",
       "url": "https://new.nsf.gov/funding/opportunities/major-research-instrumentation-program-mri",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
@@ -1368,7 +1368,7 @@
       },
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research & College of Engineering",
+          "winner": "College of Engineering Research Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Multi-User Instrumentation Principal Investigators"
         },
@@ -1380,7 +1380,7 @@
       ],
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR 56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
+      "current_asset": "56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
       "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
       "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
     },
@@ -1393,7 +1393,7 @@
       "deadline": "Annual Cycle",
       "score": "99% Fit",
       "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
-      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit CAR labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
+      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit Engineering labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
       "url": "https://dodstem.us/participate/grants/",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
@@ -1433,7 +1433,7 @@
       "deadline": "Annual Cycle",
       "score": "98% Fit",
       "synopsis": "Supports collegiate advanced vehicle technology competitions (EcoCAR), high-voltage battery testing labs, electric powertrain research, and next-generation mobility workforce training.",
-      "pitch": "Directly aligns with OSU CAR's flagship EcoCAR EV challenge and high-voltage propulsion test cell expansion.",
+      "pitch": "Directly aligns with OSU's flagship EcoCAR EV challenge and high-voltage propulsion test cell expansion.",
       "url": "https://eere-exchange.energy.gov/Default.aspx",
       "applicant_type": "COLLEGE_STUDENT_TEAM",
       "applicant_label": "Student Engineering Teams",
@@ -1441,14 +1441,14 @@
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
-        "institution": "The Ohio State University Center for Automotive Research (CAR)",
+        "institution": "The Ohio State University College of Engineering",
         "award_year": "2025",
         "amount_or_hardware": "$850,000 + OEM Vehicle Hardware",
         "use_case": "Funded EcoCAR EV competition bays, HIL simulation benches, and battery pack cyclers."
       },
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research (EcoCAR EV Challenge)",
+          "winner": "Advanced Mobility & Electrification Lab (EcoCAR EV Challenge)",
           "affiliation": "The Ohio State University",
           "role": "Student EV Powertrain Leads & Research Scientists"
         },
@@ -1460,7 +1460,7 @@
       ],
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
       "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
       "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     },
@@ -1721,14 +1721,14 @@
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) & University of Michigan",
+        "institution": "The Ohio State University & University of Michigan",
         "award_year": "2025",
         "amount_or_hardware": "$450,000 - $1,200,000",
         "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
       },
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research Electrification Lab",
+          "winner": "High-Voltage Electrification & Propulsion Lab",
           "affiliation": "The Ohio State University",
           "role": "Automotive Research Scientists & Graduate Fellows"
         },
@@ -1740,7 +1740,7 @@
       ],
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
       "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
       "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     },
@@ -2169,7 +2169,7 @@
       "previous_winners": [
         {
           "winner": "Welding & Prototyping Fabrication Bays",
-          "affiliation": "The Ohio State University (CAR)",
+          "affiliation": "The Ohio State University",
           "role": "EH&S Compliance & Laboratory Operations Staff"
         },
         {
@@ -2722,7 +2722,7 @@
       "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research (CAR)",
+          "winner": "Automotive & Mobility Research Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Automotive Engineering Lab Directors & Operations Staff"
         },
@@ -2733,14 +2733,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (Center for Automotive Research (CAR)) & Columbus State Community College",
+        "institution": "The Ohio State University (Automotive & Mobility Research Laboratories) & Columbus State Community College",
         "award_year": "2025",
         "amount_or_hardware": "$500,000 - $1,500,000",
         "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
       "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
@@ -2780,7 +2780,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
       "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
@@ -2900,7 +2900,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
       "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
       "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
@@ -2963,7 +2963,7 @@
       "previous_winners": [
         {
           "winner": "Advanced Propulsion & Battery Research Testbeds",
-          "affiliation": "The Ohio State University (CAR)",
+          "affiliation": "The Ohio State University",
           "role": "Laboratory Operations Leadership & Staff PIs"
         },
         {
@@ -2973,7 +2973,7 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) (Advanced Propulsion & Battery Research Testbeds) & University of Dayton Research Institute",
+        "institution": "The Ohio State University (Advanced Propulsion & Battery Research Testbeds) & University of Dayton Research Institute",
         "award_year": "2025",
         "amount_or_hardware": "$500,000 - $2,000,000",
         "use_case": "Accelerates commercial-grade automotive lab investments and capital test cell equipment with Ohio corporate partnership matching."
@@ -3025,9 +3025,9 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "current_asset": "Dedicated Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Vehicle)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries in university engineering labs"
     },
     {
       "id": "sae-cds-team-registration-subsidies",
@@ -3065,9 +3065,9 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "current_asset": "Dedicated Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Vehicle)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries in university engineering labs"
     },
     {
       "id": "sae-foundation-william-adam-fsae-grant",
@@ -3105,9 +3105,9 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "current_asset": "Dedicated Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Vehicle)",
       "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR"
+      "incumbency_basis": "Active annual student competition build entries in university engineering labs"
     },
     {
       "id": "utc-national-transportation-centers",
@@ -3185,7 +3185,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
+      "current_asset": "Campus Engineering machine shops and technical workforce training bays",
       "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
       "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
@@ -3207,7 +3207,7 @@
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
-          "winner": "Kinnear Rd Student Machine Shop & Fabrication Lab",
+          "winner": "Campus Engineering Student Machine Shop & Fabrication Lab",
           "affiliation": "The Ohio State University",
           "role": "Machine Shop Supervisors & Technicians"
         },
@@ -3218,14 +3218,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (Kinnear Rd Student Machine Shop & Fabrication Lab) & MAGNET / PolymerOhio",
+        "institution": "The Ohio State University (Campus Engineering Student Machine Shop & Fabrication Lab) & MAGNET / PolymerOhio",
         "award_year": "2025",
         "amount_or_hardware": "$150,000 - $500,000",
         "use_case": "Upgrades university student machine shops to modern digital precision manufacturing standards."
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
+      "current_asset": "Campus Engineering machine shops and technical workforce training bays",
       "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
       "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
@@ -3265,7 +3265,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "current_asset": "Campus Engineering Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
       "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
@@ -3305,7 +3305,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "current_asset": "Campus Engineering Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
       "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
@@ -3345,7 +3345,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "current_asset": "Campus Engineering Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
       "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
@@ -3367,7 +3367,7 @@
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
-          "winner": "Kinnear Rd Advanced Manufacturing Facility",
+          "winner": "Campus Engineering Advanced Manufacturing Facility",
           "affiliation": "The Ohio State University",
           "role": "Collegiate Machine Shop Staff & Apprentices"
         },
@@ -3378,14 +3378,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (Kinnear Rd Advanced Manufacturing Facility) & Sinclair Community College",
+        "institution": "The Ohio State University (Campus Engineering Advanced Manufacturing Facility) & Sinclair Community College",
         "award_year": "2025",
         "amount_or_hardware": "$20,000 - $75,000",
         "use_case": "Provides direct grant aid for university engineering shop equipment and tooling consumable replenishment."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "current_asset": "Campus Engineering Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
       "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
       "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
@@ -3425,7 +3425,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
+      "current_asset": "Campus Engineering machining equipment and technician apprentice stations",
       "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
       "incumbency_basis": "SME Education Foundation manufacturing workforce network"
     },
@@ -3465,7 +3465,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
+      "current_asset": "Campus Engineering machining equipment and technician apprentice stations",
       "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
       "incumbency_basis": "SME Education Foundation manufacturing workforce network"
     },
@@ -3505,7 +3505,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
+      "current_asset": "Fabrication bays (MIG/TIG welding booths, ventilation hooding)",
       "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
       "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
     },
@@ -3545,7 +3545,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
+      "current_asset": "Fabrication bays (MIG/TIG welding booths, ventilation hooding)",
       "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
       "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
     },
@@ -3573,19 +3573,19 @@
         },
         {
           "winner": "Automotive Engineering Research Laboratory",
-          "affiliation": "Clemson University (CU-ICAR)",
+          "affiliation": "Clemson University (Automotive Engineering Research Institute)",
           "role": "Clean Mobility Graduate Researchers"
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (EcoCAR EV Mobility Team & Formula Buckeyes) & Clemson University (CU-ICAR)",
+        "institution": "The Ohio State University (EcoCAR EV Mobility Team & Formula Buckeyes) & Clemson University (Automotive Engineering Research Institute)",
         "award_year": "2025",
         "amount_or_hardware": "$50,000 - $250,000",
         "use_case": "Secures non-tuition funding from Ohio's leading automotive manufacturing employer for student vehicle builds and testing benches."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR West Campus Testing Hall & Marysville/East Liberty proving corridor partnership",
+      "current_asset": "West Campus Testing Hall & Marysville/East Liberty proving corridor partnership",
       "future_capability": "Direct student team build funding for battery pack enclosures, high-voltage test telemetry, and zero-emissions powertrain rigs.",
       "incumbency_basis": "Long-standing Honda-OSU automotive research and student team endowment"
     },
@@ -3625,7 +3625,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Team Bays (EcoCAR, Formula SAE Electric)",
+      "current_asset": "Campus Engineering Student Team Bays (EcoCAR, Formula SAE Electric)",
       "future_capability": "Subsidizes electric powertrain motor controllers, dyno instrumentation, and vehicle telemetry.",
       "incumbency_basis": "Ford Philanthropy collegiate engineering and EcoCAR partnership"
     },
@@ -3647,7 +3647,7 @@
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research EcoCAR Mobility Team",
+          "winner": "Buckeye EcoCAR EV Mobility Team",
           "affiliation": "The Ohio State University",
           "role": "EV Powertrain & Battery Testing Fellows"
         },
@@ -3658,14 +3658,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (Center for Automotive Research EcoCAR Mobility Team) & Kettering University",
+        "institution": "The Ohio State University (Buckeye EcoCAR EV Mobility Team) & Kettering University",
         "award_year": "2025",
         "amount_or_hardware": "$30,000 - $150,000",
         "use_case": "Offsets major capital test equipment expenditures for university battery testing and electrified powertrain cells."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (High-voltage testbenches, EcoCAR development platforms)",
+      "current_asset": "Electrification & Battery Testing Labs (High-voltage testbenches, EcoCAR development platforms)",
       "future_capability": "Battery cycler upgrades, cell degradation monitoring, and student vehicle build consumables.",
       "incumbency_basis": "Multi-decade GM co-sponsorship of EcoCAR and student mobility challenges"
     },
@@ -3705,7 +3705,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd Student Machine Shop & automated manufacturing cells",
+      "current_asset": "Campus Engineering Student Machine Shop & automated manufacturing cells",
       "future_capability": "Multi-axis CNC workholding, cutting tool metrology, and technician workforce curriculum.",
       "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative"
     },
@@ -3785,7 +3785,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR Electrified powertrain dyno cells and motor testing benches",
+      "current_asset": "Electrified powertrain dyno cells and motor testing benches",
       "future_capability": "Direct student team access to advanced inverter modules, e-motors, and clean propulsion testbenches.",
       "incumbency_basis": "Tier-1 automotive clean propulsion industry sponsorship"
     },
@@ -3808,7 +3808,7 @@
       "previous_winners": [
         {
           "winner": "Welding & Fabrication Research Bays",
-          "affiliation": "The Ohio State University (CAR)",
+          "affiliation": "The Ohio State University",
           "role": "Laboratory Safety Supervisors & Weld Technicians"
         },
         {
@@ -3818,14 +3818,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) (Welding & Fabrication Research Bays) & Cleveland State University",
+        "institution": "The Ohio State University (Welding & Fabrication Research Bays) & Cleveland State University",
         "award_year": "2025",
         "amount_or_hardware": "$25,000 - $75,000",
         "use_case": "Eliminates student weld fume hazards and upgrades metal fabrication equipment with Ohio industry backing."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication shop (TIG/MIG welding booths and localized fume extractors)",
+      "current_asset": "Fabrication shop (TIG/MIG welding booths and localized fume extractors)",
       "future_capability": "Upgrades source-capture extraction hoods, advanced multi-process pulse welding power sources, and student welding PPE.",
       "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership"
     },
@@ -3865,7 +3865,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Fluid power, hydraulic testbenches, and mechanical testing fixtures at 930 Kinnear Rd",
+      "current_asset": "Fluid power, hydraulic testbenches, and mechanical testing fixtures in the Engineering Research Facility",
       "future_capability": "High-pressure hydraulic actuation testbenches, electronic motion controllers, and precision filtration apparatus.",
       "incumbency_basis": "Parker Hannifin motion & control Ohio corporate foundation partnership"
     },
@@ -3888,7 +3888,7 @@
       "previous_winners": [
         {
           "winner": "Heavy-Duty Dynamometer & Clean Combustion Lab",
-          "affiliation": "The Ohio State University (CAR)",
+          "affiliation": "The Ohio State University",
           "role": "Research Engineers & Test Cell Technicians"
         },
         {
@@ -3898,14 +3898,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) (Heavy-Duty Dynamometer & Clean Combustion Lab) & Purdue University",
+        "institution": "The Ohio State University (Heavy-Duty Dynamometer & Clean Combustion Lab) & Purdue University",
         "award_year": "2025",
         "amount_or_hardware": "$50,000 - $200,000",
         "use_case": "Direct funding for heavy-duty dynamometer test cells and zero-emission powertrain development."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Heavy-Duty Dyno Cells & electrified propulsion testbenches",
+      "current_asset": "Heavy-Duty Dyno Cells & electrified propulsion testbenches",
       "future_capability": "Direct student and laboratory funding for internal combustion decarbonization, hydrogen test cells, and clean power generation.",
       "incumbency_basis": "Cummins global corporate and technical education giving track record"
     },
@@ -3945,7 +3945,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Off-highway powertrain and heavy machinery prototyping facilities at Kinnear Rd",
+      "current_asset": "Off-highway powertrain and heavy machinery prototyping facilities in the Engineering Prototyping Facility",
       "future_capability": "Heavy vehicle electrification, autonomous off-road control testbeds, and advanced hydraulics instrumentation.",
       "incumbency_basis": "Caterpillar Foundation STEM & technical workforce readiness initiative"
     },
@@ -3985,7 +3985,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (CNC mills, manual lathes)",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (CNC mills, manual lathes)",
       "future_capability": "High-speed 5-axis machining equipment discounts, conversational CNC programming stations, and live-tooling lathes.",
       "incumbency_basis": "Regional machine tool OEM university education program"
     },
@@ -4065,9 +4065,9 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd CNC programming stations (Haas post-processors)",
+      "current_asset": "Campus Engineering CNC programming stations (Haas post-processors)",
       "future_capability": "Multi-axis CAM programming licenses, adaptive dynamic motion toolpathing, and machine simulation models.",
-      "incumbency_basis": "Mastercam educational CAM baseline at CAR machine shops"
+      "incumbency_basis": "Mastercam educational CAM baseline in university engineering labs machine shops"
     },
     {
       "id": "lift-lightweight-manufacturing-prototyping",
@@ -4105,7 +4105,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd materials joining, composite tooling, and high-strength metal forming cells",
+      "current_asset": "Campus Engineering materials joining, composite tooling, and high-strength metal forming cells",
       "future_capability": "Lightweight aluminum/titanium joining testbeds, high-strain forming instrumentation, and structural crash mitigation prototypes.",
       "incumbency_basis": "Manufacturing USA regional lightweight materials innovation consortium"
     },
@@ -4145,7 +4145,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Ohio advanced manufacturing network and Kinnear Rd prototyping bays",
+      "current_asset": "Ohio advanced manufacturing network and Campus Engineering prototyping bays",
       "future_capability": "Direct metal laser sintering (DMLS) tooling inserts, topology-optimized automotive uprights, and additive metrology.",
       "incumbency_basis": "America Makes (Youngstown, OH) Manufacturing USA flagship institute"
     },
@@ -4225,7 +4225,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop & robotic automation workcells",
+      "current_asset": "Campus Engineering Student Machine Shop & robotic automation workcells",
       "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
       "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record"
     },
@@ -4265,7 +4265,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR fabrication shop welding booths and ventilation exhaust",
+      "current_asset": "Fabrication shop welding booths and ventilation exhaust",
       "future_capability": "Automated 6-axis robotic arc welding cell with interlocked safety enclosure and offline toolpath programming.",
       "incumbency_basis": "Ohio-based robotics manufacturer university technical education program"
     },
@@ -4305,7 +4305,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining and technician instruction facilities",
+      "current_asset": "Campus Engineering machining and technician instruction facilities",
       "future_capability": "FANUC industrial robot training cell, CNC conversational control stations, and digital factory simulation.",
       "incumbency_basis": "FANUC Certified Education Robot Training (CERT) university partnership"
     },
@@ -4345,7 +4345,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd prototyping bays and composite fabrication equipment",
+      "current_asset": "Campus Engineering prototyping bays and composite fabrication equipment",
       "future_capability": "Industrial continuous carbon-fiber 3D printer for lightweight structural racecar uprights and aero components.",
       "incumbency_basis": "Standard composite 3D printing equipment utilized across Formula SAE teams"
     },
@@ -4385,7 +4385,7 @@
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Team Bays (Formula SAE Electric, Baja, EcoCAR)",
+      "current_asset": "Campus Engineering Student Team Bays (Formula SAE Electric, Baja, EcoCAR)",
       "future_capability": "Underwrites vehicle chassis manufacturing, high-voltage battery enclosures, and drivetrain components.",
       "incumbency_basis": "Magna International premier global automotive competition sponsorship"
     },
@@ -4425,7 +4425,7 @@
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining quality inspection stations",
+      "current_asset": "Campus Engineering machining quality inspection stations",
       "future_capability": "High-precision CNC coordinate measuring machine (CMM) and digital optical metrology for student machined parts.",
       "incumbency_basis": "Mitutoyo America educational metrology equipment partnership"
     },
@@ -4447,7 +4447,7 @@
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
-          "winner": "Kinnear Rd Student Machine Shop Consumable Crib",
+          "winner": "Campus Engineering Student Machine Shop Consumable Crib",
           "affiliation": "The Ohio State University",
           "role": "Student Tooling Managers & Lead Machinists"
         },
@@ -4458,14 +4458,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (Kinnear Rd Student Machine Shop Consumable Crib) & University of Pittsburgh",
+        "institution": "The Ohio State University (Campus Engineering Student Machine Shop Consumable Crib) & University of Pittsburgh",
         "award_year": "2025",
         "amount_or_hardware": "$25,000 - $80,000",
         "use_case": "Absorbs 100% of student machine shop consumable end mill and cutting tool expenses with top-tier industrial tooling."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Haas CNC milling machines and lathe cells",
+      "current_asset": "Campus Engineering Haas CNC milling machines and lathe cells",
       "future_capability": "100% consumable cutting tool subsidy: high-feed solid carbide end mills, modular drills, and titanium cutters.",
       "incumbency_basis": "Kennametal industrial manufacturing foundation tooling endowment"
     },
@@ -4488,7 +4488,7 @@
       "previous_winners": [
         {
           "winner": "High Voltage Electrification Laboratory",
-          "affiliation": "The Ohio State University (CAR)",
+          "affiliation": "The Ohio State University",
           "role": "Power Electronics Researchers & Lab Technicians"
         },
         {
@@ -4498,14 +4498,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) (High Voltage Electrification Laboratory) & University of Colorado Boulder",
+        "institution": "The Ohio State University (High Voltage Electrification Laboratory) & University of Colorado Boulder",
         "award_year": "2025",
         "amount_or_hardware": "$50,000 - $250,000",
         "use_case": "Directly finances high-voltage battery cyclers and power semiconductor test equipment for university electric vehicle labs."
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR West Campus Electrification Labs and battery cycling racks",
+      "current_asset": "West Campus Electrification Labs and battery cycling racks",
       "future_capability": "High-voltage 1000V SiC inverter dynamic testbench and multi-channel battery cell cycler instrumentation.",
       "incumbency_basis": "Keysight Technologies university engineering laboratory equipment grants"
     },
@@ -4527,7 +4527,7 @@
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_winners": [
         {
-          "winner": "Center for Automotive Research (EcoCAR Lead)",
+          "winner": "Advanced Mobility & Electrification Lab (EcoCAR Lead)",
           "affiliation": "The Ohio State University",
           "role": "Automotive Engineering Research Faculty & Graduate Fellows"
         },
@@ -4538,14 +4538,14 @@
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (CAR) & University of Michigan",
+        "institution": "The Ohio State University & University of Michigan",
         "award_year": "2025",
         "amount_or_hardware": "$450,000 - $1,200,000",
         "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
       "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
       "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     }
@@ -4590,9 +4590,9 @@
 
     const VIEW_METADATA = {
       overview: {
-        badge: 'OSU Center for Automotive Research • Executive Telemetry',
+        badge: 'Engineering Operations & Facilities • Executive Telemetry',
         title: 'Executive Funding & CapEx Overview',
-        subtitle: 'High-level portfolio telemetry, source tier distribution, and top incumbent hardware matches for 930 Kinnear Rd.'
+        subtitle: 'High-level portfolio telemetry, source tier distribution, and top incumbent hardware matches.'
       },
       all: {
         badge: 'Complete Verified Directory • Federal + State + Corporate',
@@ -5059,9 +5059,9 @@
 
             <!-- Director's Operational Pitch (Scarlet-Tinted Dark Glass) -->
             <div class="strategic-box">
-              <strong>Director's Operational Pitch &amp; CAR Asset Alignment</strong>
+              <strong>Director's Operational Pitch &amp; Facility Alignment</strong>
               <div>${escapeHTML(g.pitch)}</div>
-              <div style="margin-top:0.35rem;font-size:0.74rem;color:var(--osu-gray);"><strong>CAR Baseline:</strong> ${escapeHTML(g.current_asset || '930 Kinnear Rd Testing & Prototyping Labs')}</div>
+              <div style="margin-top:0.35rem;font-size:0.74rem;color:var(--osu-gray);"><strong>Facility Baseline:</strong> ${escapeHTML(g.current_asset || 'Engineering Testing & Prototyping Labs')}</div>
             </div>
           </div>
 
@@ -5125,7 +5125,7 @@
       const activeCount = liveGrants.length;
       const memo = `SUBJECT: Strategic Infrastructure Initiative: External Non-Tuition CapEx & Tooling Portfolio
 
-Center Leadership & Operations Directors (930 Kinnear Rd),
+Engineering Leadership & Operations Directors,
 
 I have cataloged and vetted ${activeCount} active external funding opportunities totaling ${totalAddressable} in addressable funding targeting our collegiate engineering laboratories, multi-axis CNC machining shops, student competition teams, and EH&S safety compliance across four verified funding tiers:
 
@@ -5159,11 +5159,11 @@ Project Operations & Technical Supervision`;
         ? grant.previous_winners.map(w => `• ${w.affiliation} — ${w.role}${w.winner ? ` (${w.winner})` : ''}`).join('\n')
         : '• Peer accredited engineering colleges & research laboratories';
 
-      const brief = `SUBJECT: CAR Strategic Brief: ${grant.agency} (${grant.ceiling})
+      const brief = `SUBJECT: Strategic Grant Brief: ${grant.agency} (${grant.ceiling})
 
-Center for Automotive Research (CAR) Leadership & Operations Committee,
+Engineering Leadership & Operations Committee,
 
-I recommend evaluating the following verified program for our 930 Kinnear Rd engineering operations and build pipeline:
+I recommend evaluating the following verified program for our engineering operations and build pipeline:
 
 Program: ${grant.title}
 Funding Source: ${grant.source_tier_label || 'Verified External Sponsor'}
@@ -5184,10 +5184,10 @@ ${grant.eligibility || 'Accredited Colleges & Universities'}
 🏆 PAST WINNERS & OCCUPATIONS:
 ${winnersFormatted}
 
-🏛️ EXISTING CAR ASSET BASELINE:
-${grant.current_asset || 'CAR West Campus 56,000 sq ft facility and Kinnear Rd machine shops'}
+🏛️ EXISTING FACILITY ASSET BASELINE:
+${grant.current_asset || 'West Campus 56,000 sq ft testing facility and student machine shops'}
 
-🚀 BUILDING CAR'S FUTURE:
+🚀 BUILDING FUTURE CAPABILITY:
 ${grant.future_capability || grant.pitch}
 
 TECHNICAL SYNOPSIS:

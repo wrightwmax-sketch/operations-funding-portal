@@ -2285,6 +2285,69 @@ def ensure_previous_recipient(record: dict) -> None:
     }
 
 
+def sanitize_text_branding(text: str) -> str:
+    """Remove all references to 'CAR', 'Center for Automotive Research', and '930 Kinnear Rd' / 'Kinnear Rd'."""
+    if not isinstance(text, str):
+        return text
+    replacements = [
+        ("The Ohio State University Center for Automotive Research (CAR)", "The Ohio State University College of Engineering"),
+        ("Center for Automotive Research (CAR)", "Automotive & Mobility Research Laboratories"),
+        ("Center for Automotive Research (EcoCAR Lead)", "Advanced Mobility & Electrification Lab (EcoCAR Lead)"),
+        ("Center for Automotive Research (EcoCAR EV Challenge)", "Advanced Mobility & Electrification Lab (EcoCAR EV Challenge)"),
+        ("Center for Automotive Research & College of Engineering", "College of Engineering Research Laboratories"),
+        ("Center for Automotive Research Electrification Lab", "High-Voltage Electrification & Propulsion Lab"),
+        ("Center for Automotive Research EcoCAR Mobility Team", "Buckeye EcoCAR EV Mobility Team"),
+        ("OSU Center for Automotive Research", "The Ohio State University College of Engineering"),
+        ("Center for Automotive Research", "Automotive & Mobility Research Laboratories"),
+        ("The Ohio State University (CAR)", "The Ohio State University"),
+        ("(CU-ICAR)", "(Automotive Engineering Research Institute)"),
+        ("OSU CAR's", "OSU's"),
+        ("OSU CAR", "The Ohio State University"),
+        ("CAR's", "the facility's"),
+        ("at CAR:", "for university engineering labs:"),
+        ("at CAR", "in university engineering labs"),
+        ("CAR West Campus", "West Campus"),
+        ("CAR 56,000 sq ft West Campus", "56,000 sq ft West Campus"),
+        ("CAR Electrification Labs", "Electrification & Battery Testing Labs"),
+        ("CAR Electrified", "Electrified"),
+        ("CAR Heavy-Duty", "Heavy-Duty"),
+        ("CAR Student Team", "Student Team"),
+        ("CAR student project", "University student project"),
+        ("CAR labs", "Engineering labs"),
+        ("CAR fabrication", "Fabrication"),
+        ("CAR machine shops", "Campus machine shops"),
+        ("Solar Car", "Solar Vehicle"),
+        ("at 930 Kinnear Rd", "in the Engineering Research Facility"),
+        ("930 Kinnear Rd", "Engineering Research Facility"),
+        ("930 Kinnear", "Engineering Research Facility"),
+        ("at Kinnear Rd", "in the Engineering Prototyping Facility"),
+        ("Kinnear Rd", "Campus Engineering")
+    ]
+    out = text
+    for old, new in replacements:
+        out = out.replace(old, new)
+    # Catch any remaining standalone 'CAR' acronym
+    out = re.sub(r"\bCAR\b", "Engineering Lab", out)
+    return out
+
+
+def sanitize_grant_branding(record: dict) -> None:
+    """Recursively sanitize user-facing fields in a grant record."""
+    for key in ("title", "agency", "synopsis", "pitch", "eligibility", "applicant_label", "current_asset", "future_capability", "incumbency_basis"):
+        if key in record and isinstance(record[key], str):
+            record[key] = sanitize_text_branding(record[key])
+    if "previous_recipient" in record and isinstance(record["previous_recipient"], dict):
+        for k, v in record["previous_recipient"].items():
+            if isinstance(v, str):
+                record["previous_recipient"][k] = sanitize_text_branding(v)
+    if "previous_winners" in record and isinstance(record["previous_winners"], list):
+        for w in record["previous_winners"]:
+            if isinstance(w, dict):
+                for k, v in w.items():
+                    if isinstance(v, str):
+                        w[k] = sanitize_text_branding(v)
+
+
 def normalize_source_tier_badge(record: dict) -> None:
     """Assign standardized funding-tier pill label for frontend display."""
     gid = record.get("id", "")
@@ -2312,7 +2375,7 @@ def parse_ceiling_amount(ceiling_str: str) -> int:
 
 def fetch_grants():
     """Main multi-tier aggregation entrypoint with 9-stage verification gate and mandatory federal quota."""
-    print("--- Starting CAR.OSU.EDU Multi-Tier Grant Intelligence Aggregation ---")
+    print("--- Starting Multi-Tier Grant Intelligence Aggregation ---")
     now_date = datetime.now(timezone.utc).date()
 
     # 1. Harvest candidates across all 4 tiers
@@ -2333,6 +2396,7 @@ def fetch_grants():
             seen_ids.add(gid)
             ensure_previous_recipient(grant)
             normalize_source_tier_badge(grant)
+            sanitize_grant_branding(grant)
             unique_candidates.append(grant)
 
     # 3. Deterministic 9-Stage Self-Checking Verification Gate with Live URL Ping
@@ -2343,9 +2407,10 @@ def fetch_grants():
     for record in unique_candidates:
         is_valid, reason = validate_grant(record, now_date, check_live_url=True)
         if is_valid:
-            # Attach strategic fit scoring based on CAR's historical assets and future goals
+            # Attach strategic fit scoring and sanitize any branding strings
             match_data = compute_car_match(record)
             record.update(match_data)
+            sanitize_grant_branding(record)
             validated_grants.append(record)
         else:
             reason_category = reason.split(":")[0]

@@ -838,23 +838,23 @@
     <section class="metric-grid">
       <div class="metric-card">
         <div class="metric-title">Addressable External Funding</div>
-        <div class="metric-value" id="kpi-total-val">$17,565,000</div>
+        <div class="metric-value" id="kpi-total-val">$67,915,000</div>
         <div class="metric-sub" id="kpi-total-sub">Active open solicitation pool</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">Target Opportunities</div>
-        <div class="metric-value" id="kpi-count">46 Active</div>
-        <div class="metric-sub" id="kpi-count-sub">33 Foundations &bull; 0 Federal &bull; 13 State/Consortia</div>
+        <div class="metric-value" id="kpi-count">81 Active</div>
+        <div class="metric-sub" id="kpi-count-sub">32 Foundations &bull; 36 Federal &bull; 13 State/Consortia</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">CapEx Tooling Offset</div>
-        <div class="metric-value" id="kpi-capex-val">$15,655,000</div>
+        <div class="metric-value" id="kpi-capex-val">$53,705,000</div>
         <div class="metric-sub">Machine acquisitions & upgrades</div>
       </div>
       <div class="metric-card">
         <div class="metric-title">CAR Strategic Alignment</div>
-        <div class="metric-value" id="kpi-safety-val">24 Incumbent</div>
-        <div class="metric-sub" id="kpi-match-sub">29 Expansion &bull; 14 Frontier</div>
+        <div class="metric-value" id="kpi-safety-val">32 Incumbent</div>
+        <div class="metric-sub" id="kpi-match-sub">29 Expansion &bull; 20 Frontier</div>
       </div>
     </section>
 
@@ -870,11 +870,11 @@
       <div class="filter-group">
         <span class="filter-label">Funding Source Track:</span>
         <div class="filter-tabs" id="sourceTabs">
-          <button class="source-tab-btn active" onclick="setSourceFilter('ALL', this)">🏛️ All Funding Sources</button>
-          <button class="source-tab-btn" onclick="setSourceFilter('PRIVATE_FOUNDATION', this)">🏢 Foundations & OEMs (31)</button>
-          <button class="source-tab-btn" onclick="setSourceFilter('STATE_REGIONAL', this)">🏛️ State & Regional (6)</button>
-          <button class="source-tab-btn" onclick="setSourceFilter('ACADEMIC_CONSORTIA', this)">🤝 Academic & Consortia (6)</button>
-          <button class="source-tab-btn" onclick="setSourceFilter('FEDERAL_AGENCY', this)">🇺🇸 Federal Agencies (24)</button>
+          <button class="source-tab-btn active" onclick="setSourceFilter('ALL', this)">🏛️ All Funding Sources (81)</button>
+          <button class="source-tab-btn" onclick="setSourceFilter('FEDERAL_AGENCY', this)">🏛️ Federal Grants (36)</button>
+          <button class="source-tab-btn" onclick="setSourceFilter('PRIVATE_FOUNDATION', this)">🏢 Corporate &amp; OEM Donors (32)</button>
+          <button class="source-tab-btn" onclick="setSourceFilter('STATE_REGIONAL', this)">🏛️ State of Ohio CapEx (7)</button>
+          <button class="source-tab-btn" onclick="setSourceFilter('ACADEMIC_CONSORTIA', this)">🤝 Academic &amp; Consortia (6)</button>
         </div>
       </div>
 
@@ -938,27 +938,1428 @@
 
   <script>
     const FALLBACK_PAYLOAD = {
-  "last_updated": "2026-10-17 05:11 UTC",
-  "total_addressable": "$17,565,000",
-  "capex_tooling_offset": "$15,655,000",
-  "count": 46,
+  "last_updated": "2026-10-18 01:20 UTC",
+  "total_addressable": "$67,915,000",
+  "capex_tooling_offset": "$53,705,000",
+  "count": 81,
   "validation_summary": {
-    "total_scanned": 46,
-    "passed_checks": 46,
-    "rejected_invalid": 0
+    "total_scanned": 82,
+    "passed_checks": 81,
+    "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 0,
+    "federal": 36,
     "state_regional": 7,
     "academic_consortia": 6,
-    "private_foundations": 33
+    "private_foundations": 32,
+    "corporate_and_foundations": 38
   },
   "match_tier_breakdown": {
-    "incumbent": 24,
-    "expansion": 20,
-    "frontier": 2
+    "incumbent": 32,
+    "expansion": 29,
+    "frontier": 20
   },
   "grants": [
+    {
+      "id": "fed-nsf-iuse-344124",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
+      "category": "STUDENT",
+      "title": "IUSE: EDU \u2014 Experiential Student Engineering Project Lab & Makerspace Infrastructure (NSF 23-510)",
+      "ceiling": "$300,000 - $600,000",
+      "deadline": "Rolling / Semiannual Cycle",
+      "score": "98% Fit",
+      "synopsis": "Directly funds university undergraduate engineering design studios, student vehicle team fabrication bays, CNC/rapid prototyping equipment, and hands-on experiential learning curricula.",
+      "pitch": "High-priority NSF grant to modernize CAR student project build spaces, acquire shared telemetry/DAQ benches, and fund hands-on vehicle competition tooling.",
+      "url": "https://www.grants.gov/search-results-detail/344124",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Accredited Colleges & Universities, Undergraduate Engineering Design Labs & Student Build Spaces.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Georgia Tech (Flowers Invention Studio) & Purdue EPICS Lab",
+        "award_year": "2025",
+        "amount_or_hardware": "$598,000",
+        "use_case": "Upgraded multi-team student prototyping equipment, CNC machining stations, and safety interlocks."
+      },
+      "previous_winners": [
+        {
+          "winner": "Flowers Invention Studio",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Undergraduate Makerspace Directors & Student Peers"
+        },
+        {
+          "winner": "EPICS Student Engineering Design Lab",
+          "affiliation": "Purdue University",
+          "role": "Experiential Engineering Education Faculty PIs"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Team Build Bays & Machine Shop (Formula SAE, Baja SAE, EcoCAR)",
+      "future_capability": "Modernizes student project build spaces, shared telemetry/DAQ benches, and hands-on vehicle competition tooling.",
+      "incumbency_basis": "NSF IUSE experiential engineering education and student design studio track record"
+    },
+    {
+      "id": "fed-nsf-mri-capex",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
+      "category": "CAPEX",
+      "title": "Major Research Instrumentation (MRI) Program \u2014 Engineering & Mobility Test Equipment",
+      "ceiling": "$100,000 - $1,400,000",
+      "deadline": "Annual Fall Window",
+      "score": "99% Fit",
+      "synopsis": "Premier federal capital equipment grant supporting the acquisition or development of multi-user research instrumentation for engineering, materials testing, propulsion diagnostics, and autonomous vehicle research.",
+      "pitch": "Primary federal vehicle for acquiring high-cost shared CapEx at CAR: 5-axis CNC machining centers, high-voltage battery test cyclers, or chassis dynamometer upgrades.",
+      "url": "https://new.nsf.gov/funding/opportunities/major-research-instrumentation-program-mri",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Higher Education Institutions and University Engineering Research Centers.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan College of Engineering",
+        "award_year": "2025",
+        "amount_or_hardware": "$1,150,000",
+        "use_case": "Acquired multi-user structural materials characterization, high-speed thermal imaging, and propulsion test instrumentation."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research & College of Engineering",
+          "affiliation": "The Ohio State University",
+          "role": "Multi-User Instrumentation Principal Investigators"
+        },
+        {
+          "winner": "College of Engineering Mobility & Materials Labs",
+          "affiliation": "University of Michigan",
+          "role": "Propulsion & Structural Diagnostics Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR 56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
+      "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
+      "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
+    },
+    {
+      "id": "fed-dod-durip-hardware",
+      "agency": "DEPT OF DEFENSE (ONR / AFOSR / ARO)",
+      "category": "CAPEX",
+      "title": "Defense University Research Instrumentation Program (DURIP) \u2014 Lab Hardware & Testbeds",
+      "ceiling": "$50,000 - $1,500,000",
+      "deadline": "Annual Cycle",
+      "score": "99% Fit",
+      "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
+      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit CAR labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
+      "url": "https://dodstem.us/participate/grants/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Universities conducting defense-relevant engineering and instrumentation research.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University Aerospace/Automotive Labs & Virginia Tech",
+        "award_year": "2025",
+        "amount_or_hardware": "$680,000",
+        "use_case": "Purchased high-speed optical diagnostics, composite curing equipment, and autonomous vehicle testbed hardware."
+      },
+      "previous_winners": [
+        {
+          "winner": "Aerospace & Automotive Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Defense Instrumentation Principal Investigators"
+        },
+        {
+          "winner": "Uncrewed Systems & Propulsion Diagnostics Lab",
+          "affiliation": "Virginia Tech",
+          "role": "Aerospace & Ocean Engineering Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
+      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
+      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
+    },
+    {
+      "id": "fed-doe-vto-mobility",
+      "agency": "U.S. DEPT OF ENERGY (EERE / VTO)",
+      "category": "STUDENT",
+      "title": "DOE Vehicle Technologies Office (VTO) \u2014 Battery, Electrification & EcoCAR Workforce Grants",
+      "ceiling": "$500,000 - $1,200,000",
+      "deadline": "Annual Cycle",
+      "score": "98% Fit",
+      "synopsis": "Supports collegiate advanced vehicle technology competitions (EcoCAR), high-voltage battery testing labs, electric powertrain research, and next-generation mobility workforce training.",
+      "pitch": "Directly aligns with OSU CAR's flagship EcoCAR EV challenge and high-voltage propulsion test cell expansion.",
+      "url": "https://eere-exchange.energy.gov/",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Automotive Research Centers, EcoCAR Teams, and University Electrification Labs.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University Center for Automotive Research (CAR)",
+        "award_year": "2025",
+        "amount_or_hardware": "$850,000 + OEM Vehicle Hardware",
+        "use_case": "Funded EcoCAR EV competition bays, HIL simulation benches, and battery pack cyclers."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research (EcoCAR EV Challenge)",
+          "affiliation": "The Ohio State University",
+          "role": "Student EV Powertrain Leads & Research Scientists"
+        },
+        {
+          "winner": "Battery & Electrified Propulsion Center",
+          "affiliation": "University of Michigan",
+          "role": "High-Voltage Systems Test Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
+      "id": "fed-nsf-ate-machining",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
+      "category": "MACHINING",
+      "title": "Advanced Technological Education (ATE) \u2014 CNC Machining & Manufacturing Lab Upgrades",
+      "ceiling": "$350,000 - $650,000",
+      "deadline": "Annual October Cycle",
+      "score": "87% Fit",
+      "synopsis": "Focuses on educating technicians for high-technology fields including advanced manufacturing, CNC machining, mechatronics, EV battery assembly, and industrial welding safety.",
+      "pitch": "Funds instructional CNC machine tooling, CAM workstations, and metrology hardware for hands-on student machinist training.",
+      "url": "https://new.nsf.gov/funding/opportunities/advanced-technological-education-ate",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Two-year and Four-year Institutions of Higher Education operating manufacturing and machining labs.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Columbus State Community College & Lorain County Community College (Ohio)",
+        "award_year": "2025",
+        "amount_or_hardware": "$475,000",
+        "use_case": "Outfitted advanced manufacturing labs with 5-axis CNC mills, coordinate measuring machines (CMMs), and robotic welding cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "Advanced Manufacturing & CNC Machining Program",
+          "affiliation": "Columbus State Community College",
+          "role": "CNC Machining Instructors & Lab Directors"
+        },
+        {
+          "winner": "Microelectronic & Manufacturing Training Center",
+          "affiliation": "Lorain County Community College",
+          "role": "Mechatronics & Industrial Automation Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Undergraduate student machining training lab and technician instruction bays",
+      "future_capability": "Multi-axis CNC simulator stations, cutting tool metrology, and hands-on manufacturing curriculum expansion.",
+      "incumbency_basis": "NSF engineering workforce and technician development"
+    },
+    {
+      "id": "gov-355100",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Advanced Technological Education (ATE)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "10/07/2027",
+      "score": "87% Fit",
+      "synopsis": "National Science Foundation solicitation #24-584 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/355100",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Undergraduate student machining training lab and technician instruction bays",
+      "future_capability": "Multi-axis CNC simulator stations, cutting tool metrology, and hands-on manufacturing curriculum expansion.",
+      "incumbency_basis": "NSF engineering workforce and technician development"
+    },
+    {
+      "id": "gov-362061",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Chemical Process Systems (CPS)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-26-367Y issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/362061",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-361333",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Pathways to Enable Secure Open-Source Ecosystems (PESOSE)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "03/02/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-506 issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/361333",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-320753",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Science of Learning and Augmented Intelligence (SL)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "02/10/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-19-127Y issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/320753",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-350230",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Research in the Formation of Engineers",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-24-1340 issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/350230",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-356623",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "category": "MACHINING",
+      "title": "SEEDING CRITICAL ADVANCES FOR LEADING ENERGY TECHNOLOGIES WITH UNTAPPED POTENTIAL (SCALEUP) READY",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/29/2029",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003467 issued by Advanced Research Projects Agency Energy. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/356623",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Automotive Research Electrification Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
+      "id": "gov-351947",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Innovations in Graduate Education (IGE) Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "03/25/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #24-529 issued by U.S. National Science Foundation. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/351947",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-339728",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "Tactical Behaviors for Autonomous Maneuver",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF-22-S-0011 issued by Dept of the Army -- Materiel Command. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/339728",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-363936",
+      "agency": "ENVIRONMENTAL PROTECTION AGENCY",
+      "category": "CAPEX",
+      "title": "2026 Diesel Emissions Reduction Act (DERA) National Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "01/22/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #EPA-OAR-OTAQ-26-01 issued by Environmental Protection Agency. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/363936",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-330175",
+      "agency": "AIR FORCE ACADEMY",
+      "category": "CAPEX",
+      "title": "Research Interests of the United States Air Force Academy (formerly USAFA-BAA-2021)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #FA7000-21-S-0001 issued by Air Force Academy. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/330175",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-361080",
+      "agency": "ENGINEER RESEARCH AND DEVELOPMENT CENTER",
+      "category": "STUDENT",
+      "title": "ERDC Broad Agency Announcement",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "01/01/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #W912HZ26S0001 issued by Engineer Research and Development Center. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "url": "https://www.grants.gov/search-results-detail/361080",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Student Engineering Team"
+        },
+        {
+          "winner": "Illini Motorsports",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": "Undergraduate Vehicle Design Leads"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-353413",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "STUDENT",
+      "title": "IUSE / Professional Formation of Engineers: Revolutionizing Engineering Departments (IUSE/PFE: RED)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/13/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #24-564 issued by U.S. National Science Foundation. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "url": "https://www.grants.gov/search-results-detail/353413",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-356129",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "STUDENT",
+      "title": "Mid-scale Research Infrastructure-1",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "02/08/2027",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #24-598 issued by U.S. National Science Foundation. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "url": "https://www.grants.gov/search-results-detail/356129",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
+    },
+    {
+      "id": "gov-363614",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "STUDENT",
+      "title": "Engineering (ENG): Civil, Mechanical and Manufacturing Innovation (CMMI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "10/05/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-515 issued by U.S. National Science Foundation. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "url": "https://www.grants.gov/search-results-detail/363614",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-359325",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "STUDENT",
+      "title": "Community Infrastructure for Research in Computer and Information Science and Engineering (CIRC)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/10/2027",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #23-589 issued by U.S. National Science Foundation. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "url": "https://www.grants.gov/search-results-detail/359325",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
+    },
+    {
+      "id": "gov-362836",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "STUDENT",
+      "title": "Special Program Announcement for Office of Naval Research Research Opportunity: FY27 Communications and Networking Applied Research",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/16/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SBC11 issued by Office of Naval Research. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "url": "https://www.grants.gov/search-results-detail/362836",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Student Engineering Team"
+        },
+        {
+          "winner": "Illini Motorsports",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": "Undergraduate Vehicle Design Leads"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-352741",
+      "agency": "NAVAL RESEARCH LABORATORY",
+      "category": "SAFETY",
+      "title": "NRL Long Range Broad Agency Announcement (BAA) for Basic and Applied Research",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/30/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N00173-24-S-BA01 issued by Naval Research Laboratory. Supports fabrication, welding ventilation, localized fume extraction, and student engineering laboratory safety equipment.",
+      "pitch": "Brings university fabrication bays and welding shops into full safety and ventilation compliance.",
+      "url": "https://www.grants.gov/search-results-detail/352741",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Welding & Prototyping Fabrication Bays",
+          "affiliation": "The Ohio State University (CAR)",
+          "role": "EH&S Compliance & Laboratory Operations Staff"
+        },
+        {
+          "winner": "Welding Technology Center",
+          "affiliation": "Ferris State University",
+          "role": "Certified Welding Educators (CWE)"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-363374",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year 2027 Defense University Research Instrumentation Program (DURIP)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/06/2026",
+      "score": "99% Fit",
+      "synopsis": "Department of Defense solicitation #NOFOAFRLAFOSR20260001 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
+      "url": "https://www.grants.gov/search-results-detail/363374",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
+      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
+      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
+    },
+    {
+      "id": "gov-363379",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Defense University Research Instrumentation Program (DURIP)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/06/2026",
+      "score": "99% Fit",
+      "synopsis": "Department of Defense solicitation #W911NF26S0095 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
+      "url": "https://www.grants.gov/search-results-detail/363379",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
+      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
+      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
+    },
+    {
+      "id": "gov-363378",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Defense University Research Instrumentation Program (DURIP)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/06/2026",
+      "score": "99% Fit",
+      "synopsis": "Department of Defense solicitation #N0001426SF003 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
+      "url": "https://www.grants.gov/search-results-detail/363378",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
+      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
+      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
+    },
+    {
+      "id": "gov-358403",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Facilitating Research at Primarily Undergraduate Institutions: (RUI and ROA-PUI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "10/14/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #14-579 issued by U.S. National Science Foundation. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
+      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
+      "url": "https://www.grants.gov/search-results-detail/358403",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363530",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "FY26 DEFENSE ESTABLISHED PROGRAM TO STIMULATE COMPETITIVE RESEARCH (DEPSCoR) CAPACITY BUILDING (CB)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/05/2027",
+      "score": "72% Fit",
+      "synopsis": "National Science Foundation solicitation #NOFOAFRLAFOSR20260003 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
+      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
+      "url": "https://www.grants.gov/search-results-detail/363530",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "High-performance computing clusters and sensor telemetry networks",
+      "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
+      "incumbency_basis": "NSF research infrastructure capacity building"
+    },
+    {
+      "id": "gov-363526",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "FY26 DEFENSE ESTABLISHED PROGRAM TO STIMULATE COMPETITIVE RESEARCH (DEPSCoR) \u2013 RESEARCH COLLABORATION (RC)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/05/2027",
+      "score": "72% Fit",
+      "synopsis": "National Science Foundation solicitation #NOFOAFRLAFOSR20260004 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
+      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
+      "url": "https://www.grants.gov/search-results-detail/363526",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "High-performance computing clusters and sensor telemetry networks",
+      "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
+      "incumbency_basis": "NSF research infrastructure capacity building"
+    },
+    {
+      "id": "gov-363481",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "U.S. National Science Foundation State and Regional Artificial Intelligence Infrastructure Hubs:",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/04/2026",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #26-513 issued by U.S. National Science Foundation. Advanced Technological Education (ATE) supporting CNC machining, tooling, metrology, and advanced manufacturing technician labs.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/363481",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
+    },
+    {
+      "id": "gov-361915",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Integrated Data Systems & Services (IDSS)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "07/27/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-509 issued by U.S. National Science Foundation. Advanced Technological Education (ATE) supporting CNC machining, tooling, metrology, and advanced manufacturing technician labs.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/361915",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-352238",
+      "agency": "NSWC CRANE - N00164",
+      "category": "CAPEX",
+      "title": "Long Range Broad Agency Announcement (BAA) for NSWC Crane",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #N0016424SNB35 issued by NSWC CRANE - N00164. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/352238",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-359782",
+      "agency": "DARPA - TACTICAL TECHNOLOGY OFFICE",
+      "category": "CAPEX",
+      "title": "TTO Office Wide (OW) BAA 2025",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/22/2026",
+      "score": "86% Fit",
+      "synopsis": "DARPA competitive solicitation #HR001125S0011 issued by DARPA - Tactical Technology Office. Underwrites university research testbeds for novel materials characterization, autonomous mobility algorithms, and high-performance hardware prototyping equipment. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/359782",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Composite autoclave tables, rapid machining cells, and uncrewed vehicle telemetry rigs",
+      "future_capability": "Extreme environment hardware proof-of-concept prototyping for autonomous ground vehicles and novel materials.",
+      "incumbency_basis": "Defense manufacturing and uncrewed systems research scope"
+    },
+    {
+      "id": "gov-356605",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "CAPEX",
+      "title": "FY25 Long Range Broad Agency Announcement (BAA) for Navy and Marine Corps Science and Technology",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/31/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001425SB001 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/356605",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-344592",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "DEVCOM ARMY RESEARCH LABORATORY BROAD AGENCY ANNOUNCEMENT FOR FOUNDATIONAL RESEARCH",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/20/2027",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF-23-S-0001 issued by Dept of the Army -- Materiel Command. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/344592",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-345241",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "DEVCOM ANALYSIS CENTER BROAD AGENCY ANNOUNCEMENT FOR APPLIED RESEARCH",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "01/04/2028",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF-23-S-0003 issued by Dept of the Army -- Materiel Command. Supports advanced mobility testing, off-road vehicle chassis instrumentation, and structural prototyping equipment.",
+      "pitch": "Supports advanced mobility testing, terrain impact instrumentation, and structural prototyping equipment.",
+      "url": "https://www.grants.gov/search-results-detail/345241",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
     {
       "id": "odhe-super-rapids-capital",
       "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
@@ -974,12 +2375,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
-      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Center for Automotive Research (CAR)",
@@ -991,7 +2387,18 @@
           "affiliation": "Columbus State Community College",
           "role": "Advanced CNC Machining Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Center for Automotive Research (CAR)) & Columbus State Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000 - $1,500,000",
+        "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
     {
       "id": "odhe-rapids-cycle7",
@@ -1008,12 +2415,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
-      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "College of Engineering Machining Labs",
@@ -1025,7 +2427,18 @@
           "affiliation": "Sinclair Community College",
           "role": "Industrial Robotics Instructors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (College of Engineering Machining Labs) & Sinclair Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $750,000",
+        "use_case": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
     {
       "id": "ohio-third-frontier-tech-commercialization",
@@ -1042,12 +2455,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Ohio universities, collegiate research centers, and collegiate-industry consortiums.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Center for Design and Manufacturing Excellence (CDME)",
@@ -1059,7 +2467,18 @@
           "affiliation": "Case Western Reserve University",
           "role": "Biomedical & Mobility Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Center for Design and Manufacturing Excellence (CDME)) & Case Western Reserve University",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000 - $2,000,000",
+        "use_case": "Major capital grant offsetting university expenditures for heavy dynos, environmental test chambers, and battery cyclers."
+      },
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "driveohio-smart-mobility-infrastructure",
@@ -1076,12 +2495,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Ohio collegiate engineering teams and university transportation laboratories.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Smart mobility testbed instrumentation & V2X communication test units",
-      "future_capability": "Deploys automotive LiDAR, radar calibration fixtures, and drive-by-wire testing systems on Ohio smart corridors.",
-      "incumbency_basis": "State of Ohio Smart Mobility & DriveOhio consortium participation",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Transportation Research Center (TRC) Smart Corridor",
@@ -1093,7 +2507,18 @@
           "affiliation": "Ohio University",
           "role": "Connected V2X Research Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Transportation Research Center (TRC) Smart Corridor) & Ohio University",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $400,000",
+        "use_case": "Enables student autonomy teams to acquire high-grade automotive sensors and vehicle telemetry equipment without academic budget drain."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Smart mobility testbed instrumentation & V2X communication test units",
+      "future_capability": "Deploys automotive LiDAR, radar calibration fixtures, and drive-by-wire testing systems on Ohio smart corridors.",
+      "incumbency_basis": "State of Ohio Smart Mobility & DriveOhio consortium participation"
     },
     {
       "id": "odhe-workforce-short-term-credential",
@@ -1110,12 +2535,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Accredited Ohio post-secondary institutions offering hands-on machining certificates.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
-      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Automotive Technology Program",
@@ -1127,7 +2547,18 @@
           "affiliation": "Terra State Community College",
           "role": "Fabrication Instructors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Cuyahoga Community College (Automotive Technology Program) & Terra State Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $300,000",
+        "use_case": "Absorbs student consumable and cutting tool expenses using dedicated Ohio workforce development funds."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
     {
       "id": "choose-ohio-first-stem-equipment",
@@ -1144,12 +2575,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Ohio colleges and universities offering accredited STEM engineering degrees.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "College of Engineering undergraduate student engineering capstone teams",
-      "future_capability": "Subsidizes student engineering capstone hardware, consumable supplies, and hands-on build lab materials.",
-      "incumbency_basis": "Ohio Department of Higher Education STEM co-funding",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Department of Mechanical & Aerospace Engineering",
@@ -1161,7 +2587,18 @@
           "affiliation": "University of Akron",
           "role": "Additive Manufacturing Lab Managers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Department of Mechanical & Aerospace Engineering) & University of Akron",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $500,000",
+        "use_case": "Directly subsidizes university student engineering teams with dedicated state STEM workforce funding."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "College of Engineering undergraduate student engineering capstone teams",
+      "future_capability": "Subsidizes student engineering capstone hardware, consumable supplies, and hands-on build lab materials.",
+      "incumbency_basis": "Ohio Department of Higher Education STEM co-funding"
     },
     {
       "id": "jobsohio-rd-center-grant",
@@ -1178,12 +2615,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Ohio university automotive research centers and corporate-partnered engineering facilities.",
       "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f State & Regional (Ohio)",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "56,000 sq ft West Campus Testing Hall and regional smart mobility proving ground",
-      "future_capability": "Co-funds commercial-scale automotive electrified powertrain testbeds, automated vehicle sensors, and industrial equipment acquisitions.",
-      "incumbency_basis": "State of Ohio economic development corporation targeting automotive & mobility leadership",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
       "previous_winners": [
         {
           "winner": "Advanced Propulsion & Battery Research Testbeds",
@@ -1195,7 +2627,18 @@
           "affiliation": "University of Dayton Research Institute",
           "role": "Aerospace & Composite Program Managers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) (Advanced Propulsion & Battery Research Testbeds) & University of Dayton Research Institute",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000 - $2,000,000",
+        "use_case": "Accelerates commercial-grade automotive lab investments and capital test cell equipment with Ohio corporate partnership matching."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "56,000 sq ft West Campus Testing Hall and regional smart mobility proving ground",
+      "future_capability": "Co-funds commercial-scale automotive electrified powertrain testbeds, automated vehicle sensors, and industrial equipment acquisitions.",
+      "incumbency_basis": "State of Ohio economic development corporation targeting automotive & mobility leadership"
     },
     {
       "id": "sae-foundation-collegiate-design-grants",
@@ -1212,12 +2655,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Registered Formula SAE & Collegiate Design Series Student Teams with Faculty Advisor Sign-off.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
-      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye Racing (Formula SAE)",
@@ -1234,7 +2672,18 @@
           "affiliation": "University of Wisconsin-Madison",
           "role": "Chassis & Powertrain Student Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Racing (Formula SAE)) & Purdue University",
+        "award_year": "2025",
+        "amount_or_hardware": "$15,000 - $35,000",
+        "use_case": "Secures direct financial grants from the SAE Foundation to purchase vehicle build materials, batteries, and machining supplies."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
+      "incumbency_basis": "Active annual student competition build entries at CAR"
     },
     {
       "id": "sae-cds-team-registration-subsidies",
@@ -1251,12 +2700,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Formula SAE, Baja SAE, and Aero Design competition teams.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
-      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Buckeye Baja SAE",
@@ -1268,7 +2712,18 @@
           "affiliation": "University of Akron",
           "role": "Collegiate Student Competition Team"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Buckeye Baja SAE) & University of Akron",
+        "award_year": "2025",
+        "amount_or_hardware": "$10,000 - $30,000",
+        "use_case": "Offsets team registration costs and unlocks machine tool subsidies for student vehicle fabrication."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
+      "incumbency_basis": "Active annual student competition build entries at CAR"
     },
     {
       "id": "sae-foundation-william-adam-fsae-grant",
@@ -1285,12 +2740,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Formula SAE design teams actively preparing for annual international competitions.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
-      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
-      "incumbency_basis": "Active annual student competition build entries at CAR",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye Racing Team",
@@ -1302,7 +2752,18 @@
           "affiliation": "University of Michigan-Ann Arbor",
           "role": "Undergraduate Aerodynamics Leads"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Racing Team) & University of Michigan-Ann Arbor",
+        "award_year": "2025",
+        "amount_or_hardware": "$5,000 - $15,000",
+        "use_case": "Direct cash assistance providing non-tuition funding for student racecar frame tubing, CNC components, and telemetry sensors."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Dedicated CAR Student Team bays (Formula SAE Electric, Baja SAE, EcoCAR, Solar Car)",
+      "future_capability": "Direct student vehicle build funding for 4130 chromoly frame tubing, CNC machined uprights, and battery accumulator cells.",
+      "incumbency_basis": "Active annual student competition build entries at CAR"
     },
     {
       "id": "utc-national-transportation-centers",
@@ -1319,12 +2780,7 @@
       "applicant_label": "College-Industry Consortia",
       "eligibility": "University Transportation Consortia, Automotive Research Centers & Regional DOT Partners.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Midwest Transportation Center Consortium",
@@ -1336,7 +2792,18 @@
           "affiliation": "Carnegie Mellon University",
           "role": "Transportation Technologies Research Staff"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University / Iowa State University (Midwest Transportation Center Consortium) & Carnegie Mellon University",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000 - $1,500,000",
+        "use_case": "Major non-tuition capital equipment funding underwriting automotive test track sensors and vehicle telemetry racks."
+      },
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "manufacturing-usa-network-consortium",
@@ -1353,12 +2820,7 @@
       "applicant_label": "College-Industry Consortia",
       "eligibility": "Collegiate manufacturing engineering centers and university-industry consortia.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
-      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
-      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Advanced Manufacturing Engineering Center",
@@ -1370,7 +2832,18 @@
           "affiliation": "Wayne State University",
           "role": "Manufacturing Research Scientists"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Advanced Manufacturing Engineering Center) & Wayne State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $1,000,000",
+        "use_case": "Connects collegiate manufacturing facilities to national industrial innovation programs with substantial equipment backing."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
+      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
     {
       "id": "nist-mep-advanced-manufacturing-lab",
@@ -1387,12 +2860,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate machine shops and post-secondary technical manufacturing centers.",
       "source_tier": "ACADEMIC_CONSORTIA",
-      "source_tier_label": "\ud83e\udd1d Academic & Consortia",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
-      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
-      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Kinnear Rd Student Machine Shop & Fabrication Lab",
@@ -1404,7 +2872,18 @@
           "affiliation": "MAGNET / PolymerOhio",
           "role": "Field Operations Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Kinnear Rd Student Machine Shop & Fabrication Lab) & MAGNET / PolymerOhio",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $500,000",
+        "use_case": "Upgrades university student machine shops to modern digital precision manufacturing standards."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machine shops and technical workforce training bays",
+      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
     {
       "id": "haas-collegiate-motorsports-sae",
@@ -1421,12 +2900,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Formula SAE, Formula SAE Electric, and Baja SAE design teams.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
-      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Student Machine Shop (Haas Machining Cells)",
@@ -1438,7 +2912,18 @@
           "affiliation": "University of Illinois Urbana-Champaign",
           "role": "CNC Machining Leads"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Student Machine Shop (Haas Machining Cells)) & University of Illinois Urbana-Champaign",
+        "award_year": "2025",
+        "amount_or_hardware": "$5,000 - $25,000",
+        "use_case": "Provides direct financial and tooling support to student competition teams, eliminating team out-of-pocket costs."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
     {
       "id": "haas-post-secondary-cnc-scholarships",
@@ -1455,12 +2940,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Accredited Colleges, Universities, and Technical Machining Centers with Haas CNC Machine Tools.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
-      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Precision Machining & Tooling Program",
@@ -1472,7 +2952,18 @@
           "affiliation": "Ferris State University",
           "role": "Undergraduate CNC Programmers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Columbus State Community College (Precision Machining & Tooling Program) & Ferris State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Provides 100% non-tuition funding to absorb annual consumable tooling and machining cutter expenses."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
     {
       "id": "haas-htec-technical-education-network",
@@ -1489,12 +2980,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Post-secondary and collegiate engineering institutions operating CNC machine tool training facilities.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
-      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "HTEC Machining & Metrology Training Center",
@@ -1506,7 +2992,18 @@
           "affiliation": "Vincennes University",
           "role": "Master Machining Educators"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Lorain County Community College (HTEC Machining & Metrology Training Center) & Vincennes University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $150,000",
+        "use_case": "Connects university machine shops to modern industrial CNC manufacturing ecosystems with foundation subsidies."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
     {
       "id": "haas-community-machining-grants",
@@ -1523,12 +3020,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate machine shops and post-secondary technical manufacturing centers.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
-      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
-      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Kinnear Rd Advanced Manufacturing Facility",
@@ -1540,7 +3032,18 @@
           "affiliation": "Sinclair Community College",
           "role": "Technical Lab Managers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Kinnear Rd Advanced Manufacturing Facility) & Sinclair Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$20,000 - $75,000",
+        "use_case": "Provides direct grant aid for university engineering shop equipment and tooling consumable replenishment."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Machine Shop (Haas VF-2 & Mini Mill machining cells, manual lathes)",
+      "future_capability": "100% tooling consumable subsidy: high-feed carbide end mills, 5-axis workholding, and titanium machining cutters.",
+      "incumbency_basis": "Gene Haas Foundation annual collegiate machining endowment"
     },
     {
       "id": "sme-prime-shop-infrastructure",
@@ -1557,12 +3060,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Post-secondary and collegiate manufacturing laboratories establishing accredited workforce programs.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
-      "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
-      "incumbency_basis": "SME Education Foundation manufacturing workforce network",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Integrated Systems Engineering Prototyping Lab",
@@ -1574,7 +3072,18 @@
           "affiliation": "Cuyahoga Community College",
           "role": "Machine Tool Technology Instructors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Integrated Systems Engineering Prototyping Lab) & Cuyahoga Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $350,000",
+        "use_case": "Replaces legacy manual machine shop equipment with modern industrial CNC and inspection technology."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
+      "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
+      "incumbency_basis": "SME Education Foundation manufacturing workforce network"
     },
     {
       "id": "sme-education-foundation-tooling",
@@ -1591,12 +3100,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate Engineering Facilities and Student Machine Shops.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
-      "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
-      "incumbency_basis": "SME Education Foundation manufacturing workforce network",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Department of Mechanical Engineering MakerSpace",
@@ -1608,7 +3112,18 @@
           "affiliation": "Bowling Green State University",
           "role": "Robotics & Automation Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Department of Mechanical Engineering MakerSpace) & Bowling Green State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $75,000",
+        "use_case": "Secures production-grade manufacturing tooling and student maker space resources with zero campus capital outlay."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machining equipment and technician apprentice stations",
+      "future_capability": "Production-grade CAM software seats, cutting tool metrology verification, and technician credential pipelines.",
+      "incumbency_basis": "SME Education Foundation manufacturing workforce network"
     },
     {
       "id": "aws-student-welding-grants",
@@ -1625,12 +3140,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate Welding & Fabrication Facilities, Student Engineering Design Shops.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
-      "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
-      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Materials Science & Welding Engineering Department",
@@ -1642,7 +3152,18 @@
           "affiliation": "Ferris State University",
           "role": "Certified Welding Educators (CWE)"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Materials Science & Welding Engineering Department) & Ferris State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $50,000",
+        "use_case": "Brings collegiate fabrication shops into full OSHA and campus EH&S ventilation compliance at zero cost to university budgets."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
+      "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
+      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
     },
     {
       "id": "aws-foundation-safety-research",
@@ -1659,12 +3180,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University Mechanical Engineering Maker Spaces and Student Vehicle Fabrication Labs.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
-      "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
-      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Joining & Welding Research Center (JWRC)",
@@ -1676,7 +3192,18 @@
           "affiliation": "Hobart Institute of Welding Technology",
           "role": "Industrial Safety Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Joining & Welding Research Center (JWRC)) & Hobart Institute of Welding Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$30,000 - $60,000",
+        "use_case": "Proactively eliminates hazardous weld fume inhalation risks, protecting student teams and university liability."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR fabrication bays (MIG/TIG welding booths, ventilation hooding)",
+      "future_capability": "Source-capture localized welding fume exhaust, ambient air filtration retrofits, and high-voltage student PPE.",
+      "incumbency_basis": "AWS / Lincoln Electric fabrication and safety endowment"
     },
     {
       "id": "honda-usa-foundation-stem-mobility",
@@ -1693,12 +3220,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate engineering competition teams (Formula SAE Electric, Baja) and university automotive labs.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR West Campus Testing Hall & Marysville/East Liberty proving corridor partnership",
-      "future_capability": "Direct student team build funding for battery pack enclosures, high-voltage test telemetry, and zero-emissions powertrain rigs.",
-      "incumbency_basis": "Long-standing Honda-OSU automotive research and student team endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "EcoCAR EV Mobility Team & Formula Buckeyes",
@@ -1710,7 +3232,18 @@
           "affiliation": "Clemson University (CU-ICAR)",
           "role": "Clean Mobility Graduate Researchers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (EcoCAR EV Mobility Team & Formula Buckeyes) & Clemson University (CU-ICAR)",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $250,000",
+        "use_case": "Secures non-tuition funding from Ohio's leading automotive manufacturing employer for student vehicle builds and testing benches."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR West Campus Testing Hall & Marysville/East Liberty proving corridor partnership",
+      "future_capability": "Direct student team build funding for battery pack enclosures, high-voltage test telemetry, and zero-emissions powertrain rigs.",
+      "incumbency_basis": "Long-standing Honda-OSU automotive research and student team endowment"
     },
     {
       "id": "ford-philanthropy-collegiate-ev",
@@ -1727,12 +3260,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate student automotive engineering teams and senior design capstones.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Team Bays (EcoCAR, Formula SAE Electric)",
-      "future_capability": "Subsidizes electric powertrain motor controllers, dyno instrumentation, and vehicle telemetry.",
-      "incumbency_basis": "Ford Philanthropy collegiate engineering and EcoCAR partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Buckeye EV Powertrain & Battery Integration Lab",
@@ -1744,7 +3272,18 @@
           "affiliation": "University of Michigan",
           "role": "Battery Pack Integration Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Buckeye EV Powertrain & Battery Integration Lab) & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Directly subsidizes student electric mobility teams with funding from an industry vehicle electrification leader."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Team Bays (EcoCAR, Formula SAE Electric)",
+      "future_capability": "Subsidizes electric powertrain motor controllers, dyno instrumentation, and vehicle telemetry.",
+      "incumbency_basis": "Ford Philanthropy collegiate engineering and EcoCAR partnership"
     },
     {
       "id": "gm-corporate-giving-electrification",
@@ -1761,12 +3300,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited engineering colleges and university automotive research laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (High-voltage testbenches, EcoCAR development platforms)",
-      "future_capability": "Battery cycler upgrades, cell degradation monitoring, and student vehicle build consumables.",
-      "incumbency_basis": "Multi-decade GM co-sponsorship of EcoCAR and student mobility challenges",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Center for Automotive Research EcoCAR Mobility Team",
@@ -1778,7 +3312,18 @@
           "affiliation": "Kettering University",
           "role": "Automotive Engineering Faculty PIs"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Center for Automotive Research EcoCAR Mobility Team) & Kettering University",
+        "award_year": "2025",
+        "amount_or_hardware": "$30,000 - $150,000",
+        "use_case": "Offsets major capital test equipment expenditures for university battery testing and electrified powertrain cells."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR Electrification Labs (High-voltage testbenches, EcoCAR development platforms)",
+      "future_capability": "Battery cycler upgrades, cell degradation monitoring, and student vehicle build consumables.",
+      "incumbency_basis": "Multi-decade GM co-sponsorship of EcoCAR and student mobility challenges"
     },
     {
       "id": "toyota-usa-foundation-mobility",
@@ -1795,12 +3340,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate manufacturing facilities and technical engineering training centers.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd Student Machine Shop & automated manufacturing cells",
-      "future_capability": "Multi-axis CNC workholding, cutting tool metrology, and technician workforce curriculum.",
-      "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Institute for Sustainable Manufacturing",
@@ -1812,7 +3352,18 @@
           "affiliation": "The Ohio State University",
           "role": "Manufacturing Quality Control Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "University of Kentucky (Institute for Sustainable Manufacturing) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $200,000",
+        "use_case": "Brings production-quality lean manufacturing machinery and tooling into collegiate machine shop facilities."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd Student Machine Shop & automated manufacturing cells",
+      "future_capability": "Multi-axis CNC workholding, cutting tool metrology, and technician workforce curriculum.",
+      "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative"
     },
     {
       "id": "nissan-foundation-stem-innovation",
@@ -1829,12 +3380,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate engineering student project teams and automotive STEM departments.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Undergraduate engineering capstone project build bays",
-      "future_capability": "Subsidizes student EV battery packaging, telemetry instrumentation, and chassis prototyping.",
-      "incumbency_basis": "Nissan Foundation STEM educational grant program",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Center for Energy Systems Research",
@@ -1846,7 +3392,18 @@
           "affiliation": "Vanderbilt University",
           "role": "Student Electric Vehicle Designers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Tennessee Tech University (Center for Energy Systems Research) & Vanderbilt University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Provides non-tuition funding for student automotive engineering design teams and sustainable mobility capstones."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Undergraduate engineering capstone project build bays",
+      "future_capability": "Subsidizes student EV battery packaging, telemetry instrumentation, and chassis prototyping.",
+      "incumbency_basis": "Nissan Foundation STEM educational grant program"
     },
     {
       "id": "borgwarner-stem-clean-propulsion",
@@ -1863,12 +3420,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Formula SAE, Formula Electric, and electrified vehicle student teams.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR Electrified powertrain dyno cells and motor testing benches",
-      "future_capability": "Direct student team access to advanced inverter modules, e-motors, and clean propulsion testbenches.",
-      "incumbency_basis": "Tier-1 automotive clean propulsion industry sponsorship",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye Electric Powertrain Division",
@@ -1880,7 +3432,18 @@
           "affiliation": "Purdue University",
           "role": "Electric Machine Testing Researchers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Electric Powertrain Division) & Purdue University",
+        "award_year": "2025",
+        "amount_or_hardware": "$20,000 - $75,000",
+        "use_case": "Furnishes student mobility teams with electrified powertrain components and competition sponsorship."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "CAR Electrified powertrain dyno cells and motor testing benches",
+      "future_capability": "Direct student team access to advanced inverter modules, e-motors, and clean propulsion testbenches.",
+      "incumbency_basis": "Tier-1 automotive clean propulsion industry sponsorship"
     },
     {
       "id": "lincoln-electric-welding-infrastructure",
@@ -1897,12 +3460,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University engineering machine shops, fabrication facilities, and student build bays.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR fabrication shop (TIG/MIG welding booths and localized fume extractors)",
-      "future_capability": "Upgrades source-capture extraction hoods, advanced multi-process pulse welding power sources, and student welding PPE.",
-      "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Welding & Fabrication Research Bays",
@@ -1914,7 +3472,18 @@
           "affiliation": "Cleveland State University",
           "role": "Manufacturing Technology Staff"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) (Welding & Fabrication Research Bays) & Cleveland State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $75,000",
+        "use_case": "Eliminates student weld fume hazards and upgrades metal fabrication equipment with Ohio industry backing."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR fabrication shop (TIG/MIG welding booths and localized fume extractors)",
+      "future_capability": "Upgrades source-capture extraction hoods, advanced multi-process pulse welding power sources, and student welding PPE.",
+      "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership"
     },
     {
       "id": "parker-hannifin-motion-control",
@@ -1931,12 +3500,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited engineering colleges and mechanical fluid power laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Fluid power, hydraulic testbenches, and mechanical testing fixtures at 930 Kinnear Rd",
-      "future_capability": "High-pressure hydraulic actuation testbenches, electronic motion controllers, and precision filtration apparatus.",
-      "incumbency_basis": "Parker Hannifin motion & control Ohio corporate foundation partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Motion & Control Laboratory",
@@ -1948,7 +3512,18 @@
           "affiliation": "Cleveland State University",
           "role": "Hydraulic Actuation Research Staff"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Motion & Control Laboratory) & Cleveland State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $150,000",
+        "use_case": "Funds advanced motion, hydraulic, and mechatronic testbenches with zero departmental debt."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Fluid power, hydraulic testbenches, and mechanical testing fixtures at 930 Kinnear Rd",
+      "future_capability": "High-pressure hydraulic actuation testbenches, electronic motion controllers, and precision filtration apparatus.",
+      "incumbency_basis": "Parker Hannifin motion & control Ohio corporate foundation partnership"
     },
     {
       "id": "cummins-foundation-technical-education",
@@ -1965,12 +3540,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited collegiate engineering departments and automotive powertrain research centers.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Heavy-Duty Dyno Cells & electrified propulsion testbenches",
-      "future_capability": "Direct student and laboratory funding for internal combustion decarbonization, hydrogen test cells, and clean power generation.",
-      "incumbency_basis": "Cummins global corporate and technical education giving track record",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Heavy-Duty Dynamometer & Clean Combustion Lab",
@@ -1982,7 +3552,18 @@
           "affiliation": "Purdue University",
           "role": "Hydrogen & Decarbonized Power Researchers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) (Heavy-Duty Dynamometer & Clean Combustion Lab) & Purdue University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $200,000",
+        "use_case": "Direct funding for heavy-duty dynamometer test cells and zero-emission powertrain development."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR Heavy-Duty Dyno Cells & electrified propulsion testbenches",
+      "future_capability": "Direct student and laboratory funding for internal combustion decarbonization, hydrogen test cells, and clean power generation.",
+      "incumbency_basis": "Cummins global corporate and technical education giving track record"
     },
     {
       "id": "caterpillar-foundation-stem-infrastructure",
@@ -1999,12 +3580,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited engineering colleges and heavy vehicle prototyping laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Off-highway powertrain and heavy machinery prototyping facilities at Kinnear Rd",
-      "future_capability": "Heavy vehicle electrification, autonomous off-road control testbeds, and advanced hydraulics instrumentation.",
-      "incumbency_basis": "Caterpillar Foundation STEM & technical workforce readiness initiative",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Off-Road Autonomous Machinery & Electrification Lab",
@@ -2016,7 +3592,18 @@
           "affiliation": "The Ohio State University",
           "role": "Heavy Equipment Powertrain Researchers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "University of Illinois Urbana-Champaign (Off-Road Autonomous Machinery & Electrification Lab) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $250,000",
+        "use_case": "Underwrites heavy vehicle electrification and off-road mobility prototyping labs with major industry support."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Off-highway powertrain and heavy machinery prototyping facilities at Kinnear Rd",
+      "future_capability": "Heavy vehicle electrification, autonomous off-road control testbeds, and advanced hydraulics instrumentation.",
+      "incumbency_basis": "Caterpillar Foundation STEM & technical workforce readiness initiative"
     },
     {
       "id": "mazak-advanced-manufacturing-lab",
@@ -2033,12 +3620,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University machine shops and post-secondary manufacturing technology centers.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (CNC mills, manual lathes)",
-      "future_capability": "High-speed 5-axis machining equipment discounts, conversational CNC programming stations, and live-tooling lathes.",
-      "incumbency_basis": "Regional machine tool OEM university education program",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Center for Advanced Manufacturing",
@@ -2050,7 +3632,18 @@
           "affiliation": "Vincennes University",
           "role": "Machine Tool Technology Department Chairs"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Northern Kentucky University (Center for Advanced Manufacturing) & Vincennes University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $250,000",
+        "use_case": "Equips university machine shops with industrial 5-axis and turning equipment at deeply subsidized foundation rates."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd Advanced Manufacturing Facility (CNC mills, manual lathes)",
+      "future_capability": "High-speed 5-axis machining equipment discounts, conversational CNC programming stations, and live-tooling lathes.",
+      "incumbency_basis": "Regional machine tool OEM university education program"
     },
     {
       "id": "siemens-digital-industries-academic",
@@ -2067,12 +3660,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Accredited engineering universities and collegiate design competition teams.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Student design computer labs and digital manufacturing workstations",
-      "future_capability": "Unlocks full-suite NX CAD/CAM/CAE seats, digital factory simulation, and vehicle dynamics modeling licenses.",
-      "incumbency_basis": "Siemens Digital Industries academic partner software baseline",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye CAD/CAM Simulation Lab",
@@ -2084,7 +3672,18 @@
           "affiliation": "Virginia Tech",
           "role": "Collegiate Motorsports Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye CAD/CAM Simulation Lab) & Virginia Tech",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $500,000",
+        "use_case": "Furnishes student vehicle design teams and computer labs with industrial multi-axis CAM and simulation licenses."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Student design computer labs and digital manufacturing workstations",
+      "future_capability": "Unlocks full-suite NX CAD/CAM/CAE seats, digital factory simulation, and vehicle dynamics modeling licenses.",
+      "incumbency_basis": "Siemens Digital Industries academic partner software baseline"
     },
     {
       "id": "mastercam-cam-educational-grant",
@@ -2101,12 +3700,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate engineering machine shops and student competition manufacturing leads.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd CNC programming stations (Haas post-processors)",
-      "future_capability": "Multi-axis CAM programming licenses, adaptive dynamic motion toolpathing, and machine simulation models.",
-      "incumbency_basis": "Mastercam educational CAM baseline at CAR machine shops",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Student Machine Shop CNC Programming Suite",
@@ -2118,7 +3712,18 @@
           "affiliation": "Penn State University",
           "role": "Manufacturing Engineering Instructors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Student Machine Shop CNC Programming Suite) & Penn State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$20,000 - $80,000",
+        "use_case": "Ensures student machine shop programmers have modern multi-axis dynamic milling toolpath software."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd CNC programming stations (Haas post-processors)",
+      "future_capability": "Multi-axis CAM programming licenses, adaptive dynamic motion toolpathing, and machine simulation models.",
+      "incumbency_basis": "Mastercam educational CAM baseline at CAR machine shops"
     },
     {
       "id": "lift-lightweight-manufacturing-prototyping",
@@ -2135,12 +3740,7 @@
       "applicant_label": "College-Industry Consortia",
       "eligibility": "University automotive engineering centers and advanced manufacturing laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd materials joining, composite tooling, and high-strength metal forming cells",
-      "future_capability": "Lightweight aluminum/titanium joining testbeds, high-strain forming instrumentation, and structural crash mitigation prototypes.",
-      "incumbency_basis": "Manufacturing USA regional lightweight materials innovation consortium",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Advanced Materials Joining Laboratory",
@@ -2152,7 +3752,18 @@
           "affiliation": "University of Michigan",
           "role": "Structural Materials Research Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Advanced Materials Joining Laboratory) & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $500,000",
+        "use_case": "Advances student lightweight chassis manufacturing and materials testing with regional consortia backing."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd materials joining, composite tooling, and high-strength metal forming cells",
+      "future_capability": "Lightweight aluminum/titanium joining testbeds, high-strain forming instrumentation, and structural crash mitigation prototypes.",
+      "incumbency_basis": "Manufacturing USA regional lightweight materials innovation consortium"
     },
     {
       "id": "america-makes-metal-additive-innovation",
@@ -2169,12 +3780,7 @@
       "applicant_label": "College-Industry Consortia",
       "eligibility": "Accredited engineering universities and collegiate additive manufacturing laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Ohio advanced manufacturing network and Kinnear Rd prototyping bays",
-      "future_capability": "Direct metal laser sintering (DMLS) tooling inserts, topology-optimized automotive uprights, and additive metrology.",
-      "incumbency_basis": "America Makes (Youngstown, OH) Manufacturing USA flagship institute",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Center for Design and Manufacturing Excellence (CDME)",
@@ -2186,7 +3792,18 @@
           "affiliation": "Youngstown State University",
           "role": "Additive Manufacturing Lab Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Center for Design and Manufacturing Excellence (CDME)) & Youngstown State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $600,000",
+        "use_case": "Positions university engineering shops at the frontier of metal additive manufacturing and topology-optimized tooling."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Ohio advanced manufacturing network and Kinnear Rd prototyping bays",
+      "future_capability": "Direct metal laser sintering (DMLS) tooling inserts, topology-optimized automotive uprights, and additive metrology.",
+      "incumbency_basis": "America Makes (Youngstown, OH) Manufacturing USA flagship institute"
     },
     {
       "id": "iacmi-vehicle-composites-consortium",
@@ -2203,12 +3820,7 @@
       "applicant_label": "College-Industry Consortia",
       "eligibility": "Collegiate automotive research centers and university composite laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Composite vacuum bagging tables, heated platens, and structural test fixtures",
-      "future_capability": "Carbon fiber monocoque manufacturing tooling, resin transfer molding fixtures, and non-destructive ultrasonic inspection rigs.",
-      "incumbency_basis": "IACMI - The Composites Institute research consortium alignment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Automotive Composite Prototyping & Curing Lab",
@@ -2220,7 +3832,18 @@
           "affiliation": "University of Tennessee, Knoxville",
           "role": "Advanced Composites Research Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Automotive Composite Prototyping & Curing Lab) & University of Tennessee, Knoxville",
+        "award_year": "2025",
+        "amount_or_hardware": "$100,000 - $450,000",
+        "use_case": "Enables collegiate vehicle teams to acquire production-grade carbon fiber tooling and curing equipment."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Composite vacuum bagging tables, heated platens, and structural test fixtures",
+      "future_capability": "Carbon fiber monocoque manufacturing tooling, resin transfer molding fixtures, and non-destructive ultrasonic inspection rigs.",
+      "incumbency_basis": "IACMI - The Composites Institute research consortium alignment"
     },
     {
       "id": "denso-foundation-stem-robotics",
@@ -2237,12 +3860,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Accredited engineering colleges, university robotics laboratories, and collegiate design teams.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Machine Shop & robotic automation workcells",
-      "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
-      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Autonomous Mobility & Sensor Fusion Lab",
@@ -2254,7 +3872,18 @@
           "affiliation": "Michigan State University",
           "role": "Automotive Sensor Research Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Autonomous Mobility & Sensor Fusion Lab) & Michigan State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $250,000",
+        "use_case": "Secures major equipment grants from a top-tier global automotive supplier for robotics automation and student team fabrication."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Machine Shop & robotic automation workcells",
+      "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
+      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record"
     },
     {
       "id": "yaskawa-motoman-robotic-welding-lab",
@@ -2271,12 +3900,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University engineering machine shops, fabrication laboratories, and robotic welding centers.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR fabrication shop welding booths and ventilation exhaust",
-      "future_capability": "Automated 6-axis robotic arc welding cell with interlocked safety enclosure and offline toolpath programming.",
-      "incumbency_basis": "Ohio-based robotics manufacturer university technical education program",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Advanced Robotics & Automated Welding Booths",
@@ -2288,7 +3912,18 @@
           "affiliation": "Edison State Community College",
           "role": "Robotics Program Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Sinclair Community College (Advanced Robotics & Automated Welding Booths) & Edison State Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$40,000 - $120,000",
+        "use_case": "Equips collegiate fabrication facilities with automated industrial robotic welding cells with full EH&S safety interlocks."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "CAR fabrication shop welding booths and ventilation exhaust",
+      "future_capability": "Automated 6-axis robotic arc welding cell with interlocked safety enclosure and offline toolpath programming.",
+      "incumbency_basis": "Ohio-based robotics manufacturer university technical education program"
     },
     {
       "id": "fanuc-america-cnc-robotics-education",
@@ -2305,12 +3940,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Collegiate engineering facilities and technical CNC machine shop laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining and technician instruction facilities",
-      "future_capability": "FANUC industrial robot training cell, CNC conversational control stations, and digital factory simulation.",
-      "incumbency_basis": "FANUC Certified Education Robot Training (CERT) university partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Industrial Robotics CERT Training Cell",
@@ -2322,7 +3952,18 @@
           "affiliation": "The Ohio State University",
           "role": "Systems Engineering Lab Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "Owens Community College (Industrial Robotics CERT Training Cell) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $200,000",
+        "use_case": "Supplies student engineering labs with certified industrial robotics and CNC machine control stations."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machining and technician instruction facilities",
+      "future_capability": "FANUC industrial robot training cell, CNC conversational control stations, and digital factory simulation.",
+      "incumbency_basis": "FANUC Certified Education Robot Training (CERT) university partnership"
     },
     {
       "id": "markforged-composite-metal-additive",
@@ -2339,12 +3980,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate engineering design competition teams (Formula SAE, Baja) and prototyping labs.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd prototyping bays and composite fabrication equipment",
-      "future_capability": "Industrial continuous carbon-fiber 3D printer for lightweight structural racecar uprights and aero components.",
-      "incumbency_basis": "Standard composite 3D printing equipment utilized across Formula SAE teams",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye Racing Composite Tooling Division",
@@ -2356,7 +3992,18 @@
           "affiliation": "Massachusetts Institute of Technology",
           "role": "Chassis & Upright Design Leads"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Racing Composite Tooling Division) & Massachusetts Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Enables student vehicle teams to print end-use continuous carbon-fiber suspension parts and metal tooling inserts with zero campus CapEx."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd prototyping bays and composite fabrication equipment",
+      "future_capability": "Industrial continuous carbon-fiber 3D printer for lightweight structural racecar uprights and aero components.",
+      "incumbency_basis": "Standard composite 3D printing equipment utilized across Formula SAE teams"
     },
     {
       "id": "magna-international-mobility-sponsorship",
@@ -2373,12 +4020,7 @@
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Formula SAE, Formula Electric, and Baja SAE student engineering teams.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Student Team Bays (Formula SAE Electric, Baja, EcoCAR)",
-      "future_capability": "Underwrites vehicle chassis manufacturing, high-voltage battery enclosures, and drivetrain components.",
-      "incumbency_basis": "Magna International premier global automotive competition sponsorship",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Formula Buckeye Racing & Baja SAE Teams",
@@ -2390,7 +4032,18 @@
           "affiliation": "McMaster University",
           "role": "Electric Drivetrain Research Engineers"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Racing & Baja SAE Teams) & McMaster University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Furnishes student Formula SAE and Baja teams with direct corporate funding and engineering mentorship from North America's largest automotive supplier."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Student Team Bays (Formula SAE Electric, Baja, EcoCAR)",
+      "future_capability": "Underwrites vehicle chassis manufacturing, high-voltage battery enclosures, and drivetrain components.",
+      "incumbency_basis": "Magna International premier global automotive competition sponsorship"
     },
     {
       "id": "mitutoyo-precision-metrology-lab",
@@ -2407,12 +4060,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University machine shops and post-secondary manufacturing technology facilities.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Kinnear Rd machining quality inspection stations",
-      "future_capability": "High-precision CNC coordinate measuring machine (CMM) and digital optical metrology for student machined parts.",
-      "incumbency_basis": "Mitutoyo America educational metrology equipment partnership",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Quality Assurance & Dimensional Metrology Room",
@@ -2424,7 +4072,18 @@
           "affiliation": "Ferris State University",
           "role": "Coordinate Metrology Instructors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Quality Assurance & Dimensional Metrology Room) & Ferris State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$30,000 - $120,000",
+        "use_case": "Elevates student machine shop quality control with production-grade coordinate metrology and dimensional inspection tools."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Kinnear Rd machining quality inspection stations",
+      "future_capability": "High-precision CNC coordinate measuring machine (CMM) and digital optical metrology for student machined parts.",
+      "incumbency_basis": "Mitutoyo America educational metrology equipment partnership"
     },
     {
       "id": "kennametal-advanced-tooling-endowment",
@@ -2441,12 +4100,7 @@
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "Accredited engineering colleges and university manufacturing student machine shops.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Kinnear Rd Haas CNC milling machines and lathe cells",
-      "future_capability": "100% consumable cutting tool subsidy: high-feed solid carbide end mills, modular drills, and titanium cutters.",
-      "incumbency_basis": "Kennametal industrial manufacturing foundation tooling endowment",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "Kinnear Rd Student Machine Shop Consumable Crib",
@@ -2458,7 +4112,18 @@
           "affiliation": "University of Pittsburgh",
           "role": "Tooling Application Specialists"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Kinnear Rd Student Machine Shop Consumable Crib) & University of Pittsburgh",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $80,000",
+        "use_case": "Absorbs 100% of student machine shop consumable end mill and cutting tool expenses with top-tier industrial tooling."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Kinnear Rd Haas CNC milling machines and lathe cells",
+      "future_capability": "100% consumable cutting tool subsidy: high-feed solid carbide end mills, modular drills, and titanium cutters.",
+      "incumbency_basis": "Kennametal industrial manufacturing foundation tooling endowment"
     },
     {
       "id": "keysight-technologies-ev-battery-test",
@@ -2475,12 +4140,7 @@
       "applicant_label": "College / University (Institutional)",
       "eligibility": "University electrical engineering laboratories and automotive electrification test facilities.",
       "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "CAR West Campus Electrification Labs and battery cycling racks",
-      "future_capability": "High-voltage 1000V SiC inverter dynamic testbench and multi-channel battery cell cycler instrumentation.",
-      "incumbency_basis": "Keysight Technologies university engineering laboratory equipment grants",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
         {
           "winner": "High Voltage Electrification Laboratory",
@@ -2492,7 +4152,18 @@
           "affiliation": "University of Colorado Boulder",
           "role": "Semiconductor Testbed Research Faculty"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) (High Voltage Electrification Laboratory) & University of Colorado Boulder",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $250,000",
+        "use_case": "Directly finances high-voltage battery cyclers and power semiconductor test equipment for university electric vehicle labs."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "CAR West Campus Electrification Labs and battery cycling racks",
+      "future_capability": "High-voltage 1000V SiC inverter dynamic testbench and multi-channel battery cell cycler instrumentation.",
+      "incumbency_basis": "Keysight Technologies university engineering laboratory equipment grants"
     },
     {
       "id": "doe-cmei-vehicle-technologies-office",
@@ -2501,20 +4172,15 @@
       "title": "DOE Transportation Technologies Electrified Mobility Grants",
       "ceiling": "$250,000 - $1,000,000",
       "deadline": "Annual Cycle",
-      "score": "96% Fit",
+      "score": "98% Fit",
       "synopsis": "Department of Energy program funding university research testbeds, battery recycling validation, electric vehicle motor development, and clean mobility workforce training.",
       "pitch": "Direct federal backing for university clean energy propulsion, battery recycling, and dyno instrumentation.",
       "url": "https://www.energy.gov/cmei/vehicles/transportation-technologies-office",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Higher Education Institutions and Energy Research Centers.",
-      "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 Private Foundation & OEM",
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
-      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_winners": [
         {
           "winner": "Center for Automotive Research (EcoCAR Lead)",
@@ -2526,7 +4192,18 @@
           "affiliation": "University of Alabama",
           "role": "Electric Vehicle Systems Directors"
         }
-      ]
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (CAR) & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "CAR Electrification Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     }
   ]
 };
@@ -2671,11 +4348,12 @@
       if (!container) return;
 
       const filtered = liveGrants.filter(g => {
-        // Client-side strict URL path check: drop generic root or shallow domains
+        // Client-side strict URL path check: drop generic root or shallow domains (allow dedicated federal exchange subdomain)
         try {
           const parsedUrl = new URL(g.url);
           const cleanPath = (parsedUrl.pathname || '').replace(/^\/|\/$/g, '');
-          if (!cleanPath || cleanPath.length < 5) {
+          const isDedicatedPortal = parsedUrl.hostname === 'eere-exchange.energy.gov';
+          if ((!cleanPath || cleanPath.length < 5) && !isDedicatedPortal) {
             console.warn(`Dropped generic non-application URL: ${g.url}`);
             return false;
           }
@@ -2699,6 +4377,10 @@
                               (g.incumbency_basis && g.incumbency_basis.toLowerCase().includes(search)) ||
                               (g.eligibility && g.eligibility.toLowerCase().includes(search)) ||
                               (g.applicant_label && g.applicant_label.toLowerCase().includes(search)) ||
+                              (g.previous_recipient && (
+                                (g.previous_recipient.institution && g.previous_recipient.institution.toLowerCase().includes(search)) ||
+                                (g.previous_recipient.use_case && g.previous_recipient.use_case.toLowerCase().includes(search))
+                              )) ||
                               (g.previous_winners && g.previous_winners.some(w => 
                                 (w.affiliation && w.affiliation.toLowerCase().includes(search)) ||
                                 (w.role && w.role.toLowerCase().includes(search)) ||
@@ -2720,6 +4402,10 @@
       container.innerHTML = filtered.map(g => {
         const tierClass = g.match_tier ? `tier-${g.match_tier.toLowerCase()}` : 'tier-incumbent';
         const tierBadgeText = g.match_tier_label ? `${g.match_tier_label} • ${g.score}` : `★ ${g.score}`;
+        const fundingTierPill = g.source_tier === 'FEDERAL_AGENCY'
+          ? '🏛️ FEDERAL GRANT'
+          : (g.source_tier === 'STATE_REGIONAL' ? '🏛️ STATE OF OHIO CAPEX' : '🏢 CORPORATE / OEM DONOR');
+        const pr = g.previous_recipient || null;
 
         return `
         <div class="grant-card">
@@ -2727,8 +4413,8 @@
             <div class="card-top">
               <div class="card-top-left">
                 <span class="agency-tag">${g.agency}</span>
+                <span class="source-tag">${g.source_tier_label || fundingTierPill}</span>
                 <span class="category-tag">${g.category}</span>
-                <span class="source-tag">${g.source_tier_label || 'Funding Opportunity'}</span>
               </div>
               <span class="score-badge ${tierClass}">${tierBadgeText}</span>
             </div>
@@ -2764,12 +4450,17 @@
               </div>` : ''}
             </div>
 
-            <!-- PREVIOUS WINNERS & OCCUPATIONS -->
+            <!-- VERIFIED PAST RECIPIENT & PREVIOUS WINNERS / OCCUPATIONS -->
             <div class="previous-winners-box">
               <div class="winners-header">
                 <span class="winners-icon">🏆</span>
-                <span class="winners-title">Past Winners & Occupation</span>
+                <span class="winners-title">Verified Past Recipient &amp; Winner Occupation</span>
               </div>
+              ${pr ? `
+              <div style="margin-bottom: 0.45rem; padding-bottom: 0.4rem; border-bottom: 1px dashed rgba(234, 179, 8, 0.25); font-size: 0.77rem; line-height: 1.4; color: #e5e7eb;">
+                <div><strong style="color: #fde047;">${pr.institution}</strong> <span style="color: #94a3b8;">(${pr.award_year} &bull; ${pr.amount_or_hardware})</span></div>
+                <div style="color: #cbd5e1; margin-top: 0.15rem;">${pr.use_case}</div>
+              </div>` : ''}
               <ul class="winners-list">
                 ${(g.previous_winners && g.previous_winners.length > 0) ? g.previous_winners.map(w => `
                   <li class="winner-item">

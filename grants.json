@@ -1,22 +1,22 @@
 {
-  "last_updated": "2026-10-20 00:53 UTC",
-  "total_addressable": "$66,065,000",
-  "capex_tooling_offset": "$51,655,000",
-  "count": 80,
+  "last_updated": "2026-10-20 06:28 UTC",
+  "total_addressable": "$67,565,000",
+  "capex_tooling_offset": "$53,155,000",
+  "count": 81,
   "validation_summary": {
     "total_scanned": 82,
-    "passed_checks": 80,
-    "rejected_invalid": 2
+    "passed_checks": 81,
+    "rejected_invalid": 1
   },
   "tier_breakdown": {
     "federal": 36,
-    "state_regional": 6,
+    "state_regional": 7,
     "academic_consortia": 6,
     "private_foundations": 32,
     "corporate_and_foundations": 38
   },
   "match_tier_breakdown": {
-    "incumbent": 31,
+    "incumbent": 32,
     "expansion": 29,
     "frontier": 20
   },
@@ -1420,6 +1420,46 @@
       "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
       "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
       "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "odhe-super-rapids-capital",
+      "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
+      "category": "CAPEX",
+      "title": "ODHE Super RAPIDS Capital Equipment & Lab Infrastructure Grant",
+      "ceiling": "$500,000 - $1,500,000",
+      "deadline": "Annual Cycle",
+      "score": "97% Fit",
+      "synopsis": "Major Ohio state capital equipment allocation under Super RAPIDS initiative providing 100% state equipment funding to colleges and universities for high-precision CNC machine tooling, robotic workcells, and advanced manufacturing instrumentation.",
+      "pitch": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus.",
+      "url": "https://highered.ohio.gov/initiatives/workforce-development/super-rapids",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
+      "source_tier": "STATE_REGIONAL",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
+      "previous_winners": [
+        {
+          "winner": "Automotive & Mobility Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Engineering Lab Directors & Operations Staff"
+        },
+        {
+          "winner": "Manufacturing Extension Technology Center",
+          "affiliation": "Columbus State Community College",
+          "role": "Advanced CNC Machining Faculty"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Automotive & Mobility Research Laboratories) & Columbus State Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000 - $1,500,000",
+        "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
     },
     {
       "id": "odhe-rapids-cycle7",

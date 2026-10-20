@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-10-20 06:28 UTC",
-  "total_addressable": "$67,565,000",
-  "capex_tooling_offset": "$53,155,000",
-  "count": 81,
+  "last_updated": "2026-10-20 14:00 UTC",
+  "total_addressable": "$57,730,000",
+  "capex_tooling_offset": "$44,225,000",
+  "count": 57,
   "validation_summary": {
-    "total_scanned": 82,
-    "passed_checks": 81,
+    "total_scanned": 58,
+    "passed_checks": 57,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 36,
-    "state_regional": 7,
-    "academic_consortia": 6,
-    "private_foundations": 32,
-    "corporate_and_foundations": 38
+    "federal": 35,
+    "state_regional": 3,
+    "academic_consortia": 4,
+    "private_foundations": 15,
+    "corporate_and_foundations": 19
   },
   "match_tier_breakdown": {
-    "incumbent": 32,
-    "expansion": 29,
-    "frontier": 20
+    "incumbent": 23,
+    "expansion": 15,
+    "frontier": 19
   },
   "grants": [
     {
@@ -1425,12 +1425,12 @@
       "id": "odhe-super-rapids-capital",
       "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
       "category": "CAPEX",
-      "title": "ODHE Super RAPIDS Capital Equipment & Lab Infrastructure Grant",
+      "title": "ODHE Super RAPIDS Capital Equipment & Lab Infrastructure Grant (Official RFP)",
       "ceiling": "$500,000 - $1,500,000",
       "deadline": "Annual Cycle",
       "score": "97% Fit",
       "synopsis": "Major Ohio state capital equipment allocation under Super RAPIDS initiative providing 100% state equipment funding to colleges and universities for high-precision CNC machine tooling, robotic workcells, and advanced manufacturing instrumentation.",
-      "pitch": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus.",
+      "pitch": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus via the official ODHE Super RAPIDS RFP.",
       "url": "https://highered.ohio.gov/initiatives/workforce-development/super-rapids",
       "applicant_type": "COLLEGE_LAB_DIRECTOR",
       "applicant_label": "Lab Directors & Staff",
@@ -1453,7 +1453,7 @@
         "institution": "The Ohio State University (Automotive & Mobility Research Laboratories) & Columbus State Community College",
         "award_year": "2025",
         "amount_or_hardware": "$500,000 - $1,500,000",
-        "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus."
+        "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus via the official ODHE Super RAPIDS RFP."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",

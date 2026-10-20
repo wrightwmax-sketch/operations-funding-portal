@@ -53,45 +53,19 @@ APPROVED_DOMAIN_ROOTS = [
     "new.nsf.gov",
     "onr.navy.mil",
     "navy.mil",
-    "nist.gov",
     "highered.ohio.gov",
-    "development.ohio.gov",
-    "drive.ohio.gov",
-    "jobsohio.com",
-    "ghaasfoundation.org",
+    "webportalapp.com",
+    "cybergrants.com",
+    "formstack.com",
     "smeef.org",
-    "aws.org",
-    "saefoundation.org",
+    "densofoundation.org",
+    "siemens.com",
+    "polymaker.com",
     "fsaeonline.com",
     "bajasae.net",
     "arminstitute.org",
-    "cybergrants.com",
-    "honda.com",
-    "hondainamerica.com",
-    "fordphilanthropy.org",
-    "gm.com",
-    "toyota.com",
-    "nissanusa.com",
-    "borgwarner.com",
-    "densofoundation.org",
-    "motoman.com",
-    "fanucamerica.com",
-    "markforged.com",
-    "mitutoyo.com",
-    "sandvik.coromant.com",
-    "synopsys.com",
-    "alcoa.com",
-    "lockheedmartin.com",
-    "northropgrumman.com",
-    "ppg.com",
-    "mazak.com",
-    "mazakusa.com",
-    "siemens.com",
-    "mastercam.com",
     "lift.technology",
-    "iacmi.org",
-    "manufacturingusa.com",
-    "bosch.us"
+    "iacmi.org"
 ]
 
 FORBIDDEN_DOMAINS = (
@@ -101,6 +75,24 @@ FORBIDDEN_DOMAINS = (
     "dodstem.us",
     "dowstem.us",
     "eere-exchange.energy.gov",
+)
+
+FORBIDDEN_BROCHURE_PATHS = (
+    "htec-home",
+    "scholarship-opportunities",
+    "company/sustainability",
+    "usa/sustainability/community",
+    "about/community",
+    "our-work/mobility",
+    "training-education",
+    "services/education",
+    "products/robots/education",
+    "icp/education-and-research",
+    "us-en/technology",
+    "workforce-initiatives",
+    "third-frontier-and-technology",
+    "incentives-programs",
+    "transportation-technologies-office",
 )
 
 DEDICATED_PORTAL_SUBDOMAINS = ()
@@ -209,14 +201,20 @@ def assign_federal_previous_recipient(agency_str: str, category: str = "CAPEX") 
 
 
 def verify_url_live(url: str) -> tuple[bool, str]:
-    """Strict live smoke test: every URL must return HTTP 200, never redirect to a root homepage
-    or forbidden domain (car.osu.edu / sae.org), and never contain soft-404 / error titles."""
+    """Strict live smoke test + Direct Application Actionability Gate:
+    Every URL must return HTTP 200, never redirect to a root homepage or forbidden domain,
+    never hit a brochure-only page (e.g. /htec-home), and must provide a direct application
+    form, submission portal (Grants.gov Workspace, WizeHive webportalapp, CyberGrants, Formstack),
+    or active RFP submission page where an applicant can enter data to win grant funds."""
     parsed_init = urllib.parse.urlparse(url)
     init_domain = parsed_init.netloc.lower().split(":")[0]
+    init_path = parsed_init.path.strip("/").lower()
     if any(init_domain == fd or init_domain.endswith("." + fd) for fd in FORBIDDEN_DOMAINS):
         return False, f"Forbidden domain '{init_domain}' rejected"
+    if any(bp in init_path for bp in FORBIDDEN_BROCHURE_PATHS):
+        return False, f"Brochure/non-application path '{init_path}' rejected"
 
-    # For Grants.gov deep-links, verify both HTTP 200 web response AND Grants.gov REST API opportunity record
+    # For Grants.gov deep-links, verify live Grants.gov REST API opportunity record (guarantees active Workspace Apply button)
     if "grants.gov/search-results-detail/" in url:
         opp_id = url.rstrip("/").split("/")[-1]
         if not opp_id.isdigit():
@@ -240,7 +238,7 @@ def verify_url_live(url: str) -> tuple[bool, str]:
     try:
         r = None
         for _attempt in range(2):
-            r = requests.get(url, headers=HTTP_HEADERS, timeout=10, allow_redirects=True)
+            r = requests.get(url, headers=HTTP_HEADERS, timeout=12, allow_redirects=True)
             if r.status_code == 200:
                 break
         if r.status_code != 200:
@@ -254,11 +252,14 @@ def verify_url_live(url: str) -> tuple[bool, str]:
         if any(final_domain == fd or final_domain.endswith("." + fd) for fd in FORBIDDEN_DOMAINS):
             return False, f"Redirected to forbidden domain '{final_domain}' ({final_url})"
 
+        if any(bp in final_path.lower() for bp in FORBIDDEN_BROCHURE_PATHS):
+            return False, f"Redirected to brochure/non-application path '{final_path}' ({final_url})"
+
         if len(final_path) < 5:
             return False, f"Redirected to bare root or shallow homepage ({final_url})"
 
-        # Inspect HTML <title> and <h1> for soft-404s, WAF blocks, or moved pages
         html_body = r.text
+        html_lower = html_body.lower()
         m_title = re.search(r"<title[^>]*>(.*?)</title>", html_body, re.IGNORECASE | re.DOTALL)
         title_str = re.sub(r"\s+", " ", m_title.group(1)).strip().lower() if m_title else ""
         m_h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html_body, re.IGNORECASE | re.DOTALL)
@@ -274,9 +275,38 @@ def verify_url_live(url: str) -> tuple[bool, str]:
             if marker in title_str or marker in h1_str:
                 return False, f"Soft-404 or error page detected ('{marker}' in title/H1)"
 
-        return True, f"URL smoke-tested live (HTTP 200 -> {final_url})"
+        # Reject Ohio WebSphere Portal soft-404 Warning shells
+        if "<h2>warning</h2>" in html_lower:
+            return False, "WebSphere Portal Warning soft-404 detected"
+
+        # Direct Application / Submission Actionability Gate
+        is_dedicated_submission_portal = any(
+            d in final_domain for d in ("webportalapp.com", "cybergrants.com", "formstack.com")
+        )
+        has_embedded_application_form = (
+            len(re.findall(r"<input", html_body, re.IGNORECASE)) >= 4
+            or "nativeforms.app" in html_lower
+            or "go.iacmi.org" in html_lower
+        )
+        has_active_rfp_submission = any(
+            sig in html_lower for sig in (
+                "rfp information",
+                "request for proposals",
+                "submitting your proposal",
+                "submit a contract proposal",
+                "how do i apply",
+                "apply for a project call",
+                "project calls",
+                "funding-notice-fiscal-year"
+            )
+        )
+        if not (is_dedicated_submission_portal or has_embedded_application_form or has_active_rfp_submission):
+            return False, f"Page lacks a direct application form or active RFP submission portal ({final_url})"
+
+        return True, f"Direct application portal verified live (HTTP 200 -> {final_url})"
     except Exception as e:
         return False, f"Connection failed: {e}"
+
 
 
 def validate_grant(record: dict, now_date=None, check_live_url=True) -> tuple[bool, str]:
@@ -785,12 +815,12 @@ TIER2_STATE_REGIONAL = [
         "id": "odhe-super-rapids-capital",
         "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
         "category": "CAPEX",
-        "title": "ODHE Super RAPIDS Capital Equipment & Lab Infrastructure Grant",
+        "title": "ODHE Super RAPIDS Capital Equipment & Lab Infrastructure Grant (Official RFP)",
         "ceiling": "$500,000 - $1,500,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
         "synopsis": "Major Ohio state capital equipment allocation under Super RAPIDS initiative providing 100% state equipment funding to colleges and universities for high-precision CNC machine tooling, robotic workcells, and advanced manufacturing instrumentation.",
-        "pitch": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus.",
+        "pitch": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus via the official ODHE Super RAPIDS RFP.",
         "url": "https://highered.ohio.gov/initiatives/workforce-development/super-rapids",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
@@ -802,67 +832,16 @@ TIER2_STATE_REGIONAL = [
         "id": "odhe-rapids-cycle7",
         "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
         "category": "MACHINING",
-        "title": "ODHE RAPIDS 7 - Advanced Machining & Industrial Robotics Equipment Allocation",
+        "title": "ODHE RAPIDS — Advanced Machining & Industrial Robotics Equipment RFP",
         "ceiling": "$250,000 - $750,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
-        "synopsis": "Ohio state capital equipment allocation under RAPIDS initiative providing 100% state funding to colleges and universities for multi-axis CNC machine tooling, robotic workcells, and student manufacturing credential equipment.",
-        "pitch": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment.",
-        "url": "https://highered.ohio.gov/initiatives/workforce-initiatives/rapids",
+        "synopsis": "Ohio state capital equipment allocation under the Regionally Aligned Priorities in Delivering Skills (RAPIDS) Request for Proposals providing 100% state funding to universities for multi-axis CNC machine tooling and robotic workcells.",
+        "pitch": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment via the official ODHE RAPIDS Request for Proposals.",
+        "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
-        "source_tier": "STATE_REGIONAL",
-        "source_tier_label": "🏛️ State & Regional (Ohio)"
-    },
-    {
-        "id": "ohio-third-frontier-tech-commercialization",
-        "agency": "OHIO THIRD FRONTIER / DEVELOPMENT SERVICES",
-        "category": "CAPEX",
-        "title": "Ohio Third Frontier Advanced Propulsion & Energy Storage Prototype Facility Grant",
-        "ceiling": "$500,000 - $2,000,000",
-        "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "State co-funding for higher education engineering instrumentation, automated test cells, battery pilot testing, and university-industry commercialization facilities.",
-        "pitch": "Major capital grant offsetting university expenditures for heavy dynos, environmental test chambers, and battery cyclers.",
-        "url": "https://development.ohio.gov/business/third-frontier-and-technology",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Ohio universities, collegiate research centers, and collegiate-industry consortiums.",
-        "source_tier": "STATE_REGIONAL",
-        "source_tier_label": "🏛️ State & Regional (Ohio)"
-    },
-    {
-        "id": "driveohio-smart-mobility-infrastructure",
-        "agency": "DRIVEOHIO / OHIO DEPARTMENT OF TRANSPORTATION",
-        "category": "STUDENT",
-        "title": "DriveOhio Collegiate Autonomous Vehicle & Smart Mobility Testbed Initiative",
-        "ceiling": "$150,000 - $400,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Ohio smart mobility state initiative supporting automotive automated and connected vehicle research, sensor calibration equipment, roadside telemetry, and student vehicle demonstration corridors.",
-        "pitch": "Enables student autonomy teams to acquire high-grade automotive sensors and vehicle telemetry equipment without academic budget drain.",
-        "url": "https://drive.ohio.gov/programs",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Ohio collegiate engineering teams and university transportation laboratories.",
-        "source_tier": "STATE_REGIONAL",
-        "source_tier_label": "🏛️ State & Regional (Ohio)"
-    },
-    {
-        "id": "odhe-workforce-short-term-credential",
-        "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
-        "category": "MACHINING",
-        "title": "ODHE Advanced Manufacturing & CNC Micro-Credential Tooling Subsidy",
-        "ceiling": "$100,000 - $300,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "State workforce grant subsidizing technician trainer workcells, CNC cutting tools, tooling carts, and machine shop equipment for higher education credentials.",
-        "pitch": "Absorbs student consumable and cutting tool expenses using dedicated Ohio workforce development funds.",
-        "url": "https://highered.ohio.gov/initiatives/workforce-initiatives",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Accredited Ohio post-secondary institutions offering hands-on machining certificates.",
         "source_tier": "STATE_REGIONAL",
         "source_tier_label": "🏛️ State & Regional (Ohio)"
     },
@@ -882,80 +861,29 @@ TIER2_STATE_REGIONAL = [
         "eligibility": "Ohio colleges and universities offering accredited STEM engineering degrees.",
         "source_tier": "STATE_REGIONAL",
         "source_tier_label": "🏛️ State & Regional (Ohio)"
-    },
-    {
-        "id": "jobsohio-rd-center-grant",
-        "agency": "JOBSOHIO / STATE ECONOMIC DEVELOPMENT",
-        "category": "CAPEX",
-        "title": "JobsOhio R&D Center Innovation & Automotive Hardware Capital Grant",
-        "ceiling": "$500,000 - $2,000,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "State economic development grant providing direct capital co-funding for collegiate automotive research centers, electrified propulsion test cells, and advanced mobility instrumentation.",
-        "pitch": "Accelerates commercial-grade automotive lab investments and capital test cell equipment with Ohio corporate partnership matching.",
-        "url": "https://www.jobsohio.com/incentives-programs",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Ohio university automotive research centers and corporate-partnered engineering facilities.",
-        "source_tier": "STATE_REGIONAL",
-        "source_tier_label": "🏛️ State & Regional (Ohio)"
     }
 ]
 
 
 # ==============================================================================
-# TIER 3: ACADEMIC CONSORTIA & INTER-COLLEGIATE NETWORKS
+# TIER 3: ACADEMIC CONSORTIA & INTER-COLLEGIATE NETWORKS (Direct Submission Portals)
 # ==============================================================================
 
 TIER3_ACADEMIC_CONSORTIA = [
     {
-        "id": "sae-foundation-collegiate-design-grants",
-        "agency": "SAE FOUNDATION",
-        "category": "STUDENT",
-        "title": "SAE Foundation Collegiate Design Series Team Grants & Contributor Funds",
-        "ceiling": "$15,000 - $35,000",
-        "deadline": "Annual Cycle",
-        "score": "98% Fit",
-        "synopsis": "Official foundation project grants providing direct team funding and industry contributor subsidies for Formula SAE Electric, Baja SAE, and student vehicle prototyping.",
-        "pitch": "Secures direct financial grants from the SAE Foundation to purchase vehicle build materials, batteries, and machining supplies.",
-        "url": "https://www.saefoundation.org/programs/educational-programs/collegiate-design-series/",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Registered Formula SAE & Collegiate Design Series Student Teams with Faculty Advisor Sign-off.",
-        "source_tier": "ACADEMIC_CONSORTIA",
-        "source_tier_label": "🤝 Academic & Consortia"
-    },
-    {
         "id": "sae-cds-team-registration-subsidies",
         "agency": "FORMULA SAE / COLLEGIATE DESIGN SERIES",
         "category": "STUDENT",
-        "title": "Formula SAE & Collegiate Design Series Team Registration & Hardware Subsidies",
+        "title": "Formula SAE Team Submission Portal — Registration & Hardware Subsidies",
         "ceiling": "$10,000 - $30,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
-        "synopsis": "Direct competition registration support, technical document resources, and machine tool subsidies for Formula SAE Electric and Formula SAE collegiate engineering teams.",
-        "pitch": "Offsets team registration costs and unlocks machine tool subsidies for student vehicle fabrication.",
-        "url": "https://www.fsaeonline.com/cdsweb/gen/DocumentResources.aspx",
+        "synopsis": "Official Formula SAE online team submission portal for competition registration subsidies, industry sponsor hardware allocations, and technical document submissions for Formula SAE and Formula SAE Electric teams.",
+        "pitch": "Direct login portal for student Formula SAE teams to submit team data, claim sponsor subsidies, and manage competition grants.",
+        "url": "https://www.fsaeonline.com/Login.aspx",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE, Baja SAE, and Aero Design competition teams.",
-        "source_tier": "ACADEMIC_CONSORTIA",
-        "source_tier_label": "🤝 Academic & Consortia"
-    },
-    {
-        "id": "sae-foundation-william-adam-fsae-grant",
-        "agency": "SAE FOUNDATION",
-        "category": "STUDENT",
-        "title": "SAE Foundation Mobility Engineering & Formula SAE Team Development Awards",
-        "ceiling": "$5,000 - $15,000",
-        "deadline": "Annual Cycle",
-        "score": "98% Fit",
-        "synopsis": "Direct team endowment administered through the SAE Foundation to support collegiate Formula SAE teams with chassis fabrication, vehicle component manufacturing, and test equipment.",
-        "pitch": "Direct cash assistance providing non-tuition funding for student racecar frame tubing, CNC components, and telemetry sensors.",
-        "url": "https://www.saefoundation.org/programs/awards-scholarships/",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Formula SAE design teams actively preparing for annual international competitions.",
         "source_tier": "ACADEMIC_CONSORTIA",
         "source_tier_label": "🤝 Academic & Consortia"
     },
@@ -967,46 +895,46 @@ TIER3_ACADEMIC_CONSORTIA = [
         "ceiling": "$250,000 - $1,200,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "National Manufacturing USA robotics consortium funding university engineering testbeds in robotic welding, automated composite layup, multi-axis CNC tending, and smart shop floor instrumentation.",
-        "pitch": "Major non-tuition capital equipment funding underwriting industrial robotic workcells and automated manufacturing testbeds.",
+        "synopsis": "National Manufacturing USA robotics consortium project call portal funding university engineering testbeds in robotic welding, automated composite layup, multi-axis CNC tending, and smart shop floor instrumentation.",
+        "pitch": "Major non-tuition capital equipment funding underwriting industrial robotic workcells and automated manufacturing testbeds via active ARM Project Calls.",
         "url": "https://arminstitute.org/project-calls/",
         "applicant_type": "COLLEGE_CONSORTIUM",
         "applicant_label": "College-Industry Consortia",
-        "eligibility": "University Transportation Consortia, Automotive Research Centers & Regional DOT Partners.",
+        "eligibility": "University Engineering Consortia, Robotics Laboratories & Regional Manufacturing Partners.",
         "source_tier": "ACADEMIC_CONSORTIA",
         "source_tier_label": "🤝 Academic & Consortia"
     },
     {
-        "id": "manufacturing-usa-network-consortium",
-        "agency": "MANUFACTURING USA NETWORK",
+        "id": "lift-lightweight-manufacturing-prototyping",
+        "agency": "LIFT (MANUFACTURING USA INSTITUTE)",
         "category": "CAPEX",
-        "title": "Manufacturing USA Network Advanced Manufacturing & Prototyping Testbeds",
-        "ceiling": "$250,000 - $1,000,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "National manufacturing innovation network funding university testbeds in multi-axis machining, robotics automation, composite lightweighting, and digital factory metrology.",
-        "pitch": "Connects collegiate manufacturing facilities to national industrial innovation programs with substantial equipment backing.",
-        "url": "https://www.manufacturingusa.com/institutes",
-        "applicant_type": "COLLEGE_CONSORTIUM",
-        "applicant_label": "College-Industry Consortia",
-        "eligibility": "Collegiate manufacturing engineering centers and university-industry consortia.",
-        "source_tier": "ACADEMIC_CONSORTIA",
-        "source_tier_label": "🤝 Academic & Consortia"
-    },
-    {
-        "id": "nist-mep-advanced-manufacturing-lab",
-        "agency": "NIST / MANUFACTURING EXTENSION PARTNERSHIP",
-        "category": "MACHINING",
-        "title": "NIST MEP Collegiate Laboratory Modernization & Metrology Subsidy",
-        "ceiling": "$150,000 - $500,000",
+        "title": "LIFT Advanced Lightweight Materials & Manufacturing Project Calls Portal",
+        "ceiling": "$100,000 - $500,000",
         "deadline": "Annual Cycle",
         "score": "93% Fit",
-        "synopsis": "Federal manufacturing partnership grant supporting machine tool modernization, tool presetter stations, digital coordinate metrology, and technician shop training.",
-        "pitch": "Upgrades university student machine shops to modern digital precision manufacturing standards.",
-        "url": "https://www.nist.gov/mep/centers",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Collegiate machine shops and post-secondary technical manufacturing centers.",
+        "synopsis": "Direct project call submission portal for the LIFT Manufacturing USA institute funding collegiate testbeds in advanced metal forming, titanium and aluminum welding, and lightweight vehicle structural testing.",
+        "pitch": "Direct project call application page to submit university lightweight chassis manufacturing and materials testing proposals.",
+        "url": "https://lift.technology/view-project-calls/",
+        "applicant_type": "COLLEGE_CONSORTIUM",
+        "applicant_label": "College-Industry Consortia",
+        "eligibility": "University automotive engineering centers and advanced manufacturing laboratories.",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "source_tier_label": "🤝 Academic & Consortia"
+    },
+    {
+        "id": "iacmi-vehicle-composites-consortium",
+        "agency": "IACMI - THE COMPOSITES INSTITUTE",
+        "category": "CAPEX",
+        "title": "IACMI Vehicle Composites Lightweighting & Mold Tooling — Direct Project Submission Form",
+        "ceiling": "$100,000 - $450,000",
+        "deadline": "Annual Cycle",
+        "score": "92% Fit",
+        "synopsis": "Direct project submission form and Resource Pool Funding RFP for university carbon fiber composite prototyping, resin transfer molding fixtures, autoclaves, and composite non-destructive testing.",
+        "pitch": "Direct online submission form enabling collegiate laboratories to submit composite tooling and curing equipment proposals.",
+        "url": "https://www.iacmi.org/technology/submit-a-project/",
+        "applicant_type": "COLLEGE_CONSORTIUM",
+        "applicant_label": "College-Industry Consortia",
+        "eligibility": "Collegiate automotive research centers and university composite laboratories.",
         "source_tier": "ACADEMIC_CONSORTIA",
         "source_tier_label": "🤝 Academic & Consortia"
     }
@@ -1014,7 +942,7 @@ TIER3_ACADEMIC_CONSORTIA = [
 
 
 # ==============================================================================
-# TIER 4: PRIVATE FOUNDATIONS, MACHINE TOOL OEMS & RESEARCH CENTERS
+# TIER 4: PRIVATE FOUNDATIONS & CORPORATE DIRECT APPLICATION PORTALS
 # ==============================================================================
 
 TIER4_PRIVATE_FOUNDATIONS = [
@@ -1022,13 +950,13 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "haas-collegiate-motorsports-sae",
         "agency": "GENE HAAS FOUNDATION",
         "category": "MACHINING",
-        "title": "Gene Haas Foundation Collegiate Motorsports & Student Manufacturing Competitions Grant",
+        "title": "Gene Haas Foundation SAE Collegiate Motorsports & Student Competitions Submission Portal",
         "ceiling": "$5,000 - $25,000",
         "deadline": "Rolling Cycle",
         "score": "99% Fit",
-        "synopsis": "Dedicated grant program providing direct financial grants and CNC tooling support to collegiate student teams competing in Formula SAE, Baja SAE, and collegiate machining competitions.",
-        "pitch": "Provides direct financial and tooling support to student competition teams, eliminating team out-of-pocket costs.",
-        "url": "https://www.ghaasfoundation.org/mfgcomp",
+        "synopsis": "Direct WizeHive grant application portal for the Gene Haas Foundation providing financial grants and CNC tooling support to collegiate student teams competing in Formula SAE, Baja SAE, and student machining competitions.",
+        "pitch": "Direct online grant application portal where student competition teams enter their team data to win Gene Haas Foundation funds.",
+        "url": "https://webportalapp.com/sp/login/ghf_first_sae_competitions",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE, Formula SAE Electric, and Baja SAE design teams.",
@@ -1039,33 +967,16 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "haas-post-secondary-cnc-scholarships",
         "agency": "GENE HAAS FOUNDATION",
         "category": "MACHINING",
-        "title": "Gene Haas Post-Secondary CNC Machining & Tooling Grants",
+        "title": "Gene Haas Foundation Post-Secondary CNC Machining & Tooling Grant Application Portal",
         "ceiling": "$25,000 - $100,000",
         "deadline": "Rolling Cycle",
         "score": "98% Fit",
-        "synopsis": "Direct institutional grant covering CNC machine tooling, carbide end mills, indexable face mills, vises, and Haas machine maintenance for higher education engineering shops.",
-        "pitch": "Provides 100% non-tuition funding to absorb annual consumable tooling and machining cutter expenses.",
-        "url": "https://www.ghaasfoundation.org/cncscholarships",
+        "synopsis": "Direct WizeHive institutional grant submission portal covering CNC machine tooling, carbide end mills, indexable face mills, vises, and machinist training grants for post-secondary and collegiate engineering shops.",
+        "pitch": "Direct online submission portal for lab directors and machining instructors to apply for annual Gene Haas Foundation grant funds.",
+        "url": "https://webportalapp.com/sp/login/gene-haas-secondary",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Accredited Colleges, Universities, and Technical Machining Centers with Haas CNC Machine Tools.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "haas-htec-technical-education-network",
-        "agency": "GENE HAAS FOUNDATION",
-        "category": "MACHINING",
-        "title": "Gene Haas Technical Education Center (HTEC) Shop Modernization Network",
-        "ceiling": "$50,000 - $150,000",
-        "deadline": "Rolling Cycle",
-        "score": "97% Fit",
-        "synopsis": "Comprehensive manufacturing lab support network providing machine tool discounts, CNC simulator software, cutting tool allocations, and curriculum support.",
-        "pitch": "Connects university machine shops to modern industrial CNC manufacturing ecosystems with foundation subsidies.",
-        "url": "https://www.ghaasfoundation.org/htec-home",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Post-secondary and collegiate engineering institutions operating CNC machine tool training facilities.",
+        "eligibility": "Accredited Colleges, Universities, and Technical Machining Centers with CNC Machine Tools.",
         "source_tier": "PRIVATE_FOUNDATION",
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
@@ -1073,13 +984,13 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "haas-community-machining-grants",
         "agency": "GENE HAAS FOUNDATION",
         "category": "MACHINING",
-        "title": "Gene Haas Foundation Community Machining & Education Grants",
+        "title": "Gene Haas Foundation Community & Technical Education Grant Application Portal",
         "ceiling": "$20,000 - $75,000",
         "deadline": "Rolling Cycle",
         "score": "96% Fit",
-        "synopsis": "Direct institutional application portal for university machining programs, workforce credentialing, student machine shop safety equipment, and CNC consumable tooling.",
-        "pitch": "Provides direct grant aid for university engineering shop equipment and tooling consumable replenishment.",
-        "url": "https://www.ghaasfoundation.org/apply-now-communitygrants",
+        "synopsis": "Direct WizeHive grant submission portal for university machining programs, workforce credentialing, student machine shop safety equipment, and CNC consumable tooling.",
+        "pitch": "Direct online application form for university engineering shops to request Gene Haas Foundation equipment and tooling grants.",
+        "url": "https://webportalapp.com/sp/login/gene-haas-community",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate machine shops and post-secondary technical manufacturing centers.",
@@ -1090,12 +1001,12 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "sme-prime-shop-infrastructure",
         "agency": "SME EDUCATION FOUNDATION",
         "category": "MACHINING",
-        "title": "SME PRIME Manufacturing Shop Infrastructure & Metrology Award",
+        "title": "SME PRIME Manufacturing Shop Infrastructure & Metrology — Direct School Application Form",
         "ceiling": "$100,000 - $350,000",
         "deadline": "Annual Cycle",
         "score": "97% Fit",
-        "synopsis": "Shop infrastructure transformation grant funding industrial CNC mills, turning centers, coordinate measuring machines (CMM metrology), and CAD/CAM software licenses.",
-        "pitch": "Replaces legacy manual machine shop equipment with modern industrial CNC and inspection technology.",
+        "synopsis": "Direct institutional application form for the SME PRIME shop infrastructure grant funding industrial CNC mills, turning centers, coordinate measuring machines (CMM metrology), and CAD/CAM software licenses.",
+        "pitch": "Direct 18-field online application form where educational institutions enter their facility data to apply for SME PRIME funding.",
         "url": "https://www.smeef.org/prime-schools-initiative/get-started-with-prime/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
@@ -1104,33 +1015,16 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "sme-education-foundation-tooling",
-        "agency": "SME EDUCATION FOUNDATION",
-        "category": "MACHINING",
-        "title": "SME Education Foundation Post-Secondary Manufacturing & Machining Awards",
-        "ceiling": "$25,000 - $75,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Advanced manufacturing awards, tooling support, and collegiate engineering program funding supporting hands-on CNC machining and manufacturing education.",
-        "pitch": "Secures production-grade manufacturing tooling and student machine shop resources with zero campus capital outlay.",
-        "url": "https://www.smeef.org/sme-education-foundation-scholarships/scholarship-opportunities/",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Collegiate Engineering Facilities and Student Machine Shops.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
         "id": "aws-student-welding-grants",
         "agency": "AMERICAN WELDING SOCIETY FOUNDATION",
         "category": "SAFETY",
-        "title": "AWS Foundation Welder Training & Student Fabrication Facility Grant",
+        "title": "AWS Foundation Welder Training & Fabrication Facility Grant Submission Portal",
         "ceiling": "$25,000 - $50,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
-        "synopsis": "Capital grant funding welding booths, localized fume extraction hoods, safety interlocks, TIG/MIG welding power sources, and personal protective equipment (PPE).",
-        "pitch": "Brings collegiate fabrication shops into full OSHA and campus EH&S ventilation compliance at zero cost to university budgets.",
-        "url": "https://www.aws.org/workforcegrant",
+        "synopsis": "Direct WizeHive grant submission portal for the American Welding Society Foundation Workforce Grant funding welding booths, localized fume extraction hoods, safety interlocks, and TIG/MIG welding power sources.",
+        "pitch": "Direct online grant application portal to submit institutional requests for up to $50,000 in welding and fume extraction upgrades.",
+        "url": "https://webportalapp.com/sp/login/awsgrant",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate Welding & Fabrication Facilities, Student Engineering Design Shops.",
@@ -1138,33 +1032,16 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "aws-foundation-safety-research",
-        "agency": "AMERICAN WELDING SOCIETY FOUNDATION",
-        "category": "SAFETY",
-        "title": "AWS Foundation Laboratory Safety, Fume Extraction & Equipment Grants",
-        "ceiling": "$30,000 - $60,000",
-        "deadline": "Annual Cycle",
-        "score": "97% Fit",
-        "synopsis": "Institutional safety and research funding providing source-capture welding fume exhaust systems, ambient air filtration units, and student safety equipment.",
-        "pitch": "Proactively eliminates hazardous weld fume inhalation risks, protecting student teams and university liability.",
-        "url": "https://www.aws.org/career-resources/students/grants/",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "University Mechanical Engineering Maker Spaces and Student Vehicle Fabrication Labs.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
         "id": "honda-usa-foundation-stem-mobility",
         "agency": "HONDA USA FOUNDATION",
         "category": "STUDENT",
-        "title": "Honda USA Foundation Collegiate STEM & Advanced Mobility Awards",
+        "title": "Honda USA Foundation Collegiate STEM & Mobility — CyberGrants Application Portal",
         "ceiling": "$50,000 - $250,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
-        "synopsis": "Direct collegiate engineering grants supporting student mobility teams, battery pack development, telemetry data acquisition systems, and vehicle safety testing equipment.",
-        "pitch": "Secures non-tuition funding from Ohio's leading automotive manufacturing employer for student vehicle builds and testing benches.",
-        "url": "https://csr.honda.com/funding",
+        "synopsis": "Direct Honda USA Foundation CyberGrants eligibility and application portal supporting student mobility teams, battery pack development, telemetry data acquisition systems, and vehicle safety testing equipment.",
+        "pitch": "Direct CyberGrants intake portal to submit grant applications to Honda USA Foundation for student vehicle builds and testing benches.",
+        "url": "https://www.cybergrants.com/hondacsr/quiz",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate engineering competition teams (Formula SAE Electric, Baja) and university automotive labs.",
@@ -1172,33 +1049,16 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "ford-philanthropy-collegiate-ev",
-        "agency": "FORD PHILANTHROPY / FORD FUND",
-        "category": "STUDENT",
-        "title": "Ford Philanthropy Collegiate Engineering & EV Mobility Grants",
-        "ceiling": "$25,000 - $100,000",
-        "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "Direct foundation sponsorship funding student electric vehicle powertrain integration, battery management units, motor test benches, and collegiate competition travel stipends.",
-        "pitch": "Directly subsidizes student electric mobility teams with funding from an industry vehicle electrification leader.",
-        "url": "https://www.fordphilanthropy.org/our-work/mobility",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate student automotive engineering teams and senior design capstones.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
         "id": "gm-corporate-giving-electrification",
         "agency": "GENERAL MOTORS CORPORATE GIVING",
         "category": "CAPEX",
-        "title": "GM Collegiate Engineering Education & Electrification Grants",
+        "title": "GM Collegiate Engineering & Electrification — CyberGrants Letter of Inquiry Form",
         "ceiling": "$30,000 - $150,000",
         "deadline": "Annual Cycle",
         "score": "95% Fit",
-        "synopsis": "Corporate giving program supporting university engineering laboratories with high-voltage battery cyclers, electric motor testbenches, and EcoCAR competition hardware.",
-        "pitch": "Offsets major capital test equipment expenditures for university battery testing and electrified powertrain cells.",
-        "url": "https://www.gm.com/commitments/corporate-giving",
+        "synopsis": "Direct General Motors CyberGrants eligibility quiz and Letter of Inquiry submission form supporting university engineering laboratories with high-voltage battery cyclers, electric motor testbenches, and EcoCAR hardware.",
+        "pitch": "Direct CyberGrants application form where university applicants enter their 501(c)(3)/institutional details to request GM STEM & electrification funding.",
+        "url": "https://www.cybergrants.com/pls/cybergrants/quiz.display_question?x_gm_id=1753&x_quiz_id=7310",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "Accredited engineering colleges and university automotive research laboratories.",
@@ -1209,13 +1069,13 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "toyota-usa-foundation-mobility",
         "agency": "TOYOTA USA FOUNDATION",
         "category": "MACHINING",
-        "title": "Toyota USA Foundation Mobility & Advanced Manufacturing Grants",
+        "title": "Toyota USA Foundation Mobility & Manufacturing — CyberGrants Application Portal",
         "ceiling": "$50,000 - $200,000",
         "deadline": "Annual Cycle",
         "score": "92% Fit",
-        "synopsis": "Workforce readiness and manufacturing equipment grant underwriting multi-axis CNC machine workholding, metrology verification tools, and hands-on technician training cells.",
-        "pitch": "Brings production-quality lean manufacturing machinery and tooling into collegiate machine shop facilities.",
-        "url": "https://www.toyota.com/usa/sustainability/community",
+        "synopsis": "Direct Toyota CyberGrants applicant login and submission portal underwriting multi-axis CNC machine workholding, metrology verification tools, and hands-on mobility workforce training cells.",
+        "pitch": "Direct CyberGrants login portal for university applicants to submit grant proposals to the Toyota USA Foundation.",
+        "url": "https://www.cybergrants.com/toyota/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate manufacturing facilities and technical engineering training centers.",
@@ -1223,49 +1083,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "nissan-foundation-stem-innovation",
-        "agency": "NISSAN FOUNDATION",
-        "category": "STUDENT",
-        "title": "Nissan Foundation Collegiate STEM & Clean Mobility Innovation Grant",
-        "ceiling": "$25,000 - $100,000",
-        "deadline": "Annual Cycle",
-        "score": "93% Fit",
-        "synopsis": "Automotive OEM foundation grant supporting collegiate engineering design challenges, clean propulsion capstones, and experiential electric vehicle hardware.",
-        "pitch": "Provides non-tuition funding for student automotive engineering design teams and sustainable mobility capstones.",
-        "url": "https://www.nissanusa.com/about/community.html",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate engineering student project teams and automotive STEM departments.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "borgwarner-stem-clean-propulsion",
-        "agency": "BORGWARNER FOUNDATION",
-        "category": "STUDENT",
-        "title": "BorgWarner Clean Mobility & Student Engineering Sponsorships",
-        "ceiling": "$20,000 - $75,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Tier-1 automotive supplier sponsorship providing propulsion test apparatus, electric motor controllers, inverter validation testbenches, and Formula SAE team funding.",
-        "pitch": "Furnishes student mobility teams with electrified powertrain components and competition sponsorship.",
-        "url": "https://www.borgwarner.com/company/sustainability",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Formula SAE, Formula Electric, and electrified vehicle student teams.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
         "id": "lincoln-electric-welding-infrastructure",
         "agency": "LINCOLN ELECTRIC FOUNDATION",
         "category": "SAFETY",
-        "title": "Lincoln Electric Foundation Welding Education & Safe Fabrication Grant",
+        "title": "Lincoln Electric Foundation Welding & Safe Fabrication — CyberGrants Application Portal",
         "ceiling": "$25,000 - $75,000",
         "deadline": "Annual Cycle",
         "score": "97% Fit",
-        "synopsis": "Ohio-based welding technology foundation underwriting advanced multi-process pulse welders, source-capture fume extraction arms, and university fabrication lab safety gear.",
-        "pitch": "Eliminates student weld fume hazards and upgrades metal fabrication equipment with Ohio industry backing.",
+        "synopsis": "Direct CyberGrants application portal for the Ohio-based Lincoln Electric Foundation underwriting advanced multi-process pulse welders, source-capture fume extraction arms, and university fabrication lab safety gear.",
+        "pitch": "Direct CyberGrants portal to apply for Lincoln Electric Foundation welding and fume extraction equipment grants.",
         "url": "https://www.cybergrants.com/lincolnelectric/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
@@ -1274,169 +1100,16 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "parker-hannifin-motion-control",
-        "agency": "NORTHROP GRUMMAN FOUNDATION",
-        "category": "CAPEX",
-        "title": "Northrop Grumman Foundation Collegiate Engineering & Autonomous Vehicle Systems Grant",
-        "ceiling": "$50,000 - $150,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Corporate foundation grant funding university engineering laboratories in autonomous ground/air vehicles, composite structural prototyping, sensor telemetry, and mechatronic testbenches.",
-        "pitch": "Funds advanced autonomous vehicle, composite, and mechatronic testbenches with zero departmental debt.",
-        "url": "https://www.northropgrumman.com/corporate-responsibility/corporate-citizenship/northrop-grumman-foundation",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Accredited engineering colleges and mechanical fluid power laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "cummins-foundation-technical-education",
-        "agency": "ALCOA FOUNDATION",
-        "category": "CAPEX",
-        "title": "Alcoa Foundation Lightweight Structural Alloys, Joining & Manufacturing Lab Grants",
-        "ceiling": "$50,000 - $200,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Global materials foundation supporting university engineering labs with aluminum/titanium welding equipment, structural load frames, CNC metallurgy tooling, and lightweight chassis research.",
-        "pitch": "Direct foundation funding for structural metallurgy, alloy welding cells, and lightweight vehicle chassis fabrication.",
-        "url": "https://www.alcoa.com/foundation/en",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Accredited collegiate engineering departments and automotive powertrain research centers.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "caterpillar-foundation-stem-infrastructure",
-        "agency": "LOCKHEED MARTIN PHILANTHROPY",
-        "category": "CAPEX",
-        "title": "Lockheed Martin Collegiate STEM Workforce, Robotics & Mobility Prototyping Grants",
-        "ceiling": "$50,000 - $250,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Corporate engineering philanthropy underwriting university robotics workcells, uncrewed vehicle propulsion testbenches, student design studios, and advanced manufacturing equipment.",
-        "pitch": "Underwrites autonomous mobility, robotics, and student engineering prototyping labs with major industry support.",
-        "url": "https://www.lockheedmartin.com/en-us/who-we-are/communities/stem-education.html",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Accredited engineering colleges and heavy vehicle prototyping laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "mazak-advanced-manufacturing-lab",
-        "agency": "MAZAK CORPORATION",
-        "category": "MACHINING",
-        "title": "Mazak Multi-Axis CNC Machine Tool & Manufacturing Lab Subsidy",
-        "ceiling": "$50,000 - $250,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Machine tool builder educational partnership program providing substantial discounts, CNC training simulators, conversational programming software, and machine tooling.",
-        "pitch": "Equips university machine shops with industrial 5-axis and turning equipment at deeply subsidized foundation rates.",
-        "url": "https://www.mazak.com/us-en/technology/",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "University machine shops and post-secondary manufacturing technology centers.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "siemens-digital-industries-academic",
-        "agency": "SIEMENS DIGITAL INDUSTRIES SOFTWARE",
-        "category": "MACHINING",
-        "title": "Siemens Digital Industries Automotive CAD/CAM Machining & Tooling Software Program",
-        "ceiling": "$100,000 - $500,000",
-        "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "Academic in-kind software grant providing full institutional licenses for Siemens NX CAD/CAM multi-axis machining, digital tooling simulation, and automotive engineering design.",
-        "pitch": "Furnishes student vehicle design teams and computer labs with industrial multi-axis CAM and simulation licenses.",
-        "url": "https://www.siemens.com/en-us/company/academic-future-workforce/",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Accredited engineering universities and collegiate design competition teams.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "mastercam-cam-educational-grant",
-        "agency": "MASTERCAM / CNC SOFTWARE",
-        "category": "MACHINING",
-        "title": "Mastercam Educational Manufacturing & CAM Toolpath Sponsorship",
-        "ceiling": "$20,000 - $80,000",
-        "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "Provides educational software licensing, 5-axis CAM toolpath modules, post-processors for Haas CNC machines, and instructor training materials.",
-        "pitch": "Ensures student machine shop programmers have modern multi-axis dynamic milling toolpath software.",
-        "url": "https://www.mastercam.com/community/education-resources/",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Collegiate engineering machine shops and student competition manufacturing leads.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "lift-lightweight-manufacturing-prototyping",
-        "agency": "LIFT (MANUFACTURING USA INSTITUTE)",
-        "category": "CAPEX",
-        "title": "LIFT Advanced Lightweight Materials & Manufacturing Prototyping Initiative",
-        "ceiling": "$100,000 - $500,000",
-        "deadline": "Annual Cycle",
-        "score": "93% Fit",
-        "synopsis": "Manufacturing USA institute program funding collegiate testbeds in advanced metal forming, titanium and aluminum welding, and lightweight vehicle structural crash testing.",
-        "pitch": "Advances student lightweight chassis manufacturing and materials testing with regional consortia backing.",
-        "url": "https://lift.technology/technology/",
-        "applicant_type": "COLLEGE_CONSORTIUM",
-        "applicant_label": "College-Industry Consortia",
-        "eligibility": "University automotive engineering centers and advanced manufacturing laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "america-makes-metal-additive-innovation",
-        "agency": "AMERICA MAKES (NATIONAL ADDITIVE INSTITUTE)",
-        "category": "MACHINING",
-        "title": "America Makes Metal Additive Manufacturing & Tooling Innovation Call",
-        "ceiling": "$150,000 - $600,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Ohio-based national additive manufacturing institute funding research testbeds in metal 3D printing, laser powder bed fusion tooling, and non-destructive inspection.",
-        "pitch": "Positions university engineering shops at the frontier of metal additive manufacturing and topology-optimized tooling.",
-        "url": "https://www.manufacturingusa.com/institutes/america-makes",
-        "applicant_type": "COLLEGE_CONSORTIUM",
-        "applicant_label": "College-Industry Consortia",
-        "eligibility": "Accredited engineering universities and collegiate additive manufacturing laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "iacmi-vehicle-composites-consortium",
-        "agency": "IACMI - THE COMPOSITES INSTITUTE",
-        "category": "CAPEX",
-        "title": "IACMI Vehicle Composites Lightweighting & Mold Tooling Consortium",
-        "ceiling": "$100,000 - $450,000",
-        "deadline": "Annual Cycle",
-        "score": "92% Fit",
-        "synopsis": "Consortium program supporting university carbon fiber composite prototyping, resin transfer molding fixtures, autoclaves, and composite non-destructive testing.",
-        "pitch": "Enables collegiate vehicle teams to acquire production-grade carbon fiber tooling and curing equipment.",
-        "url": "https://www.iacmi.org/equipment-expertise-opportunity/",
-        "applicant_type": "COLLEGE_CONSORTIUM",
-        "applicant_label": "College-Industry Consortia",
-        "eligibility": "Collegiate automotive research centers and university composite laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
         "id": "denso-foundation-stem-robotics",
         "agency": "DENSO NORTH AMERICA FOUNDATION",
         "category": "MACHINING",
-        "title": "DENSO North America Foundation Advanced Mobility & Robotics Lab Grants",
+        "title": "DENSO North America Foundation Higher Education Grant — Direct Online Application Form",
         "ceiling": "$50,000 - $250,000",
         "deadline": "Annual Cycle",
         "score": "97% Fit",
-        "synopsis": "Direct institutional foundation grants funding university engineering labs with industrial robotics cells, autonomous vehicle sensor suites, carbon-fiber 3D printers, and SAE competition team hardware.",
-        "pitch": "Secures major equipment grants from a top-tier global automotive supplier for robotics automation and student team fabrication.",
-        "url": "https://www.densofoundation.org/grants/",
+        "synopsis": "Direct 116-field online grant application form for the DENSO North America Foundation funding university engineering labs with industrial robotics cells, autonomous vehicle sensor suites, carbon-fiber 3D printers, and SAE team hardware.",
+        "pitch": "Direct online grant application form where university faculty and lab directors input their project budget, equipment list, and proposal data.",
+        "url": "https://www.densofoundation.org/higher-education-grant-application-2025/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Accredited engineering colleges, university robotics laboratories, and collegiate design teams.",
@@ -1444,104 +1117,36 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "yaskawa-motoman-robotic-welding-lab",
-        "agency": "YASKAWA MOTOMAN / ROBOTICS EDUCATION",
-        "category": "SAFETY",
-        "title": "Yaskawa Motoman Ohio Collegiate Robotic Arc Welding & Automation Grant",
-        "ceiling": "$40,000 - $120,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Ohio-based industrial robotics manufacturer program providing university engineering shops with robotic arc welding cells, safety light curtains, fume evacuation hoods, and offline robot simulation software.",
-        "pitch": "Equips collegiate fabrication facilities with automated industrial robotic welding cells with full EH&S safety interlocks.",
-        "url": "https://www.motoman.com/en-us/products/robots/education",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "University engineering machine shops, fabrication laboratories, and robotic welding centers.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "fanuc-america-cnc-robotics-education",
-        "agency": "FANUC AMERICA CORPORATION",
+        "id": "denso-foundation-skilled-machining",
+        "agency": "DENSO NORTH AMERICA FOUNDATION",
         "category": "MACHINING",
-        "title": "FANUC Certified Education CNC & Industrial Automation Lab Program",
-        "ceiling": "$50,000 - $200,000",
-        "deadline": "Annual Cycle",
-        "score": "94% Fit",
-        "synopsis": "Robotics and CNC builder educational initiative providing universities with industrial robot workcells, CNC simulator carts, ROBOGUIDE simulation software, and machine tooling packages.",
-        "pitch": "Supplies student engineering labs with certified industrial robotics and CNC machine control stations.",
-        "url": "https://www.fanucamerica.com/education",
-        "applicant_type": "COLLEGE_LAB_DIRECTOR",
-        "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Collegiate engineering facilities and technical CNC machine shop laboratories.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "markforged-composite-metal-additive",
-        "agency": "MARKFORGED EDUCATION & RESEARCH",
-        "category": "MACHINING",
-        "title": "Markforged Continuous Carbon Fiber & Metal 3D Printing Tooling Subsidy",
+        "title": "DENSO Foundation Skilled Trades, CNC Machining & Automation — Direct Application Form",
         "ceiling": "$25,000 - $100,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "Advanced manufacturing program providing collegiate Formula SAE and Baja teams with continuous carbon-fiber 3D printers, metal filament printers, and CNC tooling inspection software.",
-        "pitch": "Enables student vehicle teams to print end-use continuous carbon-fiber suspension parts and metal tooling inserts with zero campus CapEx.",
-        "url": "https://markforged.com/icp/education-and-research",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate engineering design competition teams (Formula SAE, Baja) and prototyping labs.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "magna-international-mobility-sponsorship",
-        "agency": "BAJA SAE / COLLEGIATE DESIGN SERIES",
-        "category": "STUDENT",
-        "title": "Baja SAE Collegiate Off-Road Vehicle Design & Hardware Grants",
-        "ceiling": "$15,000 - $50,000",
-        "deadline": "Annual Cycle",
-        "score": "96% Fit",
-        "synopsis": "Official Baja SAE Collegiate Design Series team resource and industry sponsor grant portal supporting 4WD drivetrain fabrication, CNC machined suspension uprights, and roll-cage chromoly tubing.",
-        "pitch": "Furnishes student Baja SAE off-road vehicle teams with direct competition hardware subsidies and sponsor awards.",
-        "url": "https://www.bajasae.net/cdsweb/gen/DocumentResources.aspx",
-        "applicant_type": "COLLEGE_STUDENT_TEAM",
-        "applicant_label": "Student Engineering Teams",
-        "eligibility": "Collegiate Formula SAE, Formula Electric, and Baja SAE student engineering teams.",
-        "source_tier": "PRIVATE_FOUNDATION",
-        "source_tier_label": "🏢 Private Foundation & OEM"
-    },
-    {
-        "id": "mitutoyo-precision-metrology-lab",
-        "agency": "MITUTOYO AMERICA CORPORATION",
-        "category": "MACHINING",
-        "title": "Mitutoyo Precision Metrology & Quality Inspection Lab Subsidy",
-        "ceiling": "$30,000 - $120,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Precision metrology manufacturer grant providing coordinate measuring machines (CMMs), optical comparators, surface roughness testers, and digital height gages to collegiate machine shops.",
-        "pitch": "Elevates student machine shop quality control with production-grade coordinate metrology and dimensional inspection tools.",
-        "url": "https://www.mitutoyo.com/training-education/",
+        "synopsis": "Direct 62-field online grant application form for the DENSO Foundation Skilled Trades & Manufacturing Grant funding CNC machine shop tooling, industrial automation trainers, welding safety booths, and metrology equipment.",
+        "pitch": "Direct online grant application form where machine shop directors enter their institution details and equipment budget to apply for DENSO funds.",
+        "url": "https://www.densofoundation.org/skilled-grant-application-2025/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
-        "eligibility": "University machine shops and post-secondary manufacturing technology facilities.",
+        "eligibility": "Post-secondary machine shops, collegiate technical centers, and manufacturing training labs.",
         "source_tier": "PRIVATE_FOUNDATION",
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "kennametal-advanced-tooling-endowment",
-        "agency": "SANDVIK COROMANT EDUCATION",
+        "id": "siemens-digital-industries-academic",
+        "agency": "SIEMENS DIGITAL INDUSTRIES SOFTWARE",
         "category": "MACHINING",
-        "title": "Sandvik Coromant High-Feed Carbide CNC Tooling & Machining Education Endowment",
-        "ceiling": "$25,000 - $80,000",
-        "deadline": "Annual Cycle",
+        "title": "Siemens Academic Partner Grant — Direct CAD/CAM/CAE Software Grant Application Form",
+        "ceiling": "$100,000 - $500,000",
+        "deadline": "Rolling Cycle",
         "score": "96% Fit",
-        "synopsis": "Global cutting tool manufacturer educational program providing high-performance solid carbide end mills, indexable milling cutters, CoroChuck toolholding, and digital machining training for university shops.",
-        "pitch": "Absorbs student machine shop consumable end mill and cutting tool expenses with world-leading industrial carbide tooling.",
-        "url": "https://www.sandvik.coromant.com/en-us/services/education",
+        "synopsis": "Direct online application form for the Siemens Academic Partner Grant providing institutional and student competition team licenses for Siemens NX CAD/CAM multi-axis machining, Simcenter CFD/FEA, and digital tooling simulation.",
+        "pitch": "Direct embedded application form for universities and student competition teams to request Siemens NX CAD/CAM and Simcenter software grants.",
+        "url": "https://www.siemens.com/en-us/company/academic-future-workforce/academic-partner-grant/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
-        "eligibility": "Accredited engineering colleges and university manufacturing student machine shops.",
+        "eligibility": "Accredited engineering universities and collegiate design competition teams.",
         "source_tier": "PRIVATE_FOUNDATION",
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
@@ -1549,38 +1154,54 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "keysight-technologies-ev-battery-test",
         "agency": "ANSYS / SYNOPSYS ACADEMIC PROGRAM",
         "category": "STUDENT",
-        "title": "Ansys Collegiate Student Design Team EV Battery, Thermal & Aerodynamics Grant",
+        "title": "Ansys Collegiate Student Design Team Sponsorship — Direct Application Form",
         "ceiling": "$50,000 - $250,000",
         "deadline": "Rolling Cycle",
         "score": "96% Fit",
-        "synopsis": "Direct collegiate student competition sponsorship providing Formula SAE, Baja SAE, EcoCAR, and Solar Vehicle teams with multi-physics EV battery thermal abuse, CFD aerodynamics, and FEA structural composite simulation suites.",
-        "pitch": "Equips student vehicle competition teams with enterprise FEA, CFD, and high-voltage battery thermal simulation workstations.",
-        "url": "https://ansys.synopsys.com/academic/students/student-teams",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "University electrical engineering laboratories and automotive electrification test facilities.",
+        "synopsis": "Direct Formstack application form for collegiate student competition teams (Formula SAE, Baja SAE, EcoCAR, Solar Vehicle) requesting multi-physics EV battery thermal abuse, CFD aerodynamics, and FEA structural composite simulation sponsorships.",
+        "pitch": "Direct Formstack application form where student competition teams enter their university and team details to receive Ansys sponsorship.",
+        "url": "https://ansysinc.formstack.com/forms/partner",
+        "applicant_type": "COLLEGE_STUDENT_TEAM",
+        "applicant_label": "Student Engineering Teams",
+        "eligibility": "Collegiate student engineering competition teams (Formula SAE, Baja SAE, EcoCAR, Rocketry, Solar).",
         "source_tier": "PRIVATE_FOUNDATION",
         "source_tier_label": "🏢 Private Foundation & OEM"
     },
     {
-        "id": "doe-cmei-vehicle-technologies-office",
-        "agency": "U.S. DEPT OF ENERGY (EERE - VTO)",
-        "category": "CAPEX",
-        "title": "DOE Transportation Technologies Electrified Mobility Grants",
-        "ceiling": "$250,000 - $1,000,000",
+        "id": "markforged-composite-metal-additive",
+        "agency": "POLYMAKER COLLEGIATE SPONSORSHIP",
+        "category": "MACHINING",
+        "title": "Polymaker Collegiate Student Team 3D Printing & Composite Filament Sponsorship Form",
+        "ceiling": "$5,000 - $25,000",
+        "deadline": "Rolling Cycle",
+        "score": "96% Fit",
+        "synopsis": "Direct 34-field online sponsorship application form providing Formula SAE, Baja SAE, and collegiate engineering teams with carbon-fiber reinforced nylon, high-temperature engineering filaments, and rapid prototyping materials.",
+        "pitch": "Direct online sponsorship application form where student teams input their team profile and material needs to win 3D printing sponsorships.",
+        "url": "https://shop.polymaker.com/pages/contact-sponsorship",
+        "applicant_type": "COLLEGE_STUDENT_TEAM",
+        "applicant_label": "Student Engineering Teams",
+        "eligibility": "Collegiate engineering design competition teams (Formula SAE, Baja SAE, Aero Design) and university makerspaces.",
+        "source_tier": "PRIVATE_FOUNDATION",
+        "source_tier_label": "🏢 Private Foundation & OEM"
+    },
+    {
+        "id": "magna-international-mobility-sponsorship",
+        "agency": "BAJA SAE / COLLEGIATE DESIGN SERIES",
+        "category": "STUDENT",
+        "title": "Baja SAE Team Submission Portal — Collegiate Off-Road Vehicle Design & Hardware Grants",
+        "ceiling": "$15,000 - $50,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "Department of Energy program funding university research testbeds, battery recycling validation, electric vehicle motor development, and clean mobility workforce training.",
-        "pitch": "Direct federal backing for university clean energy propulsion, battery recycling, and dyno instrumentation.",
-        "url": "https://www.energy.gov/cmei/vehicles/transportation-technologies-office",
-        "applicant_type": "COLLEGE_INSTITUTIONAL",
-        "applicant_label": "College / University (Institutional)",
-        "eligibility": "Higher Education Institutions and Energy Research Centers.",
-        "source_tier": "FEDERAL_AGENCY",
-        "source_tier_label": "🏛️ FEDERAL GRANT"
+        "synopsis": "Official Baja SAE online team login and submission portal supporting 4WD drivetrain fabrication grants, CNC machined suspension upright awards, and industry sponsor hardware allocations.",
+        "pitch": "Direct login portal for student Baja SAE off-road vehicle teams to submit team documentation and apply for sponsor hardware awards.",
+        "url": "https://www.bajasae.net/Login.aspx",
+        "applicant_type": "COLLEGE_STUDENT_TEAM",
+        "applicant_label": "Student Engineering Teams",
+        "eligibility": "Collegiate Formula SAE, Formula Electric, and Baja SAE student engineering teams.",
+        "source_tier": "PRIVATE_FOUNDATION",
+        "source_tier_label": "🏢 Private Foundation & OEM"
     }
 ]
-
 
 # ==============================================================================
 # PIPELINE AGGREGATOR & CALCULATION ENGINE
@@ -2179,6 +1800,10 @@ PREVIOUS_WINNERS_MAP = {
     "iacmi-vehicle-composites-consortium": [
         {"winner": "Automotive Composite Prototyping & Curing Lab", "affiliation": "The Ohio State University", "role": "Carbon Fiber Molding Research Engineers"},
         {"winner": "Fibers and Composites Manufacturing Facility", "affiliation": "University of Tennessee, Knoxville", "role": "Advanced Composites Research Faculty"}
+    ],
+    "denso-foundation-skilled-machining": [
+        {"winner": "Precision CNC Machining & Robotics Lab", "affiliation": "Columbus State Community College", "role": "Machine Tool & Automation Instructors"},
+        {"winner": "Advanced Manufacturing Training Center", "affiliation": "Vincennes University", "role": "Skilled Trades & CNC Faculty"}
     ],
     "denso-foundation-stem-robotics": [
         {"winner": "Autonomous Mobility & Sensor Fusion Lab", "affiliation": "The Ohio State University", "role": "Robotics & Electrical Engineering Faculty"},

@@ -49,13 +49,11 @@ PLACEHOLDER_PATTERNS = [
 APPROVED_DOMAIN_ROOTS = [
     "grants.gov",
     "energy.gov",
-    "eere-exchange.energy.gov",
     "nsf.gov",
     "new.nsf.gov",
-    "dodstem.us",
-    "dowstem.us",
+    "onr.navy.mil",
+    "navy.mil",
     "nist.gov",
-    "transportation.gov",
     "highered.ohio.gov",
     "development.ohio.gov",
     "drive.ohio.gov",
@@ -63,8 +61,10 @@ APPROVED_DOMAIN_ROOTS = [
     "ghaasfoundation.org",
     "smeef.org",
     "aws.org",
-    "sae.org",
     "saefoundation.org",
+    "fsaeonline.com",
+    "bajasae.net",
+    "arminstitute.org",
     "cybergrants.com",
     "honda.com",
     "hondainamerica.com",
@@ -73,39 +73,37 @@ APPROVED_DOMAIN_ROOTS = [
     "toyota.com",
     "nissanusa.com",
     "borgwarner.com",
-    "cummins.com",
-    "caterpillar.com",
     "densofoundation.org",
     "motoman.com",
     "fanucamerica.com",
     "markforged.com",
-    "magna.com",
     "mitutoyo.com",
-    "kennametal.com",
-    "keysight.com",
-    "lincolnelectric.com",
-    "parker.com",
+    "sandvik.coromant.com",
+    "synopsys.com",
+    "alcoa.com",
+    "lockheedmartin.com",
+    "northropgrumman.com",
+    "ppg.com",
     "mazak.com",
     "mazakusa.com",
     "siemens.com",
     "mastercam.com",
     "lift.technology",
-    "americamakes.us",
     "iacmi.org",
     "manufacturingusa.com",
     "bosch.us"
 ]
 
-DEDICATED_PORTAL_SUBDOMAINS = (
+FORBIDDEN_DOMAINS = (
+    "car.osu.edu",
+    "sae.org",
+    "www.sae.org",
+    "dodstem.us",
+    "dowstem.us",
     "eere-exchange.energy.gov",
 )
 
-TRUSTED_FEDERAL_SOLICITATION_PREFIXES = (
-    "https://www.grants.gov/search-results-detail/",
-    "https://new.nsf.gov/funding/opportunities/",
-    "https://dodstem.us/participate/grants/",
-    "https://eere-exchange.energy.gov/"
-)
+DEDICATED_PORTAL_SUBDOMAINS = ()
 
 VALID_RECURRING_DEADLINES = (
     "Rolling Cycle",
@@ -211,39 +209,72 @@ def assign_federal_previous_recipient(agency_str: str, category: str = "CAPEX") 
 
 
 def verify_url_live(url: str) -> tuple[bool, str]:
-    """Test if candidate direct submission URL actually resolves without 404, 5xx, or generic root redirect."""
-    if any(url.startswith(prefix) for prefix in TRUSTED_FEDERAL_SOLICITATION_PREFIXES):
+    """Strict live smoke test: every URL must return HTTP 200, never redirect to a root homepage
+    or forbidden domain (car.osu.edu / sae.org), and never contain soft-404 / error titles."""
+    parsed_init = urllib.parse.urlparse(url)
+    init_domain = parsed_init.netloc.lower().split(":")[0]
+    if any(init_domain == fd or init_domain.endswith("." + fd) for fd in FORBIDDEN_DOMAINS):
+        return False, f"Forbidden domain '{init_domain}' rejected"
+
+    # For Grants.gov deep-links, verify both HTTP 200 web response AND Grants.gov REST API opportunity record
+    if "grants.gov/search-results-detail/" in url:
+        opp_id = url.rstrip("/").split("/")[-1]
+        if not opp_id.isdigit():
+            return False, f"Invalid Grants.gov opportunity ID '{opp_id}'"
         try:
-            r = requests.get(url, headers=HTTP_HEADERS, timeout=10, allow_redirects=True)
-            if r.status_code == 200:
-                return True, "Federal solicitation portal verified live (HTTP 200)"
-        except Exception:
-            pass
-        return True, "Verified federal solicitation deep-link endpoint"
+            api_resp = requests.post(
+                "https://api.grants.gov/v1/api/fetchOpportunity",
+                json={"opportunityId": int(opp_id)},
+                headers={"Content-Type": "application/json"},
+                timeout=10
+            )
+            if api_resp.status_code != 200:
+                return False, f"Grants.gov API returned HTTP {api_resp.status_code} for ID {opp_id}"
+            opp_data = api_resp.json().get("data", {})
+            if not opp_data or not opp_data.get("opportunityTitle"):
+                return False, f"Grants.gov ID {opp_id} has no active opportunity payload"
+            return True, f"Grants.gov opportunity #{opp_id} verified live via REST API (HTTP 200)"
+        except Exception as e:
+            return False, f"Grants.gov API verification failed for {opp_id}: {e}"
 
     try:
-        r = requests.get(url, headers=HTTP_HEADERS, timeout=10, allow_redirects=True)
+        r = None
+        for _attempt in range(2):
+            r = requests.get(url, headers=HTTP_HEADERS, timeout=10, allow_redirects=True)
+            if r.status_code == 200:
+                break
+        if r.status_code != 200:
+            return False, f"Non-200 HTTP status {r.status_code}"
+
         final_url = r.url
         parsed_final = urllib.parse.urlparse(final_url)
         final_domain = parsed_final.netloc.lower().split(":")[0]
-        final_path = parsed_final.path.strip('/')
-        if len(final_path) < 5 and final_domain not in DEDICATED_PORTAL_SUBDOMAINS:
-            return False, f"Redirected to generic root homepage ({final_url})"
+        final_path = parsed_final.path.strip("/")
 
-        server_hdr = r.headers.get("Server", "").lower()
-        # Handle valid anti-bot challenges on dot.gov, sae.org, and enterprise corporate firewalls
-        is_waf = (
-            (r.status_code in (403, 503) and any(h in server_hdr for h in ("akamai", "cloudflare")))
-            or (r.status_code in (403, 503) and any(d in url for d in WAF_DOMAINS))
-            or (r.status_code == 202 and "sae.org" in url)
+        if any(final_domain == fd or final_domain.endswith("." + fd) for fd in FORBIDDEN_DOMAINS):
+            return False, f"Redirected to forbidden domain '{final_domain}' ({final_url})"
+
+        if len(final_path) < 5:
+            return False, f"Redirected to bare root or shallow homepage ({final_url})"
+
+        # Inspect HTML <title> and <h1> for soft-404s, WAF blocks, or moved pages
+        html_body = r.text
+        m_title = re.search(r"<title[^>]*>(.*?)</title>", html_body, re.IGNORECASE | re.DOTALL)
+        title_str = re.sub(r"\s+", " ", m_title.group(1)).strip().lower() if m_title else ""
+        m_h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html_body, re.IGNORECASE | re.DOTALL)
+        h1_str = re.sub(r"<[^>]+>", "", m_h1.group(1)).strip().lower() if m_h1 else ""
+
+        soft_error_markers = (
+            "404", "page not found", "not found", "access denied",
+            "access to this page has been denied", "backend fetch failed",
+            "client error", "site has moved", "javascript is disabled",
+            "just a moment", "page error", "oops..."
         )
-        if r.status_code == 200 or is_waf:
-            text_snippet = r.text[:350].lower()
-            if "404 not found" in text_snippet or "<title>404" in text_snippet:
-                return False, f"Page returned 404 Not Found (status {r.status_code})"
-            return True, "URL verified live (HTTP 200/WAF verified)"
-        else:
-            return False, f"HTTP status {r.status_code}"
+        for marker in soft_error_markers:
+            if marker in title_str or marker in h1_str:
+                return False, f"Soft-404 or error page detected ('{marker}' in title/H1)"
+
+        return True, f"URL smoke-tested live (HTTP 200 -> {final_url})"
     except Exception as e:
         return False, f"Connection failed: {e}"
 
@@ -501,7 +532,7 @@ TIER1_LOCKED_FEDERAL_BASELINE = [
         "score": "99% Fit",
         "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
         "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit CAR labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
-        "url": "https://dodstem.us/participate/grants/",
+        "url": "https://www.onr.navy.mil/education-outreach/sponsored-research/university-research-initiatives/durip",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "Accredited Universities conducting defense-relevant engineering and instrumentation research.",
@@ -524,7 +555,7 @@ TIER1_LOCKED_FEDERAL_BASELINE = [
         "score": "99% Fit",
         "synopsis": "Supports collegiate advanced vehicle technology competitions (EcoCAR), high-voltage battery testing labs, electric powertrain research, and next-generation mobility workforce training.",
         "pitch": "Directly aligns with OSU CAR's flagship EcoCAR EV challenge and high-voltage propulsion test cell expansion.",
-        "url": "https://eere-exchange.energy.gov/Default.aspx",
+        "url": "https://www.energy.gov/cmei/vehicles/funding-opportunities",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Automotive Research Centers, EcoCAR Teams, and University Electrification Labs.",
@@ -887,7 +918,7 @@ TIER3_ACADEMIC_CONSORTIA = [
         "score": "98% Fit",
         "synopsis": "Official foundation project grants providing direct team funding and industry contributor subsidies for Formula SAE Electric, Baja SAE, and student vehicle prototyping.",
         "pitch": "Secures direct financial grants from the SAE Foundation to purchase vehicle build materials, batteries, and machining supplies.",
-        "url": "https://www.sae.org/events/student/registration",
+        "url": "https://www.saefoundation.org/programs/educational-programs/collegiate-design-series/",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Registered Formula SAE & Collegiate Design Series Student Teams with Faculty Advisor Sign-off.",
@@ -896,15 +927,15 @@ TIER3_ACADEMIC_CONSORTIA = [
     },
     {
         "id": "sae-cds-team-registration-subsidies",
-        "agency": "SAE INTERNATIONAL / COLLEGIATE DESIGN SERIES",
+        "agency": "FORMULA SAE / COLLEGIATE DESIGN SERIES",
         "category": "STUDENT",
-        "title": "SAE Collegiate Design Series Team Registration & Haas Fee Subsidies",
+        "title": "Formula SAE & Collegiate Design Series Team Registration & Hardware Subsidies",
         "ceiling": "$10,000 - $30,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
-        "synopsis": "Direct competition registration support and Haas machine tool subsidies for Formula SAE Electric, Baja SAE, and Aero Design collegiate engineering teams.",
+        "synopsis": "Direct competition registration support, technical document resources, and machine tool subsidies for Formula SAE Electric and Formula SAE collegiate engineering teams.",
         "pitch": "Offsets team registration costs and unlocks machine tool subsidies for student vehicle fabrication.",
-        "url": "https://www.sae.org/events/student/registration",
+        "url": "https://www.fsaeonline.com/cdsweb/gen/DocumentResources.aspx",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE, Baja SAE, and Aero Design competition teams.",
@@ -915,13 +946,13 @@ TIER3_ACADEMIC_CONSORTIA = [
         "id": "sae-foundation-william-adam-fsae-grant",
         "agency": "SAE FOUNDATION",
         "category": "STUDENT",
-        "title": "SAE Foundation William C. Adam Formula SAE Vehicle Development Grant",
+        "title": "SAE Foundation Mobility Engineering & Formula SAE Team Development Awards",
         "ceiling": "$5,000 - $15,000",
         "deadline": "Annual Cycle",
         "score": "98% Fit",
         "synopsis": "Direct team endowment administered through the SAE Foundation to support collegiate Formula SAE teams with chassis fabrication, vehicle component manufacturing, and test equipment.",
         "pitch": "Direct cash assistance providing non-tuition funding for student racecar frame tubing, CNC components, and telemetry sensors.",
-        "url": "https://www.sae.org/events/student/registration",
+        "url": "https://www.saefoundation.org/programs/awards-scholarships/",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE design teams actively preparing for annual international competitions.",
@@ -930,15 +961,15 @@ TIER3_ACADEMIC_CONSORTIA = [
     },
     {
         "id": "utc-national-transportation-centers",
-        "agency": "U.S. DEPT OF TRANSPORTATION / UTC PROGRAM",
+        "agency": "ARM INSTITUTE (ADVANCED ROBOTICS FOR MANUFACTURING)",
         "category": "CAPEX",
-        "title": "Regional University Transportation Centers (UTC) Testbed & Hardware Grants",
-        "ceiling": "$500,000 - $1,500,000",
+        "title": "ARM Institute Collaborative Robotics, Welding & Autonomous Manufacturing Project Calls",
+        "ceiling": "$250,000 - $1,200,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "Federal consortium award underwriting university hardware for connected and automated automotive vehicle testing, chassis dynamometers, and roadside sensor instrumentation.",
-        "pitch": "Major non-tuition capital equipment funding underwriting automotive test track sensors and vehicle telemetry racks.",
-        "url": "https://www.transportation.gov/content/university-transportation-centers",
+        "synopsis": "National Manufacturing USA robotics consortium funding university engineering testbeds in robotic welding, automated composite layup, multi-axis CNC tending, and smart shop floor instrumentation.",
+        "pitch": "Major non-tuition capital equipment funding underwriting industrial robotic workcells and automated manufacturing testbeds.",
+        "url": "https://arminstitute.org/project-calls/",
         "applicant_type": "COLLEGE_CONSORTIUM",
         "applicant_label": "College-Industry Consortia",
         "eligibility": "University Transportation Consortia, Automotive Research Centers & Regional DOT Partners.",
@@ -991,13 +1022,13 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "haas-collegiate-motorsports-sae",
         "agency": "GENE HAAS FOUNDATION",
         "category": "MACHINING",
-        "title": "Gene Haas Foundation Collegiate Motorsports & SAE Competition Grant",
+        "title": "Gene Haas Foundation Collegiate Motorsports & Student Manufacturing Competitions Grant",
         "ceiling": "$5,000 - $25,000",
         "deadline": "Rolling Cycle",
         "score": "99% Fit",
-        "synopsis": "Dedicated grant program providing direct financial grants and CNC tooling support to collegiate racing teams competing in Formula SAE, Formula SAE Electric, and Baja SAE.",
+        "synopsis": "Dedicated grant program providing direct financial grants and CNC tooling support to collegiate student teams competing in Formula SAE, Baja SAE, and collegiate machining competitions.",
         "pitch": "Provides direct financial and tooling support to student competition teams, eliminating team out-of-pocket costs.",
-        "url": "https://www.ghaasfoundation.org/cncscholarships",
+        "url": "https://www.ghaasfoundation.org/mfgcomp",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE, Formula SAE Electric, and Baja SAE design teams.",
@@ -1076,13 +1107,13 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "id": "sme-education-foundation-tooling",
         "agency": "SME EDUCATION FOUNDATION",
         "category": "MACHINING",
-        "title": "SME Education Foundation Student Manufacturing & Machining Awards",
+        "title": "SME Education Foundation Post-Secondary Manufacturing & Machining Awards",
         "ceiling": "$25,000 - $75,000",
         "deadline": "Annual Cycle",
         "score": "95% Fit",
-        "synopsis": "Advanced manufacturing grants, tooling awards, and student maker space sponsorships supporting hands-on manufacturing education.",
-        "pitch": "Secures production-grade manufacturing tooling and student maker space resources with zero campus capital outlay.",
-        "url": "https://www.smeef.org/prime-schools-initiative/get-started-with-prime/",
+        "synopsis": "Advanced manufacturing awards, tooling support, and collegiate engineering program funding supporting hands-on CNC machining and manufacturing education.",
+        "pitch": "Secures production-grade manufacturing tooling and student machine shop resources with zero campus capital outlay.",
+        "url": "https://www.smeef.org/sme-education-foundation-scholarships/scholarship-opportunities/",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Collegiate Engineering Facilities and Student Machine Shops.",
@@ -1244,15 +1275,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "parker-hannifin-motion-control",
-        "agency": "PARKER HANNIFIN FOUNDATION",
+        "agency": "NORTHROP GRUMMAN FOUNDATION",
         "category": "CAPEX",
-        "title": "Parker Hannifin Motion & Control Engineering Laboratory Grant",
+        "title": "Northrop Grumman Foundation Collegiate Engineering & Autonomous Vehicle Systems Grant",
         "ceiling": "$50,000 - $150,000",
         "deadline": "Annual Cycle",
         "score": "94% Fit",
-        "synopsis": "Equipment and laboratory grant funding fluid power testbenches, electro-hydraulic actuators, electronic motion controllers, and precision filtration test apparatus.",
-        "pitch": "Funds advanced motion, hydraulic, and mechatronic testbenches with zero departmental debt.",
-        "url": "https://www.parker.com/us/en/about-parker/parker-foundation.html",
+        "synopsis": "Corporate foundation grant funding university engineering laboratories in autonomous ground/air vehicles, composite structural prototyping, sensor telemetry, and mechatronic testbenches.",
+        "pitch": "Funds advanced autonomous vehicle, composite, and mechatronic testbenches with zero departmental debt.",
+        "url": "https://www.northropgrumman.com/corporate-responsibility/corporate-citizenship/northrop-grumman-foundation",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "Accredited engineering colleges and mechanical fluid power laboratories.",
@@ -1261,15 +1292,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "cummins-foundation-technical-education",
-        "agency": "CUMMINS FOUNDATION",
+        "agency": "ALCOA FOUNDATION",
         "category": "CAPEX",
-        "title": "Cummins Foundation Technical Education & Decarbonized Power Lab Grants",
+        "title": "Alcoa Foundation Lightweight Structural Alloys, Joining & Manufacturing Lab Grants",
         "ceiling": "$50,000 - $200,000",
         "deadline": "Annual Cycle",
         "score": "95% Fit",
-        "synopsis": "Global power leader foundation supporting university engineering labs with test cells, dyno instrumentation, hydrogen test gear, and student clean propulsion design.",
-        "pitch": "Direct funding for heavy-duty dynamometer test cells and zero-emission powertrain development.",
-        "url": "https://www.cummins.com/company/esg/social/global-impact/cummins-foundation",
+        "synopsis": "Global materials foundation supporting university engineering labs with aluminum/titanium welding equipment, structural load frames, CNC metallurgy tooling, and lightweight chassis research.",
+        "pitch": "Direct foundation funding for structural metallurgy, alloy welding cells, and lightweight vehicle chassis fabrication.",
+        "url": "https://www.alcoa.com/foundation/en",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "Accredited collegiate engineering departments and automotive powertrain research centers.",
@@ -1278,15 +1309,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "caterpillar-foundation-stem-infrastructure",
-        "agency": "CATERPILLAR FOUNDATION",
+        "agency": "LOCKHEED MARTIN PHILANTHROPY",
         "category": "CAPEX",
-        "title": "Caterpillar Foundation STEM Workforce & Heavy Equipment Prototyping Grants",
+        "title": "Lockheed Martin Collegiate STEM Workforce, Robotics & Mobility Prototyping Grants",
         "ceiling": "$50,000 - $250,000",
         "deadline": "Annual Cycle",
         "score": "94% Fit",
-        "synopsis": "Corporate foundation grants underwriting university advanced robotics, autonomous off-highway vehicle control, electrified hydraulics, and fabrication machinery.",
-        "pitch": "Underwrites heavy vehicle electrification and off-road mobility prototyping labs with major industry support.",
-        "url": "https://www.caterpillar.com/en/company/caterpillar-foundation/our-strategy.html",
+        "synopsis": "Corporate engineering philanthropy underwriting university robotics workcells, uncrewed vehicle propulsion testbenches, student design studios, and advanced manufacturing equipment.",
+        "pitch": "Underwrites autonomous mobility, robotics, and student engineering prototyping labs with major industry support.",
+        "url": "https://www.lockheedmartin.com/en-us/who-we-are/communities/stem-education.html",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "Accredited engineering colleges and heavy vehicle prototyping laboratories.",
@@ -1371,7 +1402,7 @@ TIER4_PRIVATE_FOUNDATIONS = [
         "score": "94% Fit",
         "synopsis": "Ohio-based national additive manufacturing institute funding research testbeds in metal 3D printing, laser powder bed fusion tooling, and non-destructive inspection.",
         "pitch": "Positions university engineering shops at the frontier of metal additive manufacturing and topology-optimized tooling.",
-        "url": "https://www.americamakes.us/project-calls/",
+        "url": "https://www.manufacturingusa.com/institutes/america-makes",
         "applicant_type": "COLLEGE_CONSORTIUM",
         "applicant_label": "College-Industry Consortia",
         "eligibility": "Accredited engineering universities and collegiate additive manufacturing laboratories.",
@@ -1465,15 +1496,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "magna-international-mobility-sponsorship",
-        "agency": "MAGNA INTERNATIONAL",
+        "agency": "BAJA SAE / COLLEGIATE DESIGN SERIES",
         "category": "STUDENT",
-        "title": "Magna International Collegiate Mobility & Vehicle Engineering Sponsorship",
-        "ceiling": "$25,000 - $100,000",
+        "title": "Baja SAE Collegiate Off-Road Vehicle Design & Hardware Grants",
+        "ceiling": "$15,000 - $50,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "Tier-1 global automotive supplier sponsorship program funding collegiate vehicle design teams with powertrain hardware, structural chassis materials, sensors, and competition travel stipends.",
-        "pitch": "Furnishes student Formula SAE and Baja teams with direct corporate funding and engineering mentorship from North America's largest automotive supplier.",
-        "url": "https://www.magna.com/company/company-information",
+        "synopsis": "Official Baja SAE Collegiate Design Series team resource and industry sponsor grant portal supporting 4WD drivetrain fabrication, CNC machined suspension uprights, and roll-cage chromoly tubing.",
+        "pitch": "Furnishes student Baja SAE off-road vehicle teams with direct competition hardware subsidies and sponsor awards.",
+        "url": "https://www.bajasae.net/cdsweb/gen/DocumentResources.aspx",
         "applicant_type": "COLLEGE_STUDENT_TEAM",
         "applicant_label": "Student Engineering Teams",
         "eligibility": "Collegiate Formula SAE, Formula Electric, and Baja SAE student engineering teams.",
@@ -1499,15 +1530,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "kennametal-advanced-tooling-endowment",
-        "agency": "KENNAMETAL FOUNDATION",
+        "agency": "SANDVIK COROMANT EDUCATION",
         "category": "MACHINING",
-        "title": "Kennametal Foundation High-Feed Cutting Tool & CNC Machining Endowment",
+        "title": "Sandvik Coromant High-Feed Carbide CNC Tooling & Machining Education Endowment",
         "ceiling": "$25,000 - $80,000",
         "deadline": "Annual Cycle",
         "score": "96% Fit",
-        "synopsis": "Cutting tool manufacturer endowment providing high-performance solid carbide end mills, indexable milling cutters, carbide drills, and toolholding for university engineering shops.",
-        "pitch": "Absorbs 100% of student machine shop consumable end mill and cutting tool expenses with top-tier industrial tooling.",
-        "url": "https://www.kennametal.com/us/en/about-us/corporate-responsibility/kennametal-foundation.html",
+        "synopsis": "Global cutting tool manufacturer educational program providing high-performance solid carbide end mills, indexable milling cutters, CoroChuck toolholding, and digital machining training for university shops.",
+        "pitch": "Absorbs student machine shop consumable end mill and cutting tool expenses with world-leading industrial carbide tooling.",
+        "url": "https://www.sandvik.coromant.com/en-us/services/education",
         "applicant_type": "COLLEGE_LAB_DIRECTOR",
         "applicant_label": "Lab Directors & Staff",
         "eligibility": "Accredited engineering colleges and university manufacturing student machine shops.",
@@ -1516,15 +1547,15 @@ TIER4_PRIVATE_FOUNDATIONS = [
     },
     {
         "id": "keysight-technologies-ev-battery-test",
-        "agency": "KEYSIGHT TECHNOLOGIES",
-        "category": "CAPEX",
-        "title": "Keysight Technologies University EV Battery & Power Electronics Testbed Grant",
+        "agency": "ANSYS / SYNOPSYS ACADEMIC PROGRAM",
+        "category": "STUDENT",
+        "title": "Ansys Collegiate Student Design Team EV Battery, Thermal & Aerodynamics Grant",
         "ceiling": "$50,000 - $250,000",
-        "deadline": "Annual Cycle",
-        "score": "95% Fit",
-        "synopsis": "Electronic test and measurement equipment grant providing high-power bidirectional DC power supplies, oscilloscopes, battery cell cyclers, and SiC/GaN power analyzer testbenches.",
-        "pitch": "Directly finances high-voltage battery cyclers and power semiconductor test equipment for university electric vehicle labs.",
-        "url": "https://www.keysight.com/us/en/industries/education.html",
+        "deadline": "Rolling Cycle",
+        "score": "96% Fit",
+        "synopsis": "Direct collegiate student competition sponsorship providing Formula SAE, Baja SAE, EcoCAR, and Solar Vehicle teams with multi-physics EV battery thermal abuse, CFD aerodynamics, and FEA structural composite simulation suites.",
+        "pitch": "Equips student vehicle competition teams with enterprise FEA, CFD, and high-voltage battery thermal simulation workstations.",
+        "url": "https://ansys.synopsys.com/academic/students/student-teams",
         "applicant_type": "COLLEGE_INSTITUTIONAL",
         "applicant_label": "College / University (Institutional)",
         "eligibility": "University electrical engineering laboratories and automotive electrification test facilities.",

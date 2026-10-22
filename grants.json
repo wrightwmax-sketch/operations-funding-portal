@@ -1,22 +1,22 @@
 {
-  "last_updated": "2026-10-21 06:31 UTC",
-  "total_addressable": "$57,730,000",
-  "capex_tooling_offset": "$44,225,000",
-  "count": 57,
+  "last_updated": "2026-10-22 06:31 UTC",
+  "total_addressable": "$60,730,000",
+  "capex_tooling_offset": "$45,725,000",
+  "count": 59,
   "validation_summary": {
-    "total_scanned": 58,
-    "passed_checks": 57,
+    "total_scanned": 60,
+    "passed_checks": 59,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 35,
+    "federal": 37,
     "state_regional": 3,
     "academic_consortia": 4,
     "private_foundations": 15,
     "corporate_and_foundations": 19
   },
   "match_tier_breakdown": {
-    "incumbent": 23,
+    "incumbent": 25,
     "expansion": 15,
     "frontier": 19
   },
@@ -822,44 +822,84 @@
       "incumbency_basis": "Major competitive institutional research infrastructure grant"
     },
     {
-      "id": "gov-362836",
-      "agency": "OFFICE OF NAVAL RESEARCH",
+      "id": "gov-364136",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
       "category": "STUDENT",
-      "title": "Special Program Announcement for Office of Naval Research Research Opportunity: FY27 Communications and Networking Applied Research",
+      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources (UNLOCK)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/16/2026",
-      "score": "82% Fit",
-      "synopsis": "Federal solicitation #N0001426SBC11 issued by Office of Naval Research. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "deadline": "11/20/2026",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003630 issued by Advanced Research Projects Agency Energy. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
       "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
-      "url": "https://www.grants.gov/search-results-detail/362836",
+      "url": "https://www.grants.gov/search-results-detail/364136",
       "applicant_type": "COLLEGE_STUDENT_TEAM",
       "applicant_label": "Student Engineering Teams",
       "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "institution": "The Ohio State University & University of Michigan",
         "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
       },
       "previous_winners": [
         {
-          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "winner": "High-Voltage Electrification & Propulsion Lab",
           "affiliation": "The Ohio State University",
-          "role": "Collegiate Student Engineering Team"
+          "role": "Automotive Research Scientists & Graduate Fellows"
         },
         {
-          "winner": "Illini Motorsports",
-          "affiliation": "University of Illinois Urbana-Champaign",
-          "role": "Undergraduate Vehicle Design Leads"
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
         }
       ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
-      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
-      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
+      "id": "gov-364135",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "category": "STUDENT",
+      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources SBIR/STTR (UNLOCK SBIR/STTR)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/20/2026",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003631 issued by Advanced Research Projects Agency Energy. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "url": "https://www.grants.gov/search-results-detail/364135",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     },
     {
       "id": "gov-352741",
@@ -1312,6 +1352,46 @@
       "synopsis": "Federal solicitation #N0001425SB001 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
       "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
       "url": "https://www.grants.gov/search-results-detail/356605",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-362836",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "CAPEX",
+      "title": "Special Program Announcement for Office of Naval Research Research Opportunity: FY27 Communications and Networking Applied Research",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/16/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SBC11 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/362836",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",

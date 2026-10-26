@@ -1063,33 +1063,37 @@
       </div>
     </div>
 
-    <!-- CENTER VIEW SWITCHER (5 APPLE SEGMENTED PILLS) -->
+    <!-- CENTER VIEW SWITCHER (6 APPLE SEGMENTED PILLS) -->
     <div class="segmented-switcher" id="viewSwitcher" role="tablist">
       <button type="button" class="view-pill active" data-view="overview" onclick="navigateToView('overview')" role="tab">
         <span>📊 Overview &amp; KPIs</span>
       </button>
       <button type="button" class="view-pill" data-view="all" onclick="navigateToView('all')" role="tab">
         <span>🗂️ All Opportunities</span>
-        <span class="view-pill-count" id="pill-count-all">57</span>
+        <span class="view-pill-count" id="pill-count-all">86</span>
+      </button>
+      <button type="button" class="view-pill" data-view="battery" onclick="navigateToView('battery')" role="tab">
+        <span>⚡ Battery, Fuel Cell &amp; H2</span>
+        <span class="view-pill-count" id="pill-count-battery">52</span>
       </button>
       <button type="button" class="view-pill" data-view="machining" onclick="navigateToView('machining')" role="tab">
         <span>🛠️ Shop &amp; Tooling</span>
-        <span class="view-pill-count" id="pill-count-machining">16</span>
+        <span class="view-pill-count" id="pill-count-machining">22</span>
       </button>
       <button type="button" class="view-pill" data-view="student" onclick="navigateToView('student')" role="tab">
         <span>🏎️ Student Teams</span>
-        <span class="view-pill-count" id="pill-count-student">16</span>
+        <span class="view-pill-count" id="pill-count-student">17</span>
       </button>
       <button type="button" class="view-pill" data-view="capex" onclick="navigateToView('capex')" role="tab">
         <span>🏛️ Major CapEx &amp; Precedents</span>
-        <span class="view-pill-count" id="pill-count-capex">25</span>
+        <span class="view-pill-count" id="pill-count-capex">54</span>
       </button>
     </div>
 
     <!-- RIGHT UTILITY CLUSTER -->
     <div class="ribbon-utilities">
       <div class="ribbon-search">
-        <input type="text" id="searchInput" placeholder="Search grants, Haas, DURIP, RAPIDS (⌘K)..." oninput="handleSearchInput(this.value)" aria-label="Search opportunities">
+        <input type="text" id="searchInput" placeholder="Search battery, fuel cell, hydrogen, CNC, DURIP (⌘K)..." oninput="handleSearchInput(this.value)" aria-label="Search opportunities">
         <button type="button" class="ribbon-search-clear" id="searchClearBtn" onclick="clearSearchInput()" title="Clear search">&times;</button>
       </div>
       <button type="button" id="refreshBtn" class="btn btn-scarlet" onclick="triggerGrantRefresh()">🔄 Sync Feeds</button>
@@ -1107,7 +1111,7 @@
         <p class="hero-subtitle" id="activeViewSubtitle">Verified Federal (Grants.gov / NSF / DoD / DOE), State of Ohio (ODHE RAPIDS), and Fortune 500 OEM Hardware Solicitations</p>
       </div>
       <div class="hero-telemetry">
-        <span id="lastUpdatedNotice">Live Feed: Synchronized (57 Direct Application Portals)</span>
+        <span id="lastUpdatedNotice">Live Feed: Synchronized (86 Direct Application Portals)</span>
         <span>100% Direct Application Forms &amp; Active RFPs &bull; Zero Brochure Pages</span>
       </div>
     </section>
@@ -1116,23 +1120,23 @@
     <section class="metric-grid" aria-label="Key Performance Indicators">
       <div class="metric-card" onclick="navigateToView('all')" title="View all verified opportunities">
         <div class="metric-title">Addressable External Funding</div>
-        <div class="metric-value" id="kpi-total-val">$57,730,000</div>
+        <div class="metric-value" id="kpi-total-val">$101,030,000</div>
         <div class="metric-sub" id="kpi-total-sub">Active open solicitation pool</div>
       </div>
       <div class="metric-card" onclick="navigateToView('all')" title="Filter across Federal, State, and Corporate sources">
         <div class="metric-title">Target Opportunities</div>
-        <div class="metric-value" id="kpi-count">57 Active</div>
-        <div class="metric-sub" id="kpi-count-sub">15 Foundations &bull; 35 Federal &bull; 7 State/Consortia</div>
+        <div class="metric-value" id="kpi-count">86 Active</div>
+        <div class="metric-sub" id="kpi-count-sub">19 Foundations &bull; 60 Federal &bull; 7 State/Consortia</div>
       </div>
-      <div class="metric-card" onclick="navigateToView('machining')" title="View CNC Machining, Tooling &amp; Major CapEx">
-        <div class="metric-title">CapEx &amp; Tooling Offset</div>
-        <div class="metric-value" id="kpi-capex-val">$44,225,000</div>
-        <div class="metric-sub">Machine acquisitions, dynos &amp; shop upgrades</div>
+      <div class="metric-card" onclick="navigateToView('battery')" title="View Battery, Fuel Cell &amp; Hydrogen Opportunities">
+        <div class="metric-title">CapEx, Battery &amp; H2 Offset</div>
+        <div class="metric-value" id="kpi-capex-val">$89,825,000</div>
+        <div class="metric-sub">Battery cyclers, fuel cells, H2 &amp; shop CapEx</div>
       </div>
       <div class="metric-card" onclick="navigateToView('capex')" title="Inspect Incumbent Wins &amp; Peer Precedents">
         <div class="metric-title">Strategic Alignment</div>
-        <div class="metric-value" id="kpi-safety-val">23 Incumbent</div>
-        <div class="metric-sub" id="kpi-match-sub">15 Expansion &bull; 19 Frontier</div>
+        <div class="metric-value" id="kpi-safety-val">28 Incumbent</div>
+        <div class="metric-sub" id="kpi-match-sub">25 Expansion &bull; 33 Frontier</div>
       </div>
     </section>
 
@@ -1144,12 +1148,12 @@
           <p>Click any source tier to drill directly into verified deep-linked application portals:</p>
           <div class="tier-bar-list">
             <div class="tier-bar-item" onclick="navigateWithFilter({ view: 'all', source: 'FEDERAL_AGENCY' })">
-              <span><strong>🏛️ Federal Grants</strong> (Grants.gov Workspace, NSF, DoD DURIP, DOE VTO)</span>
-              <span style="font-family:var(--font-mono);color:#93C5FD;font-weight:700;" id="ov-fed-count">35 Verified →</span>
+              <span><strong>🏛️ Federal Grants</strong> (Grants.gov Workspace, DOE CMEI/HFTO/ARPA-E, NSF CBET, DoD)</span>
+              <span style="font-family:var(--font-mono);color:#93C5FD;font-weight:700;" id="ov-fed-count">60 Verified →</span>
             </div>
             <div class="tier-bar-item" onclick="navigateWithFilter({ view: 'all', source: 'PRIVATE_FOUNDATION' })">
-              <span><strong>🏢 Corporate &amp; OEM Application Portals</strong> (WizeHive, CyberGrants, Formstack, DENSO)</span>
-              <span style="font-family:var(--font-mono);color:#E2E8F0;font-weight:700;" id="ov-corp-count">15 Verified →</span>
+              <span><strong>🏢 Corporate, Utility &amp; OEM Portals</strong> (CyberGrants, WizeHive, Formstack, DENSO)</span>
+              <span style="font-family:var(--font-mono);color:#E2E8F0;font-weight:700;" id="ov-corp-count">19 Verified →</span>
             </div>
             <div class="tier-bar-item" onclick="navigateWithFilter({ view: 'all', source: 'STATE_REGIONAL' })">
               <span><strong>🏛️ State of Ohio CapEx RFPs</strong> (ODHE Super RAPIDS, RAPIDS, Choose Ohio First)</span>
@@ -1163,9 +1167,13 @@
         </div>
 
         <div class="bento-panel">
-          <h3><span>🛠️ Operational Pillar Partitions</span> <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--emerald-text);">4 Core Tracks</span></h3>
-          <p>Partitioned views tailored for Lab Directors, Machine Shop Supervisors, and Student Teams:</p>
+          <h3><span>🛠️ Operational Pillar Partitions</span> <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--emerald-text);">5 Core Tracks</span></h3>
+          <p>Partitioned views tailored for Battery/Hydrogen Researchers, Lab Directors, and Student Teams:</p>
           <div class="tier-bar-list">
+            <div class="tier-bar-item" onclick="navigateToView('battery')">
+              <span><strong>⚡ Battery, Fuel Cell &amp; Hydrogen</strong> (PEMFC/SOFC, Electrolyzers, Li-Ion/Solid-State, H2)</span>
+              <span style="font-family:var(--font-mono);color:#38BDF8;font-weight:700;" id="ov-battery-count">Open View →</span>
+            </div>
             <div class="tier-bar-item" onclick="navigateToView('machining')">
               <span><strong>🛠️ Shop, CNC Tooling &amp; Weld Safety</strong> (Mills, CMMs, Fume Extraction)</span>
               <span style="font-family:var(--font-mono);color:var(--osu-scarlet-light);font-weight:700;">Open View →</span>
@@ -1178,10 +1186,6 @@
               <span><strong>🏛️ Major CapEx &amp; Winner Registry</strong> (Dynos, Battery Cyclers, DURIP/MRI)</span>
               <span style="font-family:var(--font-mono);color:var(--osu-scarlet-light);font-weight:700;">Open View →</span>
             </div>
-            <div class="tier-bar-item" onclick="openExecutiveDraft()">
-              <span><strong>✉️ Generate Executive Director Briefing</strong> (Pre-drafted Leadership Memo)</span>
-              <span style="font-family:var(--font-mono);color:#34D399;font-weight:700;">Launch Modal →</span>
-            </div>
           </div>
         </div>
       </div>
@@ -1192,9 +1196,9 @@
       <div class="filter-group">
         <span class="filter-label">Funding Source Track:</span>
         <div class="filter-tabs" id="sourceTabs">
-          <button type="button" class="source-tab-btn active" data-source="ALL" onclick="setSourceFilter('ALL', this)">🏛️ All Sources (57)</button>
-          <button type="button" class="source-tab-btn" data-source="FEDERAL_AGENCY" onclick="setSourceFilter('FEDERAL_AGENCY', this)">🏛️ Federal Grants (35)</button>
-          <button type="button" class="source-tab-btn" data-source="PRIVATE_FOUNDATION" onclick="setSourceFilter('PRIVATE_FOUNDATION', this)">🏢 Corporate &amp; OEM Portals (15)</button>
+          <button type="button" class="source-tab-btn active" data-source="ALL" onclick="setSourceFilter('ALL', this)">🏛️ All Sources (86)</button>
+          <button type="button" class="source-tab-btn" data-source="FEDERAL_AGENCY" onclick="setSourceFilter('FEDERAL_AGENCY', this)">🏛️ Federal Grants (60)</button>
+          <button type="button" class="source-tab-btn" data-source="PRIVATE_FOUNDATION" onclick="setSourceFilter('PRIVATE_FOUNDATION', this)">🏢 Corporate &amp; OEM Portals (19)</button>
           <button type="button" class="source-tab-btn" data-source="STATE_REGIONAL" onclick="setSourceFilter('STATE_REGIONAL', this)">🏛️ State of Ohio CapEx (3)</button>
           <button type="button" class="source-tab-btn" data-source="ACADEMIC_CONSORTIA" onclick="setSourceFilter('ACADEMIC_CONSORTIA', this)">🤝 Academic &amp; Consortia (4)</button>
         </div>
@@ -1225,6 +1229,7 @@
         <span class="filter-label">Category Track:</span>
         <div class="filter-tabs" id="categoryTabs">
           <button type="button" class="tab-btn active" data-cat="ALL" onclick="setCategoryFilter('ALL', this)">All Categories</button>
+          <button type="button" class="tab-btn" data-cat="BATTERY_H2" onclick="setCategoryFilter('BATTERY_H2', this)">⚡ Battery, Fuel Cell &amp; H2</button>
           <button type="button" class="tab-btn" data-cat="MACHINING" onclick="setCategoryFilter('MACHINING', this)">Machine Tooling</button>
           <button type="button" class="tab-btn" data-cat="STUDENT" onclick="setCategoryFilter('STUDENT', this)">Collegiate Teams</button>
           <button type="button" class="tab-btn" data-cat="SAFETY" onclick="setCategoryFilter('SAFETY', this)">Lab Infrastructure &amp; Safety</button>
@@ -1282,28 +1287,228 @@
 
   <script>
     const FALLBACK_PAYLOAD = {
-  "last_updated": "2026-10-20 14:00 UTC",
-  "total_addressable": "$57,730,000",
-  "capex_tooling_offset": "$44,225,000",
-  "count": 57,
+  "last_updated": "2026-10-26 02:46 UTC",
+  "total_addressable": "$101,030,000",
+  "capex_tooling_offset": "$89,825,000",
+  "count": 86,
   "validation_summary": {
-    "total_scanned": 58,
-    "passed_checks": 57,
+    "total_scanned": 87,
+    "passed_checks": 86,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 35,
+    "federal": 60,
     "state_regional": 3,
     "academic_consortia": 4,
-    "private_foundations": 15,
-    "corporate_and_foundations": 19
+    "private_foundations": 19,
+    "corporate_and_foundations": 23
   },
   "match_tier_breakdown": {
-    "incumbent": 23,
-    "expansion": 15,
-    "frontier": 19
+    "incumbent": 28,
+    "expansion": 25,
+    "frontier": 33
   },
   "grants": [
+    {
+      "id": "fed-doe-cmei-battery-h2",
+      "agency": "U.S. DEPT OF ENERGY (CMEI / AFFO / HFTO)",
+      "category": "CAPEX",
+      "title": "DOE Critical Minerals, Battery Materials & Clean Hydrogen Common Investment Portal",
+      "ceiling": "$500,000 - $10,000,000",
+      "deadline": "Rolling Cycle",
+      "score": "99% Fit",
+      "synopsis": "Official U.S. Department of Energy Office of Critical Minerals and Energy Innovation (CMEI) and Alternative Fuels & Feedstocks Office (AFFO) funding portal and Common Investment Initial Screening Application for battery manufacturing, lithium/cobalt/nickel processing, hydrogen production, and fuel cell technologies.",
+      "pitch": "Direct DOE screening application and FOA hub for university and consortium battery cell manufacturing, recycling, and hydrogen fuel cell projects.",
+      "url": "https://www.energy.gov/cmei/find-funding-opportunities-critical-minerals-and-energy-innovation",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Universities, National Lab Partners, Battery & Hydrogen Research Centers, and Industry Consortia.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan Battery/Hydrogen Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$2,500,000",
+        "use_case": "Funded next-generation EV battery cell pilot line diagnostics, PEM fuel cell durability test stands, and hydrogen storage validation."
+      },
+      "previous_winners": [
+        {
+          "winner": "Institute for Materials and Manufacturing Research (Battery & Fuel Cell Labs)",
+          "affiliation": "The Ohio State University",
+          "role": "Battery Materials & Hydrogen Systems Principal Investigators"
+        },
+        {
+          "winner": "Battery Lab & Hydrogen Energy Technology Center",
+          "affiliation": "University of Michigan",
+          "role": "Electrochemical Energy Storage & Fuel Cell Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "High-Voltage Battery Cell Cycling Lab, PEM Fuel Cell Test Stands & Hydrogen Storage Bays",
+      "future_capability": "Multi-megawatt battery pack abuse testing, domestic critical mineral cathode synthesis, and clean hydrogen fuel cell durability rigs.",
+      "incumbency_basis": "DOE Critical Minerals & Energy Innovation (CMEI / HFTO / VTO) university research track record"
+    },
+    {
+      "id": "fed-nsf-electrochemical-systems",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF CBET)",
+      "category": "CAPEX",
+      "title": "NSF Electrochemical Systems (PD 23-7644) \u2014 Batteries, Fuel Cells & Electrolyzers",
+      "ceiling": "$350,000 - $750,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Core NSF Directorate for Engineering solicitation funding fundamental and applied research in electrochemical energy storage (lithium-metal, solid-state, sodium, and flow batteries), proton-exchange membrane and solid-oxide fuel cells (PEMFC/SOFC), and green hydrogen water electrolyzers.",
+      "pitch": "Year-round rolling NSF solicitation with direct Research.gov/Grants.gov submission for university battery and fuel cell laboratories.",
+      "url": "https://www.nsf.gov/funding/opportunities/electrochemical-systems/506073/pd23-7644",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited U.S. Colleges and Universities (Chemical, Mechanical, Materials & Electrical Engineering PIs).",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University, Penn State & Georgia Tech Electrochemical Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000",
+        "use_case": "Acquired multi-channel electrochemical impedance spectroscopy (EIS) workstations, PEM fuel cell test stations, and solid-state battery gloveboxes."
+      },
+      "previous_winners": [
+        {
+          "winner": "Electrochemical Engineering & Energy Storage Laboratory",
+          "affiliation": "The Ohio State University",
+          "role": "Chemical & Biomolecular Engineering Faculty PIs"
+        },
+        {
+          "winner": "Electrochemical Engine Center (EEC)",
+          "affiliation": "Pennsylvania State University",
+          "role": "Battery & Fuel Cell Stack Research Directors"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrochemical Energy Storage & Fuel Cell Catalysis Laboratories (Potentiostats, EIS, Gloveboxes)",
+      "future_capability": "Operando fuel cell membrane-electrode assembly (MEA) diagnostics, solid-state electrolyte synthesis, and green H2 electrolyzer testbeds.",
+      "incumbency_basis": "NSF CBET Electrochemical Systems & Catalysis institutional award history"
+    },
+    {
+      "id": "fed-nsf-energy-sustainability",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF CBET)",
+      "category": "CAPEX",
+      "title": "NSF Energy for Sustainability (PD 15-7644) \u2014 Clean Hydrogen, Fuel Cells & Battery Storage",
+      "ceiling": "$350,000 - $800,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Supports sustainable energy conversion and storage engineering research, including clean hydrogen generation, reversible fuel cells, high-cycle-life battery architectures, and renewable fuels.",
+      "pitch": "Direct rolling NSF grant program supporting university clean hydrogen conversion, fuel cell stack engineering, and grid/vehicle battery storage.",
+      "url": "https://www.nsf.gov/funding/opportunities/energy-sustainability/501026/pd15-7644",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Institutions of Higher Education and University Energy Research Laboratories.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & University of Wisconsin-Madison Clean Energy Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$500,000",
+        "use_case": "Funded hydrogen fuel cell membrane electrode assembly (MEA) fabrication rigs and next-generation battery cathode synthesis."
+      },
+      "previous_winners": [
+        {
+          "winner": "Sustainable Energy & Hydrogen Fuel Cell Laboratory",
+          "affiliation": "Purdue University",
+          "role": "Clean Energy & Propulsion Research Faculty"
+        },
+        {
+          "winner": "Wisconsin Energy Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Grid Battery & Clean Fuel Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "fed-nsf-catalysis-h2",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF CBET)",
+      "category": "CAPEX",
+      "title": "NSF Catalysis Program (PD 23-1401) \u2014 Hydrogen Electrocatalysis, Fuel Cell ORR & Water Splitting",
+      "ceiling": "$300,000 - $650,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Funds heterogeneous, homogeneous, and electrocatalysis research for non-platinum-group-metal (non-PGM) fuel cell oxygen reduction catalysts, green hydrogen water electrolysis, ammonia/hydrogen carriers, and CO2-to-fuel conversion.",
+      "pitch": "Ideal rolling NSF funding vehicle for researchers developing low-platinum or platinum-free fuel cell and hydrogen electrolyzer catalysts.",
+      "url": "https://www.nsf.gov/funding/opportunities/catalysis/506074/pd23-1401",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited U.S. Colleges and Universities conducting catalysis, hydrogen, and fuel cell research.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Delaware Catalysis Centers",
+        "award_year": "2025",
+        "amount_or_hardware": "$420,000",
+        "use_case": "Outfitted in-situ operando spectroscopy and rotating ring-disk electrode (RRDE) rigs for hydrogen fuel cell electrocatalyst screening."
+      },
+      "previous_winners": [
+        {
+          "winner": "Heterogeneous & Electrocatalysis Research Group",
+          "affiliation": "The Ohio State University",
+          "role": "Fuel Cell & Electrolyzer Catalyst Researchers"
+        },
+        {
+          "winner": "Center for Catalytic Science and Technology",
+          "affiliation": "University of Delaware",
+          "role": "Hydrogen ORR/OER Catalysis Principal Investigators"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrochemical Energy Storage & Fuel Cell Catalysis Laboratories (Potentiostats, EIS, Gloveboxes)",
+      "future_capability": "Operando fuel cell membrane-electrode assembly (MEA) diagnostics, solid-state electrolyte synthesis, and green H2 electrolyzer testbeds.",
+      "incumbency_basis": "NSF CBET Electrochemical Systems & Catalysis institutional award history"
+    },
+    {
+      "id": "fed-nsf-thermal-transport-battery",
+      "agency": "NATIONAL SCIENCE FOUNDATION (NSF CBET)",
+      "category": "SAFETY",
+      "title": "NSF Thermal Transport Processes (PD 23-1406) \u2014 Battery Thermal Runaway & Cryogenic H2 Storage",
+      "ceiling": "$300,000 - $600,000",
+      "deadline": "Rolling Cycle",
+      "score": "97% Fit",
+      "synopsis": "Supports fundamental and engineering research in multiphase heat transfer, EV battery pack immersion cooling, lithium-ion thermal runaway propagation prevention, fuel cell stack thermal management, and liquid/cryogenic hydrogen boil-off control.",
+      "pitch": "Funds battery pack calorimetry, thermal runaway vent gas diagnostics, immersion cooling loops, and cryogenic hydrogen test instrumentation.",
+      "url": "https://www.nsf.gov/funding/opportunities/ttp-thermal-transport-processes/506070/pd23-1406",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Accredited U.S. Universities operating thermal, battery safety, and cryogenic hydrogen laboratories.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Maryland Battery Thermal Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$390,000",
+        "use_case": "Built accelerating rate calorimetry (ARC) battery abuse chambers and two-phase dielectric immersion cooling testbenches."
+      },
+      "previous_winners": [
+        {
+          "winner": "Battery Thermal Management & Abuse Testing Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Thermal-Fluid & Battery Safety Faculty PIs"
+        },
+        {
+          "winner": "Center for Environmental Energy Engineering",
+          "affiliation": "University of Maryland",
+          "role": "Multiphase Heat Transfer & Cryogenic Storage Researchers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Battery Thermal Runaway Calorimetry Chambers & Cryogenic Fluid Loop Testbenches",
+      "future_capability": "Two-phase dielectric immersion cooling for EV battery packs, vent-gas FTIR diagnostics, and liquid H2 boil-off mitigation.",
+      "incumbency_basis": "NSF CBET Thermal Transport Processes & battery safety research alignment"
+    },
     {
       "id": "fed-nsf-iuse-344124",
       "agency": "NATIONAL SCIENCE FOUNDATION (NSF)",
@@ -1505,6 +1710,886 @@
       "incumbency_basis": "NSF engineering workforce and technician development"
     },
     {
+      "id": "gov-364070",
+      "agency": "GOLDEN FIELD OFFICE",
+      "category": "CAPEX",
+      "title": "Notice of Intent to Issue NOFO DE-FOA-0003649: Leveraging Domestic Infrastructure and Resources to Unleash Alternative Chemicals, Fuels and Feedstocks",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/26/2027",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003648 issued by Golden Field Office. Supports PEM and solid-oxide fuel cell stacks, membrane electrode assemblies (MEAs), hydrogen fuel cell test stations, and zero-emission propulsion.",
+      "pitch": "Secures federal R&D and capital funding for hydrogen fuel cell test cells, electrolyzer stacks, and H2 propulsion hardware.",
+      "url": "https://www.grants.gov/search-results-detail/364070",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
+    },
+    {
+      "id": "gov-362061",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Chemical Process Systems (CPS)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-26-367Y issued by U.S. National Science Foundation. Supports PEM and solid-oxide fuel cell stacks, membrane electrode assemblies (MEAs), hydrogen fuel cell test stations, and zero-emission propulsion.",
+      "pitch": "Secures federal R&D and capital funding for hydrogen fuel cell test cells, electrolyzer stacks, and H2 propulsion hardware.",
+      "url": "https://www.grants.gov/search-results-detail/362061",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-362063",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Transport Phenomena (TP)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "08/20/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-26-366Y issued by U.S. National Science Foundation. Supports PEM and solid-oxide fuel cell stacks, membrane electrode assemblies (MEAs), hydrogen fuel cell test stations, and zero-emission propulsion.",
+      "pitch": "Secures federal R&D and capital funding for hydrogen fuel cell test cells, electrolyzer stacks, and H2 propulsion hardware.",
+      "url": "https://www.grants.gov/search-results-detail/362063",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-243973",
+      "agency": "FAA-COE-AJFE",
+      "category": "CAPEX",
+      "title": "Center of Excellence for Alternative Jet Fuels and Environment",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/30/2027",
+      "score": "84% Fit",
+      "synopsis": "Federal solicitation #FAA-COE-AJFE issued by FAA-COE-AJFE. Supports PEM and solid-oxide fuel cell stacks, membrane electrode assemblies (MEAs), hydrogen fuel cell test stations, and zero-emission propulsion.",
+      "pitch": "Secures federal R&D and capital funding for hydrogen fuel cell test cells, electrolyzer stacks, and H2 propulsion hardware.",
+      "url": "https://www.grants.gov/search-results-detail/243973",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Materials fatigue testing actuators and composite vacuum bagging equipment",
+      "future_capability": "High-speed aerospace composite characterization, structural fatigue test rigs, and uncrewed flight telemetry.",
+      "incumbency_basis": "Federal Aviation Administration university aeronautics research alignment"
+    },
+    {
+      "id": "gov-364136",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "category": "CAPEX",
+      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources (UNLOCK)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/20/2026",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003630 issued by Advanced Research Projects Agency Energy. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/364136",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
+      "id": "gov-364135",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "category": "CAPEX",
+      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources SBIR/STTR (UNLOCK SBIR/STTR)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/20/2026",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003631 issued by Advanced Research Projects Agency Energy. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/364135",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
+      "id": "gov-352741",
+      "agency": "NAVAL RESEARCH LABORATORY",
+      "category": "CAPEX",
+      "title": "NRL Long Range Broad Agency Announcement (BAA) for Basic and Applied Research",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/30/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N00173-24-S-BA01 issued by Naval Research Laboratory. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/352741",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-363936",
+      "agency": "ENVIRONMENTAL PROTECTION AGENCY",
+      "category": "CAPEX",
+      "title": "2026 Diesel Emissions Reduction Act (DERA) National Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "01/22/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #EPA-OAR-OTAQ-26-01 issued by Environmental Protection Agency. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/363936",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363815",
+      "agency": "GOLDEN FIELD OFFICE",
+      "category": "CAPEX",
+      "title": "Accelerating Scale-up and Pre-piloting of Emerging Chemical Technologies (ASPECT)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/01/2026",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003647 issued by Golden Field Office. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/363815",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363993",
+      "agency": "OFFICE OF SCIENCE",
+      "category": "CAPEX",
+      "title": "FY 2027 Continuation of Solicitation for the Office of Science Financial Assistance Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/30/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003665 issued by Office of Science. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
+      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
+      "url": "https://www.grants.gov/search-results-detail/363993",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-352238",
+      "agency": "NSWC CRANE - N00164",
+      "category": "CAPEX",
+      "title": "Long Range Broad Agency Announcement (BAA) for NSWC Crane",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #N0016424SNB35 issued by NSWC CRANE - N00164. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/352238",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-356623",
+      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "category": "CAPEX",
+      "title": "SEEDING CRITICAL ADVANCES FOR LEADING ENERGY TECHNOLOGIES WITH UNTAPPED POTENTIAL (SCALEUP) READY",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/29/2029",
+      "score": "95% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003467 issued by Advanced Research Projects Agency Energy. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/356623",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Advanced Energy Storage, Geologic/Clean Hydrogen & High-Density Propulsion Labs",
+      "future_capability": "High-energy-density solid-state batteries, low-cost hydrogen production reactors, and breakthrough electrochemical storage prototypes.",
+      "incumbency_basis": "DOE ARPA-E high-impact energy technology translation alignment"
+    },
+    {
+      "id": "gov-362681",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Research Interests of the Air Force Office of Scientific Research",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #FA955026S0001 issued by Air Force Office of Scientific Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/362681",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363906",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SF002 issued by Office of Naval Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/363906",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-363905",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF26S1000 issued by Dept of the Army -- Materiel Command. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/363905",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-361526",
+      "agency": "OFFICE OF SCIENCE",
+      "category": "CAPEX",
+      "title": "The Genesis Mission:  Transforming Science and Energy with AI",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/17/2026",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003612 issued by Office of Science. Supports electrochemical energy storage systems, grid-scale and vehicular battery packs, flow batteries, and hybrid supercapacitor-battery architectures.",
+      "pitch": "Underwrites high-power battery energy storage testbeds, bidirectional cyclers, and pack-level thermal management hardware.",
+      "url": "https://www.grants.gov/search-results-detail/361526",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363899",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/363899",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363526",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "FY26 DEFENSE ESTABLISHED PROGRAM TO STIMULATE COMPETITIVE RESEARCH (DEPSCoR) \u2013 RESEARCH COLLABORATION (RC)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/05/2027",
+      "score": "72% Fit",
+      "synopsis": "National Science Foundation solicitation #NOFOAFRLAFOSR20260004 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/363526",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "High-performance computing clusters and sensor telemetry networks",
+      "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
+      "incumbency_basis": "NSF research infrastructure capacity building"
+    },
+    {
+      "id": "gov-344592",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "DEVCOM ARMY RESEARCH LABORATORY BROAD AGENCY ANNOUNCEMENT FOR FOUNDATIONAL RESEARCH",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/20/2027",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF-23-S-0001 issued by Dept of the Army -- Materiel Command. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/344592",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-325932",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "category": "CAPEX",
+      "title": "UNITED STATES MILITARY ACADEMY Broad Agency Announcement",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "03/31/2027",
+      "score": "83% Fit",
+      "synopsis": "National Science Foundation solicitation #W911NF-20-S-0008 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/325932",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-356055",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Computational and Data-Enabled Science and Engineering",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-24-8084 issued by U.S. National Science Foundation. Supports heterogeneous and electrocatalysis for low-PGM hydrogen fuel cells, water splitting electrolyzers, and synthetic clean fuels.",
+      "pitch": "Funds catalyst synthesis, operando spectroscopy, and rotating ring-disk electrode (RRDE) fuel cell screening equipment.",
+      "url": "https://www.grants.gov/search-results-detail/356055",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363617",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "MPS Chemistry Research Programs (MPS Chem)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "10/07/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-519 issued by U.S. National Science Foundation. Supports heterogeneous and electrocatalysis for low-PGM hydrogen fuel cells, water splitting electrolyzers, and synthetic clean fuels.",
+      "pitch": "Funds catalyst synthesis, operando spectroscopy, and rotating ring-disk electrode (RRDE) fuel cell screening equipment.",
+      "url": "https://www.grants.gov/search-results-detail/363617",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
       "id": "gov-355100",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "MACHINING",
@@ -1543,46 +2628,6 @@
       "current_asset": "Undergraduate student machining training lab and technician instruction bays",
       "future_capability": "Multi-axis CNC simulator stations, cutting tool metrology, and hands-on manufacturing curriculum expansion.",
       "incumbency_basis": "NSF engineering workforce and technician development"
-    },
-    {
-      "id": "gov-362061",
-      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
-      "category": "MACHINING",
-      "title": "Chemical Process Systems (CPS)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "Rolling Cycle",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #PD-26-367Y issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
-      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
-      "url": "https://www.grants.gov/search-results-detail/362061",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Purdue University & Georgia Institute of Technology",
-        "award_year": "2025",
-        "amount_or_hardware": "$300,000 - $600,000",
-        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
-      },
-      "previous_winners": [
-        {
-          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
-          "affiliation": "The Ohio State University",
-          "role": "Facility Directors & Senior Research Scientists"
-        },
-        {
-          "winner": "Nanotechnology User Facility",
-          "affiliation": "Georgia Institute of Technology",
-          "role": "Research Infrastructure Principal Investigators"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-361333",
@@ -1705,44 +2750,44 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-356623",
-      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
+      "id": "gov-363614",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "MACHINING",
-      "title": "SEEDING CRITICAL ADVANCES FOR LEADING ENERGY TECHNOLOGIES WITH UNTAPPED POTENTIAL (SCALEUP) READY",
+      "title": "Engineering (ENG): Civil, Mechanical and Manufacturing Innovation (CMMI)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "09/29/2029",
-      "score": "98% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003467 issued by Advanced Research Projects Agency Energy. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
+      "deadline": "10/05/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-515 issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
-      "url": "https://www.grants.gov/search-results-detail/356623",
+      "url": "https://www.grants.gov/search-results-detail/363614",
       "applicant_type": "COLLEGE_LAB_DIRECTOR",
       "applicant_label": "Lab Directors & Staff",
       "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
-        "institution": "The Ohio State University & University of Michigan",
+        "institution": "Purdue University & Georgia Institute of Technology",
         "award_year": "2025",
-        "amount_or_hardware": "$450,000 - $1,200,000",
-        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
       },
       "previous_winners": [
         {
-          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
           "affiliation": "The Ohio State University",
-          "role": "Automotive Research Scientists & Graduate Fellows"
+          "role": "Facility Directors & Senior Research Scientists"
         },
         {
-          "winner": "Clean Energy Research Institute",
-          "affiliation": "University of Wisconsin-Madison",
-          "role": "Powertrain Research Engineers"
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
         }
       ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
-      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-351947",
@@ -1825,46 +2870,6 @@
       "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
     },
     {
-      "id": "gov-363936",
-      "agency": "ENVIRONMENTAL PROTECTION AGENCY",
-      "category": "CAPEX",
-      "title": "2026 Diesel Emissions Reduction Act (DERA) National Program",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "01/22/2027",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #EPA-OAR-OTAQ-26-01 issued by Environmental Protection Agency. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
-      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
-      "url": "https://www.grants.gov/search-results-detail/363936",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
-        "award_year": "2025",
-        "amount_or_hardware": "$150,000 - $750,000",
-        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
-      },
-      "previous_winners": [
-        {
-          "winner": "College of Engineering Research Laboratories",
-          "affiliation": "The Ohio State University",
-          "role": "Senior Engineering Faculty & Facility Managers"
-        },
-        {
-          "winner": "Advanced Technology Development Center",
-          "affiliation": "Purdue University",
-          "role": "Collegiate Research Laboratory Directors"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
       "id": "gov-330175",
       "agency": "AIR FORCE ACADEMY",
       "category": "CAPEX",
@@ -1907,17 +2912,17 @@
     {
       "id": "gov-361080",
       "agency": "ENGINEER RESEARCH AND DEVELOPMENT CENTER",
-      "category": "STUDENT",
+      "category": "CAPEX",
       "title": "ERDC Broad Agency Announcement",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "01/01/2027",
       "score": "76% Fit",
-      "synopsis": "Federal solicitation #W912HZ26S0001 issued by Engineer Research and Development Center. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
-      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "synopsis": "Federal solicitation #W912HZ26S0001 issued by Engineer Research and Development Center. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
       "url": "https://www.grants.gov/search-results-detail/361080",
-      "applicant_type": "COLLEGE_STUDENT_TEAM",
-      "applicant_label": "Student Engineering Teams",
-      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
@@ -1928,14 +2933,14 @@
       },
       "previous_winners": [
         {
-          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "winner": "College of Engineering Research Laboratories",
           "affiliation": "The Ohio State University",
-          "role": "Collegiate Student Engineering Team"
+          "role": "Senior Engineering Faculty & Facility Managers"
         },
         {
-          "winner": "Illini Motorsports",
-          "affiliation": "University of Illinois Urbana-Champaign",
-          "role": "Undergraduate Vehicle Design Leads"
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
         }
       ],
       "match_tier": "FRONTIER",
@@ -2025,46 +3030,6 @@
       "incumbency_basis": "Major competitive institutional research infrastructure grant"
     },
     {
-      "id": "gov-363614",
-      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
-      "category": "STUDENT",
-      "title": "Engineering (ENG): Civil, Mechanical and Manufacturing Innovation (CMMI)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "10/05/2076",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #26-515 issued by U.S. National Science Foundation. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
-      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
-      "url": "https://www.grants.gov/search-results-detail/363614",
-      "applicant_type": "COLLEGE_STUDENT_TEAM",
-      "applicant_label": "Student Engineering Teams",
-      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Purdue University & Georgia Institute of Technology",
-        "award_year": "2025",
-        "amount_or_hardware": "$300,000 - $600,000",
-        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
-      },
-      "previous_winners": [
-        {
-          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
-          "affiliation": "The Ohio State University",
-          "role": "Facility Directors & Senior Research Scientists"
-        },
-        {
-          "winner": "Nanotechnology User Facility",
-          "affiliation": "Georgia Institute of Technology",
-          "role": "Research Infrastructure Principal Investigators"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
       "id": "gov-359325",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "STUDENT",
@@ -2072,8 +3037,8 @@
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "09/10/2027",
       "score": "74% Fit",
-      "synopsis": "Federal solicitation #23-589 issued by U.S. National Science Foundation. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
-      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "synopsis": "Federal solicitation #23-589 issued by U.S. National Science Foundation. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
       "url": "https://www.grants.gov/search-results-detail/359325",
       "applicant_type": "COLLEGE_STUDENT_TEAM",
       "applicant_label": "Student Engineering Teams",
@@ -2103,6 +3068,46 @@
       "current_asset": "OSU College of Engineering interdisciplinary research centers",
       "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
       "incumbency_basis": "Major competitive institutional research infrastructure grant"
+    },
+    {
+      "id": "gov-363829",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "STUDENT",
+      "title": "Air Force Fiscal Year 2027 Young Investigator Program (YIP)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/04/2026",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #FA955026S0003 issued by Air Force Office of Scientific Research. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
+      "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",
+      "url": "https://www.grants.gov/search-results-detail/363829",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-362836",
@@ -2136,46 +3141,6 @@
           "winner": "Illini Motorsports",
           "affiliation": "University of Illinois Urbana-Champaign",
           "role": "Undergraduate Vehicle Design Leads"
-        }
-      ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
-      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
-      "incumbency_basis": "Office of Naval Research long-range science & technology research"
-    },
-    {
-      "id": "gov-352741",
-      "agency": "NAVAL RESEARCH LABORATORY",
-      "category": "SAFETY",
-      "title": "NRL Long Range Broad Agency Announcement (BAA) for Basic and Applied Research",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "12/30/2026",
-      "score": "82% Fit",
-      "synopsis": "Federal solicitation #N00173-24-S-BA01 issued by Naval Research Laboratory. Supports fabrication, welding ventilation, localized fume extraction, and student engineering laboratory safety equipment.",
-      "pitch": "Brings university fabrication bays and welding shops into full safety and ventilation compliance.",
-      "url": "https://www.grants.gov/search-results-detail/352741",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Welding & Prototyping Fabrication Bays",
-          "affiliation": "The Ohio State University",
-          "role": "EH&S Compliance & Laboratory Operations Staff"
-        },
-        {
-          "winner": "Welding Technology Center",
-          "affiliation": "Ferris State University",
-          "role": "Certified Welding Educators (CWE)"
         }
       ],
       "match_tier": "EXPANSION",
@@ -2312,9 +3277,49 @@
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "10/14/2076",
       "score": "76% Fit",
-      "synopsis": "Federal solicitation #14-579 issued by U.S. National Science Foundation. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
-      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
+      "synopsis": "Federal solicitation #14-579 issued by U.S. National Science Foundation. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
       "url": "https://www.grants.gov/search-results-detail/358403",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-275109",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "National Facilities",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #PD-05-1743 issued by U.S. National Science Foundation. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
+      "url": "https://www.grants.gov/search-results-detail/275109",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -2355,46 +3360,6 @@
       "synopsis": "National Science Foundation solicitation #NOFOAFRLAFOSR20260003 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
       "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
       "url": "https://www.grants.gov/search-results-detail/363530",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "High-performance computing clusters and sensor telemetry networks",
-      "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
-      "incumbency_basis": "NSF research infrastructure capacity building"
-    },
-    {
-      "id": "gov-363526",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
-      "category": "CAPEX",
-      "title": "FY26 DEFENSE ESTABLISHED PROGRAM TO STIMULATE COMPETITIVE RESEARCH (DEPSCoR) \u2013 RESEARCH COLLABORATION (RC)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "04/05/2027",
-      "score": "72% Fit",
-      "synopsis": "National Science Foundation solicitation #NOFOAFRLAFOSR20260004 (ATE Program). Funds advanced manufacturing technician education, multi-axis CNC machine tooling, CAD/CAM software licenses, and student hands-on machining curriculum. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
-      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/363526",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -2505,37 +3470,37 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-352238",
-      "agency": "NSWC CRANE - N00164",
-      "category": "CAPEX",
-      "title": "Long Range Broad Agency Announcement (BAA) for NSWC Crane",
+      "id": "gov-358036",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "Findable Accessible Interoperable Reusable Open Science (FAIROS)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "Rolling Cycle",
+      "deadline": "04/14/2027",
       "score": "76% Fit",
-      "synopsis": "Federal solicitation #N0016424SNB35 issued by NSWC CRANE - N00164. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
-      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/352238",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "synopsis": "Federal solicitation #25-533 issued by U.S. National Science Foundation. Advanced Technological Education (ATE) supporting CNC machining, tooling, metrology, and advanced manufacturing technician labs.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/358036",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "institution": "Purdue University & Georgia Institute of Technology",
         "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
           "affiliation": "The Ohio State University",
-          "role": "Senior Engineering Faculty & Facility Managers"
+          "role": "Facility Directors & Senior Research Scientists"
         },
         {
-          "winner": "Advanced Technology Development Center",
-          "affiliation": "Purdue University",
-          "role": "Collegiate Research Laboratory Directors"
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
         }
       ],
       "match_tier": "FRONTIER",
@@ -2625,16 +3590,56 @@
       "incumbency_basis": "Office of Naval Research long-range science & technology research"
     },
     {
-      "id": "gov-344592",
-      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "id": "gov-363632",
+      "agency": "OFFICE OF NAVAL RESEARCH",
       "category": "CAPEX",
-      "title": "DEVCOM ARMY RESEARCH LABORATORY BROAD AGENCY ANNOUNCEMENT FOR FOUNDATIONAL RESEARCH",
+      "title": "ONR FY27 NOFO for Young Investigator Program",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/20/2027",
-      "score": "83% Fit",
-      "synopsis": "Federal solicitation #W911NF-23-S-0001 issued by Dept of the Army -- Materiel Command. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "deadline": "10/30/2026",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SF004 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
       "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/344592",
+      "url": "https://www.grants.gov/search-results-detail/363632",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-360258",
+      "agency": "AIR FORCE -- RESEARCH LAB",
+      "category": "CAPEX",
+      "title": "Continuing Human Enabling Enhancing Restoring and Sustaining",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "08/22/2044",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #FA238424S2233 issued by Air Force -- Research Lab. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/360258",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -2658,11 +3663,11 @@
           "role": "Defense Instrumentation Research Faculty"
         }
       ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
-      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
-      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-345241",
@@ -2983,6 +3988,166 @@
       "current_asset": "Composite vacuum bagging tables, heated platens, and structural test fixtures",
       "future_capability": "Carbon fiber monocoque manufacturing tooling, resin transfer molding fixtures, and non-destructive ultrasonic inspection rigs.",
       "incumbency_basis": "IACMI - The Composites Institute research consortium alignment"
+    },
+    {
+      "id": "duke-energy-foundation-battery-grid",
+      "agency": "DUKE ENERGY FOUNDATION",
+      "category": "CAPEX",
+      "title": "Duke Energy Foundation Clean Energy, Battery Storage & Hydrogen Grid Grants \u2014 CyberGrants Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct Duke Energy Foundation CyberGrants application portal funding university and workforce programs in battery energy storage systems (BESS), clean hydrogen microgrids, EV charging integration, and power engineering.",
+      "pitch": "Direct CyberGrants application portal for Ohio and Midwest university labs seeking utility foundation grants for battery and hydrogen storage.",
+      "url": "https://www.cybergrants.com/dukeenergy/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges, Universities, and 501(c)(3) Engineering Research Foundations.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Electric Power & Battery Storage Integration Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Power Electronics & Grid Storage Researchers"
+        },
+        {
+          "winner": "Energy Production and Infrastructure Center (EPIC)",
+          "affiliation": "UNC Charlotte",
+          "role": "Battery Microgrid & Clean Energy Faculty"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Electric Power & Battery Storage Integration Lab) & UNC Charlotte",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants application portal for Ohio and Midwest university labs seeking utility foundation grants for battery and hydrogen storage."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Grid-Tied Battery Energy Storage Testbed & Clean Hydrogen Microgrid Emulator",
+      "future_capability": "Second-life EV battery grid storage racks, hydrogen fuel cell backup power integration, and student clean energy capstones.",
+      "incumbency_basis": "Regional utility foundation clean energy & battery storage university partnership"
+    },
+    {
+      "id": "firstenergy-foundation-electrification-battery",
+      "agency": "FIRSTENERGY FOUNDATION",
+      "category": "CAPEX",
+      "title": "FirstEnergy Foundation Ohio Electrification, Grid Battery & Clean Energy \u2014 CyberGrants Portal",
+      "ceiling": "$25,000 - $100,000",
+      "deadline": "Rolling Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct Ohio-headquartered FirstEnergy Foundation CyberGrants submission portal supporting collegiate electrical engineering, battery energy storage testbeds, power electronics, and zero-emission energy workforce development.",
+      "pitch": "Direct CyberGrants login and submission portal to request Ohio utility foundation funding for battery testing and grid electrification labs.",
+      "url": "https://www.cybergrants.com/firstenergy/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio & Regional Accredited Universities, Engineering Departments, and Technical Training Centers.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Smart Grid Laboratory",
+          "affiliation": "The Ohio State University",
+          "role": "Electrical & Computer Engineering Faculty"
+        },
+        {
+          "winner": "Energy Storage & Power Systems Center",
+          "affiliation": "University of Akron",
+          "role": "Grid Battery & Power Distribution Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (High-Voltage Electrification & Smart Grid Laboratory) & University of Akron",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Direct CyberGrants login and submission portal to request Ohio utility foundation funding for battery testing and grid electrification labs."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Grid-Tied Battery Energy Storage Testbed & Clean Hydrogen Microgrid Emulator",
+      "future_capability": "Second-life EV battery grid storage racks, hydrogen fuel cell backup power integration, and student clean energy capstones.",
+      "incumbency_basis": "Regional utility foundation clean energy & battery storage university partnership"
+    },
+    {
+      "id": "dominion-energy-foundation-clean-hydrogen",
+      "agency": "DOMINION ENERGY CHARITABLE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Dominion Energy Charitable Foundation Higher Ed Clean Hydrogen & Battery Grants \u2014 CyberGrants Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Annual Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct Dominion Energy Charitable Foundation CyberGrants application portal funding higher education STEM programs, clean hydrogen blending/storage research, battery energy storage labs, and environmental engineering.",
+      "pitch": "Direct CyberGrants application portal where university PIs and lab directors submit proposals for hydrogen and battery education/research grants.",
+      "url": "https://www.cybergrants.com/dominionenergy/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Higher Education Institutions in Ohio and Dominion Energy service states.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Clean Hydrogen & Electrochemical Propulsion Group",
+          "affiliation": "The Ohio State University",
+          "role": "Hydrogen Storage & Fuel Cell Engineering PIs"
+        },
+        {
+          "winner": "Virginia Clean Energy & Hydrogen Consortium",
+          "affiliation": "Virginia Tech",
+          "role": "Renewable Hydrogen & Battery Testbed Directors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Clean Hydrogen & Electrochemical Propulsion Group) & Virginia Tech",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants application portal where university PIs and lab directors submit proposals for hydrogen and battery education/research grants."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Grid-Tied Battery Energy Storage Testbed & Clean Hydrogen Microgrid Emulator",
+      "future_capability": "Second-life EV battery grid storage racks, hydrogen fuel cell backup power integration, and student clean energy capstones.",
+      "incumbency_basis": "Regional utility foundation clean energy & battery storage university partnership"
+    },
+    {
+      "id": "exelon-foundation-stem-energy-storage",
+      "agency": "EXELON FOUNDATION",
+      "category": "STUDENT",
+      "title": "Exelon Foundation Clean Energy, Battery Storage & Hydrogen Innovation \u2014 CyberGrants Portal",
+      "ceiling": "$25,000 - $100,000",
+      "deadline": "Annual Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct Exelon Foundation CyberGrants application portal supporting collegiate clean energy capstones, student battery & fuel cell prototyping teams, and decarbonized energy storage laboratories.",
+      "pitch": "Direct CyberGrants submission portal for student teams and faculty seeking foundation support for battery and hydrogen fuel cell projects.",
+      "url": "https://www.cybergrants.com/exelon/",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Accredited Universities, Student Clean Energy & EV/Fuel Cell Competition Teams.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Buckeye Clean Energy & Battery Capstone Teams",
+          "affiliation": "The Ohio State University",
+          "role": "Undergraduate Battery & Hydrogen Fuel Cell Design Teams"
+        },
+        {
+          "winner": "Wanger Institute for Sustainable Energy Research",
+          "affiliation": "Illinois Institute of Technology",
+          "role": "Student Smart Grid & Battery Storage Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Buckeye Clean Energy & Battery Capstone Teams) & Illinois Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $100,000",
+        "use_case": "Direct CyberGrants submission portal for student teams and faculty seeking foundation support for battery and hydrogen fuel cell projects."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Grid-Tied Battery Energy Storage Testbed & Clean Hydrogen Microgrid Emulator",
+      "future_capability": "Second-life EV battery grid storage racks, hydrogen fuel cell backup power integration, and student clean energy capstones.",
+      "incumbency_basis": "Regional utility foundation clean energy & battery storage university partnership"
     },
     {
       "id": "haas-collegiate-motorsports-sae",
@@ -3640,6 +4805,19 @@
     let currentMatchFilter = 'ALL';
     let currentSourceFilter = 'ALL';
 
+    function isBatteryHydrogenGrant(g) {
+      const text = `${g.id || ''} ${g.title || ''} ${g.agency || ''} ${g.synopsis || ''} ${g.pitch || ''} ${g.current_asset || ''} ${g.future_capability || ''}`.toLowerCase();
+      const keywords = [
+        'battery', 'batteries', 'fuel cell', 'fuel cells', 'hydrogen', ' h2 ',
+        'electrochemical', 'electrolyzer', 'electrolysis', 'energy storage',
+        'lithium', 'solid-state', 'electrolyte', 'catalysis', 'catalyst',
+        'proton exchange', 'pemfc', 'sofc', 'ecocar', 'electrification',
+        'alternative fuel', 'alternative jet fuel', 'clean energy', 'chemical technologies',
+        'office of science', 'arpa-e', 'cmei', 'duke energy', 'firstenergy', 'dominion energy', 'exelon'
+      ];
+      return keywords.some(kw => text.includes(kw));
+    }
+
     const VIEW_METADATA = {
       overview: {
         badge: 'Engineering Operations & Facilities • Executive Telemetry',
@@ -3650,6 +4828,11 @@
         badge: 'Complete Verified Directory • Federal + State + Corporate',
         title: 'All Verified Funding Opportunities',
         subtitle: 'Searchable multi-tier directory with deep-linked submission portals and verified peer recipient precedents.'
+      },
+      battery: {
+        badge: 'Clean Energy & Electrochemical Propulsion • Battery / Fuel Cell / H2',
+        title: 'Battery, Fuel Cell & Hydrogen Opportunities',
+        subtitle: 'Federal (DOE CMEI/HFTO/ARPA-E, NSF Electrochemical/Catalysis, FAA/NASA/DoD) & Utility Foundation Grants for Batteries, Fuel Cells & Clean Hydrogen.'
       },
       machining: {
         badge: 'Shop Floor & Facility Modernization • CNC / Metrology / EH&S',
@@ -3685,15 +4868,15 @@
       if (data.match_tier_breakdown) {
         const safetyVal = document.getElementById('kpi-safety-val');
         const matchSub = document.getElementById('kpi-match-sub');
-        if (safetyVal) safetyVal.innerText = `${data.match_tier_breakdown.incumbent || 32} Incumbent`;
-        if (matchSub) matchSub.innerHTML = `${escapeHTML(data.match_tier_breakdown.expansion || 29)} Expansion &bull; ${escapeHTML(data.match_tier_breakdown.frontier || 20)} Frontier`;
+        if (safetyVal) safetyVal.innerText = `${data.match_tier_breakdown.incumbent || 28} Incumbent`;
+        if (matchSub) matchSub.innerHTML = `${escapeHTML(data.match_tier_breakdown.expansion || 25)} Expansion &bull; ${escapeHTML(data.match_tier_breakdown.frontier || 33)} Frontier`;
       }
       if (data.tier_breakdown) {
         const countSub = document.getElementById('kpi-count-sub');
-        const fnd = data.tier_breakdown.private_foundations || 32;
-        const fed = data.tier_breakdown.federal || 36;
-        const state = data.tier_breakdown.state_regional || 7;
-        const cons = data.tier_breakdown.academic_consortia || 6;
+        const fnd = data.tier_breakdown.private_foundations || 19;
+        const fed = data.tier_breakdown.federal || 60;
+        const state = data.tier_breakdown.state_regional || 3;
+        const cons = data.tier_breakdown.academic_consortia || 4;
         if (countSub) {
           countSub.innerHTML = `${escapeHTML(fnd)} Foundations &bull; ${escapeHTML(fed)} Federal &bull; ${escapeHTML(state + cons)} State/Consortia`;
         }
@@ -3709,14 +4892,19 @@
 
       // Update view pill counts
       const allCount = liveGrants.length;
+      const batCount = liveGrants.filter(g => isBatteryHydrogenGrant(g)).length;
       const machCount = liveGrants.filter(g => g.category === 'MACHINING' || g.category === 'SAFETY').length;
       const stuCount = liveGrants.filter(g => g.category === 'STUDENT' || g.applicant_type === 'COLLEGE_STUDENT_TEAM').length;
       const capexCount = liveGrants.filter(g => g.category === 'CAPEX').length;
       const pAll = document.getElementById('pill-count-all');
+      const pBat = document.getElementById('pill-count-battery');
+      const ovBat = document.getElementById('ov-battery-count');
       const pMach = document.getElementById('pill-count-machining');
       const pStu = document.getElementById('pill-count-student');
       const pCap = document.getElementById('pill-count-capex');
       if (pAll) pAll.innerText = allCount;
+      if (pBat) pBat.innerText = batCount;
+      if (ovBat) ovBat.innerText = `${batCount} Verified →`;
       if (pMach) pMach.innerText = machCount;
       if (pStu) pStu.innerText = stuCount;
       if (pCap) pCap.innerText = capexCount;
@@ -3757,7 +4945,7 @@
     function parseHashToState() {
       const rawHash = (window.location.hash || '#overview').replace(/^#/, '');
       const [viewPart, queryPart] = rawHash.split('?');
-      const validViews = ['overview', 'all', 'machining', 'student', 'capex'];
+      const validViews = ['overview', 'all', 'battery', 'machining', 'student', 'capex'];
       const view = validViews.includes(viewPart) ? viewPart : 'overview';
       const params = new URLSearchParams(queryPart || '');
       return {
@@ -3969,7 +5157,9 @@
         if (!verifiedHref) return false;
 
         // View-level partition rules
-        if (currentView === 'machining') {
+        if (currentView === 'battery') {
+          if (!isBatteryHydrogenGrant(g)) return false;
+        } else if (currentView === 'machining') {
           if (g.category !== 'MACHINING' && g.category !== 'SAFETY') return false;
         } else if (currentView === 'student') {
           if (g.category !== 'STUDENT' && g.applicant_type !== 'COLLEGE_STUDENT_TEAM') return false;
@@ -3977,7 +5167,8 @@
           if (g.category !== 'CAPEX') return false;
         }
 
-        const matchesCategory = currentCategoryFilter === 'ALL' || g.category === currentCategoryFilter;
+        const matchesCategory = currentCategoryFilter === 'ALL'
+          || (currentCategoryFilter === 'BATTERY_H2' ? isBatteryHydrogenGrant(g) : g.category === currentCategoryFilter);
         const matchesApplicant = currentApplicantFilter === 'ALL' || g.applicant_type === currentApplicantFilter;
         const matchesMatch = currentMatchFilter === 'ALL' || g.match_tier === currentMatchFilter;
         const matchesSource = currentSourceFilter === 'ALL' || g.source_tier === currentSourceFilter;

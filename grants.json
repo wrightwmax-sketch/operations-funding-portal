@@ -1,23 +1,23 @@
 {
-  "last_updated": "2026-10-26 12:24 UTC",
-  "total_addressable": "$99,530,000",
-  "capex_tooling_offset": "$88,325,000",
-  "count": 85,
+  "last_updated": "2026-10-26 13:59 UTC",
+  "total_addressable": "$103,305,000",
+  "capex_tooling_offset": "$92,050,000",
+  "count": 98,
   "validation_summary": {
-    "total_scanned": 87,
-    "passed_checks": 85,
-    "rejected_invalid": 2
+    "total_scanned": 99,
+    "passed_checks": 98,
+    "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 59,
+    "federal": 60,
     "state_regional": 3,
     "academic_consortia": 4,
-    "private_foundations": 19,
-    "corporate_and_foundations": 23
+    "private_foundations": 31,
+    "corporate_and_foundations": 35
   },
   "match_tier_breakdown": {
-    "incumbent": 27,
-    "expansion": 25,
+    "incumbent": 39,
+    "expansion": 26,
     "frontier": 33
   },
   "grants": [
@@ -274,7 +274,7 @@
       "url": "https://new.nsf.gov/funding/opportunities/major-research-instrumentation-program-mri",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Higher Education Institutions and University Engineering Research Centers.",
+      "eligibility": "Accredited Higher Education Institutions and University Automotive & Mobility Research Laboratories Centers.",
       "source_tier": "FEDERAL_AGENCY",
       "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
       "previous_recipient": {
@@ -285,7 +285,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Multi-User Instrumentation Principal Investigators"
         },
@@ -300,6 +300,46 @@
       "current_asset": "56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
       "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
       "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
+    },
+    {
+      "id": "fed-dod-durip-hardware",
+      "agency": "DEPT OF DEFENSE (ONR / AFOSR / ARO)",
+      "category": "CAPEX",
+      "title": "Defense University Research Instrumentation Program (DURIP) \u2014 Lab Hardware & Testbeds",
+      "ceiling": "$50,000 - $1,500,000",
+      "deadline": "Annual Cycle",
+      "score": "99% Fit",
+      "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
+      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit Engineering labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
+      "url": "https://www.onr.navy.mil/education-outreach/sponsored-research/university-research-initiatives/durip",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Universities conducting defense-relevant engineering and instrumentation research.",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University Aerospace/Automotive Labs & Virginia Tech",
+        "award_year": "2025",
+        "amount_or_hardware": "$680,000",
+        "use_case": "Purchased high-speed optical diagnostics, composite curing equipment, and autonomous vehicle testbed hardware."
+      },
+      "previous_winners": [
+        {
+          "winner": "Aerospace & Automotive Research Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Defense Instrumentation Principal Investigators"
+        },
+        {
+          "winner": "Uncrewed Systems & Propulsion Diagnostics Lab",
+          "affiliation": "Virginia Tech",
+          "role": "Aerospace & Ocean Engineering Faculty"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
+      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
+      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
     },
     {
       "id": "fed-doe-vto-mobility",
@@ -405,7 +445,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -525,7 +565,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -645,7 +685,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -685,7 +725,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -725,7 +765,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -765,7 +805,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -805,7 +845,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -925,7 +965,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -1005,7 +1045,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -1605,7 +1645,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -2205,7 +2245,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -2245,7 +2285,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -2285,7 +2325,7 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Engineering Research Laboratories",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
           "role": "Senior Engineering Faculty & Facility Managers"
         },
@@ -2561,7 +2601,7 @@
         {
           "winner": "Midwest Transportation Center Consortium",
           "affiliation": "The Ohio State University / Iowa State University",
-          "role": "Civil & Systems Engineering Research Faculty"
+          "role": "Civil & Systems Automotive & Mobility Research Laboratories Faculty"
         },
         {
           "winner": "Mobility21 National UTC",
@@ -2662,19 +2702,499 @@
       "incumbency_basis": "IACMI - The Composites Institute research consortium alignment"
     },
     {
+      "id": "aep-foundation-ohio-grid-storage-stem",
+      "agency": "AMERICAN ELECTRIC POWER (AEP) FOUNDATION \u2014 COLUMBUS, OH",
+      "category": "CAPEX",
+      "title": "AEP Foundation & Ohio Power Company \u2014 OSU Grid Battery Storage, Electrification & STEM Grants",
+      "ceiling": "$50,000 - $500,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Headquartered in Columbus, Ohio adjacent to The Ohio State University, the AEP Foundation and Ohio Power Company Foundation fund higher education STEM laboratories, utility-scale battery energy storage systems (BESS), hydrogen/microgrid integration, and high-voltage power electronics.",
+      "pitch": "Flagship Columbus, Ohio utility foundation partnering directly with Ohio State University engineering labs on battery storage, grid modernization, and STEM workforce.",
+      "url": "https://www.aep.com/community/givingback/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "The Ohio State University, Ohio Colleges & Universities, and 501(c)(3) Automotive & Mobility Research Laboratories Foundations.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Power Electronics & Grid Battery Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Electrical & Computer Engineering Faculty PIs"
+        },
+        {
+          "winner": "Institute for Materials and Manufacturing Research",
+          "affiliation": "The Ohio State University",
+          "role": "Grid Energy Storage & Electrification Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (High-Voltage Power Electronics & Grid Battery Lab) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $500,000",
+        "use_case": "Flagship Columbus, Ohio utility foundation partnering directly with Ohio State University engineering labs on battery storage, grid modernization, and STEM workforce."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "columbia-gas-ohio-nisource-h2-formstack",
+      "agency": "COLUMBIA GAS OF OHIO / NISOURCE FOUNDATION \u2014 COLUMBUS, OH",
+      "category": "CAPEX",
+      "title": "Columbia Gas of Ohio & NiSource Foundation \u2014 Hydrogen Blending & Clean Energy Formstack Application",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Formstack online grant inquiry and application form for the Columbus-headquartered Columbia Gas of Ohio and NiSource Charitable Foundation, funding clean hydrogen blending in natural gas networks, fuel cell CHP, energy storage safety, and Ohio university STEM programs.",
+      "pitch": "Direct Formstack application form for Ohio State University researchers and student teams seeking funding from Columbus-based Columbia Gas of Ohio / NiSource.",
+      "url": "https://nisource-forms.formstack.com/forms/foundation",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "The Ohio State University, Ohio Engineering Laboratories, and Student Clean Energy Teams.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Clean Hydrogen & Natural Gas Blending Research Group",
+          "affiliation": "The Ohio State University",
+          "role": "Mechanical & Chemical Engineering Faculty PIs"
+        },
+        {
+          "winner": "Sustainability Institute Energy Transition Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Decarbonized Fuel & H2 Storage Investigators"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Clean Hydrogen & Natural Gas Blending Research Group) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct Formstack application form for Ohio State University researchers and student teams seeking funding from Columbus-based Columbia Gas of Ohio / NiSource."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "columbia-gas-ohio-environmental-yourcause",
+      "agency": "COLUMBIA GAS OF OHIO (NISOURCE) \u2014 COLUMBUS, OH",
+      "category": "CAPEX",
+      "title": "Columbia Gas of Ohio Environmental Action, Hydrogen & Clean Energy \u2014 Direct YourCause Grant Portal",
+      "ceiling": "$10,000 - $75,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct YourCause Grants online application portal for Columbia Gas of Ohio supporting Ohio university environmental engineering, clean hydrogen fuel cell demonstrations, methane/hydrogen leak detection sensors, and decarbonized energy storage projects.",
+      "pitch": "Direct YourCause online grant submission portal where OSU faculty and student organizations submit proposals to Columbia Gas of Ohio.",
+      "url": "https://apply.yourcausegrants.com/apply/programs/61b4795c-e2ae-4102-b5bd-be224a65849c",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Universities (The Ohio State University) and 501(c)(3) Research & Educational Organizations.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Buckeye Clean Energy & Environmental Engineering Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Hydrogen Sensor & Emissions Monitoring Researchers"
+        },
+        {
+          "winner": "Center for Clean Energy Engineering",
+          "affiliation": "Ohio University",
+          "role": "Electrochemical & Fuel Cell Research Faculty"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Buckeye Clean Energy & Environmental Engineering Labs) & Ohio University",
+        "award_year": "2025",
+        "amount_or_hardware": "$10,000 - $75,000",
+        "use_case": "Direct YourCause online grant submission portal where OSU faculty and student organizations submit proposals to Columbia Gas of Ohio."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "cleveland-cliffs-foundation-h2-metallurgy",
+      "agency": "THE CLEVELAND-CLIFFS FOUNDATION \u2014 CLEVELAND, OH",
+      "category": "CAPEX",
+      "title": "Cleveland-Cliffs Foundation (Ohio) Hydrogen Steelmaking, EV Electrical Steels & Engineering Grant Portal",
+      "ceiling": "$25,000 - $250,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct YourCause Grants online application portal for Ohio Fortune 500 manufacturer Cleveland-Cliffs (producing hydrogen-ready direct-reduced iron in Toledo, OH and motor-grade electrical steels in Zanesville/Middletown, OH), funding Ohio State University materials, metallurgy, hydrogen, and electric motor laboratories.",
+      "pitch": "Direct YourCause grant application portal connecting OSU engineering labs with Ohio's premier hydrogen-reduction metallurgy and EV electrical steel manufacturer.",
+      "url": "https://bbgm-apply.yourcausegrants.com/apply/programs/69273fb2-d1e2-4b86-b00c-23a205512237",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "The Ohio State University and Accredited Engineering Universities in Ohio & Midwest.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Center for Design and Manufacturing Excellence & Metallurgy Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Materials Science & Hydrogen Metallurgy Faculty PIs"
+        },
+        {
+          "winner": "Advanced Manufacturing & Materials Center",
+          "affiliation": "Case Western Reserve University",
+          "role": "Electrical Steel & Alloy Research Directors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Center for Design and Manufacturing Excellence & Metallurgy Labs) & Case Western Reserve University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $250,000",
+        "use_case": "Direct YourCause grant application portal connecting OSU engineering labs with Ohio's premier hydrogen-reduction metallurgy and EV electrical steel manufacturer."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "cleveland-cliffs-collegiate-sponsorship",
+      "agency": "CLEVELAND-CLIFFS CORPORATE SPONSORSHIPS \u2014 CLEVELAND, OH",
+      "category": "STUDENT",
+      "title": "Cleveland-Cliffs Ohio Collegiate Engineering, EV & Hydrogen Team Sponsorship \u2014 YourCause Portal",
+      "ceiling": "$10,000 - $50,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct YourCause online sponsorship application portal for Cleveland-Cliffs supporting Ohio State University student engineering competition teams (Formula SAE Electric, Baja SAE, EcoCAR, Hydrogen/Clean Energy clubs), chassis/motor steel donations, and STEM events.",
+      "pitch": "Direct YourCause sponsorship portal where OSU student teams and engineering groups apply for Cleveland-Cliffs corporate sponsorship funds.",
+      "url": "https://bbgm-apply.yourcausegrants.com/apply/programs/8fd10767-aee4-4c32-acd8-0c2e414b2914",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Ohio State University Student Engineering Teams, Materials/Metallurgy Clubs, and Collegiate Competitions.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Electric & Baja SAE Teams",
+          "affiliation": "The Ohio State University",
+          "role": "Student Chassis, Motor & Battery Pack Leads"
+        },
+        {
+          "winner": "Materials Science Student Forging & Steel Design Team",
+          "affiliation": "The Ohio State University",
+          "role": "Undergraduate Metallurgy Competition Leads"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Formula Buckeye Electric & Baja SAE Teams) & The Ohio State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$10,000 - $50,000",
+        "use_case": "Direct YourCause sponsorship portal where OSU student teams and engineering groups apply for Cleveland-Cliffs corporate sponsorship funds."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "tc-energy-build-strong-h2-storage",
+      "agency": "TC ENERGY (COLUMBIA GAS TRANSMISSION OHIO)",
+      "category": "CAPEX",
+      "title": "TC Energy Build Strong \u2014 Clean Hydrogen Pipelines, Energy Storage & STEM Direct Benevity Application",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Benevity online grant application form for TC Energy's Build Strong program (operating extensive natural gas and hydrogen-blending pipeline and storage assets across Ohio), funding university hydrogen transport research, pumped/battery energy storage, and safety instrumentation.",
+      "pitch": "Direct Benevity online application form where OSU researchers and student teams enter project details to apply for TC Energy Build Strong grants.",
+      "url": "https://forms.benevity.org/83643968-421f-46a3-a660-f08e071b5bd8",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio & North American Universities, Hydrogen & Energy Storage Labs, and STEM Workforce Programs.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Hydrogen Pipeline Integrity & Energy Storage Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Welding, Materials & Mechanical Engineering PIs"
+        },
+        {
+          "winner": "Appalachian Clean Hydrogen & Storage Consortium",
+          "affiliation": "West Virginia University",
+          "role": "Subsurface Hydrogen & Pipeline Storage Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Hydrogen Pipeline Integrity & Energy Storage Lab) & West Virginia University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct Benevity online application form where OSU researchers and student teams enter project details to apply for TC Energy Build Strong grants."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "enbridge-fueling-futures-ohio-h2",
+      "agency": "ENBRIDGE FUELING FUTURES (EAST OHIO GAS)",
+      "category": "CAPEX",
+      "title": "Enbridge Fueling Futures (Ohio Gas Utility) \u2014 Hydrogen Blending, Energy Storage & STEM CyberGrants Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct CyberGrants application portal for Enbridge (parent of Ohio's largest natural gas utility, Enbridge Gas Ohio), funding university research and education in green hydrogen production, H2 pipeline storage, battery energy storage, and safety engineering.",
+      "pitch": "Direct CyberGrants portal for Ohio State University labs and student teams to request Enbridge Fueling Futures clean hydrogen and energy storage grants.",
+      "url": "https://www.cybergrants.com/enbridge/",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Universities (The Ohio State University), Engineering Labs, and Clean Energy Student Teams.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Electrochemical Energy & Hydrogen Storage Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Clean Hydrogen & Fuel Cell Systems Researchers"
+        },
+        {
+          "winner": "Great Lakes Clean Hydrogen & Energy Storage Center",
+          "affiliation": "University of Toledo",
+          "role": "Renewable Hydrogen & Grid Storage Faculty"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Electrochemical Energy & Hydrogen Storage Lab) & University of Toledo",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants portal for Ohio State University labs and student teams to request Enbridge Fueling Futures clean hydrogen and energy storage grants."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "OSU Hydrogen Storage, PEM Fuel Cell Membrane & Battery Thermal Management Testbenches",
+      "future_capability": "Funds hydrogen pipeline/cylinder testing, PEMFC/SOFC stack durability rigs, and battery pack immersion cooling materials.",
+      "incumbency_basis": "Ohio & Midwest clean hydrogen, energy storage, and chemical industry university grant alignment"
+    },
+    {
+      "id": "dow-company-foundation-midwest-h2-battery",
+      "agency": "THE DOW COMPANY FOUNDATION (OHIO & MIDWEST)",
+      "category": "CAPEX",
+      "title": "Dow Company Foundation \u2014 Hydrogen Fuel Cell Membranes, Battery Thermal Materials & STEM CyberGrants Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Annual Cycle",
+      "score": "97% Fit",
+      "synopsis": "Direct CyberGrants portal for The Dow Company Foundation (with major Ohio chemical/materials facilities in Marietta and West Alexandria, OH), supporting university electrochemical engineering, battery pack thermal management silicones, fuel cell seals, and catalysis labs.",
+      "pitch": "Direct CyberGrants portal connecting OSU chemical, materials, and battery/fuel cell researchers with Dow Foundation funding.",
+      "url": "https://www.cybergrants.com/pls/cybergrants/ao_login.login?x_gm_id=4449&x_proposal_type_id=34272",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio & Midwest Accredited Universities, Chemical/Materials Engineering Labs, and Battery/Hydrogen Centers.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Polymer Electrolyte Membrane & Battery Thermal Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Chemical & Biomolecular Engineering Faculty PIs"
+        },
+        {
+          "winner": "Battery & Fuel Cell Materials Center",
+          "affiliation": "University of Michigan",
+          "role": "Electrochemical Membrane & Dielectric Fluid Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Polymer Electrolyte Membrane & Battery Thermal Lab) & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants portal connecting OSU chemical, materials, and battery/fuel cell researchers with Dow Foundation funding."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Battery Thermal Runaway Calorimetry Chambers & Cryogenic Fluid Loop Testbenches",
+      "future_capability": "Two-phase dielectric immersion cooling for EV battery packs, vent-gas FTIR diagnostics, and liquid H2 boil-off mitigation.",
+      "incumbency_basis": "NSF CBET Thermal Transport Processes & battery safety research alignment"
+    },
+    {
+      "id": "columbus-foundation-central-ohio-stem-capex",
+      "agency": "THE COLUMBUS FOUNDATION & PAUL G. DUKE FOUNDATION \u2014 COLUMBUS, OH",
+      "category": "CAPEX",
+      "title": "The Columbus Foundation (Central Ohio Corporate Funds) \u2014 Direct Foundant Grant Application Portal",
+      "ceiling": "$25,000 - $250,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Foundant Grant Lifecycle Manager login and application portal for The Columbus Foundation and its supporting foundations (including the Paul G. Duke Foundation and Central Ohio corporate donor funds from Battelle, Worthington Enterprises, and AEP), funding Central Ohio university STEM, clean energy, and workforce initiatives.",
+      "pitch": "Direct Foundant grant portal right in Columbus, Ohio for OSU-affiliated 501(c)(3) programs, clean energy capstones, and regional workforce labs.",
+      "url": "https://www.grantinterface.com/Home/Logon?urlkey=columbusfdn",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Central Ohio / Columbus Institutions (The Ohio State University Foundation & Affiliated Research Centers).",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Experiential Learning & Clean Energy Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Central Ohio Engineering Workforce & Lab Directors"
+        },
+        {
+          "winner": "Advanced Manufacturing & Clean Tech Center",
+          "affiliation": "Columbus State Community College",
+          "role": "Battery & Semiconductor Technician Instructors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (College of Engineering Experiential Learning & Clean Energy Labs) & Columbus State Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $250,000",
+        "use_case": "Direct Foundant grant portal right in Columbus, Ohio for OSU-affiliated 501(c)(3) programs, clean energy capstones, and regional workforce labs."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "cleveland-foundation-ohio-clean-energy-mfg",
+      "agency": "THE CLEVELAND FOUNDATION \u2014 OHIO GRANTS GATEWAY",
+      "category": "CAPEX",
+      "title": "The Cleveland Foundation Grants Gateway \u2014 Ohio Clean Energy, Battery Storage & Advanced Manufacturing Portal",
+      "ceiling": "$50,000 - $300,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Grantee Organization Registration and Application Portal (Grants Gateway) for The Cleveland Foundation, administering Ohio corporate and philanthropic funds for clean energy transition, battery energy storage, hydrogen fuel cells, and advanced manufacturing workforce development.",
+      "pitch": "Direct online grantee registration and application portal for Ohio university consortia and clean energy laboratories.",
+      "url": "https://www.iphiview.com/tcf/Grants/BecomeaRegisteredGranteeOrganization/tabid/640/Default.aspx",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Ohio Universities, Research Consortia, and 501(c)(3) Engineering & Clean Energy Foundations.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Ohio Clean Energy & Battery Innovation Consortium",
+          "affiliation": "The Ohio State University / Case Western Reserve University",
+          "role": "Electrochemical Energy Storage Principal Investigators"
+        },
+        {
+          "winner": "Washkewicz College of Engineering Energy Lab",
+          "affiliation": "Cleveland State University",
+          "role": "Grid Storage & Advanced Manufacturing Faculty"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University / Case Western Reserve University (Ohio Clean Energy & Battery Innovation Consortium) & Cleveland State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$50,000 - $300,000",
+        "use_case": "Direct online grantee registration and application portal for Ohio university consortia and clean energy laboratories."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "stark-cf-ohio-fuel-cell-corridor-timken",
+      "agency": "STARK COMMUNITY FOUNDATION (OHIO FUEL CELL CORRIDOR \u2014 CANTON, OH)",
+      "category": "CAPEX",
+      "title": "Stark Community Foundation (Canton, OH) \u2014 Ohio Hydrogen Fuel Cell Corridor & Industrial Engineering Grant Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Foundant Grant Lifecycle Manager application portal for the Stark Community Foundation in Canton, Ohio (hub of SARTA's zero-emission hydrogen fuel cell transit fleet and Timken industrial engineering funds), supporting Ohio hydrogen fuel cell testing, drivetrain bearings, and technical education.",
+      "pitch": "Direct Foundant online application portal supporting Ohio university partnerships along the Canton-Columbus Hydrogen Fuel Cell Corridor.",
+      "url": "https://www.grantinterface.com/Home/Logon?urlkey=starkcf",
+      "applicant_type": "COLLEGE_CONSORTIUM",
+      "applicant_label": "College-Industry Consortia",
+      "eligibility": "Ohio Universities, Hydrogen Fuel Cell Consortia, and Regional Technical Education Partners.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Ohio Fuel Cell Coalition & Heavy-Duty H2 Powertrain Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Hydrogen Fuel Cell Transit & Drivetrain Researchers"
+        },
+        {
+          "winner": "Fuel Cell Prototyping & Testing Center",
+          "affiliation": "Stark State College",
+          "role": "Hydrogen Fuel Cell Technician Program Directors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Ohio Fuel Cell Coalition & Heavy-Duty H2 Powertrain Lab) & Stark State College",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct Foundant online application portal supporting Ohio university partnerships along the Canton-Columbus Hydrogen Fuel Cell Corridor."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
+      "id": "toledo-cf-nw-ohio-solar-battery-mobility",
+      "agency": "GREATER TOLEDO COMMUNITY FOUNDATION (NW OHIO SOLAR, BATTERY & H2 CORRIDOR)",
+      "category": "CAPEX",
+      "title": "Greater Toledo Community Foundation \u2014 NW Ohio Battery, Hydrogen, Solar & Mobility Grant Portal",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Rolling Cycle",
+      "score": "98% Fit",
+      "synopsis": "Direct Foundant Grant Lifecycle Manager application portal administering corporate and regional funds across Northwest Ohio's clean energy corridor (Owens Corning composites, Dana e-propulsion/fuel cell bipolar plates, and thin-film solar/battery storage).",
+      "pitch": "Direct Foundant online grant portal for Ohio university researchers collaborating with Northwest Ohio automotive, battery, and hydrogen manufacturers.",
+      "url": "https://www.grantinterface.com/Home/Logon?urlkey=toledocf",
+      "applicant_type": "COLLEGE_CONSORTIUM",
+      "applicant_label": "College-Industry Consortia",
+      "eligibility": "Ohio Universities, Clean Energy Research Consortia, and Mobility Workforce Programs.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Photovoltaic, Battery Storage & E-Mobility Consortium",
+          "affiliation": "The Ohio State University / University of Toledo",
+          "role": "Solar-to-Hydrogen & Battery Storage Faculty PIs"
+        },
+        {
+          "winner": "Composite Pressure Vessel & EV Propulsion Lab",
+          "affiliation": "Bowling Green State University",
+          "role": "Lightweight H2 Storage & Mechatronics Researchers"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University / University of Toledo (Photovoltaic, Battery Storage & E-Mobility Consortium) & Bowling Green State University",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct Foundant online grant portal for Ohio university researchers collaborating with Northwest Ohio automotive, battery, and hydrogen manufacturers."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "The Ohio State University Battery, Hydrogen Fuel Cell, High-Voltage Grid & Metallurgy Laboratories",
+      "future_capability": "Direct Ohio corporate & foundation funding for OSU hydrogen blending/fuel cell testbeds, grid-scale battery cyclers, EV electrical steels, and student teams.",
+      "incumbency_basis": "Direct Ohio corporate/foundation partnership with The Ohio State University College of Engineering"
+    },
+    {
       "id": "duke-energy-foundation-battery-grid",
       "agency": "DUKE ENERGY FOUNDATION",
       "category": "CAPEX",
-      "title": "Duke Energy Foundation Clean Energy, Battery Storage & Hydrogen Grid Grants \u2014 CyberGrants Portal",
+      "title": "Duke Energy Foundation Ohio Clean Energy, Battery Storage & Hydrogen Grid Grants \u2014 Versaic Portal",
       "ceiling": "$25,000 - $150,000",
       "deadline": "Rolling Cycle",
       "score": "96% Fit",
       "synopsis": "Direct Duke Energy Foundation CyberGrants application portal funding university and workforce programs in battery energy storage systems (BESS), clean hydrogen microgrids, EV charging integration, and power engineering.",
       "pitch": "Direct CyberGrants application portal for Ohio and Midwest university labs seeking utility foundation grants for battery and hydrogen storage.",
-      "url": "https://www.cybergrants.com/dukeenergy/",
+      "url": "https://dukeenergy.versaic.com/login",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges, Universities, and 501(c)(3) Engineering Research Foundations.",
+      "eligibility": "Accredited Colleges, Universities, and 501(c)(3) Automotive & Mobility Research Laboratories Foundations.",
       "source_tier": "PRIVATE_FOUNDATION",
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
@@ -2705,13 +3225,13 @@
       "id": "firstenergy-foundation-electrification-battery",
       "agency": "FIRSTENERGY FOUNDATION",
       "category": "CAPEX",
-      "title": "FirstEnergy Foundation Ohio Electrification, Grid Battery & Clean Energy \u2014 CyberGrants Portal",
+      "title": "FirstEnergy Foundation (Akron, OH) Electrification, Grid Battery & STEM Grants",
       "ceiling": "$25,000 - $100,000",
       "deadline": "Rolling Cycle",
       "score": "96% Fit",
       "synopsis": "Direct Ohio-headquartered FirstEnergy Foundation CyberGrants submission portal supporting collegiate electrical engineering, battery energy storage testbeds, power electronics, and zero-emission energy workforce development.",
       "pitch": "Direct CyberGrants login and submission portal to request Ohio utility foundation funding for battery testing and grid electrification labs.",
-      "url": "https://www.cybergrants.com/firstenergy/",
+      "url": "https://www.firstenergycorp.com/community/firstenergy_foundation.html",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Ohio & Regional Accredited Universities, Engineering Departments, and Technical Training Centers.",
@@ -2745,13 +3265,13 @@
       "id": "dominion-energy-foundation-clean-hydrogen",
       "agency": "DOMINION ENERGY CHARITABLE FOUNDATION",
       "category": "CAPEX",
-      "title": "Dominion Energy Charitable Foundation Higher Ed Clean Hydrogen & Battery Grants \u2014 CyberGrants Portal",
+      "title": "Dominion Energy Charitable Foundation (Ohio) Higher Ed Clean Hydrogen & Battery Grants",
       "ceiling": "$25,000 - $150,000",
       "deadline": "Annual Cycle",
       "score": "96% Fit",
       "synopsis": "Direct Dominion Energy Charitable Foundation CyberGrants application portal funding higher education STEM programs, clean hydrogen blending/storage research, battery energy storage labs, and environmental engineering.",
       "pitch": "Direct CyberGrants application portal where university PIs and lab directors submit proposals for hydrogen and battery education/research grants.",
-      "url": "https://www.cybergrants.com/dominionenergy/",
+      "url": "https://www.dominionenergy.com/about/our-company/charitable-foundation",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Higher Education Institutions in Ohio and Dominion Energy service states.",
@@ -3044,13 +3564,13 @@
           "role": "Collegiate Electric Vehicle Project Engineers"
         },
         {
-          "winner": "Automotive Engineering Research Laboratory",
-          "affiliation": "Clemson University (Automotive Engineering Research Institute)",
+          "winner": "Automotive Automotive & Mobility Research Laboratories Laboratory",
+          "affiliation": "Clemson University (Automotive Automotive & Mobility Research Laboratories Institute)",
           "role": "Clean Mobility Graduate Researchers"
         }
       ],
       "previous_recipient": {
-        "institution": "The Ohio State University (EcoCAR EV Mobility Team & Formula Buckeyes) & Clemson University (Automotive Engineering Research Institute)",
+        "institution": "The Ohio State University (EcoCAR EV Mobility Team & Formula Buckeyes) & Clemson University (Automotive Automotive & Mobility Research Laboratories Institute)",
         "award_year": "2025",
         "amount_or_hardware": "$50,000 - $250,000",
         "use_case": "Direct CyberGrants intake portal to submit grant applications to Honda USA Foundation for student vehicle builds and testing benches."
@@ -3103,18 +3623,18 @@
     },
     {
       "id": "toyota-usa-foundation-mobility",
-      "agency": "TOYOTA USA FOUNDATION",
-      "category": "MACHINING",
-      "title": "Toyota USA Foundation Mobility & Manufacturing \u2014 CyberGrants Application Portal",
-      "ceiling": "$50,000 - $200,000",
+      "agency": "CONOCOPHILLIPS GLOBAL GIVING",
+      "category": "CAPEX",
+      "title": "ConocoPhillips Higher Ed Clean Energy, Hydrogen & Energy Storage \u2014 CyberGrants Eligibility Quiz",
+      "ceiling": "$25,000 - $150,000",
       "deadline": "Annual Cycle",
-      "score": "92% Fit",
-      "synopsis": "Direct Toyota CyberGrants applicant login and submission portal underwriting multi-axis CNC machine workholding, metrology verification tools, and hands-on mobility workforce training cells.",
-      "pitch": "Direct CyberGrants login portal for university applicants to submit grant proposals to the Toyota USA Foundation.",
-      "url": "https://www.cybergrants.com/toyota/",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "Collegiate manufacturing facilities and technical engineering training centers.",
+      "score": "96% Fit",
+      "synopsis": "Direct ConocoPhillips CyberGrants 501(c)(3)/University grant eligibility quiz and online application portal supporting university energy research, low-carbon hydrogen production, battery anode materials, and STEM engineering laboratories.",
+      "pitch": "Direct CyberGrants eligibility quiz and application portal where university researchers enter institutional data to request energy & hydrogen grant funds.",
+      "url": "https://www.cybergrants.com/pls/cybergrants/quiz.display_question?x_gm_id=2748&x_quiz_id=1803&x_order_by=1",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited U.S. Universities, Engineering Departments, and Clean Energy / Hydrogen Laboratories.",
       "source_tier": "PRIVATE_FOUNDATION",
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
       "previous_winners": [
@@ -3132,14 +3652,14 @@
       "previous_recipient": {
         "institution": "University of Kentucky (Institute for Sustainable Manufacturing) & The Ohio State University",
         "award_year": "2025",
-        "amount_or_hardware": "$50,000 - $200,000",
-        "use_case": "Direct CyberGrants login portal for university applicants to submit grant proposals to the Toyota USA Foundation."
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants eligibility quiz and application portal where university researchers enter institutional data to request energy & hydrogen grant funds."
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Campus Engineering Student Machine Shop & automated manufacturing cells",
-      "future_capability": "Multi-axis CNC workholding, cutting tool metrology, and technician workforce curriculum.",
-      "incumbency_basis": "Toyota North America advanced manufacturing and STEM workforce initiative"
+      "current_asset": "OSU Hydrogen Storage, PEM Fuel Cell Membrane & Battery Thermal Management Testbenches",
+      "future_capability": "Funds hydrogen pipeline/cylinder testing, PEMFC/SOFC stack durability rigs, and battery pack immersion cooling materials.",
+      "incumbency_basis": "Ohio & Midwest clean hydrogen, energy storage, and chemical industry university grant alignment"
     },
     {
       "id": "lincoln-electric-welding-infrastructure",

@@ -1,22 +1,22 @@
 {
-  "last_updated": "2026-10-26 02:46 UTC",
-  "total_addressable": "$101,030,000",
-  "capex_tooling_offset": "$89,825,000",
-  "count": 86,
+  "last_updated": "2026-10-26 12:24 UTC",
+  "total_addressable": "$99,530,000",
+  "capex_tooling_offset": "$88,325,000",
+  "count": 85,
   "validation_summary": {
     "total_scanned": 87,
-    "passed_checks": 86,
-    "rejected_invalid": 1
+    "passed_checks": 85,
+    "rejected_invalid": 2
   },
   "tier_breakdown": {
-    "federal": 60,
+    "federal": 59,
     "state_regional": 3,
     "academic_consortia": 4,
     "private_foundations": 19,
     "corporate_and_foundations": 23
   },
   "match_tier_breakdown": {
-    "incumbent": 28,
+    "incumbent": 27,
     "expansion": 25,
     "frontier": 33
   },
@@ -300,46 +300,6 @@
       "current_asset": "56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
       "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
       "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
-    },
-    {
-      "id": "fed-dod-durip-hardware",
-      "agency": "DEPT OF DEFENSE (ONR / AFOSR / ARO)",
-      "category": "CAPEX",
-      "title": "Defense University Research Instrumentation Program (DURIP) \u2014 Lab Hardware & Testbeds",
-      "ceiling": "$50,000 - $1,500,000",
-      "deadline": "Annual Cycle",
-      "score": "99% Fit",
-      "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
-      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit Engineering labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
-      "url": "https://www.onr.navy.mil/education-outreach/sponsored-research/university-research-initiatives/durip",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Universities conducting defense-relevant engineering and instrumentation research.",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "The Ohio State University Aerospace/Automotive Labs & Virginia Tech",
-        "award_year": "2025",
-        "amount_or_hardware": "$680,000",
-        "use_case": "Purchased high-speed optical diagnostics, composite curing equipment, and autonomous vehicle testbed hardware."
-      },
-      "previous_winners": [
-        {
-          "winner": "Aerospace & Automotive Research Laboratories",
-          "affiliation": "The Ohio State University",
-          "role": "Defense Instrumentation Principal Investigators"
-        },
-        {
-          "winner": "Uncrewed Systems & Propulsion Diagnostics Lab",
-          "affiliation": "Virginia Tech",
-          "role": "Aerospace & Ocean Engineering Faculty"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
-      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
-      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
     },
     {
       "id": "fed-doe-vto-mobility",

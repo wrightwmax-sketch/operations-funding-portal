@@ -73,7 +73,11 @@ APPROVED_DOMAIN_ROOTS = [
     "bajasae.net",
     "arminstitute.org",
     "lift.technology",
-    "iacmi.org"
+    "iacmi.org",
+    "smartsheet.com",
+    "qualtrics.com",
+    "infoedglobal.com",
+    "ohio-state.edu"
 ]
 
 FORBIDDEN_DOMAINS = (
@@ -303,7 +307,7 @@ def verify_url_live(url: str) -> tuple[bool, str]:
             d in final_domain for d in (
                 "webportalapp.com", "cybergrants.com", "formstack.com",
                 "yourcausegrants.com", "versaic.com", "benevity.org",
-                "grantinterface.com", "iphiview.com"
+                "grantinterface.com", "iphiview.com", "smartsheet.com", "qualtrics.com", "infoedglobal.com", "ohio-state.edu"
             )
         )
         has_embedded_application_form = (
@@ -315,6 +319,8 @@ def verify_url_live(url: str) -> tuple[bool, str]:
             sig in html_lower for sig in (
                 "rfp information",
                 "request for proposals",
+                "request for applications",
+                "pre-proposal",
                 "submitting your proposal",
                 "submit a contract proposal",
                 "how do i apply",
@@ -1059,6 +1065,248 @@ TIER2_STATE_REGIONAL = [
 # ==============================================================================
 
 TIER3_ACADEMIC_CONSORTIA = [
+    {
+        "id": "osu-erik-accelerator-awards-energy-materials",
+        "score": "99% Match",
+        "title": "OSU ERIK & Ohio Third Frontier Accelerator Awards: Energy, Battery, Hydrogen & Advanced Materials Commercialization",
+        "agency": "OHIO STATE ERIK / OHIO THIRD FRONTIER (go.osu.edu/funding)",
+        "source_tier": "STATE_REGIONAL",
+        "ceiling": "$100,000 - $150,000",
+        "deadline": "01/08/2027",
+        "category": "CAPEX",
+        "eligibility": "Ohio State University faculty, principal investigators, and engineering labs with an invention disclosure in Energy, Advanced Materials, Manufacturing, or Sensors.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU PIs)",
+        "synopsis": "Flagship commercialization & technology validation grant listed on go.osu.edu/funding ($1M annual pool co-funded by Ohio State ERIK and Ohio Third Frontier). Provides up to $100,000-$150,000 per project to build and validate market-ready prototypes in Energy (batteries, fuel cells, hydrogen storage/electrolysis), Advanced Materials, Sensors, and Manufacturing.",
+        "pitch": "Directly funds prototype fabrication, third-party battery/fuel cell validation testing, and hardware scale-up for Ohio State energy storage and hydrogen inventions.",
+        "url": "https://research.osu.edu/building-your-research-program/find-funding/accelerator-awards",
+        "previous_recipient": {
+            "institution": "The Ohio State University College of Engineering & IMR Innovators",
+            "award_year": "2025",
+            "amount_or_hardware": "$100,000 - $150,000",
+            "use_case": "Validated pre-commercial battery cell architectures, electrochemical hydrogen sensors, and advanced manufacturing prototypes."
+        }
+    },
+    {
+        "id": "osu-imr-materials-research-seed-grant-battery-h2",
+        "score": "99% Match",
+        "title": "OSU Institute for Materials & Manufacturing Research (IMR) Materials Research Seed Grants (Solid-State Battery & H2)",
+        "agency": "OSU INSTITUTE FOR MATERIALS & MANUFACTURING RESEARCH (IMR / CEM MRSEC)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$50,000 - $70,000",
+        "deadline": "Annual Cycle",
+        "category": "CAPEX",
+        "eligibility": "Ohio State University faculty and research teams in Materials Science, Chemical/Mechanical/Electrical Engineering, and Chemistry.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Faculty)",
+        "synopsis": "Featured on go.osu.edu/funding and jointly managed by OSU IMR, CEM (NSF MRSEC), and ENCOMM. Awards $50,000 Exploratory Materials Research Grants and $70,000 Multidisciplinary Team Building & Proto-IRG Seed Grants for next-generation energy storage, high-conductivity solid polymer electrolytes, hydrogen heterostructures (EXEDE H2), catalysis, and additive manufacturing.",
+        "pitch": "Directly seeds OSU battery electrolyte, hydrogen catalysis, fuel cell membrane, and additive manufacturing hardware teams to position for major NSF/DOE center awards.",
+        "url": "https://imr.osu.edu/seed-grant-programs/osu-materials-research-seed-grant-program",
+        "previous_recipient": {
+            "institution": "The Ohio State University (Prof. Yiying Wu, Prof. Kaveh Ahadi & Prof. Sarah Wolff)",
+            "award_year": "2026",
+            "amount_or_hardware": "$50,000 - $70,000",
+            "use_case": "Funded 'Salt Designs for Polymer Electrolytes for High-Conductivity Solid Electrolytes' ($70k), 'EXEDE H2' ($50k), and 'Additive Manufacturing of Ferroelectric Oxides' ($70k)."
+        }
+    },
+    {
+        "id": "osu-imr-kickstart-facility-grant-battery-cdme",
+        "score": "98% Match",
+        "title": "OSU IMR Kickstart Facility Grants: Battery Cell R&D Center & CDME Manufacturing Access",
+        "agency": "OSU INSTITUTE FOR MATERIALS & MANUFACTURING RESEARCH (IMR)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$2,500 - $10,000",
+        "deadline": "11/06/2026",
+        "category": "MACHINING",
+        "eligibility": "Ohio State University faculty, senior research staff with PI status, postdoctoral researchers, and graduate student co-authors.",
+        "applicant_type": "COLLEGE_LAB_DIRECTOR",
+        "applicant_label": "Lab Directors & Staff (OSU PIs)",
+        "synopsis": "Direct facility user-fee and equipment access grant listed on go.osu.edu/funding. Offsets user fees and fabrication/testing hours inside OSU's core facilities: the Battery Cell R&D Center, Center for Design and Manufacturing Excellence (CDME), Center for Electron Microscopy and Analysis (CEMAS), and Nanotech West Laboratory.",
+        "pitch": "Provides immediate funding to fabricate pouch/cylindrical cells in the OSU Battery Cell R&D Center, machine prototypes at CDME, and run electron microscopy on fuel cell catalysts at CEMAS.",
+        "url": "https://imr.osu.edu/seed-grant-programs/facility-grants",
+        "previous_recipient": {
+            "institution": "The Ohio State University Battery Cell R&D Center, CDME & CEMAS Users",
+            "award_year": "2025",
+            "amount_or_hardware": "$2,500 - $10,000 Facility Allocation",
+            "use_case": "Offset electrode coating, battery cell cycler testing, CNC/additive prototyping at CDME, and SEM/TEM catalyst characterization."
+        }
+    },
+    {
+        "id": "osu-erik-presidents-research-excellence-pre",
+        "score": "98% Match",
+        "title": "OSU ERIK President's Research Excellence (PRE) Accelerator & Catalyst Grants (Energy, H2 & Mobility)",
+        "agency": "OHIO STATE ENTERPRISE FOR RESEARCH, INNOVATION & KNOWLEDGE (ERIK)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$75,000 - $200,000",
+        "deadline": "Annual Cycle",
+        "category": "CAPEX",
+        "eligibility": "Cross-disciplinary teams of 2+ Ohio State University investigators representing distinct colleges or disciplines.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Teams)",
+        "synopsis": "Flagship internal convergence research program on go.osu.edu/funding providing up to $75,000 (PRE Accelerator) and $200,000 (PRE Catalyst) for high-risk, high-reward pilot research in clean energy, hydrogen infrastructure, electrochemical energy storage, and advanced mobility systems targeting large federal center proposals.",
+        "pitch": "Secures $75k-$200k in cross-college seed capital to generate experimental battery, fuel cell, and hydrogen propulsion data for multi-million-dollar DOE/NSF proposals.",
+        "url": "https://orapps.osu.edu/fundops/opportunity/11169",
+        "previous_recipient": {
+            "institution": "The Ohio State University College of Engineering & Arts/Sciences Convergence Teams",
+            "award_year": "2025",
+            "amount_or_hardware": "$75,000 - $200,000",
+            "use_case": "Seeded interdisciplinary hydrogen production, grid battery storage, and autonomous mobility testbeds at Ohio State."
+        }
+    },
+    {
+        "id": "osu-betha-battelle-engineering-technology-grants",
+        "score": "97% Match",
+        "title": "Battelle Engineering, Technology & Human Affairs (BETHA) Endowment Grants at Ohio State",
+        "agency": "BATTELLE ENDOWMENT & OHIO STATE ERIK (go.osu.edu/funding)",
+        "source_tier": "PRIVATE_FOUNDATION",
+        "ceiling": "$10,000 - $60,000",
+        "deadline": "Annual Cycle",
+        "category": "CAPEX",
+        "eligibility": "Full-time Ohio State University assistant, associate, and full professors collaborating across engineering, technology, and societal impact.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Faculty)",
+        "synopsis": "Endowed by Columbus-based Battelle and listed on go.osu.edu/funding. Awards $10,000 to $60,000 for collaborative Ohio State projects addressing engineering and technology themes—including clean hydrogen transition, EV/battery safety, sustainable manufacturing, and student/community engineering outreach.",
+        "pitch": "Backed by Battelle to support OSU engineering faculty and students demonstrating the real-world safety, workforce, and environmental impact of hydrogen, battery, and manufacturing technologies.",
+        "url": "https://orapps.osu.edu/fundops/admin/opportunity/7097",
+        "previous_recipient": {
+            "institution": "The Ohio State University College of Engineering (2025 & 2026 BETHA Cohort)",
+            "award_year": "2026",
+            "amount_or_hardware": "$10,000 - $60,000",
+            "use_case": "Funded four interdisciplinary Ohio State engineering and technology projects in the 2026 BETHA award cycle."
+        }
+    },
+    {
+        "id": "osu-erik-central-cost-share-capex-portal",
+        "score": "99% Match",
+        "title": "OSU ERIK Central Cost Share Request Portal (Institutional Matching for DOE, NSF MRI, DURIP & RAPIDS CapEx)",
+        "agency": "OHIO STATE ENTERPRISE FOR RESEARCH, INNOVATION & KNOWLEDGE (go.osu.edu/erik-cost-share)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$50,000 - $1,000,000",
+        "deadline": "Rolling Cycle",
+        "category": "CAPEX",
+        "eligibility": "Ohio State University PIs, Lab Directors, and Associate Deans for Research submitting external proposals requiring institutional cost share.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Cost Share)",
+        "synopsis": "Direct Smartsheet submission portal from go.osu.edu/funding (go.osu.edu/erik-cost-share) for securing central Ohio State University matching funds on major sponsored research equipment, facility renovations, and multi-unit DOE/NSF/DoD/State proposals where mandatory cost share (e.g., 20%-50% DOE or 30% NSF MRI) is required.",
+        "pitch": "Unlocks central university matching dollars required to win multi-million-dollar DOE battery/hydrogen hubs, NSF MRI shared instrumentation, and industrial consortium CapEx grants.",
+        "url": "https://app.smartsheet.com/b/form/b0a04454d9b24b2b8528b6eae5d24849",
+        "previous_recipient": {
+            "institution": "The Ohio State University Shared Instrumentation & Clean Energy Center PIs",
+            "award_year": "2025",
+            "amount_or_hardware": "$100,000 - $1,000,000 Match",
+            "use_case": "Provided mandatory central university cost-share commitments for federal research instrumentation and multi-college DOE/NSF center proposals."
+        }
+    },
+    {
+        "id": "osu-erik-limited-submission-capex-portal",
+        "score": "98% Match",
+        "title": "OSU ERIK Limited Submission Funding Opportunities Portal (Major Instrumentation, DOE, NSF MRI & Foundations)",
+        "agency": "OHIO STATE RESEARCH DEVELOPMENT & FOUNDATION RELATIONS (go.osu.edu/funding)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$100,000 - $4,000,000",
+        "deadline": "Rolling Cycle",
+        "category": "CAPEX",
+        "eligibility": "Ohio State University faculty, lab directors, and center leads seeking institutional nomination for limited-submission federal or foundation grants.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Nominees)",
+        "synopsis": "Official Ohio State Limited Submission Funding Opportunities Portal (orapps.osu.edu/fundops/opportunities) listed on go.osu.edu/funding. Manages internal pre-proposal applications and institutional nominations for high-value equipment and center solicitations (NSF MRI, DOE EERE/HFTO, ONR, Keck, and corporate foundations) where sponsors restrict the number of OSU submissions.",
+        "pitch": "Mandatory internal application gateway to become Ohio State's designated institutional nominee for multi-million-dollar instrumentation, battery, and hydrogen center awards.",
+        "url": "https://orapps.osu.edu/fundops/opportunities",
+        "previous_recipient": {
+            "institution": "The Ohio State University Nominees for NSF MRI, DOE & Foundation CapEx",
+            "award_year": "2025",
+            "amount_or_hardware": "$500,000 - $4,000,000",
+            "use_case": "Coordinated institutional nominations for major research instrumentation, clean energy centers, and corporate foundation equipment grants."
+        }
+    },
+    {
+        "id": "osu-erik-strategic-research-travel-sponsor-pitch",
+        "score": "96% Match",
+        "title": "OSU ERIK Strategic Research Travel Program (In-Person DOE, ARPA-E, NSF & DoD Program Manager Positioning)",
+        "agency": "OHIO STATE ENTERPRISE FOR RESEARCH, INNOVATION & KNOWLEDGE (ERIK)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$1,500 - $4,500",
+        "deadline": "Rolling Cycle",
+        "category": "CAPEX",
+        "eligibility": "Individual Ohio State PIs or teams of up to 3 investigators meeting in person with external federal/industry research sponsors.",
+        "applicant_type": "COLLEGE_LAB_DIRECTOR",
+        "applicant_label": "Lab Directors & PIs (OSU Travel)",
+        "synopsis": "Direct Smartsheet application portal on go.osu.edu/funding (reviewed monthly on the 25th) providing up to $1,500 per investigator ($4,500 for a 3-PI team) to travel to meet face-to-face with external funding sponsors (DOE HFTO/VTO/ARPA-E, NSF, DoD ONR/ARL/DARPA, NASA) to shape upcoming solicitations and pitch large-scale battery, fuel cell, hydrogen, and manufacturing programs.",
+        "pitch": "Covers travel for OSU battery, fuel cell, and manufacturing PIs to brief DOE, ARPA-E, and DoD program directors in person before major RFPs are released.",
+        "url": "https://app.smartsheet.com/b/form/f68c30211d7347af96a092ff4b5eca8b",
+        "previous_recipient": {
+            "institution": "The Ohio State University Engineering & Energy Principal Investigators",
+            "award_year": "2025",
+            "amount_or_hardware": "$1,500 - $4,500 Sponsor Pitch Grants",
+            "use_case": "Funded direct in-person briefings with federal agency program managers to position OSU teams for multi-million-dollar energy and defense awards."
+        }
+    },
+    {
+        "id": "osu-scarlet-and-grants-foundation-relations-portal",
+        "score": "98% Match",
+        "title": "OSU Corporate & Foundation Engagement: Scarlet & Grants Funding Opportunities Portal",
+        "agency": "OHIO STATE CORPORATE & FOUNDATION ENGAGEMENT (go.osu.edu/funding)",
+        "source_tier": "PRIVATE_FOUNDATION",
+        "ceiling": "$25,000 - $1,000,000",
+        "deadline": "Rolling Cycle",
+        "category": "CAPEX",
+        "eligibility": "Ohio State University faculty, research scientists, and laboratory directors.",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU PIs)",
+        "synopsis": "Official Ohio State Corporate and Foundation Engagement portal (Scarlet & Grants) linked on go.osu.edu/funding. Connects OSU investigators with active corporate and private foundation RFPs—leveraging OSU's institutional relationships with energy, hydrogen, battery, automotive, and manufacturing funders to maximize award competitiveness.",
+        "pitch": "Provides direct access to OSU Foundation Relations curated corporate/foundation RFPs and relationship managers for energy storage, hydrogen, and lab equipment gifts.",
+        "url": "https://connect1.osu.edu/ohiostate/FoundationRelations/FundingOpportunities",
+        "previous_recipient": {
+            "institution": "The Ohio State University College of Engineering & Research Centers",
+            "award_year": "2025",
+            "amount_or_hardware": "$50,000 - $1,000,000",
+            "use_case": "Secured corporate and private foundation grants for clean energy research, student fabrication labs, and instrumentation."
+        }
+    },
+    {
+        "id": "osu-buckeyefunder-crowdfunding-student-teams-labs",
+        "score": "97% Match",
+        "title": "OSU Buckeye Funder Official Crowdfunding Portal (Student Engineering Teams, Battery/H2 Prototypes & Lab Hardware)",
+        "agency": "THE OHIO STATE UNIVERSITY ADVANCEMENT (buckeyefunder.osu.edu)",
+        "source_tier": "PRIVATE_FOUNDATION",
+        "ceiling": "$5,000 - $50,000",
+        "deadline": "Rolling Cycle",
+        "category": "STUDENT",
+        "eligibility": "Ohio State University student engineering organizations, competition teams, faculty, and research laboratories.",
+        "applicant_type": "COLLEGE_STUDENT_TEAM",
+        "applicant_label": "Student Engineering Teams & OSU Labs",
+        "synopsis": "Featured on go.osu.edu/funding as Ohio State's official crowdfunding platform. Through this direct Qualtrics application portal, OSU student engineering teams (Formula Buckeye, Baja SAE, EcoCAR, Buckeye Solar Racing, Hydrogen/Fuel Cell student teams) and research labs launch official tax-deductible donor campaigns for battery packs, fuel cell stacks, CNC tooling, and competition hardware.",
+        "pitch": "Direct Qualtrics application to launch an official OSU Buckeye Funder campaign for student vehicle teams, battery/fuel cell prototypes, and shop tooling.",
+        "url": "https://osu.az1.qualtrics.com/jfe/form/SV_9otC0p63yvEDMKp",
+        "previous_recipient": {
+            "institution": "The Ohio State University Student Engineering Teams & Biomedical/Aerospace Innovation Funds",
+            "award_year": "2026",
+            "amount_or_hardware": "$10,000 - $50,000",
+            "use_case": "Raised tax-deductible donor funds for OSU student engineering builds, prototype hardware, and laboratory equipment."
+        }
+    },
+    {
+        "id": "osu-spin-global-funding-database-portal",
+        "score": "97% Match",
+        "title": "OSU ERIK SPIN Funding Opportunities Portal (40,000+ Federal, Corporate & Foundation Grants in Energy, H2 & Mfg)",
+        "agency": "OHIO STATE ERIK / INFOED SPIN (go.osu.edu/funding)",
+        "source_tier": "ACADEMIC_CONSORTIA",
+        "ceiling": "$25,000 - $2,500,000",
+        "deadline": "Rolling Cycle",
+        "category": "CAPEX",
+        "eligibility": "All Ohio State University faculty, research staff, postdocs, and graduate students (campus-wide ERIK subscription).",
+        "applicant_type": "COLLEGE_INSTITUTIONAL",
+        "applicant_label": "Colleges & Universities (OSU Researchers)",
+        "synopsis": "Highlighted on go.osu.edu/funding as Ohio State's campus-wide sponsored funding search engine covering 40,000+ active opportunities from 10,000+ global corporate, foundation, state, and federal sponsors. Enables custom automated daily email alerts for hydrogen, fuel cell, battery energy storage, and machining/manufacturing CapEx solicitations.",
+        "pitch": "Direct login portal for OSU researchers to track and apply to specialized industry, foundation, and international hydrogen, battery, and equipment grants.",
+        "url": "https://spin.infoedglobal.com/Authorize/Login",
+        "previous_recipient": {
+            "institution": "The Ohio State University Enterprise for Research, Innovation and Knowledge (ERIK)",
+            "award_year": "2025",
+            "amount_or_hardware": "$50,000 - $2,500,000",
+            "use_case": "Connected OSU engineering investigators with targeted industry, foundation, and government grants across energy storage and advanced manufacturing."
+        }
+    },
     {
         "id": "sae-cds-team-registration-subsidies",
         "agency": "FORMULA SAE / COLLEGIATE DESIGN SERIES",

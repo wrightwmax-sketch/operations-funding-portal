@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 12:17 UTC",
+  "last_updated": "2026-10-29 12:27 UTC",
   "total_addressable": "$113,849,500",
   "capex_tooling_offset": "$102,544,500",
   "count": 110,
@@ -16,8 +16,8 @@
     "corporate_and_foundations": 45
   },
   "match_tier_breakdown": {
-    "incumbent": 40,
-    "expansion": 27,
+    "incumbent": 39,
+    "expansion": 28,
     "frontier": 43
   },
   "grants": [
@@ -1102,46 +1102,6 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-363797",
-      "agency": "NATIONAL ENERGY TECHNOLOGY LABORATORY",
-      "category": "CAPEX",
-      "title": "Request for Information - Gauging Investor Interest in the Development and Commercialization of Subsurface Energy Technologies",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/05/2026",
-      "score": "98% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003671 issued by National Energy Technology Laboratory. Supports electrochemical energy storage systems, grid-scale and vehicular battery packs, flow batteries, and hybrid supercapacitor-battery architectures.",
-      "pitch": "Underwrites high-power battery energy storage testbeds, bidirectional cyclers, and pack-level thermal management hardware.",
-      "url": "https://www.grants.gov/search-results-detail/363797",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "The Ohio State University & University of Michigan",
-        "award_year": "2025",
-        "amount_or_hardware": "$450,000 - $1,200,000",
-        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
-      },
-      "previous_winners": [
-        {
-          "winner": "High-Voltage Electrification & Propulsion Lab",
-          "affiliation": "The Ohio State University",
-          "role": "Automotive Research Scientists & Graduate Fellows"
-        },
-        {
-          "winner": "Clean Energy Research Institute",
-          "affiliation": "University of Wisconsin-Madison",
-          "role": "Powertrain Research Engineers"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
-      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
-    },
-    {
       "id": "gov-363526",
       "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
       "category": "CAPEX",
@@ -1660,6 +1620,46 @@
       "current_asset": "University research laboratories and engineering experimental facilities",
       "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
       "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-364171",
+      "agency": "DOT-FEDERAL MOTOR CARRIER SAFETY ADMINISTRATION",
+      "category": "CAPEX",
+      "title": "FY 2027 Crash Casual Factors Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/28/2026",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #FM-CCFP-27-001 issued by DOT-Federal Motor Carrier Safety Administration. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/364171",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Campus Engineering machine shops and technical workforce training bays",
+      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
     {
       "id": "gov-361080",

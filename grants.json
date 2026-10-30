@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-10-29 12:27 UTC",
-  "total_addressable": "$113,849,500",
-  "capex_tooling_offset": "$102,544,500",
-  "count": 110,
+  "last_updated": "2026-10-30 12:17 UTC",
+  "total_addressable": "$112,349,500",
+  "capex_tooling_offset": "$101,044,500",
+  "count": 109,
   "validation_summary": {
-    "total_scanned": 111,
-    "passed_checks": 110,
+    "total_scanned": 110,
+    "passed_checks": 109,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 61,
+    "federal": 60,
     "state_regional": 4,
     "academic_consortia": 11,
     "private_foundations": 34,
@@ -17,7 +17,7 @@
   },
   "match_tier_breakdown": {
     "incumbent": 39,
-    "expansion": 28,
+    "expansion": 27,
     "frontier": 43
   },
   "grants": [
@@ -1625,7 +1625,7 @@
       "id": "gov-364171",
       "agency": "DOT-FEDERAL MOTOR CARRIER SAFETY ADMINISTRATION",
       "category": "CAPEX",
-      "title": "FY 2027 Crash Casual Factors Program",
+      "title": "FY 2027 Crash Causal Factors Program",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "12/28/2026",
       "score": "93% Fit",
@@ -2312,46 +2312,6 @@
       "synopsis": "Federal solicitation #N0001425SB001 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
       "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
       "url": "https://www.grants.gov/search-results-detail/356605",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
-          "affiliation": "The Ohio State University",
-          "role": "Senior Engineering Faculty & Facility Managers"
-        },
-        {
-          "winner": "Advanced Technology Development Center",
-          "affiliation": "Purdue University",
-          "role": "Collegiate Research Laboratory Directors"
-        }
-      ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
-      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
-      "incumbency_basis": "Office of Naval Research long-range science & technology research"
-    },
-    {
-      "id": "gov-363632",
-      "agency": "OFFICE OF NAVAL RESEARCH",
-      "category": "CAPEX",
-      "title": "ONR FY27 NOFO for Young Investigator Program",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "10/30/2026",
-      "score": "82% Fit",
-      "synopsis": "Federal solicitation #N0001426SF004 issued by Office of Naval Research. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
-      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
-      "url": "https://www.grants.gov/search-results-detail/363632",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",

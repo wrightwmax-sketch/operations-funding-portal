@@ -1,23 +1,23 @@
 {
-  "last_updated": "2026-10-30 12:17 UTC",
-  "total_addressable": "$112,349,500",
-  "capex_tooling_offset": "$101,044,500",
-  "count": 109,
+  "last_updated": "2026-10-31 11:49 UTC",
+  "total_addressable": "$115,349,500",
+  "capex_tooling_offset": "$104,044,500",
+  "count": 111,
   "validation_summary": {
-    "total_scanned": 110,
-    "passed_checks": 109,
+    "total_scanned": 112,
+    "passed_checks": 111,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 60,
+    "federal": 62,
     "state_regional": 4,
     "academic_consortia": 11,
     "private_foundations": 34,
     "corporate_and_foundations": 45
   },
   "match_tier_breakdown": {
-    "incumbent": 39,
-    "expansion": 27,
+    "incumbent": 40,
+    "expansion": 28,
     "frontier": 43
   },
   "grants": [
@@ -902,6 +902,46 @@
       "incumbency_basis": "DOE ARPA-E high-impact energy technology translation alignment"
     },
     {
+      "id": "gov-364174",
+      "agency": "NATIONAL ENERGY TECHNOLOGY LABORATORY",
+      "category": "CAPEX",
+      "title": "Grid Supply Chain Alternatives to Lead Energy Dominance (SCALED)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "02/08/2027",
+      "score": "98% Fit",
+      "synopsis": "Federal solicitation #DE-FOA-0003641 issued by National Energy Technology Laboratory. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/364174",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "The Ohio State University & University of Michigan",
+        "award_year": "2025",
+        "amount_or_hardware": "$450,000 - $1,200,000",
+        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
+      },
+      "previous_winners": [
+        {
+          "winner": "High-Voltage Electrification & Propulsion Lab",
+          "affiliation": "The Ohio State University",
+          "role": "Automotive Research Scientists & Graduate Fellows"
+        },
+        {
+          "winner": "Clean Energy Research Institute",
+          "affiliation": "University of Wisconsin-Madison",
+          "role": "Powertrain Research Engineers"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
+      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
+      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
+    },
+    {
       "id": "gov-362681",
       "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
       "category": "CAPEX",
@@ -1022,46 +1062,6 @@
       "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
     },
     {
-      "id": "gov-363899",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
-      "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "04/09/2027",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
-      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
-      "url": "https://www.grants.gov/search-results-detail/363899",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
       "id": "gov-361526",
       "agency": "OFFICE OF SCIENCE",
       "category": "CAPEX",
@@ -1093,6 +1093,46 @@
           "winner": "Advanced Technology Development Center",
           "affiliation": "Purdue University",
           "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363899",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/363899",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
         }
       ],
       "match_tier": "FRONTIER",
@@ -2380,6 +2420,46 @@
       "current_asset": "University research laboratories and engineering experimental facilities",
       "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
       "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-363738",
+      "agency": "DARPA - DEFENSE SCIENCES OFFICE",
+      "category": "CAPEX",
+      "title": "Defense Sciences Office (DSO) Office-wide BAA",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "08/27/2027",
+      "score": "86% Fit",
+      "synopsis": "DARPA competitive solicitation #HR001126S0015 issued by DARPA - Defense Sciences Office. Underwrites university research testbeds for novel materials characterization, autonomous mobility algorithms, and high-performance hardware prototyping equipment. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/363738",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Composite autoclave tables, rapid machining cells, and uncrewed vehicle telemetry rigs",
+      "future_capability": "Extreme environment hardware proof-of-concept prototyping for autonomous ground vehicles and novel materials.",
+      "incumbency_basis": "Defense manufacturing and uncrewed systems research scope"
     },
     {
       "id": "gov-345241",

@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-11-04 13:54 UTC",
-  "total_addressable": "$113,849,500",
-  "capex_tooling_offset": "$102,544,500",
-  "count": 110,
+  "last_updated": "2026-11-05 14:09 UTC",
+  "total_addressable": "$116,849,500",
+  "capex_tooling_offset": "$105,544,500",
+  "count": 112,
   "validation_summary": {
-    "total_scanned": 111,
-    "passed_checks": 110,
+    "total_scanned": 113,
+    "passed_checks": 112,
     "rejected_invalid": 1
   },
   "tier_breakdown": {
-    "federal": 61,
+    "federal": 63,
     "state_regional": 4,
     "academic_consortia": 11,
     "private_foundations": 34,
@@ -17,8 +17,8 @@
   },
   "match_tier_breakdown": {
     "incumbent": 40,
-    "expansion": 28,
-    "frontier": 42
+    "expansion": 29,
+    "frontier": 43
   },
   "grants": [
     {
@@ -1507,7 +1507,7 @@
       "category": "MACHINING",
       "title": "Engineering (ENG): Civil, Mechanical and Manufacturing Innovation (CMMI)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "10/05/2076",
+      "deadline": "11/04/2076",
       "score": "76% Fit",
       "synopsis": "Federal solicitation #26-515 issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
@@ -1620,6 +1620,46 @@
       "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
       "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
       "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-364212",
+      "agency": "NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION",
+      "category": "CAPEX",
+      "title": "State Process for Informing Consumers of Recalls Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "02/04/2027",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #NHTSA-693JJ927R000007-FY27 issued by National Highway Traffic Safety Administration. Supports electric vehicle battery propulsion testing, high-voltage battery cyclers, dynamometer instrumentation, and automotive workforce hardware.",
+      "pitch": "Secures federal capital funding for high-voltage EV battery test cells, propulsion dynamometers, and electrification hardware.",
+      "url": "https://www.grants.gov/search-results-detail/364212",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Campus Engineering machine shops and technical workforce training bays",
+      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
     {
       "id": "gov-330175",
@@ -2180,6 +2220,46 @@
       "current_asset": "High-performance computing clusters and sensor telemetry networks",
       "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
       "incumbency_basis": "NSF research infrastructure capacity building"
+    },
+    {
+      "id": "gov-363481",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "MACHINING",
+      "title": "U.S. National Science Foundation State and Regional Artificial Intelligence Infrastructure Hubs:",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/03/2027",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #26-513 issued by U.S. National Science Foundation. Advanced Technological Education (ATE) supporting CNC machining, tooling, metrology, and advanced manufacturing technician labs.",
+      "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC software licenses, and technician trainer stations.",
+      "url": "https://www.grants.gov/search-results-detail/363481",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "University Machine Shop Directors, Engineering Lab Managers & Technical PIs",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
     },
     {
       "id": "gov-361915",

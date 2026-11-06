@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-11-05 14:09 UTC",
-  "total_addressable": "$116,849,500",
-  "capex_tooling_offset": "$105,544,500",
-  "count": 112,
+  "last_updated": "2026-11-06 13:52 UTC",
+  "total_addressable": "$112,339,500",
+  "capex_tooling_offset": "$101,034,500",
+  "count": 108,
   "validation_summary": {
-    "total_scanned": 113,
-    "passed_checks": 112,
-    "rejected_invalid": 1
+    "total_scanned": 110,
+    "passed_checks": 108,
+    "rejected_invalid": 2
   },
   "tier_breakdown": {
-    "federal": 63,
+    "federal": 60,
     "state_regional": 4,
-    "academic_consortia": 11,
+    "academic_consortia": 10,
     "private_foundations": 34,
-    "corporate_and_foundations": 45
+    "corporate_and_foundations": 44
   },
   "match_tier_breakdown": {
-    "incumbent": 40,
+    "incumbent": 37,
     "expansion": 29,
-    "frontier": 43
+    "frontier": 42
   },
   "grants": [
     {
@@ -982,56 +982,16 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-363906",
-      "agency": "OFFICE OF NAVAL RESEARCH",
-      "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War Multidisciplinary Research Program of the University Research Initiative (MURI)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "04/09/2027",
-      "score": "82% Fit",
-      "synopsis": "Federal solicitation #N0001426SF002 issued by Office of Naval Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
-      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
-      "url": "https://www.grants.gov/search-results-detail/363906",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
-          "affiliation": "The Ohio State University",
-          "role": "Senior Engineering Faculty & Facility Managers"
-        },
-        {
-          "winner": "Advanced Technology Development Center",
-          "affiliation": "Purdue University",
-          "role": "Collegiate Research Laboratory Directors"
-        }
-      ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
-      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
-      "incumbency_basis": "Office of Naval Research long-range science & technology research"
-    },
-    {
-      "id": "gov-363905",
-      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
+      "id": "gov-363899",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
       "category": "CAPEX",
       "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "04/09/2027",
-      "score": "83% Fit",
-      "synopsis": "Federal solicitation #W911NF26S1000 issued by Dept of the Army -- Materiel Command. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
       "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
-      "url": "https://www.grants.gov/search-results-detail/363905",
+      "url": "https://www.grants.gov/search-results-detail/363899",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -1055,11 +1015,11 @@
           "role": "Defense Instrumentation Research Faculty"
         }
       ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
-      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
-      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-361526",
@@ -1102,16 +1062,56 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-363899",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "id": "gov-363906",
+      "agency": "OFFICE OF NAVAL RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SF002 issued by Office of Naval Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/363906",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-363905",
+      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
       "category": "CAPEX",
       "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "04/09/2027",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "score": "83% Fit",
+      "synopsis": "Federal solicitation #W911NF26S1000 issued by Dept of the Army -- Materiel Command. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
       "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
-      "url": "https://www.grants.gov/search-results-detail/363899",
+      "url": "https://www.grants.gov/search-results-detail/363905",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -1135,11 +1135,11 @@
           "role": "Defense Instrumentation Research Faculty"
         }
       ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
+      "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
+      "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
     },
     {
       "id": "gov-363526",
@@ -1982,126 +1982,6 @@
       "incumbency_basis": "Office of Naval Research long-range science & technology research"
     },
     {
-      "id": "gov-363374",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
-      "category": "CAPEX",
-      "title": "Fiscal Year 2027 Defense University Research Instrumentation Program (DURIP)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/06/2026",
-      "score": "99% Fit",
-      "synopsis": "Department of Defense solicitation #NOFOAFRLAFOSR20260001 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
-      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
-      "url": "https://www.grants.gov/search-results-detail/363374",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
-      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
-      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
-    },
-    {
-      "id": "gov-363379",
-      "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
-      "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Defense University Research Instrumentation Program (DURIP)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/06/2026",
-      "score": "99% Fit",
-      "synopsis": "Department of Defense solicitation #W911NF26S0095 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
-      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
-      "url": "https://www.grants.gov/search-results-detail/363379",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
-      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
-      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
-    },
-    {
-      "id": "gov-363378",
-      "agency": "OFFICE OF NAVAL RESEARCH",
-      "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Defense University Research Instrumentation Program (DURIP)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/06/2026",
-      "score": "99% Fit",
-      "synopsis": "Department of Defense solicitation #N0001426SF003 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
-      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
-      "url": "https://www.grants.gov/search-results-detail/363378",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
-      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
-      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
-    },
-    {
       "id": "gov-358403",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "CAPEX",
@@ -2732,46 +2612,6 @@
           "winner": "Advanced Technology Development Center",
           "affiliation": "Purdue University",
           "role": "Collegiate Research Laboratory Directors"
-        }
-      ],
-      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
-      "id": "osu-imr-kickstart-facility-grant-battery-cdme",
-      "score": "76% Fit",
-      "title": "OSU IMR Kickstart Facility Grants: Battery Cell R&D Center & CDME Manufacturing Access",
-      "agency": "OSU INSTITUTE FOR MATERIALS & MANUFACTURING RESEARCH (IMR)",
-      "source_tier": "ACADEMIC_CONSORTIA",
-      "ceiling": "$2,500 - $10,000",
-      "deadline": "11/06/2026",
-      "category": "MACHINING",
-      "eligibility": "Ohio State University faculty, senior research staff with PI status, postdoctoral researchers, and graduate student co-authors.",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff (OSU PIs)",
-      "synopsis": "Direct facility user-fee and equipment access grant listed on go.osu.edu/funding. Offsets user fees and fabrication/testing hours inside OSU's core facilities: the Battery Cell R&D Center, Center for Design and Manufacturing Excellence (CDME), Center for Electron Microscopy and Analysis (CEMAS), and Nanotech West Laboratory.",
-      "pitch": "Provides immediate funding to fabricate pouch/cylindrical cells in the OSU Battery Cell R&D Center, machine prototypes at CDME, and run electron microscopy on fuel cell catalysts at CEMAS.",
-      "url": "https://imr.osu.edu/seed-grant-programs/facility-grants",
-      "previous_recipient": {
-        "institution": "The Ohio State University Battery Cell R&D Center, CDME & CEMAS Users",
-        "award_year": "2025",
-        "amount_or_hardware": "$2,500 - $10,000 Facility Allocation",
-        "use_case": "Offset electrode coating, battery cell cycler testing, CNC/additive prototyping at CDME, and SEM/TEM catalyst characterization."
-      },
-      "previous_winners": [
-        {
-          "winner": "Student Machine Shop & Manufacturing Lab",
-          "affiliation": "The Ohio State University",
-          "role": "Machine Shop Director & Student Machinists"
-        },
-        {
-          "winner": "Polytechnic Manufacturing Institute",
-          "affiliation": "Purdue University",
-          "role": "CNC Machining Instructors"
         }
       ],
       "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",

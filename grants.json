@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-11-06 13:52 UTC",
-  "total_addressable": "$112,339,500",
-  "capex_tooling_offset": "$101,034,500",
-  "count": 108,
+  "last_updated": "2026-11-07 12:36 UTC",
+  "total_addressable": "$116,089,500",
+  "capex_tooling_offset": "$104,784,500",
+  "count": 110,
   "validation_summary": {
-    "total_scanned": 110,
-    "passed_checks": 108,
-    "rejected_invalid": 2
+    "total_scanned": 113,
+    "passed_checks": 110,
+    "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 60,
-    "state_regional": 4,
+    "federal": 63,
+    "state_regional": 3,
     "academic_consortia": 10,
     "private_foundations": 34,
     "corporate_and_foundations": 44
   },
   "match_tier_breakdown": {
     "incumbent": 37,
-    "expansion": 29,
-    "frontier": 42
+    "expansion": 30,
+    "frontier": 43
   },
   "grants": [
     {
@@ -1982,6 +1982,46 @@
       "incumbency_basis": "Office of Naval Research long-range science & technology research"
     },
     {
+      "id": "gov-364243",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Major Research Instrumentation Program: (MRI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "01/29/2027",
+      "score": "99% Fit",
+      "synopsis": "Department of Defense solicitation #27-500 (DURIP program). Provides direct 100% equipment grants to university engineering laboratories to acquire multi-axis test machinery, precision optical metrology, dynamometer instrumentation, and advanced hardware testing benches. Supports higher education instrumentation, shared research equipment, multi-axis CNC machining, metrology, and propulsion diagnostics.",
+      "pitch": "Enables multi-user research instrumentation and testing equipment acquisitions with zero departmental debt.",
+      "url": "https://www.grants.gov/search-results-detail/364243",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
+      "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
+      "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
+    },
+    {
       "id": "gov-358403",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "CAPEX",
@@ -2100,6 +2140,46 @@
       "current_asset": "High-performance computing clusters and sensor telemetry networks",
       "future_capability": "Shared computing infrastructure for autonomous vehicle digital twins and simulation testbenches.",
       "incumbency_basis": "NSF research infrastructure capacity building"
+    },
+    {
+      "id": "gov-363620",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "MPS Astronomical Sciences Research Programs (MPS Astro)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "10/07/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #26-522 issued by U.S. National Science Foundation. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
+      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
+      "url": "https://www.grants.gov/search-results-detail/363620",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-363481",
@@ -2382,6 +2462,46 @@
       "incumbency_basis": "Defense manufacturing and uncrewed systems research scope"
     },
     {
+      "id": "gov-362905",
+      "agency": "DARPA - INFORMATION PROCESSING TECHNOLOGIES OFFICE",
+      "category": "CAPEX",
+      "title": "Information Processing Techniques Office Office-Wide",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "06/22/2027",
+      "score": "86% Fit",
+      "synopsis": "DARPA competitive solicitation #HR001126S0011 issued by DARPA - Information Processing Technologies Office. Underwrites university research testbeds for novel materials characterization, autonomous mobility algorithms, and high-performance hardware prototyping equipment. Supports naval power propulsion systems, composite machining, autonomous vehicle telemetry, and structural test equipment.",
+      "pitch": "Acquires naval power systems, maritime composite machining, and structural test fixtures with full federal backing.",
+      "url": "https://www.grants.gov/search-results-detail/362905",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
+          "affiliation": "The Ohio State University",
+          "role": "Senior Engineering Faculty & Facility Managers"
+        },
+        {
+          "winner": "Advanced Technology Development Center",
+          "affiliation": "Purdue University",
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Composite autoclave tables, rapid machining cells, and uncrewed vehicle telemetry rigs",
+      "future_capability": "Extreme environment hardware proof-of-concept prototyping for autonomous ground vehicles and novel materials.",
+      "incumbency_basis": "Defense manufacturing and uncrewed systems research scope"
+    },
+    {
       "id": "gov-345241",
       "agency": "DEPT OF THE ARMY -- MATERIEL COMMAND",
       "category": "CAPEX",
@@ -2454,46 +2574,6 @@
         "award_year": "2025",
         "amount_or_hardware": "$500,000 - $1,500,000",
         "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus via the official ODHE Super RAPIDS RFP."
-      },
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
-      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
-      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
-    },
-    {
-      "id": "odhe-rapids-cycle7",
-      "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
-      "category": "MACHINING",
-      "title": "ODHE RAPIDS \u2014 Advanced Machining & Industrial Robotics Equipment RFP",
-      "ceiling": "$250,000 - $750,000",
-      "deadline": "Annual Cycle",
-      "score": "97% Fit",
-      "synopsis": "Ohio state capital equipment allocation under the Regionally Aligned Priorities in Delivering Skills (RAPIDS) Request for Proposals providing 100% state funding to universities for multi-axis CNC machine tooling and robotic workcells.",
-      "pitch": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment via the official ODHE RAPIDS Request for Proposals.",
-      "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
-      "source_tier": "STATE_REGIONAL",
-      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
-      "previous_winners": [
-        {
-          "winner": "College of Engineering Machining Labs",
-          "affiliation": "The Ohio State University",
-          "role": "Research Operations Directors & Machinists"
-        },
-        {
-          "winner": "Workforce & Engineering Technologies",
-          "affiliation": "Sinclair Community College",
-          "role": "Industrial Robotics Instructors"
-        }
-      ],
-      "previous_recipient": {
-        "institution": "The Ohio State University (College of Engineering Machining Labs) & Sinclair Community College",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $750,000",
-        "use_case": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment via the official ODHE RAPIDS Request for Proposals."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",

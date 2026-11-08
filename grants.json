@@ -1,22 +1,22 @@
 {
-  "last_updated": "2026-11-07 12:36 UTC",
-  "total_addressable": "$116,089,500",
-  "capex_tooling_offset": "$104,784,500",
-  "count": 110,
+  "last_updated": "2026-11-08 12:53 UTC",
+  "total_addressable": "$116,839,500",
+  "capex_tooling_offset": "$105,534,500",
+  "count": 111,
   "validation_summary": {
     "total_scanned": 113,
-    "passed_checks": 110,
-    "rejected_invalid": 3
+    "passed_checks": 111,
+    "rejected_invalid": 2
   },
   "tier_breakdown": {
     "federal": 63,
-    "state_regional": 3,
+    "state_regional": 4,
     "academic_consortia": 10,
     "private_foundations": 34,
     "corporate_and_foundations": 44
   },
   "match_tier_breakdown": {
-    "incumbent": 37,
+    "incumbent": 38,
     "expansion": 30,
     "frontier": 43
   },
@@ -2574,6 +2574,46 @@
         "award_year": "2025",
         "amount_or_hardware": "$500,000 - $1,500,000",
         "use_case": "Secures non-tuition Ohio state capital financing to acquire high-end production machinery and testing apparatus via the official ODHE Super RAPIDS RFP."
+      },
+      "match_tier": "INCUMBENT",
+      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
+      "current_asset": "Campus Engineering Advanced Manufacturing Facility (RAPIDS Cycles 1-6 installed machinery, CMM arms)",
+      "future_capability": "Acquires next-gen multi-axis CNC machine tools and industrial robotic arms with 100% Ohio state capital match.",
+      "incumbency_basis": "ODHE RAPIDS Rounds 1-6 proven capital allocation track record"
+    },
+    {
+      "id": "odhe-rapids-cycle7",
+      "agency": "OHIO DEPARTMENT OF HIGHER EDUCATION",
+      "category": "MACHINING",
+      "title": "ODHE RAPIDS \u2014 Advanced Machining & Industrial Robotics Equipment RFP",
+      "ceiling": "$250,000 - $750,000",
+      "deadline": "Annual Cycle",
+      "score": "97% Fit",
+      "synopsis": "Ohio state capital equipment allocation under the Regionally Aligned Priorities in Delivering Skills (RAPIDS) Request for Proposals providing 100% state funding to universities for multi-axis CNC machine tooling and robotic workcells.",
+      "pitch": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment via the official ODHE RAPIDS Request for Proposals.",
+      "url": "https://highered.ohio.gov/initiatives/workforce-development/rapids",
+      "applicant_type": "COLLEGE_LAB_DIRECTOR",
+      "applicant_label": "Lab Directors & Staff",
+      "eligibility": "Ohio public colleges, universities, and technical centers partnering with regional manufacturing employers.",
+      "source_tier": "STATE_REGIONAL",
+      "source_tier_label": "\ud83c\udfdb\ufe0f STATE OF OHIO CAPEX",
+      "previous_winners": [
+        {
+          "winner": "College of Engineering Machining Labs",
+          "affiliation": "The Ohio State University",
+          "role": "Research Operations Directors & Machinists"
+        },
+        {
+          "winner": "Workforce & Engineering Technologies",
+          "affiliation": "Sinclair Community College",
+          "role": "Industrial Robotics Instructors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (College of Engineering Machining Labs) & Sinclair Community College",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $750,000",
+        "use_case": "Secures non-tuition state capital backing to replace aging machine tools with production-grade CNC equipment via the official ODHE RAPIDS Request for Proposals."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",

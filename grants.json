@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-11-09 15:27 UTC",
-  "total_addressable": "$116,839,500",
-  "capex_tooling_offset": "$105,534,500",
-  "count": 111,
+  "last_updated": "2026-11-10 14:28 UTC",
+  "total_addressable": "$115,239,500",
+  "capex_tooling_offset": "$103,934,500",
+  "count": 109,
   "validation_summary": {
-    "total_scanned": 113,
-    "passed_checks": 111,
-    "rejected_invalid": 2
+    "total_scanned": 112,
+    "passed_checks": 109,
+    "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 63,
+    "federal": 62,
     "state_regional": 4,
     "academic_consortia": 10,
-    "private_foundations": 34,
-    "corporate_and_foundations": 44
+    "private_foundations": 33,
+    "corporate_and_foundations": 43
   },
   "match_tier_breakdown": {
-    "incumbent": 38,
+    "incumbent": 37,
     "expansion": 30,
-    "frontier": 43
+    "frontier": 42
   },
   "grants": [
     {
@@ -2142,46 +2142,6 @@
       "incumbency_basis": "NSF research infrastructure capacity building"
     },
     {
-      "id": "gov-363620",
-      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
-      "category": "CAPEX",
-      "title": "MPS Astronomical Sciences Research Programs (MPS Astro)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "10/07/2076",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #26-522 issued by U.S. National Science Foundation. Defense University Research Instrumentation Program (DURIP) supporting university research equipment, instrumentation, metrology, and propulsion testbeds.",
-      "pitch": "Major Department of Defense instrument grant securing 100% equipment financing for advanced laboratory machinery.",
-      "url": "https://www.grants.gov/search-results-detail/363620",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Purdue University & Georgia Institute of Technology",
-        "award_year": "2025",
-        "amount_or_hardware": "$300,000 - $600,000",
-        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
-      },
-      "previous_winners": [
-        {
-          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
-          "affiliation": "The Ohio State University",
-          "role": "Facility Directors & Senior Research Scientists"
-        },
-        {
-          "winner": "Nanotechnology User Facility",
-          "affiliation": "Georgia Institute of Technology",
-          "role": "Research Infrastructure Principal Investigators"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
       "id": "gov-363481",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "MACHINING",
@@ -4254,46 +4214,6 @@
         "award_year": "2025",
         "amount_or_hardware": "$50,000 - $250,000",
         "use_case": "Direct online grant application form where university faculty and lab directors input their project budget, equipment list, and proposal data."
-      },
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Campus Engineering Student Machine Shop & robotic automation workcells",
-      "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
-      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record"
-    },
-    {
-      "id": "denso-foundation-skilled-machining",
-      "agency": "DENSO NORTH AMERICA FOUNDATION",
-      "category": "MACHINING",
-      "title": "DENSO Foundation Skilled Trades, CNC Machining & Automation \u2014 Direct Application Form",
-      "ceiling": "$25,000 - $100,000",
-      "deadline": "Annual Cycle",
-      "score": "97% Fit",
-      "synopsis": "Direct 62-field online grant application form for the DENSO Foundation Skilled Trades & Manufacturing Grant funding CNC machine shop tooling, industrial automation trainers, welding safety booths, and metrology equipment.",
-      "pitch": "Direct online grant application form where machine shop directors enter their institution details and equipment budget to apply for DENSO funds.",
-      "url": "https://www.densofoundation.org/skilled-grant-application-2025/",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "Post-secondary machine shops, collegiate technical centers, and manufacturing training labs.",
-      "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
-      "previous_winners": [
-        {
-          "winner": "Precision CNC Machining & Robotics Lab",
-          "affiliation": "Columbus State Community College",
-          "role": "Machine Tool & Automation Instructors"
-        },
-        {
-          "winner": "Advanced Manufacturing Training Center",
-          "affiliation": "Vincennes University",
-          "role": "Skilled Trades & CNC Faculty"
-        }
-      ],
-      "previous_recipient": {
-        "institution": "Columbus State Community College (Precision CNC Machining & Robotics Lab) & Vincennes University",
-        "award_year": "2025",
-        "amount_or_hardware": "$25,000 - $100,000",
-        "use_case": "Direct online grant application form where machine shop directors enter their institution details and equipment budget to apply for DENSO funds."
       },
       "match_tier": "INCUMBENT",
       "match_tier_label": "\ud83c\udfaf Proven Incumbent",

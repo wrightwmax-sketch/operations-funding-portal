@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-11-10 14:28 UTC",
-  "total_addressable": "$115,239,500",
-  "capex_tooling_offset": "$103,934,500",
-  "count": 109,
+  "last_updated": "2026-11-11 13:43 UTC",
+  "total_addressable": "$116,739,500",
+  "capex_tooling_offset": "$105,434,500",
+  "count": 110,
   "validation_summary": {
-    "total_scanned": 112,
-    "passed_checks": 109,
+    "total_scanned": 113,
+    "passed_checks": 110,
     "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 62,
+    "federal": 63,
     "state_regional": 4,
     "academic_consortia": 10,
     "private_foundations": 33,
@@ -18,7 +18,7 @@
   "match_tier_breakdown": {
     "incumbent": 37,
     "expansion": 30,
-    "frontier": 42
+    "frontier": 43
   },
   "grants": [
     {
@@ -982,16 +982,16 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-363899",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "id": "gov-363906",
+      "agency": "OFFICE OF NAVAL RESEARCH",
       "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "title": "Fiscal Year (FY) 2027 Department of War Multidisciplinary Research Program of the University Research Initiative (MURI)",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "04/09/2027",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "score": "82% Fit",
+      "synopsis": "Federal solicitation #N0001426SF002 issued by Office of Naval Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
       "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
-      "url": "https://www.grants.gov/search-results-detail/363899",
+      "url": "https://www.grants.gov/search-results-detail/363906",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -1005,21 +1005,61 @@
       },
       "previous_winners": [
         {
-          "winner": "Autonomous Dynamometer Testing Hall",
+          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
           "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+          "role": "Senior Engineering Faculty & Facility Managers"
         },
         {
-          "winner": "Aerospace Research Laboratories",
+          "winner": "Advanced Technology Development Center",
           "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
+          "role": "Collegiate Research Laboratory Directors"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
+      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
+      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+    },
+    {
+      "id": "gov-356537",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Infrastructure Cluster (AGS-IC)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "Rolling Cycle",
+      "score": "74% Fit",
+      "synopsis": "Federal solicitation #PD-24-7791 issued by U.S. National Science Foundation. Supports electrochemical energy storage systems, grid-scale and vehicular battery packs, flow batteries, and hybrid supercapacitor-battery architectures.",
+      "pitch": "Underwrites high-power battery energy storage testbeds, bidirectional cyclers, and pack-level thermal management hardware.",
+      "url": "https://www.grants.gov/search-results-detail/356537",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
         }
       ],
       "match_tier": "FRONTIER",
       "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
+      "current_asset": "OSU College of Engineering interdisciplinary research centers",
+      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
+      "incumbency_basis": "Major competitive institutional research infrastructure grant"
     },
     {
       "id": "gov-361526",
@@ -1062,16 +1102,16 @@
       "incumbency_basis": "Competitive federal research solicitation"
     },
     {
-      "id": "gov-363906",
-      "agency": "OFFICE OF NAVAL RESEARCH",
+      "id": "gov-363899",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
       "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
       "ceiling": "$250,000 - $1,500,000",
       "deadline": "04/09/2027",
-      "score": "82% Fit",
-      "synopsis": "Federal solicitation #N0001426SF002 issued by Office of Naval Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
       "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
-      "url": "https://www.grants.gov/search-results-detail/363906",
+      "url": "https://www.grants.gov/search-results-detail/363899",
       "applicant_type": "COLLEGE_INSTITUTIONAL",
       "applicant_label": "College / University (Institutional)",
       "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
@@ -1085,21 +1125,21 @@
       },
       "previous_winners": [
         {
-          "winner": "College of Automotive & Mobility Research Laboratories Laboratories",
+          "winner": "Autonomous Dynamometer Testing Hall",
           "affiliation": "The Ohio State University",
-          "role": "Senior Engineering Faculty & Facility Managers"
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
         },
         {
-          "winner": "Advanced Technology Development Center",
+          "winner": "Aerospace Research Laboratories",
           "affiliation": "Purdue University",
-          "role": "Collegiate Research Laboratory Directors"
+          "role": "Defense Instrumentation Research Faculty"
         }
       ],
-      "match_tier": "EXPANSION",
-      "match_tier_label": "\u26a1 Strategic Expansion",
-      "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
-      "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
-      "incumbency_basis": "Office of Naval Research long-range science & technology research"
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-363905",
@@ -1465,9 +1505,9 @@
       "id": "gov-350230",
       "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
       "category": "MACHINING",
-      "title": "Research in the Formation of Engineers",
+      "title": "Research in the Formation of Engineers (RFE)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "Rolling Cycle",
+      "deadline": "11/10/2076",
       "score": "76% Fit",
       "synopsis": "Federal solicitation #PD-24-1340 issued by U.S. National Science Foundation. Supports advanced manufacturing machine tooling, CNC machining workholding, metrology, and technician workforce training.",
       "pitch": "Underwrites advanced manufacturing curriculum, CAM/CNC machine tooling, and technician trainer stations.",
@@ -1907,7 +1947,7 @@
       "category": "STUDENT",
       "title": "Air Force Fiscal Year 2027 Young Investigator Program (YIP)",
       "ceiling": "$250,000 - $1,500,000",
-      "deadline": "12/04/2026",
+      "deadline": "12/11/2026",
       "score": "76% Fit",
       "synopsis": "Federal solicitation #FA955026S0003 issued by Air Force Office of Scientific Research. Supports collegiate engineering vehicle design competition teams, Formula SAE, Baja SAE, EcoCAR, and hands-on capstone prototyping equipment.",
       "pitch": "Directly finances student engineering build spaces, vehicle design competition hardware, and multidisciplinary prototyping labs.",

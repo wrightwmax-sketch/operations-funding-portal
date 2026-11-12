@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-11-11 13:43 UTC",
-  "total_addressable": "$116,739,500",
-  "capex_tooling_offset": "$105,434,500",
-  "count": 110,
+  "last_updated": "2026-11-12 14:46 UTC",
+  "total_addressable": "$115,239,500",
+  "capex_tooling_offset": "$103,934,500",
+  "count": 109,
   "validation_summary": {
-    "total_scanned": 113,
-    "passed_checks": 110,
+    "total_scanned": 112,
+    "passed_checks": 109,
     "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 63,
+    "federal": 62,
     "state_regional": 4,
     "academic_consortia": 10,
     "private_foundations": 33,
@@ -18,7 +18,7 @@
   "match_tier_breakdown": {
     "incumbent": 37,
     "expansion": 30,
-    "frontier": 43
+    "frontier": 42
   },
   "grants": [
     {
@@ -1020,46 +1020,6 @@
       "current_asset": "High-power electrical test equipment, dynamometers, and power electronics benches",
       "future_capability": "Naval power distribution research, maritime composite structures, and telemetry test fixtures.",
       "incumbency_basis": "Office of Naval Research long-range science & technology research"
-    },
-    {
-      "id": "gov-356537",
-      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
-      "category": "CAPEX",
-      "title": "Infrastructure Cluster (AGS-IC)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "Rolling Cycle",
-      "score": "74% Fit",
-      "synopsis": "Federal solicitation #PD-24-7791 issued by U.S. National Science Foundation. Supports electrochemical energy storage systems, grid-scale and vehicular battery packs, flow batteries, and hybrid supercapacitor-battery architectures.",
-      "pitch": "Underwrites high-power battery energy storage testbeds, bidirectional cyclers, and pack-level thermal management hardware.",
-      "url": "https://www.grants.gov/search-results-detail/356537",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Purdue University & Georgia Institute of Technology",
-        "award_year": "2025",
-        "amount_or_hardware": "$300,000 - $600,000",
-        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
-      },
-      "previous_winners": [
-        {
-          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
-          "affiliation": "The Ohio State University",
-          "role": "Facility Directors & Senior Research Scientists"
-        },
-        {
-          "winner": "Nanotechnology User Facility",
-          "affiliation": "Georgia Institute of Technology",
-          "role": "Research Infrastructure Principal Investigators"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "OSU College of Engineering interdisciplinary research centers",
-      "future_capability": "Multi-million dollar regional automotive testbed infrastructure establishing next-gen national testing hub.",
-      "incumbency_basis": "Major competitive institutional research infrastructure grant"
     },
     {
       "id": "gov-361526",

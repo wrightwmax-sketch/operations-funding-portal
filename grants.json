@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-11-12 14:46 UTC",
-  "total_addressable": "$115,239,500",
+  "last_updated": "2026-11-13 14:04 UTC",
+  "total_addressable": "$116,739,500",
   "capex_tooling_offset": "$103,934,500",
-  "count": 109,
+  "count": 110,
   "validation_summary": {
-    "total_scanned": 112,
-    "passed_checks": 109,
+    "total_scanned": 113,
+    "passed_checks": 110,
     "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 62,
+    "federal": 63,
     "state_regional": 4,
     "academic_consortia": 10,
     "private_foundations": 33,
@@ -17,7 +17,7 @@
   },
   "match_tier_breakdown": {
     "incumbent": 37,
-    "expansion": 30,
+    "expansion": 31,
     "frontier": 42
   },
   "grants": [
@@ -1022,6 +1022,46 @@
       "incumbency_basis": "Office of Naval Research long-range science & technology research"
     },
     {
+      "id": "gov-363899",
+      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
+      "category": "CAPEX",
+      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "04/09/2027",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports next-generation lithium-ion, solid-state, and sodium-ion battery cells, high-voltage battery cyclers, thermal runaway containment, and EV energy storage.",
+      "pitch": "Funds advanced battery cell prototyping, multi-channel cycler racks, abuse testing chambers, and solid-state electrolyte research.",
+      "url": "https://www.grants.gov/search-results-detail/363899",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
       "id": "gov-361526",
       "agency": "OFFICE OF SCIENCE",
       "category": "CAPEX",
@@ -1053,46 +1093,6 @@
           "winner": "Advanced Technology Development Center",
           "affiliation": "Purdue University",
           "role": "Collegiate Research Laboratory Directors"
-        }
-      ],
-      "match_tier": "FRONTIER",
-      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
-      "current_asset": "University research laboratories and engineering experimental facilities",
-      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
-      "incumbency_basis": "Competitive federal research solicitation"
-    },
-    {
-      "id": "gov-363899",
-      "agency": "AIR FORCE OFFICE OF SCIENTIFIC RESEARCH",
-      "category": "CAPEX",
-      "title": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "04/09/2027",
-      "score": "76% Fit",
-      "synopsis": "Federal solicitation #NOFOAFRLAFOSR20260002 issued by Air Force Office of Scientific Research. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
-      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
-      "url": "https://www.grants.gov/search-results-detail/363899",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
-        "award_year": "2025",
-        "amount_or_hardware": "$250,000 - $850,000",
-        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
-      },
-      "previous_winners": [
-        {
-          "winner": "Autonomous Dynamometer Testing Hall",
-          "affiliation": "The Ohio State University",
-          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
-        },
-        {
-          "winner": "Aerospace Research Laboratories",
-          "affiliation": "Purdue University",
-          "role": "Defense Instrumentation Research Faculty"
         }
       ],
       "match_tier": "FRONTIER",
@@ -1940,6 +1940,46 @@
       "current_asset": "University research laboratories and engineering experimental facilities",
       "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
       "incumbency_basis": "Competitive federal research solicitation"
+    },
+    {
+      "id": "gov-364263",
+      "agency": "DOT FEDERAL HIGHWAY ADMINISTRATION",
+      "category": "STUDENT",
+      "title": "Fiscal Year 2026 Great American Digital Corridors (GADC) Program",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "12/28/2026",
+      "score": "93% Fit",
+      "synopsis": "Federal solicitation #FHWA-GADC-27-001 issued by DOT Federal Highway Administration. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "url": "https://www.grants.gov/search-results-detail/364263",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Big Ten / R1 Engineering Consortium Peers (Purdue, UMich, Penn State)",
+        "award_year": "2025",
+        "amount_or_hardware": "$150,000 - $750,000",
+        "use_case": "Direct federal institutional CapEx and workforce training hardware allocation."
+      },
+      "previous_winners": [
+        {
+          "winner": "Formula Buckeye Racing (Formula SAE)",
+          "affiliation": "The Ohio State University",
+          "role": "Collegiate Student Engineering Team"
+        },
+        {
+          "winner": "Illini Motorsports",
+          "affiliation": "University of Illinois Urbana-Champaign",
+          "role": "Undergraduate Vehicle Design Leads"
+        }
+      ],
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Campus Engineering machine shops and technical workforce training bays",
+      "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
+      "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
     },
     {
       "id": "gov-362836",

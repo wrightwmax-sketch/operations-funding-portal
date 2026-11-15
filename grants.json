@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-11-14 13:06 UTC",
-  "total_addressable": "$116,739,500",
-  "capex_tooling_offset": "$103,934,500",
-  "count": 110,
+  "last_updated": "2026-11-15 13:34 UTC",
+  "total_addressable": "$116,489,500",
+  "capex_tooling_offset": "$103,684,500",
+  "count": 109,
   "validation_summary": {
-    "total_scanned": 113,
-    "passed_checks": 110,
-    "rejected_invalid": 3
+    "total_scanned": 114,
+    "passed_checks": 109,
+    "rejected_invalid": 5
   },
   "tier_breakdown": {
     "federal": 63,
     "state_regional": 4,
     "academic_consortia": 10,
-    "private_foundations": 33,
-    "corporate_and_foundations": 43
+    "private_foundations": 32,
+    "corporate_and_foundations": 42
   },
   "match_tier_breakdown": {
-    "incumbent": 37,
+    "incumbent": 35,
     "expansion": 31,
-    "frontier": 42
+    "frontier": 43
   },
   "grants": [
     {
@@ -300,46 +300,6 @@
       "current_asset": "56,000 sq ft West Campus Testing Hall & OSU College of Engineering shared instrumentation facilities",
       "future_capability": "Acquires multi-user 5-axis CNC machining centers, high-voltage battery test cyclers, and chassis dynamometer upgrades.",
       "incumbency_basis": "OSU College of Engineering NSF Major Research Instrumentation (MRI) award track record"
-    },
-    {
-      "id": "fed-dod-durip-hardware",
-      "agency": "DEPT OF DEFENSE (ONR / AFOSR / ARO)",
-      "category": "CAPEX",
-      "title": "Defense University Research Instrumentation Program (DURIP) \u2014 Lab Hardware & Testbeds",
-      "ceiling": "$50,000 - $1,500,000",
-      "deadline": "Annual Cycle",
-      "score": "99% Fit",
-      "synopsis": "Funds university procurement of state-of-the-art research equipment to support defense-relevant engineering, including autonomous ground/air vehicles, propulsion testing, composite fabrication, and ruggedized electronics.",
-      "pitch": "Ideal 100% equipment grant (zero facilities overhead) to outfit Engineering labs with high-frequency data acquisition, structural load frames, and autonomous sensor suites.",
-      "url": "https://www.onr.navy.mil/education-outreach/sponsored-research/university-research-initiatives/durip",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Universities conducting defense-relevant engineering and instrumentation research.",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "The Ohio State University Aerospace/Automotive Labs & Virginia Tech",
-        "award_year": "2025",
-        "amount_or_hardware": "$680,000",
-        "use_case": "Purchased high-speed optical diagnostics, composite curing equipment, and autonomous vehicle testbed hardware."
-      },
-      "previous_winners": [
-        {
-          "winner": "Aerospace & Automotive Research Laboratories",
-          "affiliation": "The Ohio State University",
-          "role": "Defense Instrumentation Principal Investigators"
-        },
-        {
-          "winner": "Uncrewed Systems & Propulsion Diagnostics Lab",
-          "affiliation": "Virginia Tech",
-          "role": "Aerospace & Ocean Engineering Faculty"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "56,000 sq ft West Campus Testing Hall (Heavy-duty AC chassis dynos, high-speed DAQ racks)",
-      "future_capability": "100% DoD-funded multi-user precision instrumentation, multi-axis dynamic test rigs, and optical metrology.",
-      "incumbency_basis": "DOD AFOSR / ONR DURIP institutional instrumentation track record"
     },
     {
       "id": "fed-doe-vto-mobility",
@@ -1260,6 +1220,46 @@
       "current_asset": "Structural mechanics test equipment and high-strain-rate material testbenches",
       "future_capability": "Advanced alloy testing, hybrid electric military powertrain research, and robotics testbenches.",
       "incumbency_basis": "Army Research Laboratory foundational research broad agency announcement"
+    },
+    {
+      "id": "gov-356612",
+      "agency": "DEFENSE THREAT REDUCTION AGENCY",
+      "category": "CAPEX",
+      "title": "Fundamental Research to Counter Weapons of Mass Destruction",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "09/30/2034",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #HDTRA1-25-S-0001 issued by Defense Threat Reduction Agency. Supports fundamental and applied electrochemical engineering, electrocatalysis for hydrogen evolution and oxygen reduction, fuel cell membranes, and battery electrodes.",
+      "pitch": "Underwrites university electrochemical testing stations, potentiostats, impedance spectroscopy, and membrane-electrode assembly rigs.",
+      "url": "https://www.grants.gov/search-results-detail/356612",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Virginia Tech & University of Michigan Aerospace/Auto Labs",
+        "award_year": "2025",
+        "amount_or_hardware": "$250,000 - $850,000",
+        "use_case": "Acquired composite fabrication tooling, telemetry DAQ rigs, and uncrewed flight/ground vehicle test equipment."
+      },
+      "previous_winners": [
+        {
+          "winner": "Autonomous Dynamometer Testing Hall",
+          "affiliation": "The Ohio State University",
+          "role": "Department of Mechanical & Aerospace Engineering Faculty PIs"
+        },
+        {
+          "winner": "Aerospace Research Laboratories",
+          "affiliation": "Purdue University",
+          "role": "Defense Instrumentation Research Faculty"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-356055",
@@ -4220,46 +4220,6 @@
       "current_asset": "Fabrication shop (TIG/MIG welding booths and localized fume extractors)",
       "future_capability": "Upgrades source-capture extraction hoods, advanced multi-process pulse welding power sources, and student welding PPE.",
       "incumbency_basis": "Lincoln Electric Ohio manufacturing foundation partnership"
-    },
-    {
-      "id": "denso-foundation-stem-robotics",
-      "agency": "DENSO NORTH AMERICA FOUNDATION",
-      "category": "MACHINING",
-      "title": "DENSO North America Foundation Higher Education Grant \u2014 Direct Online Application Form",
-      "ceiling": "$50,000 - $250,000",
-      "deadline": "Annual Cycle",
-      "score": "97% Fit",
-      "synopsis": "Direct 116-field online grant application form for the DENSO North America Foundation funding university engineering labs with industrial robotics cells, autonomous vehicle sensor suites, carbon-fiber 3D printers, and SAE team hardware.",
-      "pitch": "Direct online grant application form where university faculty and lab directors input their project budget, equipment list, and proposal data.",
-      "url": "https://www.densofoundation.org/higher-education-grant-application-2025/",
-      "applicant_type": "COLLEGE_LAB_DIRECTOR",
-      "applicant_label": "Lab Directors & Staff",
-      "eligibility": "Accredited engineering colleges, university robotics laboratories, and collegiate design teams.",
-      "source_tier": "PRIVATE_FOUNDATION",
-      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
-      "previous_winners": [
-        {
-          "winner": "Autonomous Mobility & Sensor Fusion Lab",
-          "affiliation": "The Ohio State University",
-          "role": "Robotics & Electrical Engineering Faculty"
-        },
-        {
-          "winner": "Connected and Automated Transportation Systems Lab",
-          "affiliation": "Michigan State University",
-          "role": "Automotive Sensor Research Directors"
-        }
-      ],
-      "previous_recipient": {
-        "institution": "The Ohio State University (Autonomous Mobility & Sensor Fusion Lab) & Michigan State University",
-        "award_year": "2025",
-        "amount_or_hardware": "$50,000 - $250,000",
-        "use_case": "Direct online grant application form where university faculty and lab directors input their project budget, equipment list, and proposal data."
-      },
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Campus Engineering Student Machine Shop & robotic automation workcells",
-      "future_capability": "Acquires automated robotic material handling cells, carbon-fiber composite 3D printing, and automotive sensor calibration testbeds.",
-      "incumbency_basis": "DENSO North America Foundation higher education engineering grant track record"
     },
     {
       "id": "siemens-digital-industries-academic",

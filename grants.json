@@ -1,23 +1,23 @@
 {
-  "last_updated": "2026-11-17 15:38 UTC",
-  "total_addressable": "$116,589,500",
-  "capex_tooling_offset": "$105,284,500",
-  "count": 109,
+  "last_updated": "2026-11-18 15:15 UTC",
+  "total_addressable": "$116,739,500",
+  "capex_tooling_offset": "$105,434,500",
+  "count": 110,
   "validation_summary": {
     "total_scanned": 113,
-    "passed_checks": 109,
-    "rejected_invalid": 4
+    "passed_checks": 110,
+    "rejected_invalid": 3
   },
   "tier_breakdown": {
     "federal": 63,
     "state_regional": 4,
     "academic_consortia": 10,
-    "private_foundations": 32,
-    "corporate_and_foundations": 42
+    "private_foundations": 33,
+    "corporate_and_foundations": 43
   },
   "match_tier_breakdown": {
     "incumbent": 37,
-    "expansion": 29,
+    "expansion": 30,
     "frontier": 43
   },
   "grants": [
@@ -3774,6 +3774,46 @@
         "award_year": "2025",
         "amount_or_hardware": "$25,000 - $100,000",
         "use_case": "Direct CyberGrants login and submission portal to request Ohio utility foundation funding for battery testing and grid electrification labs."
+      },
+      "match_tier": "EXPANSION",
+      "match_tier_label": "\u26a1 Strategic Expansion",
+      "current_asset": "Grid-Tied Battery Energy Storage Testbed & Clean Hydrogen Microgrid Emulator",
+      "future_capability": "Second-life EV battery grid storage racks, hydrogen fuel cell backup power integration, and student clean energy capstones.",
+      "incumbency_basis": "Regional utility foundation clean energy & battery storage university partnership"
+    },
+    {
+      "id": "dominion-energy-foundation-clean-hydrogen",
+      "agency": "DOMINION ENERGY CHARITABLE FOUNDATION",
+      "category": "CAPEX",
+      "title": "Dominion Energy Charitable Foundation (Ohio) Higher Ed Clean Hydrogen & Battery Grants",
+      "ceiling": "$25,000 - $150,000",
+      "deadline": "Annual Cycle",
+      "score": "96% Fit",
+      "synopsis": "Direct Dominion Energy Charitable Foundation CyberGrants application portal funding higher education STEM programs, clean hydrogen blending/storage research, battery energy storage labs, and environmental engineering.",
+      "pitch": "Direct CyberGrants application portal where university PIs and lab directors submit proposals for hydrogen and battery education/research grants.",
+      "url": "https://www.dominionenergy.com/about/our-company/charitable-foundation",
+      "applicant_type": "COLLEGE_INSTITUTIONAL",
+      "applicant_label": "College / University (Institutional)",
+      "eligibility": "Accredited Higher Education Institutions in Ohio and Dominion Energy service states.",
+      "source_tier": "PRIVATE_FOUNDATION",
+      "source_tier_label": "\ud83c\udfe2 CORPORATE / OEM DONOR",
+      "previous_winners": [
+        {
+          "winner": "Clean Hydrogen & Electrochemical Propulsion Group",
+          "affiliation": "The Ohio State University",
+          "role": "Hydrogen Storage & Fuel Cell Engineering PIs"
+        },
+        {
+          "winner": "Virginia Clean Energy & Hydrogen Consortium",
+          "affiliation": "Virginia Tech",
+          "role": "Renewable Hydrogen & Battery Testbed Directors"
+        }
+      ],
+      "previous_recipient": {
+        "institution": "The Ohio State University (Clean Hydrogen & Electrochemical Propulsion Group) & Virginia Tech",
+        "award_year": "2025",
+        "amount_or_hardware": "$25,000 - $150,000",
+        "use_case": "Direct CyberGrants application portal where university PIs and lab directors submit proposals for hydrogen and battery education/research grants."
       },
       "match_tier": "EXPANSION",
       "match_tier_label": "\u26a1 Strategic Expansion",

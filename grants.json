@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-11-19 15:23 UTC",
-  "total_addressable": "$116,739,500",
-  "capex_tooling_offset": "$105,434,500",
-  "count": 110,
+  "last_updated": "2026-11-20 15:00 UTC",
+  "total_addressable": "$115,239,500",
+  "capex_tooling_offset": "$102,434,500",
+  "count": 109,
   "validation_summary": {
-    "total_scanned": 113,
-    "passed_checks": 110,
+    "total_scanned": 112,
+    "passed_checks": 109,
     "rejected_invalid": 3
   },
   "tier_breakdown": {
-    "federal": 63,
+    "federal": 62,
     "state_regional": 4,
     "academic_consortia": 10,
     "private_foundations": 33,
     "corporate_and_foundations": 43
   },
   "match_tier_breakdown": {
-    "incumbent": 37,
+    "incumbent": 35,
     "expansion": 30,
-    "frontier": 43
+    "frontier": 44
   },
   "grants": [
     {
@@ -580,86 +580,6 @@
       "current_asset": "Materials fatigue testing actuators and composite vacuum bagging equipment",
       "future_capability": "High-speed aerospace composite characterization, structural fatigue test rigs, and uncrewed flight telemetry.",
       "incumbency_basis": "Federal Aviation Administration university aeronautics research alignment"
-    },
-    {
-      "id": "gov-364136",
-      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
-      "category": "CAPEX",
-      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources (UNLOCK)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/20/2026",
-      "score": "98% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003630 issued by Advanced Research Projects Agency Energy. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
-      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/364136",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "The Ohio State University & University of Michigan",
-        "award_year": "2025",
-        "amount_or_hardware": "$450,000 - $1,200,000",
-        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
-      },
-      "previous_winners": [
-        {
-          "winner": "High-Voltage Electrification & Propulsion Lab",
-          "affiliation": "The Ohio State University",
-          "role": "Automotive Research Scientists & Graduate Fellows"
-        },
-        {
-          "winner": "Clean Energy Research Institute",
-          "affiliation": "University of Wisconsin-Madison",
-          "role": "Powertrain Research Engineers"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
-      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
-    },
-    {
-      "id": "gov-364135",
-      "agency": "ADVANCED RESEARCH PROJECTS AGENCY ENERGY",
-      "category": "CAPEX",
-      "title": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources SBIR/STTR (UNLOCK SBIR/STTR)",
-      "ceiling": "$250,000 - $1,500,000",
-      "deadline": "11/20/2026",
-      "score": "98% Fit",
-      "synopsis": "Federal solicitation #DE-FOA-0003631 issued by Advanced Research Projects Agency Energy. Supports clean hydrogen production, water electrolysis, cryogenic/high-pressure H2 storage tanks, hydrogen combustion/fuel cell propulsion, and H2 sensors.",
-      "pitch": "Funds university hydrogen generation, storage, safety sensors, and fuel cell powertrain testbeds.",
-      "url": "https://www.grants.gov/search-results-detail/364135",
-      "applicant_type": "COLLEGE_INSTITUTIONAL",
-      "applicant_label": "College / University (Institutional)",
-      "eligibility": "Accredited Colleges & Universities (Sponsored Research, Deans & Dept Chairs)",
-      "source_tier": "FEDERAL_AGENCY",
-      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
-      "previous_recipient": {
-        "institution": "The Ohio State University & University of Michigan",
-        "award_year": "2025",
-        "amount_or_hardware": "$450,000 - $1,200,000",
-        "use_case": "Funded EV powertrain dynamometer upgrades, high-voltage battery cyclers, and EcoCAR propulsion test cells."
-      },
-      "previous_winners": [
-        {
-          "winner": "High-Voltage Electrification & Propulsion Lab",
-          "affiliation": "The Ohio State University",
-          "role": "Automotive Research Scientists & Graduate Fellows"
-        },
-        {
-          "winner": "Clean Energy Research Institute",
-          "affiliation": "University of Wisconsin-Madison",
-          "role": "Powertrain Research Engineers"
-        }
-      ],
-      "match_tier": "INCUMBENT",
-      "match_tier_label": "\ud83c\udfaf Proven Incumbent",
-      "current_asset": "Electrification & Battery Testing Labs (EcoCAR EV platforms, battery cyclers, environmental chambers)",
-      "future_capability": "High-voltage 800V-1200V SiC/GaN inverter testbenches, thermal runaway enclosures, and cell validation racks.",
-      "incumbency_basis": "Multi-decade DOE EERE / Vehicle Technologies Office EcoCAR partnership"
     },
     {
       "id": "gov-352741",
@@ -2020,6 +1940,46 @@
       "current_asset": "Campus Engineering machine shops and technical workforce training bays",
       "future_capability": "Shop floor digital readout systems, automated tool presetters, and metrology calibration standards.",
       "incumbency_basis": "NIST Manufacturing USA and MEP advanced manufacturing partnership"
+    },
+    {
+      "id": "gov-364294",
+      "agency": "U.S. NATIONAL SCIENCE FOUNDATION",
+      "category": "STUDENT",
+      "title": "Foundational Research in Robotics (FRR)",
+      "ceiling": "$250,000 - $1,500,000",
+      "deadline": "11/19/2076",
+      "score": "76% Fit",
+      "synopsis": "Federal solicitation #27-501 issued by U.S. National Science Foundation. Supports intelligent mobility, uncrewed systems prototyping, aerospace & automotive telemetry, chassis instrumentation, and student capstone testbeds.",
+      "pitch": "Funds hands-on collegiate uncrewed platforms, autonomous mobility telemetry hardware, and structural testing cells.",
+      "url": "https://www.grants.gov/search-results-detail/364294",
+      "applicant_type": "COLLEGE_STUDENT_TEAM",
+      "applicant_label": "Student Engineering Teams",
+      "eligibility": "Collegiate Student Competition Teams (Formula SAE, Baja SAE, EcoCAR, Capstone Clubs)",
+      "source_tier": "FEDERAL_AGENCY",
+      "source_tier_label": "\ud83c\udfdb\ufe0f FEDERAL GRANT",
+      "previous_recipient": {
+        "institution": "Purdue University & Georgia Institute of Technology",
+        "award_year": "2025",
+        "amount_or_hardware": "$300,000 - $600,000",
+        "use_case": "Funded multi-team student engineering project lab tooling, CNC workholding, and makerspace safety infrastructure."
+      },
+      "previous_winners": [
+        {
+          "winner": "Center for Electron Microscopy and Analysis (CEMAS)",
+          "affiliation": "The Ohio State University",
+          "role": "Facility Directors & Senior Research Scientists"
+        },
+        {
+          "winner": "Nanotechnology User Facility",
+          "affiliation": "Georgia Institute of Technology",
+          "role": "Research Infrastructure Principal Investigators"
+        }
+      ],
+      "match_tier": "FRONTIER",
+      "match_tier_label": "\ud83d\udd2d Frontier Moonshot",
+      "current_asset": "University research laboratories and engineering experimental facilities",
+      "future_capability": "Expands collegiate research instrumentation and experimental capabilities into emerging domains.",
+      "incumbency_basis": "Competitive federal research solicitation"
     },
     {
       "id": "gov-364243",
